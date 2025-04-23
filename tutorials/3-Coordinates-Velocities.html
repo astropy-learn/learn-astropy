@@ -7518,6 +7518,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </li>
 <li><a href="#Evolving-Coordinate-Positions-Between-Epochs">Evolving Coordinate Positions Between Epochs</a>
 </li>
+<li><a href="#Exercises">Exercises</a>
+</li>
 </ol>
 </nav>
 </div>
@@ -7529,7 +7531,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Astronomical-Coordinates-3:-Working-with-Velocity-Data-in-astropy.coordinates">Astronomical Coordinates 3: Working with Velocity Data in astropy.coordinates<a class="anchor-link" href="#Astronomical-Coordinates-3:-Working-with-Velocity-Data-in-astropy.coordinates">¶</a></h1><h2 id="Authors">Authors<a class="anchor-link" href="#Authors">¶</a></h2><p>Adrian Price-Whelan</p>
+<h1 id="Astronomical-Coordinates-3:-Working-with-Velocity-Data-in-astropy.coordinates">Astronomical Coordinates 3: Working with Velocity Data in astropy.coordinates<a class="anchor-link" href="#Astronomical-Coordinates-3:-Working-with-Velocity-Data-in-astropy.coordinates">¶</a></h1><h2 id="Authors">Authors<a class="anchor-link" href="#Authors">¶</a></h2><p>Adrian Price-Whelan, Saima Siddiqui, Luthien Liu, Zihao Chen</p>
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><ul>
 <li>Introduce how to represent and transform velocity data in <code>SkyCoord</code> objects</li>
 <li>Demonstrate how to predict the position of a star at a time using its proper motion</li>
@@ -7572,6 +7574,7 @@ astropy
 astroquery&gt;=0.4.8.dev9474  # 2024-09-24 pinned for Gaia column capitalization issue
 matplotlib
 numpy
+scipy
 
 </pre>
 </div>
@@ -7639,7 +7642,7 @@ numpy
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> 
+    <span class="n">ra</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">dec</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
     <span class="n">pm_dec</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">)</span>
@@ -7671,7 +7674,7 @@ numpy
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Here, you may notice that the proper motion in right ascension has "cosdec" in the name: This is to explicitly note that the input here is expected to be the proper motion scaled by the cosine of the declination, which accounts for the fact that a change in longitude (right ascension) has different physical length at different latitudes (declinations).</p>
-<p>Like the examples in previous tutorials demonstrated for positional coordinates, we can also create an array-valued <code>SkyCoord</code> object by passing in arrays of data for all of the components:</p>
+<p>Like the examples in previous tutorials demonstrated for positional coordinates, we can also create an array-valued <code>SkyCoord</code> object by passing in arrays of data for all of the components. In this case, each value in the inputed array represents a quantity of an object among large data set. This method would be beneficial when dealing with large number of star collections like a star cluster:</p>
 </div>
 </div>
 </div>
@@ -7684,7 +7687,7 @@ numpy
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> 
+    <span class="n">ra</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">dec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
     <span class="n">pm_dec</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">)</span>
@@ -7730,7 +7733,7 @@ numpy
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">velocity_coord</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> 
+    <span class="n">ra</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">dec</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
     <span class="n">pm_dec</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
@@ -7930,7 +7933,7 @@ $1.935835 \; \mathrm{\frac{mas}{yr}}$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>An important caveat to note when transforming a <code>SkyCoord</code> object with velocity data is that some reference frames require knowing the distances, or the full velocity vectors (i.e. proper motion components and radial velocity) in order to transform the velocities correctly. For example, a <code>SkyCoord</code> with only sky position and proper motion data cannot be transformed to a frame with a positional or velocity offset, such as the <code>Galactocentric</code> frame (<a href="https://docs.astropy.org/en/stable/coordinates/galactocentric.html">docs</a>)</p>
+<p>An important caveat to note when transforming a <code>SkyCoord</code> object with velocity data is that some reference frames require knowing the distances, or the full velocity vectors (i.e. proper motion components and radial velocity) in order to transform the velocities correctly. For example, a <code>SkyCoord</code> with only sky position and proper motion data <strong>CANNOT</strong> be transformed to a frame with a positional or velocity offset, such as the <code>Galactocentric</code> frame (<a href="https://docs.astropy.org/en/stable/coordinates/galactocentric.html">docs</a>)</p>
 </div>
 </div>
 </div>
@@ -7942,14 +7945,15 @@ $1.935835 \; \mathrm{\frac{mas}{yr}}$
 <div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_coord</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This cell will NOT work (you will receive an ConvertError warning) - this is expected!</span>
+
+<span class="n">test_coord_1</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
+    <span class="n">ra</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">dec</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
     <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
     <span class="n">pm_dec</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">)</span>
 
-<span class="c1"># This cell will raise an exception - this is expected!</span>
-<span class="n">test_coord</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
+<span class="n">test_coord_1</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -7965,67 +7969,115 @@ $1.935835 \; \mathrm{\frac{mas}{yr}}$
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ConvertError</span>                              Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[11], line 8</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> test_coord <span style="color: rgb(98,98,98)">=</span> SkyCoord(
-<span class="ansi-green-intense-fg ansi-bold">      2</span>     ra<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">10</span><span style="color: rgb(98,98,98)">*</span>u<span style="color: rgb(98,98,98)">.</span>deg, 
-<span class="ansi-green-intense-fg ansi-bold">      3</span>     dec<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">20</span><span style="color: rgb(98,98,98)">*</span>u<span style="color: rgb(98,98,98)">.</span>deg,
-<span class="ansi-green-intense-fg ansi-bold">      4</span>     pm_ra_cosdec<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">1</span><span style="color: rgb(98,98,98)">*</span>u<span style="color: rgb(98,98,98)">.</span>mas<span style="color: rgb(98,98,98)">/</span>u<span style="color: rgb(98,98,98)">.</span>yr,
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     pm_dec<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">2</span><span style="color: rgb(98,98,98)">*</span>u<span style="color: rgb(98,98,98)">.</span>mas<span style="color: rgb(98,98,98)">/</span>u<span style="color: rgb(98,98,98)">.</span>yr)
-<span class="ansi-green-intense-fg ansi-bold">      7</span> <span style="color: rgb(95,135,135)"># This cell will raise an exception - this is expected!</span>
-<span class="ansi-green-fg">----&gt; 8</span> <span class="ansi-yellow-bg">test_coord</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">transform_to</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">coord</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">Galactocentric</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 9</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># This cell will NOT work (you will receive an ConvertError warning) - this is expected!</span>
+<span class="ansi-green-fg">      3</span> test_coord_1 = SkyCoord(
+<span class="ansi-green-fg">      4</span>     ra=<span class="ansi-green-fg">10</span>*u.deg,
+<span class="ansi-green-fg">      5</span>     dec=<span class="ansi-green-fg">20</span>*u.deg,
+<span class="ansi-green-fg">      6</span>     pm_ra_cosdec=<span class="ansi-green-fg">1</span>*u.mas/u.yr,
+<span class="ansi-green-fg">      7</span>     pm_dec=<span class="ansi-green-fg">2</span>*u.mas/u.yr)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">9</span> <span class="ansi-yellow-bg">test_coord_1</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">transform_to</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">coord</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">Galactocentric</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555</span>, in <span class="ansi-cyan-fg">SkyCoord.transform_to</span><span class="ansi-blue-fg">(self, frame, merge_attributes)</span>
-<span class="ansi-green-intense-fg ansi-bold">    551</span> generic_frame <span style="color: rgb(98,98,98)">=</span> GenericFrame(frame_kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    553</span> <span style="color: rgb(95,135,135)"># Do the transformation, returning a coordinate frame of the desired</span>
-<span class="ansi-green-intense-fg ansi-bold">    554</span> <span style="color: rgb(95,135,135)"># final type (not generic).</span>
-<span class="ansi-green-fg">--&gt; 555</span> new_coord <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">trans</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">frame</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">generic_frame</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    557</span> <span style="color: rgb(95,135,135)"># Finally make the new SkyCoord object from the `new_coord` and</span>
-<span class="ansi-green-intense-fg ansi-bold">    558</span> <span style="color: rgb(95,135,135)"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
-<span class="ansi-green-intense-fg ansi-bold">    559</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> attr <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">set</span>(new_coord<span style="color: rgb(98,98,98)">.</span>frame_attributes) <span style="color: rgb(98,98,98)">&amp;</span> <span style="color: rgb(0,135,0)">set</span>(frame_kwargs<span style="color: rgb(98,98,98)">.</span>keys()):
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555</span>, in <span class="ansi-cyan-fg">SkyCoord.transform_to</span><span class="ansi-blue-fg">(self, frame, merge_attributes)</span>
+<span class="ansi-green-fg">    551</span> generic_frame = GenericFrame(frame_kwargs)
+<span class="ansi-green-fg">    553</span> <span style="color: rgb(95,135,135)"># Do the transformation, returning a coordinate frame of the desired</span>
+<span class="ansi-green-fg">    554</span> <span style="color: rgb(95,135,135)"># final type (not generic).</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">555</span> new_coord = <span class="ansi-yellow-bg">trans</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">frame</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">generic_frame</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    557</span> <span style="color: rgb(95,135,135)"># Finally make the new SkyCoord object from the `new_coord` and</span>
+<span class="ansi-green-fg">    558</span> <span style="color: rgb(95,135,135)"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
+<span class="ansi-green-fg">    559</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> attr <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">set</span>(new_coord.frame_attributes) &amp; <span style="color: rgb(0,135,0)">set</span>(frame_kwargs.keys()):
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113</span>, in <span class="ansi-cyan-fg">CompositeTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
-<span class="ansi-green-intense-fg ansi-bold">    110</span>             frattrs[inter_frame_attr_nm] <span style="color: rgb(98,98,98)">=</span> attr
-<span class="ansi-green-intense-fg ansi-bold">    112</span>     curr_toframe <span style="color: rgb(98,98,98)">=</span> t<span style="color: rgb(98,98,98)">.</span>tosys(<span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>frattrs)
-<span class="ansi-green-fg">--&gt; 113</span>     curr_coord <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">t</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">curr_coord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">curr_toframe</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    115</span> <span style="color: rgb(95,135,135)"># this is safe even in the case where self.transforms is empty, because</span>
-<span class="ansi-green-intense-fg ansi-bold">    116</span> <span style="color: rgb(95,135,135)"># coordinate objects are immutable, so copying is not needed</span>
-<span class="ansi-green-intense-fg ansi-bold">    117</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> curr_coord
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113</span>, in <span class="ansi-cyan-fg">CompositeTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
+<span class="ansi-green-fg">    110</span>             frattrs[inter_frame_attr_nm] = attr
+<span class="ansi-green-fg">    112</span>     curr_toframe = t.tosys(**frattrs)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">113</span>     curr_coord = <span class="ansi-yellow-bg">t</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">curr_coord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">curr_toframe</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    115</span> <span style="color: rgb(95,135,135)"># this is safe even in the case where self.transforms is empty, because</span>
+<span class="ansi-green-fg">    116</span> <span style="color: rgb(95,135,135)"># coordinate objects are immutable, so copying is not needed</span>
+<span class="ansi-green-fg">    117</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> curr_coord
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205</span>, in <span class="ansi-cyan-fg">BaseAffineTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
-<span class="ansi-green-intense-fg ansi-bold">    204</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">__call__</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
-<span class="ansi-green-fg">--&gt; 205</span>     params <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_affine_params</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    206</span>     newrep <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_apply_transform(fromcoord, <span style="color: rgb(98,98,98)">*</span>params)
-<span class="ansi-green-intense-fg ansi-bold">    207</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> toframe<span style="color: rgb(98,98,98)">.</span>realize_frame(newrep)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205</span>, in <span class="ansi-cyan-fg">BaseAffineTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
+<span class="ansi-green-fg">    204</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">__call__</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">205</span>     params = <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_affine_params</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    206</span>     newrep = <span style="color: rgb(0,135,0)">self</span>._apply_transform(fromcoord, *params)
+<span class="ansi-green-fg">    207</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> toframe.realize_frame(newrep)
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259</span>, in <span class="ansi-cyan-fg">AffineTransform._affine_params</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
-<span class="ansi-green-intense-fg ansi-bold">    258</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">_affine_params</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
-<span class="ansi-green-fg">--&gt; 259</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">transform_func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259</span>, in <span class="ansi-cyan-fg">AffineTransform._affine_params</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
+<span class="ansi-green-fg">    258</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">_affine_params</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">259</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">transform_func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592</span>, in <span class="ansi-cyan-fg">icrs_to_galactocentric</span><span class="ansi-blue-fg">(icrs_coord, galactocentric_frame)</span>
-<span class="ansi-green-intense-fg ansi-bold">    590</span> <span style="color: rgb(175,0,255)">@frame_transform_graph</span><span style="color: rgb(98,98,98)">.</span>transform(AffineTransform, ICRS, Galactocentric)
-<span class="ansi-green-intense-fg ansi-bold">    591</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">icrs_to_galactocentric</span>(icrs_coord, galactocentric_frame):
-<span class="ansi-green-fg">--&gt; 592</span>     <span class="ansi-yellow-bg">_check_coord_repr_diff_types</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">icrs_coord</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    593</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> get_matrix_vectors(galactocentric_frame)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592</span>, in <span class="ansi-cyan-fg">icrs_to_galactocentric</span><span class="ansi-blue-fg">(icrs_coord, galactocentric_frame)</span>
+<span class="ansi-green-fg">    590</span> <span style="color: rgb(175,0,255)">@frame_transform_graph</span>.transform(AffineTransform, ICRS, Galactocentric)
+<span class="ansi-green-fg">    591</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">icrs_to_galactocentric</span>(icrs_coord, galactocentric_frame):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">592</span>     <span class="ansi-yellow-bg">_check_coord_repr_diff_types</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">icrs_coord</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    593</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> get_matrix_vectors(galactocentric_frame)
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571</span>, in <span class="ansi-cyan-fg">_check_coord_repr_diff_types</span><span class="ansi-blue-fg">(c)</span>
-<span class="ansi-green-intense-fg ansi-bold">    569</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">_check_coord_repr_diff_types</span>(c):
-<span class="ansi-green-intense-fg ansi-bold">    570</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(c<span style="color: rgb(98,98,98)">.</span>data, r<span style="color: rgb(98,98,98)">.</span>UnitSphericalRepresentation):
-<span class="ansi-green-fg">--&gt; 571</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
-<span class="ansi-green-intense-fg ansi-bold">    572</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g.</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    573</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)"> (angle, angle, distance) or (x, y, z).</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    574</span>         )
-<span class="ansi-green-intense-fg ansi-bold">    576</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">s</span><span style="color: rgb(175,0,0)">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> c<span style="color: rgb(98,98,98)">.</span>data<span style="color: rgb(98,98,98)">.</span>differentials <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span style="color: rgb(0,135,0)">isinstance</span>(
-<span class="ansi-green-intense-fg ansi-bold">    577</span>         c<span style="color: rgb(98,98,98)">.</span>data<span style="color: rgb(98,98,98)">.</span>differentials[<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">s</span><span style="color: rgb(175,0,0)">"</span>],
-<span class="ansi-green-intense-fg ansi-bold">    578</span>         (
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-intense-fg ansi-bold">    582</span>         ),
-<span class="ansi-green-intense-fg ansi-bold">    583</span>     ):
-<span class="ansi-green-intense-fg ansi-bold">    584</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
-<span class="ansi-green-intense-fg ansi-bold">    585</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">Transforming to/from a Galactocentric frame requires a 3D velocity, e.g.,</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    586</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)"> proper motion components and radial velocity.</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    587</span>         )
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571</span>, in <span class="ansi-cyan-fg">_check_coord_repr_diff_types</span><span class="ansi-blue-fg">(c)</span>
+<span class="ansi-green-fg">    569</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">_check_coord_repr_diff_types</span>(c):
+<span class="ansi-green-fg">    570</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(c.data, r.UnitSphericalRepresentation):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">571</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
+<span class="ansi-green-fg">    572</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g.</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    573</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg"> (angle, angle, distance) or (x, y, z).</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    574</span>         )
+<span class="ansi-green-fg">    576</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">s</span><span class="ansi-yellow-fg">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> c.data.differentials <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span style="color: rgb(0,135,0)">isinstance</span>(
+<span class="ansi-green-fg">    577</span>         c.data.differentials[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">s</span><span class="ansi-yellow-fg">"</span>],
+<span class="ansi-green-fg">    578</span>         (
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    582</span>         ),
+<span class="ansi-green-fg">    583</span>     ):
+<span class="ansi-green-fg">    584</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
+<span class="ansi-green-fg">    585</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Transforming to/from a Galactocentric frame requires a 3D velocity, e.g.,</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    586</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg"> proper motion components and radial velocity.</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    587</span>         )
 
 <span class="ansi-red-fg">ConvertError</span>: Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g. (angle, angle, distance) or (x, y, z).</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>In order to transform to the <code>Galactocentric</code> frame, both distance and radial velocity of the object are required.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">test_coord_2</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
+    <span class="n">ra</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
+    <span class="n">dec</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
+    <span class="n">distance</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">pc</span><span class="p">,</span>
+    <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
+    <span class="n">pm_dec</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
+    <span class="n">radial_velocity</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">km</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">test_coord_2</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;SkyCoord (Galactocentric: galcen_coord=&lt;ICRS Coordinate: (ra, dec) in deg
+    (266.4051, -28.936175)&gt;, galcen_distance=8.122 kpc, galcen_v_sun=(12.9, 245.6, 7.78) km / s, z_sun=20.8 pc, roll=0.0 deg): (x, y, z) in pc
+    (-8125.57861635, 6.40155855, 14.01603221)
+ (v_x, v_y, v_z) in km / s
+    (-23.22908903, 309.64402716, -59.99213843)&gt;</pre>
 </div>
 </div>
 </div>
@@ -8048,11 +8100,11 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Skip this cell if you are not connected to the internet</span>
-<span class="n">gaia_tbl</span> <span class="o">=</span> <span class="n">Gaia</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s1">'HD 219829'</span><span class="p">),</span> 
+<span class="n">gaia_tbl</span> <span class="o">=</span> <span class="n">Gaia</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s1">'HD 219829'</span><span class="p">),</span>
                              <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">arcmin</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8064,13 +8116,13 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># the .read() below produces some warnings that we can safely ignore</span>
-<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span> 
+<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
-    
+
     <span class="n">gaia_tbl</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">'HD_219829_query_results.ecsv'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8093,7 +8145,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hd219829_row</span> <span class="o">=</span> <span class="n">gaia_tbl</span><span class="p">[</span><span class="n">gaia_tbl</span><span class="p">[</span><span class="s1">'phot_g_mean_mag'</span><span class="p">]</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span>
@@ -8108,10 +8160,10 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <i>Row index=2</i>
-<table id="table140664950593184">
+<table id="table139938923976256">
 <thead><tr><th>source_id</th><th>pmra</th><th>pmdec</th></tr></thead>
 <thead><tr><th></th><th>mas / yr</th><th>mas / yr</th></tr></thead>
 <thead><tr><th>int64</th><th>float64</th><th>float64</th></tr></thead>
@@ -8138,11 +8190,11 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hd219829_coord</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="n">hd219829_row</span><span class="p">[</span><span class="s1">'ra'</span><span class="p">],</span> 
+    <span class="n">ra</span><span class="o">=</span><span class="n">hd219829_row</span><span class="p">[</span><span class="s1">'ra'</span><span class="p">],</span>
     <span class="n">dec</span><span class="o">=</span><span class="n">hd219829_row</span><span class="p">[</span><span class="s1">'dec'</span><span class="p">],</span>
     <span class="n">distance</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="n">hd219829_row</span><span class="p">[</span><span class="s1">'parallax'</span><span class="p">]),</span>
     <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="n">hd219829_row</span><span class="p">[</span><span class="s1">'pmra'</span><span class="p">],</span>
@@ -8160,7 +8212,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
     (349.72896716, 5.40511585, 34.47896069)
@@ -8187,7 +8239,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Skip this cell if you are not connected to the internet</span>
@@ -8205,7 +8257,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">dss_cutout_filename</span> <span class="o">=</span> <span class="s1">'dss_hd219829.fits'</span>
@@ -8222,6 +8274,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>We can now load the FITS image of the cutout and use <code>astropy.visualization</code> to display the image using its World Coordinate System (WCS) info (<a href="http://docs.astropy.org/en/latest/visualization/wcsaxes/index.html">docs</a>). By passing in the WCS information (included in the FITS cutout header), we can over-plot a marker for the <em>Gaia</em>-measured sky position of HD 219829:</p>
+<p>(If you are unfamiliar with the usage of FITS header and FITS image, check out these 2 tutorials having detailed explanation on these 2 topics: <a href="https://learn.astropy.org/tutorials/FITS-header.html">FITS-Header</a> and <a href="https://learn.astropy.org/tutorials/FITS-images.html">FITS-Image</a>.)</p>
 </div>
 </div>
 </div>
@@ -8230,13 +8283,13 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">dss_cutout_filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">wcs</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> 
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
                        <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Greys_r'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'RA'</span><span class="p">)</span>
@@ -8265,15 +8318,15 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7fef088fca70&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f46114cc590&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
-<img alt="No description has been provided for this image" class="" src="nboutput/3-Coordinates-Velocities.ipynb_31_2.png"/>
+<img alt="No description has been provided for this image" class="" src="nboutput/3-Coordinates-Velocities.ipynb_33_2.png"/>
 </div>
 </div>
 </div>
@@ -8295,7 +8348,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hd219829_coord</span><span class="o">.</span><span class="n">obstime</span>
@@ -8309,7 +8362,7 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>&lt;Time object: scale='tt' format='jyear' value=2015.5&gt;</pre>
 </div>
@@ -8332,13 +8385,13 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># this produces some warnings that we can safely ignore</span>
-<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span> 
+<span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
-    
+
     <span class="n">hd219829_coord_1950</span> <span class="o">=</span> <span class="n">hd219829_coord</span><span class="o">.</span><span class="n">apply_space_motion</span><span class="p">(</span>
         <span class="n">new_obstime</span><span class="o">=</span><span class="n">Time</span><span class="p">(</span><span class="s1">'J1950'</span><span class="p">))</span>
 </pre></div>
@@ -8362,10 +8415,10 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
                        <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">'lower'</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Greys_r'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'RA'</span><span class="p">)</span>
@@ -8394,15 +8447,15 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7fef1c6e2120&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f46128065a0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
-<img alt="No description has been provided for this image" class="" src="nboutput/3-Coordinates-Velocities.ipynb_37_1.png"/>
+<img alt="No description has been provided for this image" class="" src="nboutput/3-Coordinates-Velocities.ipynb_39_1.png"/>
 </div>
 </div>
 </div>
@@ -8426,6 +8479,42 @@ File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/pyth
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>In this tutorial, we have introduced how to store and transform velocity data along with positional data in <code>astropy.coordinates</code>. We also demonstrated how to use the velocity of a source to predict its position at an earlier or later time.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Lalande 21185 is the brightest red dwarf star in the northern hemisphere and has a pretty high proper motion. Use the Gaia archive (<a href="https://gea.esac.esa.int/archive/">https://gea.esac.esa.int/archive/</a>) to find values and create a <code>SkyCoord</code> object for Lalande 21185. (Hint: earlier in the tutorial, we extracted information from a Gaia table and mentioned which Gaia column names match with our postition components).</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

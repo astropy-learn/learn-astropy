@@ -7581,6 +7581,7 @@ astropy
 astroquery&gt;=0.4.8.dev9474  # 2024-09-24 pinned for Gaia column capitalization issue
 matplotlib
 numpy
+scipy
 
 </pre>
 </div>
@@ -9242,60 +9243,59 @@ numpy
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ConvertError</span>                              Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[36], line 3</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> <span style="color: rgb(95,135,135)"># This cell will raise an exception and will not work (you will see a `ConvertError` exception) - this is expected!</span>
-<span class="ansi-green-fg">----&gt; 3</span> <span class="ansi-yellow-bg">icrs_c</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">transform_to</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">coord</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">Galactocentric</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[36]</span><span class="ansi-green-fg">, line 3</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># This cell will raise an exception and will not work (you will see a `ConvertError` exception) - this is expected!</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> <span class="ansi-yellow-bg">icrs_c</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">transform_to</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">coord</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">Galactocentric</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555</span>, in <span class="ansi-cyan-fg">SkyCoord.transform_to</span><span class="ansi-blue-fg">(self, frame, merge_attributes)</span>
-<span class="ansi-green-intense-fg ansi-bold">    551</span> generic_frame <span style="color: rgb(98,98,98)">=</span> GenericFrame(frame_kwargs)
-<span class="ansi-green-intense-fg ansi-bold">    553</span> <span style="color: rgb(95,135,135)"># Do the transformation, returning a coordinate frame of the desired</span>
-<span class="ansi-green-intense-fg ansi-bold">    554</span> <span style="color: rgb(95,135,135)"># final type (not generic).</span>
-<span class="ansi-green-fg">--&gt; 555</span> new_coord <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">trans</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">frame</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">generic_frame</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    557</span> <span style="color: rgb(95,135,135)"># Finally make the new SkyCoord object from the `new_coord` and</span>
-<span class="ansi-green-intense-fg ansi-bold">    558</span> <span style="color: rgb(95,135,135)"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
-<span class="ansi-green-intense-fg ansi-bold">    559</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> attr <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">set</span>(new_coord<span style="color: rgb(98,98,98)">.</span>frame_attributes) <span style="color: rgb(98,98,98)">&amp;</span> <span style="color: rgb(0,135,0)">set</span>(frame_kwargs<span style="color: rgb(98,98,98)">.</span>keys()):
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555</span>, in <span class="ansi-cyan-fg">SkyCoord.transform_to</span><span class="ansi-blue-fg">(self, frame, merge_attributes)</span>
+<span class="ansi-green-fg">    551</span> generic_frame = GenericFrame(frame_kwargs)
+<span class="ansi-green-fg">    553</span> <span style="color: rgb(95,135,135)"># Do the transformation, returning a coordinate frame of the desired</span>
+<span class="ansi-green-fg">    554</span> <span style="color: rgb(95,135,135)"># final type (not generic).</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">555</span> new_coord = <span class="ansi-yellow-bg">trans</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">frame</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">generic_frame</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    557</span> <span style="color: rgb(95,135,135)"># Finally make the new SkyCoord object from the `new_coord` and</span>
+<span class="ansi-green-fg">    558</span> <span style="color: rgb(95,135,135)"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
+<span class="ansi-green-fg">    559</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> attr <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">set</span>(new_coord.frame_attributes) &amp; <span style="color: rgb(0,135,0)">set</span>(frame_kwargs.keys()):
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113</span>, in <span class="ansi-cyan-fg">CompositeTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
-<span class="ansi-green-intense-fg ansi-bold">    110</span>             frattrs[inter_frame_attr_nm] <span style="color: rgb(98,98,98)">=</span> attr
-<span class="ansi-green-intense-fg ansi-bold">    112</span>     curr_toframe <span style="color: rgb(98,98,98)">=</span> t<span style="color: rgb(98,98,98)">.</span>tosys(<span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">*</span>frattrs)
-<span class="ansi-green-fg">--&gt; 113</span>     curr_coord <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">t</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">curr_coord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">curr_toframe</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    115</span> <span style="color: rgb(95,135,135)"># this is safe even in the case where self.transforms is empty, because</span>
-<span class="ansi-green-intense-fg ansi-bold">    116</span> <span style="color: rgb(95,135,135)"># coordinate objects are immutable, so copying is not needed</span>
-<span class="ansi-green-intense-fg ansi-bold">    117</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> curr_coord
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113</span>, in <span class="ansi-cyan-fg">CompositeTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
+<span class="ansi-green-fg">    110</span>             frattrs[inter_frame_attr_nm] = attr
+<span class="ansi-green-fg">    112</span>     curr_toframe = t.tosys(**frattrs)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">113</span>     curr_coord = <span class="ansi-yellow-bg">t</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">curr_coord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">curr_toframe</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    115</span> <span style="color: rgb(95,135,135)"># this is safe even in the case where self.transforms is empty, because</span>
+<span class="ansi-green-fg">    116</span> <span style="color: rgb(95,135,135)"># coordinate objects are immutable, so copying is not needed</span>
+<span class="ansi-green-fg">    117</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> curr_coord
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205</span>, in <span class="ansi-cyan-fg">BaseAffineTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
-<span class="ansi-green-intense-fg ansi-bold">    204</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">__call__</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
-<span class="ansi-green-fg">--&gt; 205</span>     params <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_affine_params</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    206</span>     newrep <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_apply_transform(fromcoord, <span style="color: rgb(98,98,98)">*</span>params)
-<span class="ansi-green-intense-fg ansi-bold">    207</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> toframe<span style="color: rgb(98,98,98)">.</span>realize_frame(newrep)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205</span>, in <span class="ansi-cyan-fg">BaseAffineTransform.__call__</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
+<span class="ansi-green-fg">    204</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">__call__</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">205</span>     params = <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_affine_params</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    206</span>     newrep = <span style="color: rgb(0,135,0)">self</span>._apply_transform(fromcoord, *params)
+<span class="ansi-green-fg">    207</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> toframe.realize_frame(newrep)
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259</span>, in <span class="ansi-cyan-fg">AffineTransform._affine_params</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
-<span class="ansi-green-intense-fg ansi-bold">    258</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">_affine_params</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
-<span class="ansi-green-fg">--&gt; 259</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">transform_func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259</span>, in <span class="ansi-cyan-fg">AffineTransform._affine_params</span><span class="ansi-blue-fg">(self, fromcoord, toframe)</span>
+<span class="ansi-green-fg">    258</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">_affine_params</span>(<span style="color: rgb(0,135,0)">self</span>, fromcoord, toframe):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">259</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">transform_func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fromcoord</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">toframe</span><span class="ansi-yellow-bg">)</span>
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592</span>, in <span class="ansi-cyan-fg">icrs_to_galactocentric</span><span class="ansi-blue-fg">(icrs_coord, galactocentric_frame)</span>
-<span class="ansi-green-intense-fg ansi-bold">    590</span> <span style="color: rgb(175,0,255)">@frame_transform_graph</span><span style="color: rgb(98,98,98)">.</span>transform(AffineTransform, ICRS, Galactocentric)
-<span class="ansi-green-intense-fg ansi-bold">    591</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">icrs_to_galactocentric</span>(icrs_coord, galactocentric_frame):
-<span class="ansi-green-fg">--&gt; 592</span>     <span class="ansi-yellow-bg">_check_coord_repr_diff_types</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">icrs_coord</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    593</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> get_matrix_vectors(galactocentric_frame)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592</span>, in <span class="ansi-cyan-fg">icrs_to_galactocentric</span><span class="ansi-blue-fg">(icrs_coord, galactocentric_frame)</span>
+<span class="ansi-green-fg">    590</span> <span style="color: rgb(175,0,255)">@frame_transform_graph</span>.transform(AffineTransform, ICRS, Galactocentric)
+<span class="ansi-green-fg">    591</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">icrs_to_galactocentric</span>(icrs_coord, galactocentric_frame):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">592</span>     <span class="ansi-yellow-bg">_check_coord_repr_diff_types</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">icrs_coord</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    593</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> get_matrix_vectors(galactocentric_frame)
 
-File <span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.8/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571</span>, in <span class="ansi-cyan-fg">_check_coord_repr_diff_types</span><span class="ansi-blue-fg">(c)</span>
-<span class="ansi-green-intense-fg ansi-bold">    569</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span style="color: rgb(0,0,255)">_check_coord_repr_diff_types</span>(c):
-<span class="ansi-green-intense-fg ansi-bold">    570</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(c<span style="color: rgb(98,98,98)">.</span>data, r<span style="color: rgb(98,98,98)">.</span>UnitSphericalRepresentation):
-<span class="ansi-green-fg">--&gt; 571</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
-<span class="ansi-green-intense-fg ansi-bold">    572</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g.</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    573</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)"> (angle, angle, distance) or (x, y, z).</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    574</span>         )
-<span class="ansi-green-intense-fg ansi-bold">    576</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">s</span><span style="color: rgb(175,0,0)">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> c<span style="color: rgb(98,98,98)">.</span>data<span style="color: rgb(98,98,98)">.</span>differentials <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span style="color: rgb(0,135,0)">isinstance</span>(
-<span class="ansi-green-intense-fg ansi-bold">    577</span>         c<span style="color: rgb(98,98,98)">.</span>data<span style="color: rgb(98,98,98)">.</span>differentials[<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">s</span><span style="color: rgb(175,0,0)">"</span>],
-<span class="ansi-green-intense-fg ansi-bold">    578</span>         (
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-intense-fg ansi-bold">    582</span>         ),
-<span class="ansi-green-intense-fg ansi-bold">    583</span>     ):
-<span class="ansi-green-intense-fg ansi-bold">    584</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
-<span class="ansi-green-intense-fg ansi-bold">    585</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">Transforming to/from a Galactocentric frame requires a 3D velocity, e.g.,</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    586</span>             <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)"> proper motion components and radial velocity.</span><span style="color: rgb(175,0,0)">"</span>
-<span class="ansi-green-intense-fg ansi-bold">    587</span>         )
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571</span>, in <span class="ansi-cyan-fg">_check_coord_repr_diff_types</span><span class="ansi-blue-fg">(c)</span>
+<span class="ansi-green-fg">    569</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">_check_coord_repr_diff_types</span>(c):
+<span class="ansi-green-fg">    570</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(c.data, r.UnitSphericalRepresentation):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">571</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
+<span class="ansi-green-fg">    572</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g.</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    573</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg"> (angle, angle, distance) or (x, y, z).</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    574</span>         )
+<span class="ansi-green-fg">    576</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">s</span><span class="ansi-yellow-fg">"</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> c.data.differentials <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span style="color: rgb(0,135,0)">isinstance</span>(
+<span class="ansi-green-fg">    577</span>         c.data.differentials[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">s</span><span class="ansi-yellow-fg">"</span>],
+<span class="ansi-green-fg">    578</span>         (
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    582</span>         ),
+<span class="ansi-green-fg">    583</span>     ):
+<span class="ansi-green-fg">    584</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> ConvertError(
+<span class="ansi-green-fg">    585</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Transforming to/from a Galactocentric frame requires a 3D velocity, e.g.,</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    586</span>             <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg"> proper motion components and radial velocity.</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">    587</span>         )
 
 <span class="ansi-red-fg">ConvertError</span>: Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g. (angle, angle, distance) or (x, y, z).</pre>
 </div>
