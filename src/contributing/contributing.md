@@ -3,9 +3,18 @@ title: 'How to contribute tutorials to Learn Astropy'
 slug: '/contributing/how-to-contribute'
 ---
 
+We are always interested in incorporating new tutorials into Learn Astropy and the Astropy Tutorials series. We welcome tutorials covering astro-relevant topics; they do not need to use the Astropy package in order to be hosted or indexed here. If you have astronomy tutorials that you would like to contribute, or if you have a separate tutorial series that you would like indexed by the Learn Astropy website, see below.
+
 ## Overview
 
-Each tutorial is a [Jupyter notebook](https://jupyter.org/) file. Each notebook is saved in a separate directory within the `tutorials/notebooks` subdirectory in this project. For an example, let's look at the source notebook of the [FITS-header](https://github.com/astropy/astropy-tutorials/tree/main/tutorials/FITS-header/) tutorial. Within `tutorials/notebooks/FITS-header`, there is a single Jupyter notebook file that contains the text and code for the tutorial, any small data files used in the tutorial (in this case, a single FITS file), and a `requirements.txt` file that specifies the required packages to run notebooks in `tutorials/notebooks/FITS-header`. The notebook file is automatically run and converted into a static HTML page ([for example](https://learn.astropy.org/tutorials/FITS-header.html)), which is then displayed in the tutorial listing on the main tutorials webpage, http://tutorials.astropy.org. Each tutorial notebook file also contains information such as the author's name, month and year it was written, and any other metadata that should be associated with the tutorial.
+Each tutorial is a [Jupyter notebook](https://jupyter.org/) file in a unique repository `tutorial--*` in the [astropy-learn organization](https://github.com/astropy-learn). For an example, let's look at the [FITS-header](https://github.com/astropy-learn/tutorial--FITS-header/tree/main/) tutorial. The repository has a few files that authors write/amend:
+
+- A single Jupyter notebook file that contains the text and code for the tutorial,
+- Any small data files used in the tutorial (in this case, a single FITS file),
+- A `requirements.txt` file that specifies the required packages to run the notebook, and
+- An `AUTHORS.md` file that lists the notebook authors.
+
+The notebook file is automatically run and converted into a static HTML page ([for example](https://learn.astropy.org/tutorials/FITS-header.html)), which is then displayed in the listing on the main tutorials webpage, http://tutorials.astropy.org. Each tutorial `.ipynb` file also has an intro cell as detailed below.
 
 ## Content Guidelines
 
@@ -44,13 +53,6 @@ In this tutorial, we will download a data file, do something to it, and then
 visualize it.
 ```
 
-The second cell in every tutorial notebook is a code cell used to display required packages for users, and should be the following lines (this expects the `requirements.txt` file to be present in the notebook's directory):
-
-```
-with open('requirements.txt') as f:
-    print(f"Required packages for this notebook:\n{f.read()}")
-```
-
 ### Code
 
 - Demonstrate good commenting practice
@@ -87,54 +89,38 @@ with open('requirements.txt') as f:
 - Avoid extraneous words such as "obviously", "just", "simply", or "easily." For example, avoid phrases like "we just have to do this one thing."
 - Use `<div class="alert alert-info">Note</div>` for Notes and `<div class="alert alert-warning">Warning</div>` for Warnings (Markdown supports raw HTML)
 
-## Procedure for contributing
+## Procedure for contributing a notebook or set of notebooks
 
-There are two methods for contributing tutorial notebooks.
+There are two methods for submitting a tutorial or set of thematically linked tutorials.
 
-### Method One: Submit a Jupyter Notebook using Colaboratory
+### Method 1: Provide a link
 
-The Learn Astropy project is transitioning to providing interactive editing and feedback for submitted tutorial notebooks via [Colaboratory](https://colab.research.google.com/). Follow this procedure to submit a Jupyter notebook:
+- [Open an issue on the astropy-tutorials Github repo](https://github.com/astropy/astropy-tutorials/issues) with a link to your Jupyter notebook(s).
 
-- Upload the Jupyter notebook to Google drive
-- Right click on the file in your Google drive and select _Get shareable link_. Click on _Share settings_ and change it so that "Anyone with a link can edit". Then copy the url in the box.
-- [Open an issue on the astropy-tutorials Github repo](https://github.com/astropy/astropy-tutorials/issues) and paste the url to your Jupyter notebook.
+Learn Astropy maintainers will download your notebook, test it, and edit the file if necessary to conform to the above style guide. When the tutorial is ready to be incorporated, maintainers will open a pull request on behalf of the tutorial authors.
 
-Learn Astropy maintainers will respond as soon as possible by downloading your notebook, testing it, and editing the file in your Google drive to conform to the above style guide.
+### Method 2: Submit a pull request
 
-When the tutorial is ready to be incorporated, Learn Astropy maintainers will open a pull request on behalf of the tutorial authors.
+This process for contributing a tutorial involves the [GitHub fork](https://help.github.com/articles/working-with-forks/) and `git` workflow concepts [branch, push, pull request](https://help.github.com/articles/proposing-changes-to-your-work-with-pull-requests/).
 
-### Method Two: Submit a Pull Request
-
-The process for contributing a tutorial involves the [GitHub fork](https://help.github.com/articles/working-with-forks/) and `git` workflow concepts [branch, push, pull request](https://help.github.com/articles/proposing-changes-to-your-work-with-pull-requests/).
-
-To contribute a new tutorial, first fork the `astropy-tutorials` repository. Then, clone your fork locally to your machine (replace `<GITHUB USERNAME>` with your GitHub username):
+To contribute a new tutorial, first fork the [Astropy Learn tutorial template repository](https://github.com/astropy-learn/tutorial--template). Then clone your fork locally to your machine (replace `<GITHUB USERNAME>` with your GitHub username):
 
 ```
 git clone git@github.com:<GITHUB USERNAME>/astropy-tutorials.git
 ```
 
-Next, create a branch in your local repository with the name of the tutorial you'd like to contribute. Let's imagine we're adding a tutorial to demonstrate spectral line fitting -- we might call it "Spectral-Line-Fitting":
+Next, create a branch in your local repository with the name of the tutorial you'd like to contribute. Say we're adding a tutorial to demonstrate spectral line fitting -- we might call it "Spectral-Line-Fitting":
 
 ```
 git checkout -b Spectral-Line-Fitting
 ```
 
-The notebook files must be written as a single Jupyter notebook in a directory within the `tutorials/notebooks` directory. The name of the notebook must be the same as the subdirectory name. We'll create a new directory in `tutorials/notebooks` with the same name as the branch:
-
-```
-mkdir tutorials/notebooks/Spectral-Line-Fitting
-```
-
-All files used by the tutorial -- e.g., example data files, the Jupyter notebook file itself -- should go in this directory.
-
-Specify the Python packages the tutorial depends on by creating a text file called `requirements.txt` in the same notebook directory. For example, if your tutorial requires `scipy` version 1.0 and `numpy` version 1.13 or greater, your `requirements.txt` file would look like:
+Include the notebook `.ipynb` file(s) and any data files used by the notebook (see the 'Data files' section below). Update the `AUTHORS.md` file. Update the `requirements.txt` file with the Python packages the tutorial depends on and files. For example, if your tutorial requires `scipy` version 1.0 and `numpy` version 1.13 or greater, your `requirements.txt` file would look like:
 
 ```
 scipy==1.0
 numpy>=1.13
 ```
-
-To see an example, have a look at the FITS-header [requirements.txt file](https://github.com/astropy/astropy-tutorials/blob/master/tutorials/FITS-header/requirements.txt).
 
 Push the notebook and other files from your local branch up to your fork of the repository on GitHub (by default, named 'origin'):
 
@@ -142,17 +128,17 @@ Push the notebook and other files from your local branch up to your fork of the 
 git push origin Spectral-Line-Fitting
 ```
 
-When the tutorial is ready for broader community feedback, [open a pull request](https://help.github.com/articles/creating-a-pull-request/) against the main `astropy-tutorials` repository in order for the community to review the new tutorial.
+When the tutorial is ready for submission, [open a pull request](https://help.github.com/articles/creating-a-pull-request/) against the main `tutorial-template` repository, and your submission will be reviewed.
 
-## Data Files
+## Data files
 
 ### For tutorial authors
 
-If your tutorial includes large data files (where large means >~ 1 MB), we don't want to include them in the `astropy/astropy-tutorials` git repository, as that will drastically slow down cloning the repository. Instead, we encourage use of the `astropy.utils.download_files` function, and will host data files on the http://data.astropy.org server by opening a PR at the https://github.com/astropy/astropy-data repository, or to use Zenodo to host the data files if the file concerned is larger than 10 MB. To do the former, use the following procedure:
+If your tutorial includes large data files (where large means >~ 1 MB), including them in the tutorial's repository would drastically slow down cloning of the repository. Instead, we encourage use of the `astropy.utils.download_files` function, and will host data files on the http://data.astropy.org server by opening a PR at the https://github.com/astropy/astropy-data repository. Alternatively, if the file size is larger than 10 MB, the data should be hosted on Zenodo. To do the former, use the following procedure:
 
-- When writing your tutorial, include the files in your tutorial's directory (e.g., `tutorials/notebooks/My-tutorial-name/mydatafile.fits`). Those who are reviewing your tutorial will have to download them, but they would need them anyway, so it's ok. **IMPORTANT**: when you add or modify data files, make sure the only thing in that commit involves the data files. That is, do _not_ edit your notebook and add/change data files in the same commit. This will make it much easier to remove the data files when your tutorial is actually merged.
+- If contributing your notebook(s) via a pull request, include the data files (e.g., `tutorials/notebooks/My-tutorial-name/mydatafile.fits`). **IMPORTANT**: when you add or modify data files, make sure the only thing in that commit involves the data files. That is, do _not_ edit your notebook and add/change data files in the same commit. This will make it easier to remove the data files when your tutorial is merged.
 
-- To actually access your data files in the notebook, do something like this at the top of the notebook:
+- To access your data files in the notebook, do something like this at the top of the notebook:
 
   ```
   from astropy.utils.data import download_file
@@ -173,11 +159,11 @@ If your tutorial includes large data files (where large means >~ 1 MB), we don't
 
   If you do this, the only change necessary when merging your notebook will be to set `tutorialpath` to `'http://data.astropy.org/tutorials/My-tutorial-name/'`.
 
-For larger data files that are bigger than 10 MB in size, we recommend hosting with Zenodo. To use this approach, follow these steps:
+For data files that are larger than 10 MB in size, we recommend hosting with Zenodo. To use this approach, follow these steps:
 
-- You will need to sign up for an account with Zenodo before you can upload a file there.
+- Sign up for an account at https://zenodo.org/ if you do not have one already.
 
-- After a Zenodo account has been properly set up, be sure to log in and do a new upload. Follow the Zenodo instructions and complete all the required fields as the bare minimum in order to have the data file(s) uploaded to their records. Once this is done you will have a link to share the data.
+- Log in to Zenodo and perform a new upload. Follow the Zenodo instructions and complete all the required fields in order to have the data file(s) uploaded to their records. Once this is done you will have a link to share the data.
 
 - With the link to the data file record, which has the format `https://zenodo.org/api/records/:id`, an example HTTP GET request needed to retrieve the data using the Python package `requests` is shown below:
 
