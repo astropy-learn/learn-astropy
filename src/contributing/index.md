@@ -35,7 +35,7 @@ The first cell in every tutorial notebook is a markdown cell used for the title,
 # Title name
 
 ## Authors
-Jane Smith, Jose Jones
+Jane Smith (@GITHUB-ID, ORCID-ID), Jose Jones (@GITHUB-ID, ORCID-ID)
 
 ## Learning Goals
 * Query the ... dataset
@@ -128,13 +128,11 @@ Push the notebook and other files from your local branch up to your fork of the 
 git push origin Spectral-Line-Fitting
 ```
 
-When the tutorial is ready for submission, [open a pull request](https://help.github.com/articles/creating-a-pull-request/) against the main `tutorial-template` repository, and your submission will be reviewed.
+When the tutorial is ready for submission, [open a pull request](https://help.github.com/articles/creating-a-pull-request/) against the main [`tutorial--template` repository](https://github.com/astropy-learn/tutorial--template), and your submission will be reviewed.
 
 ## Data files
 
-### For tutorial authors
-
-If your tutorial includes large data files (where large means >~ 1 MB), including them in the tutorial's repository would drastically slow down cloning of the repository. Instead, we encourage use of the `astropy.utils.download_files` function, and will host data files on the http://data.astropy.org server by opening a PR at the https://github.com/astropy/astropy-data repository. Alternatively, if the file size is larger than 10 MB, the data should be hosted on Zenodo. To do the former, use the following procedure:
+If your tutorial includes large data files (where large means >~ 1 MB), including them in the tutorial's repository would drastically slow down cloning of the repository. Instead, for files < 10 MB, we encourage use of the `astropy.utils.download_files` function, and we will host data files on the http://data.astropy.org server (or you can do this directly by opening a PR at the https://github.com/astropy/astropy-data repository). Alternatively, if the file size is > 10 MB, the data should be hosted on Zenodo. To do the former, use the following procedure:
 
 - If contributing your notebook(s) via a pull request, include the data files (e.g., `tutorials/notebooks/My-tutorial-name/mydatafile.fits`). **IMPORTANT**: when you add or modify data files, make sure the only thing in that commit involves the data files. That is, do _not_ edit your notebook and add/change data files in the same commit. This will make it easier to remove the data files when your tutorial is merged.
 
@@ -178,18 +176,3 @@ To use the output as a locally stored file, you would first need to write the fi
 with open('./some-data-file.fits', 'wb') as f:
     f.write(r.content)
 ```
-
-If you need information or help with:
-
-- previewing how the rendered Jupyter notebooks will look on the tutorial webpage
-- marking a cell with an intentional / expected error
-
-Please see [About the Tutorials Infrastructure](infrastructure).
-
-### For repository maintainers
-
-If this above procedure is followed, you only need to do these three steps when merging your pull request:
-
-1. Do `git rebase -i` and delete the commits that include the data files
-2. Upload the data files to `http://data.astropy.org/tutorials/My-tutorial-name/`
-3. Update the `tutorialpath` variable
