@@ -7,14 +7,19 @@ We are always interested in incorporating new tutorials into Learn Astropy and t
 
 ## Overview
 
-Each tutorial is a [Jupyter notebook](https://jupyter.org/) file in a unique repository `tutorial--*` in the [astropy-learn organization](https://github.com/astropy-learn). For an example, let's look at the [FITS-header](https://github.com/astropy-learn/tutorial--FITS-header/tree/main/) tutorial. The repository has a few files that authors write/amend:
+Each tutorial is a [Jupyter notebook](https://jupyter.org/) file in a unique repository `tutorial--*` in the [astropy-learn organization](https://github.com/astropy-learn). For example, let's look at the [FITS-header](https://github.com/astropy-learn/tutorial--FITS-header/tree/main/) tutorial. The repository has a few files that authors should always write/amend when contributing a new tutorial or set of tutorials:
 
-- A single Jupyter notebook file that contains the text and code for the tutorial,
+- A single Jupyter notebook file that contains the text and code for the tutorial (it should follow the content guidelines below),
 - Any small data files used in the tutorial (in this case, a single FITS file),
 - A `requirements.txt` file that specifies the required packages to run the notebook, and
 - An `AUTHORS.md` file that lists the notebook authors.
+- If you are contributing multiple, thematically-linked notebooks, the `index.md` file should summarize the contents of the individual notebooks (it will be the first page in the 'jupyter book' containing all individual notebooks). Additionally each `.ipynb` filename should be preceded by a number and an underscore, in the order the notebooks should appear in the book, e.g.:
+  ```
+  1_intro-to-modeling
+  2_applying-model-to-data
+  ```
 
-The notebook file is automatically run and converted into a static HTML page ([for example](https://learn.astropy.org/tutorials/FITS-header.html)), which is then displayed in the listing on the main tutorials webpage, http://tutorials.astropy.org. Each tutorial `.ipynb` file also has an intro cell as detailed below.
+The notebook file(s) are automatically run and converted into a static HTML page ([for example](https://learn.astropy.org/tutorials/FITS-header.html)), which is then displayed in the listing on the main tutorials webpage, http://tutorials.astropy.org.
 
 ## Content Guidelines
 
@@ -42,7 +47,7 @@ Jane Smith (@GITHUB-ID, ORCID-ID), Jose Jones (@GITHUB-ID, ORCID-ID)
 * Calculate ...
 * Display ...
 
-## Keywords
+## Keywords (please draw from [this list](https://github.com/astropy-learn/astropy-tutorials/blob/main/resources/keywords.md))
 Example, example, example
 
 ## Companion Content
