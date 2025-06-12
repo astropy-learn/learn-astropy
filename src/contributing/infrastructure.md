@@ -5,9 +5,9 @@ slug: '/contributing/infrastructure'
 
 ## Overview
 
-Tutorials are written as Jupyter notebooks on the `master` branch of the `astropy/astropy-tutorials` repository in `tutorials/notebooks/`. These notebook files do not contain output in order to simplify version-controlling the files.
+Tutorials are written as Jupyter notebooks in unique repositories of the form `tutorial--*` in the [Astropy Learn organization](https://github.com/astropy-learn). The notebook files do not contain output in order to simplify version-controlling the files.
 
-The rendered Astropy-tutorials site is built using Sphinx with the Astropy theme to look like the main documentation. Sphinx requires restructured text (RST) files for its build process, so use an intermediate step to run the notebooks to produce output, and then convert the notebook files into RST files.
+The rendered Astropy-tutorials site is built using Sphinx with the Astropy theme to look like the main documentation. Sphinx requires restructured text (RST) files for its build process, so we use [Jupyter Book](https://jupyterbook.org/en/stable/intro.html) to run the notebooks to produce output, and then convert the notebook files into RST files.
 
 We use [CircleCI](https://circleci.com) to do the Sphinx build, which is then pushed to the `gh-pages` branch of the repository and served by GitHub. The notebooks are first converted to RST files during the Sphinx build by doing the conversion at the end of the [Sphinx configuration file](https://github.com/astropy/astropy-tutorials/blob/master/tutorials/conf.py).
 
@@ -82,7 +82,7 @@ To actually update the version, modify the `metadata.cfg` at the root of this re
 
 Edit the cell metadata of the cell in which you would like to raise an exception and add the following to the top-level JSON: `"tags": ["raises-exception"]` This tag is recognized by the latest (master) version of nbconvert.
 
-## Automatically Strip Output and Notebook Metadata
+## Automatically strip output and notebook metadata
 
 Jupyter notebooks contain some metadata that is typically hidden from users, which contains, for example, information about the Python kernel used to run it, the version of IPython, etc. When tutorial authors or maintainers edit notebooks, this metadata is automatically modified by Jupyter, leading to superfluous and sometimes confusing changes to the notebooks when viewed in a "diff" locally or on GitHub.
 
