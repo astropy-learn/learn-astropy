@@ -1,4 +1,4 @@
-"""Install the built tutorials HTML from astropy/astropy-tutorials into the
+"""Install the built tutorials HTML from astropy-learn/astropy-tutorials into the
 built Gatsby site.
 """
 
@@ -19,7 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             'Install the tutorials HTML artifact from '
-            'astropy/astropy-tutorials into the build Gatsby site.\n\n'
+            'astropy-learn/astropy-tutorials into the build Gatsby site.\n\n'
             'There are two usage modes:\n\n'
             '1. If --tutorials-run is set, get the tutorials from the '
             'corresponding workflow artifact.\n'
@@ -36,8 +36,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         '--tutorials-repo',
-        default="astropy/astropy-tutorials",
-        help='Tutorials repo slug (should be astropy/astropy-tutorials).'
+        default="astropy-learn/astropy-tutorials",
+        help='Tutorials repo slug (should be astropy-learn/astropy-tutorials).'
     )
     parser.add_argument(
         '--tutorials-artifact',
@@ -83,7 +83,7 @@ class TutorialsArtifact:
     Parameters
     ----------
     repo : str
-        The repository slug (astropy/astropy-tutorials).
+        The repository slug (astropy-learn/astropy-tutorials).
     name : str
         The name of the workflow artifact with rendered tutorials.
     run_id : str
@@ -119,7 +119,7 @@ class TutorialsArtifact:
         Parameters
         ----------
         repo : str
-            The repository slug (astropy/astropy-tutorials).
+            The repository slug (astropy-learn/astropy-tutorials).
         name : str
             The name of the workflow artifact with rendered tutorials.
         run_id : str
