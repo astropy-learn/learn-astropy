@@ -100,7 +100,7 @@ There are two methods for submitting a tutorial or set of thematically linked tu
 
 ### Method 1: Provide a link
 
-- [Open an issue on the astropy-tutorials Github repo](https://github.com/astropy/astropy-tutorials/issues) with a link to your Jupyter notebook(s).
+- [Open an issue on the astropy-tutorials Github repo](https://github.com/astropy-learn/astropy-tutorials/issues) with a link to your Jupyter notebook(s).
 
 Learn Astropy maintainers will download your notebook, test it, and edit the file if necessary to conform to the above style guide. When the tutorial is ready to be incorporated, maintainers will open a pull request on behalf of the tutorial authors.
 
