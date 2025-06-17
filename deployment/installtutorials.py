@@ -18,35 +18,34 @@ from uritemplate import expand
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            'Install the tutorials HTML artifact from '
-            'astropy-learn/astropy-tutorials into the build Gatsby site.\n\n'
-            'There are two usage modes:\n\n'
-            '1. If --tutorials-run is set, get the tutorials from the '
-            'corresponding workflow artifact.\n'
-            '2. If --tutorials-run is not set, the workflow artifact from '
-            'the most recent merge to the main branch is used.\n\n'
+            "Install the tutorials HTML artifact from "
+            "astropy-learn/astropy-tutorials into the build Gatsby site.\n\n"
+            "There are two usage modes:\n\n"
+            "1. If --tutorials-run is set, get the tutorials from the "
+            "corresponding workflow artifact.\n"
+            "2. If --tutorials-run is not set, the workflow artifact from "
+            "the most recent merge to the main branch is used.\n\n"
         ),
-        formatter_class=argparse.RawDescriptionHelpFormatter
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
-        '--dest',
+        "--dest",
         required=True,
         help="Directory where the tutorials are installed. This should be "
-             "inside the Gatsby 'public' directory."
+        "inside the Gatsby 'public' directory.",
     )
     parser.add_argument(
-        '--tutorials-repo',
+        "--tutorials-repo",
         default="astropy-learn/astropy-tutorials",
-        help='Tutorials repo slug (should be astropy-learn/astropy-tutorials).'
+        help="Tutorials repo slug (should be astropy-learn/astropy-tutorials).",
     )
     parser.add_argument(
-        '--tutorials-artifact',
+        "--tutorials-artifact",
         default="rendered-tutorials",
-        help='Name of the artifact from the tutorials repo.'
+        help="Name of the artifact from the tutorials repo.",
     )
     parser.add_argument(
-        '--tutorials-run',
-        help='ID of the workflow run from the tutorials repo.'
+        "--tutorials-run", help="ID of the workflow run from the tutorials repo."
     )
     return parser.parse_args()
 
@@ -64,13 +63,13 @@ def main() -> None:
             repo=args.tutorials_repo,
             name=args.tutorials_artifact,
             run_id=args.tutorials_run,
-            github_token=github_token
+            github_token=github_token,
         )
     else:
         artifact = TutorialsArtifact.from_latest(
             repo=args.tutorials_repo,
             name=args.tutorials_artifact,
-            github_token=github_token
+            github_token=github_token,
         )
 
     artifact.install(args.dest)
@@ -92,14 +91,7 @@ class TutorialsArtifact:
         A GitHub token.
     """
 
-    def __init__(
-        self,
-        *,
-        repo: str,
-        name: str,
-        run_id: str,
-        github_token: str
-    ) -> None:
+    def __init__(self, *, repo: str, name: str, run_id: str, github_token: str) -> None:
         self.repo = repo
         self.name = name
         self.run_id = run_id
@@ -108,11 +100,7 @@ class TutorialsArtifact:
 
     @classmethod
     def from_latest(
-        cls,
-        *,
-        repo: str,
-        name: str,
-        github_token: str
+        cls, *, repo: str, name: str, github_token: str
     ) -> TutorialsArtifact:
         """Get the artifact from the latest run on the main branch.
 
@@ -127,34 +115,29 @@ class TutorialsArtifact:
         github_token : str
             A GitHub token.
         """
-        owner, repo_name = repo.split('/')
+        owner, repo_name = repo.split("/")
         url = expand(
             "https://api.github.com/repos/{owner}/{repo}/actions/runs",
             owner=owner,
-            repo=repo_name
+            repo=repo_name,
         )
         headers = cls._make_github_headers(github_token)
         response = requests.get(
             url,
             headers=headers,
-            params={"branch": "main", "event": "push", "status": "success"}
+            params={"branch": "main", "event": "push", "status": "success"},
         )
         response.raise_for_status()
         runs_data = response.json()
         first_run = runs_data["workflow_runs"][0]
         run_id = first_run["id"]
-        return cls(
-            repo=repo,
-            name=name,
-            run_id=run_id,
-            github_token=github_token
-        )
+        return cls(repo=repo, name=name, run_id=run_id, github_token=github_token)
 
     @staticmethod
     def _make_github_headers(github_token) -> Dict[str, str]:
         return {
             "Accept": "application/vnd.github.v3+json",
-            "Authorization": f"Bearer {github_token}"
+            "Authorization": f"Bearer {github_token}",
         }
 
     def _download_artifact(self) -> bytes:
@@ -167,13 +150,13 @@ class TutorialsArtifact:
                 download_url = artifact["archive_download_url"]
                 response = requests.get(
                     download_url,
-                    headers={"Authorization": f"Bearer {self.github_token}"}
+                    headers={"Authorization": f"Bearer {self.github_token}"},
                 )
                 return response.content
         raise RuntimeError("Did not find artifact for download")
 
     def _get_workflow_run_artifacts(self, page=1) -> Dict[str, Any]:
-        owner, repo = self.repo.split('/')
+        owner, repo = self.repo.split("/")
         uri = expand(
             "https://api.github.com/repos/{owner}/{repo}/actions/runs/"
             "{run_id}/artifacts",
@@ -182,11 +165,7 @@ class TutorialsArtifact:
             run_id=self.run_id,
         )
         headers = TutorialsArtifact._make_github_headers(self.github_token)
-        response = requests.get(
-            uri,
-            params={"page": str(page)},
-            headers=headers
-        )
+        response = requests.get(uri, params={"page": str(page)}, headers=headers)
         response.raise_for_status()
         return response.json()
 
@@ -200,5 +179,5 @@ class TutorialsArtifact:
         zip_file.extractall(path=Path(destination_directory))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
