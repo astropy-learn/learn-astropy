@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Gaia Galactic Orbits</title>
+    <title>WCS Celestial Coordinates</title>
   
   
   
@@ -72,7 +72,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'gaia-galactic-orbits';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'wcs-celestial-coordinates';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -190,7 +190,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Computing Galactic Orbits of Stars with Gala
+                    Working with Celestial Coordinates in WCS 1: Specifying, reading, and plotting
                 </a>
             </li>
         </ul>
@@ -247,7 +247,7 @@
       
       
       
-      <li><a href="https://github.com/astropy-learn/tutorial--gaia-galactic-orbits" target="_blank"
+      <li><a href="https://github.com/astropy-learn/tutorial--wcs-celestial-coordinates" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -264,7 +264,7 @@
       
       
       
-      <li><a href="https://github.com/astropy-learn/tutorial--gaia-galactic-orbits/issues/new?title=Issue%20on%20page%20%2Fgaia-galactic-orbits.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/astropy-learn/tutorial--wcs-celestial-coordinates/issues/new?title=Issue%20on%20page%20%2Fwcs-celestial-coordinates.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +330,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Computing Galactic Orbits of Stars with Gala</h1>
+    <h1>Working with Celestial Coordinates in WCS 1: Specifying, reading, and plotting</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -344,601 +344,499 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="computing-galactic-orbits-of-stars-with-gala">
-<h1>Computing Galactic Orbits of Stars with Gala<a class="headerlink" href="#computing-galactic-orbits-of-stars-with-gala" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-celestial-coordinates-in-wcs-1-specifying-reading-and-plotting">
+<h1>Working with Celestial Coordinates in WCS 1: Specifying, reading, and plotting<a class="headerlink" href="#working-with-celestial-coordinates-in-wcs-1-specifying-reading-and-plotting" title="Link to this heading">#</a></h1>
 <section id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
-<p>Adrian Price-Whelan, Stephanie T. Douglas</p>
+<p>Kris Stern, Kelle Cruz, Lia Corrales, David Shupe, Adrian Price-Whelan</p>
 </section>
 <section id="learning-goals">
 <h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Query the Gaia data release 2 catalog to retrieve data for a sample of well-measured, nearby stars</p></li>
-<li><p>Define high-mass and low-mass stellar samples using color-magnitude selections</p></li>
-<li><p>Calculate orbits of the high-mass and low-mass stars within the Galaxy to show that the typically younger stars (high-mass) have smaller vertical excursions</p></li>
-</ul>
+<ol class="arabic simple">
+<li><p>Demonstrate two ways to build a <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> object</p></li>
+<li><p>Show an image of the Helix nebula with RA and Dec labeled</p></li>
+<li><p>Plot a scale bar on an image with WCS information</p></li>
+</ol>
 </section>
 <section id="keywords">
 <h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
-<p>coordinates, astroquery, gala, galactic dynamics, astrometry, matplotlib, scatter plot, histogram</p>
+<p>WCS, coordinates, matplotlib</p>
 </section>
 <section id="companion-content">
 <h2>Companion Content<a class="headerlink" href="#companion-content" title="Link to this heading">#</a></h2>
-<p>Astropy Docs: <a class="reference external" href="http://docs.astropy.org/en/latest/generated/examples/coordinates/plot_galactocentric-frame.html#sphx-glr-generated-examples-coordinates-plot-galactocentric-frame-py">Description of the Galactocentric frame in astropy coordinates</a></p>
+<ol class="arabic simple">
+<li><p>“An Introduction to Modern Astrophysics” (<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2006ima..book.....C/abstract">Carroll &amp; Ostlie</a>)</p></li>
+<li><p><a class="reference external" href="https://fits.gsfc.nasa.gov/fits_wcs.html">FITS WCS page at GSFC</a></p></li>
+</ol>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>We will use data from the <a class="reference external" href="https://www.cosmos.esa.int/web/gaia">Gaia mission</a> to get sky positions, distances (parallaxes), proper motions, and radial velocities for a set of stars that are close to the Sun. We will then transform these observed, heliocentric kinematic measurements to Galactocentric Cartesian coordinates and use the positions and velocities as initial conditions to compute the orbits of these stars in the galaxy using the <a class="reference external" href="http://gala.adrian.pw">gala</a> Python package. We will compare the orbits of high-mass main sequence (i.e. young) stars to the orbits of lower-mass main sequence stars to show that young stars have smaller vertical amplitudes.</p>
-</section>
-<section id="installing-dependencies">
-<h2>Installing Dependencies<a class="headerlink" href="#installing-dependencies" title="Link to this heading">#</a></h2>
-<p>This tutorial depends on the Astropy affiliated packages <code class="docutils literal notranslate"><span class="pre">gala</span></code> and <code class="docutils literal notranslate"><span class="pre">astroquery</span></code>. Both of these packages can be pip-installed with:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install gala astroquery
-</pre></div>
-</div>
-</section>
-<section id="imports">
-<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<p>This tutorial series aims to show how the content of Chapter 1 of “An Introduction to Modern Astrophysics” by Carroll and Ostlie can be applied to real life astrophysics research situations, using tools in the Astropy ecosystem. We will introduce two different approaches to building a <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> object, which contains meta-data that (in this case) defines a mapping between image coordinates and sky coordinates. The <code class="docutils literal notranslate"><span class="pre">astropy.wcs</span></code> subpackage conforms to the standards of the FITS World Coordinate System (WCS) used extensively by the astronomy research community. We will created a 2D WCS for an image of the iconic the Helix nebula (a planetary nebula) and display an image of the nebula with sky coordinates (here, equatorial, ICRS RA and Dec.) labeled. Finally, we will over-plot a scale bar on the Helix nebula image using WCS to give the reader a sense of the angular size of the image.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># astropy imports</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.coordinates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">coord</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">QTable</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
-
-<span class="c1"># Third-party imports</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.wcs</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="c1"># gala imports</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">gala.dynamics</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">gala.potential</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gp</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="scientific-background">
-<h2>Scientific Background<a class="headerlink" href="#scientific-background" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://www.cosmos.esa.int/web/gaia/">The Gaia mission</a> is an ESA mission that aims to measure the 3D positions and velocities of a large number of stars throughout the Milky Way. The primary mission objective is to enable studying the formation, structure, and evolutionary history of our Galaxy by measuring astrometry (sky position, parallax, and proper motion) for about 2 billion stars brighter than the Gaia <span class="math notranslate nohighlight">\(G\)</span>-band photometric magnitude <span class="math notranslate nohighlight">\(G \lesssim 21\)</span>. By end of mission (~2022), Gaia will also provide multi-band photometry and low-resolution spectrophotometry for these sources, along with radial or line-of-sight velocities for a subsample of about 100 million stars.</p>
-<p>In April 2018, Gaia publicly released its first major catalog of data — data release 2 or DR2 — which provides a subset of these data to anyone with an internet connection. In this tutorial, we will use astrometry, radial velocities, and photometry for a small subset of DR2 to study the kinematics of different types of stars in the Milky Way.</p>
+<section id="section-1-two-ways-to-create-an-astropy-wcs-wcs-object">
+<h2>Section 1: Two ways to create an <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> object<a class="headerlink" href="#section-1-two-ways-to-create-an-astropy-wcs-wcs-object" title="Link to this heading">#</a></h2>
+<p><em>World coordinates</em> serve to locate a measurement in some multi-dimensional parameter space. A World Coordinate System (WCS) specifies the physical, or world, coordinates to be attached to each pixel or voxel of an N-dimensional image or array. An <a class="reference external" href="https://fits.gsfc.nasa.gov/fits_wcs.html">elaborate set of standards and conventions</a> have been developed for the Flexible Image Transport System (FITS) format (<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/1981A&amp;amp;AS...44..363W/abstract">Wells et al. 1981</a>). A typical WCS example is to specify the Right Ascension (RA) and Declination (Dec) on the sky associated with a given the pixel or spaxel location in a 2-dimensional celestial image (<a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2002A&amp;amp;A...395.1061G/abstract">Greisen &amp; Calabretta 2002</a>; <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2002A&amp;amp;A...395.1077C/abstract">Calabretta and Greisen 2002</a>).</p>
+<p>The <a class="reference external" href="https://docs.astropy.org/en/stable/wcs/"><code class="docutils literal notranslate"><span class="pre">astropy.wcs</span></code> subpackage</a> implements FITS standards and conventions for World Coordinate Systems. Using the <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> object and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, we can generate images of the sky that have axes labeled with coordinates such as right ascension (RA) and declination (Dec). This requires selecting the proper projections for <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and providing an <code class="docutils literal notranslate"><span class="pre">astropy.visualization.WCSAxes</span></code> object.</p>
+<p>There are two main ways to initialize a <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object: with a Python dictionary (or dictionary-like object, like a FITS file header) or with Python lists. In this set of examples, we will initialize an <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> object with two dimensions, as would be needed to represent an image.</p>
+<p>The WCS standard defines a set of keywords that are used to represent the world coordinate system for a given set of data (e.g., image). Here is a list of the essential WCS keywords and their uses; In each case, the integer <span class="math notranslate nohighlight">\(n\)</span> denotes the dimensional axis (starting with 1) to which the keyword is being applied. In our examples below, we will have two image dimensions (axes), so <span class="math notranslate nohighlight">\(n\)</span> will either be 1 or 2.</p>
+<ul class="simple">
+<li><p><strong>CRVALn</strong>: the coordinate value at a reference point (e.g., RA and DEC value in degrees)</p></li>
+<li><p><strong>CRPIXn</strong>: the pixel location of the reference point (e.g., CRPIX1=1, CRPIX2=1 describes the center of a corner pixel)</p></li>
+<li><p><strong>CDELTn</strong>: the coordinate increment at the reference point (e.g., the difference in ‘RA’ value from the reference pixel to its neighbor along the RA axis)</p></li>
+<li><p><strong>CTYPEn</strong>: an 8-character string describing the axis type (e.g., ‘RA—TAN’ and ‘DEC—TAN’ describe the typical tangent-plane sky projection that astronomers use)</p></li>
+<li><p><strong>CUNITn</strong>: a string describing the unit for each axis (if not specified, the default unit is degrees.)</p></li>
+<li><p><strong>NAXISn</strong>: an integer defining the number of pixels in each axis</p></li>
+</ul>
+<p>Some good references of the WCS standard can be found <a class="reference external" href="https://fits.gsfc.nasa.gov/fits_wcs.html">here</a>.</p>
+<section id="method-1-building-a-wcs-object-with-a-dictionary">
+<h3>Method 1: Building a WCS object with a dictionary<a class="headerlink" href="#method-1-building-a-wcs-object-with-a-dictionary" title="Link to this heading">#</a></h3>
+<p>One way to define an Astropy <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object is to construct a dictionary containing all of the essential information (i.e., specifying values for the WCS keywords listed above) that map the pixel coordinate space to the world coordinate space.</p>
+<p>In this example, we define two coordinate axes with:</p>
+<ul class="simple">
+<li><p>A Gnomonic (tangent-plane) projection, which corresponds to the RA/Dec coordinate system</p></li>
+<li><p>A reference location of (RA,DEC) = (337.52, -20.83), as defined by the <strong>CRVALn</strong> keys</p></li>
+<li><p>The pixel at coordinate value (1,1) as the reference location (<strong>CRPIXn</strong> keys)</p></li>
+<li><p>Units of degrees (<strong>CUNITn = ‘deg’</strong>)</p></li>
+<li><p>Pixel sizes of 1 x 1 arcsec (<strong>CDELTn = 0.002778</strong> in degrees)</p></li>
+<li><p>An image size of 1024 x 1024 pixels (<strong>NAXISn</strong> key)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_input_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;CTYPE1&quot;</span><span class="p">:</span> <span class="s2">&quot;RA---TAN&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CUNIT1&quot;</span><span class="p">:</span> <span class="s2">&quot;deg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CDELT1&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0002777777778</span><span class="p">,</span>
+    <span class="s2">&quot;CRPIX1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;CRVAL1&quot;</span><span class="p">:</span> <span class="mf">337.5202808</span><span class="p">,</span>
+    <span class="s2">&quot;NAXIS1&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+    <span class="s2">&quot;CTYPE2&quot;</span><span class="p">:</span> <span class="s2">&quot;DEC--TAN&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CUNIT2&quot;</span><span class="p">:</span> <span class="s2">&quot;deg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CDELT2&quot;</span><span class="p">:</span> <span class="mf">0.0002777777778</span><span class="p">,</span>
+    <span class="s2">&quot;CRPIX2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;CRVAL2&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">20.833333059999998</span><span class="p">,</span>
+    <span class="s2">&quot;NAXIS2&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">wcs_helix_dict</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">wcs_input_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s print the <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object defined with a Python dictionary to check its content:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix_dict</span>  <span class="c1"># To check output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
+
+Number of WCS axes: 2
+CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39; 
+CRVAL : 337.5202808 -20.833333059999998 
+CRPIX : 1.0 1.0 
+PC1_1 PC1_2  : 1.0 0.0 
+PC2_1 PC2_2  : 0.0 1.0 
+CDELT : -0.0002777777778 0.0002777777778 
+NAXIS : 1024  1024
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this demonstration (and below), we assume that we know all of the relevant WCS keyword values to specify. Typically, however, we will rely on software to produce these values for us. For example, WCS information is most often included automatically in FITS files produced by software used to take images with most instruments at astronomical observatories. In cases when the WCS information is provided for us in a FITS file, it is typically included in a FITS header, which, when read into Python, acts like a dictionary object. We demonstrate this later on in this tutorial.</p>
 </section>
-<section id="using-astroquery-to-retrieve-gaia-data">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">astroquery</span></code> to retrieve Gaia data<a class="headerlink" href="#using-astroquery-to-retrieve-gaia-data" title="Link to this heading">#</a></h2>
-<p>We’ll start by querying the <a class="reference external" href="http://gea.esac.esa.int/archive/">Gaia science archive</a> to download astrometric and kinematic data (parallax, proper motion, radial velocity) for a sample of stars near the Sun. We’ll use data exclusively from <a class="reference external" href="https://www.cosmos.esa.int/web/gaia/data-release-2">data release 2 (DR2)</a> from the <em>Gaia</em> mission. For the demonstration here, let’s grab data for a random subset of 4096 stars within a distance of 100 pc from the Sun that have high signal-to-noise astrometric measurements.</p>
-<p>To perform the query and to retrieve the data, we’ll use the <em>Gaia</em> module in the <a class="reference external" href="https://astroquery.readthedocs.io/en/latest/gaia/gaia.html">astroquery</a> package, <code class="docutils literal notranslate"><span class="pre">astroquery.gaia</span></code>. This module expects us to provide an SQL query to select the data we want (technically it should be an <a class="reference external" href="https://gea.esac.esa.int/archive-help/adql/index.html">ADQL</a> query, which is similar to SQL but provides some additional functionality for astronomy; to learn more about ADQL syntax and options, <a class="reference external" href="https://www.gaia.ac.uk/data/gaia-data-release-1/adql-cookbook">this guide</a> provides an introduction). We don’t need all of the columns that are available in DR2, so we’ll limit our query to request the sky position (<code class="docutils literal notranslate"><span class="pre">ra</span></code>, <code class="docutils literal notranslate"><span class="pre">dec</span></code>), parallax, proper motion components (<code class="docutils literal notranslate"><span class="pre">pmra</span></code>, <code class="docutils literal notranslate"><span class="pre">pmdec</span></code>), radial velocity, and magnitudes (<code class="docutils literal notranslate"><span class="pre">phot_*_mean_mag</span></code>). More information about the available columns is in the <a class="reference external" href="https://gea.esac.esa.int/archive/documentation/GDR2/Gaia_archive/chap_datamodel/sec_dm_main_tables/ssec_dm_gaia_source.html">Gaia DR2 data model</a>.</p>
-<p>To select stars that have high signal-to-noise parallaxes, we’ll use the filter <code class="docutils literal notranslate"><span class="pre">parallax_over_error</span> <span class="pre">&gt;</span> <span class="pre">10</span></code> to select stars that have small fractional uncertainties. We’ll also use the filter <code class="docutils literal notranslate"><span class="pre">radial_velocity</span> <span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">null</span></code> to only select stars that have measured radial velocities.</p>
+<section id="method-2-create-an-empty-wcs-object-before-assigning-values">
+<h3>Method 2: Create an empty WCS object before assigning values<a class="headerlink" href="#method-2-create-an-empty-wcs-object-before-assigning-values" title="Link to this heading">#</a></h3>
+<p>Alternatively, we could initialize the <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> object, and assign the keyword values with lists corresponding to each respective axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT TOP 4096 ra, dec, parallax, pmra, pmdec, radial_velocity,</span>
-<span class="s2">phot_g_mean_mag, phot_bp_mean_mag, phot_rp_mean_mag</span>
-<span class="s2">FROM gaiadr2.gaia_source</span>
-<span class="s2">WHERE parallax_over_error &gt; 10 AND</span>
-<span class="s2">    parallax &gt; 10 AND</span>
-<span class="s2">    radial_velocity IS NOT null</span>
-<span class="s2">ORDER BY random_index</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix_list</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">naxis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crpix</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span> <span class="o">=</span> <span class="p">[</span><span class="mf">337.5202808</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.833333059999998</span><span class="p">]</span>
+<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cunit</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;deg&quot;</span><span class="p">,</span> <span class="s2">&quot;deg&quot;</span><span class="p">]</span>
+<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">ctype</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;RA---TAN&quot;</span><span class="p">,</span> <span class="s2">&quot;DEC--TAN&quot;</span><span class="p">]</span>
+<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cdelt</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.0002777777778</span><span class="p">,</span> <span class="mf">0.0002777777778</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We now pass this query to the <code class="docutils literal notranslate"><span class="pre">Gaia.launch_job()</span></code> class method to create an anonymous job in the <code class="docutils literal notranslate"><span class="pre">Gaia</span></code> science archive to run our query. To retrieve the results of this query as an Astropy <code class="docutils literal notranslate"><span class="pre">Table</span></code> object, we then use the <code class="docutils literal notranslate"><span class="pre">job.get_results()</span></code> method. Note that you may receive a number of warnings (output lines that begin with <code class="docutils literal notranslate"><span class="pre">WARNING:</span></code>) from the <code class="docutils literal notranslate"><span class="pre">astropy.io.votable</span></code> package — these are expected, and it’s OK to ignore these warnings (the <code class="docutils literal notranslate"><span class="pre">Gaia</span></code> archive returns a slightly invalid VOTable).</p>
+<p>Let’s print the <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object one more time to check how our values were assigned.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: the following lines require an internet connection, so we have</span>
-<span class="c1"># provided the results of this query as a FITS file included with the</span>
-<span class="c1"># tutorials repository. If you have an internet connection, feel free</span>
-<span class="c1"># to uncomment these lines to retrieve the data with `astroquery`:</span>
-<span class="c1"># job = Gaia.launch_job(query_text)</span>
-<span class="c1"># gaia_data = job.get_results()</span>
-<span class="c1"># gaia_data.write(&#39;gaia_data.fits&#39;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaia_data</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;gaia_data.fits&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> object is now an Astropy <code class="docutils literal notranslate"><span class="pre">Table</span></code> called <code class="docutils literal notranslate"><span class="pre">gaia_data</span></code> that contains <code class="docutils literal notranslate"><span class="pre">Gaia</span></code> data for 4096 random stars within 100 pc (or with a parallax &gt; 10 mas) of the Sun, as we requested. Let’s look at the first four rows of the table:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaia_data</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix_list</span>  <span class="c1"># To check output</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div><i>QTable length=4</i>
-<table id="table140365986844640" class="table-striped table-bordered table-condensed">
-<thead><tr><th>ra</th><th>dec</th><th>parallax</th><th>pmra</th><th>pmdec</th><th>radial_velocity</th><th>phot_g_mean_mag</th><th>phot_bp_mean_mag</th><th>phot_rp_mean_mag</th></tr></thead>
-<thead><tr><th>deg</th><th>deg</th><th>mas</th><th>mas / yr</th><th>mas / yr</th><th>km / s</th><th>mag</th><th>mag</th><th>mag</th></tr></thead>
-<thead><tr><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float32</th><th>float32</th><th>float32</th></tr></thead>
-<tr><td>256.8370985186671</td><td>46.5081010273448</td><td>10.770964834345387</td><td>-19.76657104695835</td><td>55.92605676622464</td><td>-17.673072044811907</td><td>12.956912994384766</td><td>14.192928314208984</td><td>11.859498023986816</td></tr>
-<tr><td>129.45826809010867</td><td>-6.806694022293258</td><td>41.081670013380716</td><td>-297.34595349374183</td><td>43.83424795415093</td><td>35.53814452290586</td><td>6.576352119445801</td><td>6.931065082550049</td><td>6.111272811889648</td></tr>
-<tr><td>2.317856723637118</td><td>9.00699655780345</td><td>17.824765284426462</td><td>-171.8278607514459</td><td>-1083.8740928197751</td><td>-148.91780163518774</td><td>13.119074821472168</td><td>13.968703269958496</td><td>12.223302841186523</td></tr>
-<tr><td>330.41287472805976</td><td>51.88897801553169</td><td>13.0756133009657</td><td>-85.30745872006916</td><td>-34.23366534215265</td><td>-28.726469345049587</td><td>12.101919174194336</td><td>13.05264949798584</td><td>11.149785995483398</td></tr>
-</table></div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
+
+Number of WCS axes: 2
+CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39; 
+CRVAL : 337.5202808 -20.833333059999998 
+CRPIX : 1.0 1.0 
+PC1_1 PC1_2  : 1.0 0.0 
+PC2_1 PC2_2  : 0.0 1.0 
+CDELT : -0.0002777777778 0.0002777777778 
+NAXIS : 0  0
+</pre></div>
 </div>
-<p>Note that the table columns already contain units! They are indicated in the second row of the header.</p>
+</div>
+</div>
+<p>Note that when we initialize the WCS object this way, the <code class="docutils literal notranslate"><span class="pre">NAXIS</span></code> values are set to 0. To assign coordinates to our image, we will need to fix the shape of the <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object array so that it matches our image. We can do this by assigning a value to the <code class="docutils literal notranslate"><span class="pre">array_shape</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">array_shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">1024</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now when we print the <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object, we can see that the <code class="docutils literal notranslate"><span class="pre">NAXIS</span></code> values have been updated from the default size of 0 to 1024.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
+
+Number of WCS axes: 2
+CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39; 
+CRVAL : 337.5202808 -20.833333059999998 
+CRPIX : 1.0 1.0 
+PC1_1 PC1_2  : 1.0 0.0 
+PC2_1 PC2_2  : 0.0 1.0 
+CDELT : -0.0002777777778 0.0002777777778 
+NAXIS : 1024  1024
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="using-astropy-coordinates-to-represent-and-transform-stellar-positions-and-velocities">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> to represent and transform stellar positions and velocities<a class="headerlink" href="#using-astropy-coordinates-to-represent-and-transform-stellar-positions-and-velocities" title="Link to this heading">#</a></h2>
-<p>Let’s double check that the farthest star is still within 100 pc, as we expect from the parallax selection we did in the query above. To do this, we’ll create an Astropy <code class="docutils literal notranslate"><span class="pre">Distance</span></code> object using the parallax (<em>Note: this inverts the parallax to compute the distance! This is only a good approximation when the parallax signal to noise is large, as we ensured in the query above with <code class="docutils literal notranslate"><span class="pre">parallax_over_error</span> <span class="pre">&gt;</span> <span class="pre">10</span></code></em>):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;parallax&quot;</span><span class="p">]))</span>
-<span class="n">dist</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">dist</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Distance 8.79909291 pc&gt;, &lt;Distance 99.99985292 pc&gt;)
-</pre></div>
-</div>
-</div>
-</div>
-<p>It looks like the closest star in our sample is about 9 pc away, and the farthest is almost 100 pc, as we expected.</p>
-<p>We next want to convert the coordinate position and velocity data from heliocentric, spherical values to Galactocentric, Cartesian values. We’ll do this using the <a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/index.html">Astropy coordinates</a> transformation machinery. To make use of this functionality, we first have to create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object from the <code class="docutils literal notranslate"><span class="pre">Gaia</span></code> data we downloaded. The <code class="docutils literal notranslate"><span class="pre">Gaia</span></code> DR2 data are in the ICRS (equatorial) reference frame, which is also the default frame when creating new <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> objects, so we don’t need to specify the frame below:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span>
-    <span class="n">dec</span><span class="o">=</span><span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span>
-    <span class="n">distance</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span>
-    <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;pmra&quot;</span><span class="p">],</span>
-    <span class="n">pm_dec</span><span class="o">=</span><span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;pmdec&quot;</span><span class="p">],</span>
-    <span class="n">radial_velocity</span><span class="o">=</span><span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;radial_velocity&quot;</span><span class="p">],</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note: as described in the <a class="reference external" href="https://gea.esac.esa.int/archive/documentation/GDR2/Gaia_archive/chap_datamodel/sec_dm_main_tables/ssec_dm_gaia_source.html">Gaia DR2 data model</a>, the Gaia column <code class="docutils literal notranslate"><span class="pre">pmra</span></code> contains the cos(dec) term. In Astropy coordinates, the name of this component is <code class="docutils literal notranslate"><span class="pre">pm_ra_cosdec</span></code>.</p>
-<p>Let’s again look at the first four coordinates in the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
-    [(256.83709852, 46.50810103, 92.84219338),
-     (129.45826809, -6.80669402, 24.3417563 ),
-     (  2.31785672,  9.00699656, 56.1017205 ),
-     (330.41287473, 51.88897802, 76.47824825)]
- (pm_ra_cosdec, pm_dec, radial_velocity) in (mas / yr, mas / yr, km / s)
-    [( -19.76657105,    55.92605677,  -17.67307204),
-     (-297.34595349,    43.83424795,   35.53814452),
-     (-171.82786075, -1083.87409282, -148.91780164),
-     ( -85.30745872,   -34.23366534,  -28.72646935)]&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now that we have a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object with the Gaia data, we can transform to other coordinate systems. For example, we can transform to the <code class="docutils literal notranslate"><span class="pre">Galactic</span></code> coordinate system (centered on the Sun but with the zero latitude approximately aligned with the Galactic plane) using the <code class="docutils literal notranslate"><span class="pre">.galactic</span></code> attribute (this works for any of the <a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/index.html#reference-api">built-in Astropy coordinate frames</a>, e.g., <code class="docutils literal notranslate"><span class="pre">.fk5</span></code> should also work):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">galactic</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (Galactic): (l, b, distance) in (deg, deg, pc)
-    [( 72.32926334,  36.8367097 , 92.84219338),
-     (232.07542475,  19.9763116 , 24.3417563 ),
-     (105.68646983, -52.44715126, 56.1017205 ),
-     ( 98.28701089,  -2.66800849, 76.47824825)]
- (pm_l_cosb, pm_b, radial_velocity) in (mas / yr, mas / yr, km / s)
-    [(  55.13035551,   21.88801174,  -17.67307204),
-     (-195.30630898, -228.4545973 ,   35.53814452),
-     (-455.13470935, -998.57912013, -148.91780164),
-     ( -88.74713695,   23.94268239,  -28.72646935)]&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">Galactic</span></code> frame is still centered on the solar system barycenter, whereas we want to compute the positions and velocities of our sample of stars in a Galactocentric frame, centered on the center of the Milky Way. To do this transformation, Astropy provides the <code class="docutils literal notranslate"><span class="pre">Galactocentric</span></code> frame class, which allows us to use our own conventions for, e.g., the distance from the sun to the Galactic center (<code class="docutils literal notranslate"><span class="pre">galcen_distance</span></code>) or the height of the Sun over the Galactic midplane (<code class="docutils literal notranslate"><span class="pre">z_sun</span></code>). Let’s look at the default values for the solar position and velocity:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Galactocentric Frame (galcen_coord=&lt;ICRS Coordinate: (ra, dec) in deg
-    (266.4051, -28.936175)&gt;, galcen_distance=8.122 kpc, galcen_v_sun=(12.9, 245.6, 7.78) km / s, z_sun=20.8 pc, roll=0.0 deg)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>We’ll instead use a distance of 8.1 kpc — more consistent with the <a class="reference external" href="https://arxiv.org/abs/1807.09409">recent results from the GRAVITY collaboration</a> — and a solar height of 0 pc. We’ll use the default solar velocity (see output above). We can transform our data to this frame using the <code class="docutils literal notranslate"><span class="pre">transform_to()</span></code> method by specifying the <code class="docutils literal notranslate"><span class="pre">Galactocentric</span></code> frame with our adopted values:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">galcen</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span>
-    <span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">(</span><span class="n">z_sun</span><span class="o">=</span><span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span><span class="p">,</span> <span class="n">galcen_distance</span><span class="o">=</span><span class="mf">8.1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kpc</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">galcen</span></code> object now contains the data for our sample, but in the Galactocentric frame:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">galcen</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (Galactocentric: galcen_coord=&lt;ICRS Coordinate: (ra, dec) in deg
-    (266.4051, -28.936175)&gt;, galcen_distance=8.1 kpc, galcen_v_sun=(12.9, 245.6, 7.78) km / s, z_sun=0.0 pc, roll=0.0 deg): (x, y, z) in pc
-    [(-8077.44468803,  70.79989896,  55.66242071),
-     (-8114.06090109, -18.04601124,   8.31586669),
-     (-8109.24493623,  32.92015736, -44.47693151),
-     (-8111.0109288 ,  75.59768012,  -3.55986822)]
- (v_x, v_y, v_z) in km / s
-    [(-16.26556759, 233.98501167,   4.89424163),
-     (-30.94107553, 226.00094753,  -4.85474972),
-     (210.89926667, -11.75804787, -36.02277769),
-     ( 48.81632893, 222.24147077,  17.78803683)]&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can access the positions of the stars using the <code class="docutils literal notranslate"><span class="pre">.x</span></code>, <code class="docutils literal notranslate"><span class="pre">.y</span></code>, and <code class="docutils literal notranslate"><span class="pre">.z</span></code> attributes, for example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">galcen</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">110</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$z$ [{0:latex_inline}]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">galcen</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">unit</span><span class="p">));</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/6bd3f1b9ec2fbbef00b4eccc8b646c9133fd44899f1dd4d34121a64d43e5d060.png" src="_images/6bd3f1b9ec2fbbef00b4eccc8b646c9133fd44899f1dd4d34121a64d43e5d060.png" />
-</div>
-</div>
-<p>Similarly, for the velocity components, we can use <code class="docutils literal notranslate"><span class="pre">.v_x</span></code>, <code class="docutils literal notranslate"><span class="pre">.v_y</span></code>, and <code class="docutils literal notranslate"><span class="pre">.v_z</span></code>. For example, to create a classic “UV” plane velocity plot:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">galcen</span><span class="o">.</span><span class="n">v_x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">galcen</span><span class="o">.</span><span class="n">v_y</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">125</span><span class="p">,</span> <span class="mi">125</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">200</span> <span class="o">-</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">200</span> <span class="o">+</span> <span class="mi">125</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$v_x$ [{0:latex_inline}]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$v_y$ [{0:latex_inline}]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$v_y$ [$\\mathrm{km\\,s^{-1}}$]&#39;)
-</pre></div>
-</div>
-<img alt="_images/9b7706f2a3543f01fe713904ac7a192dc2a80dadf2324182a0541caeadcfcf51.png" src="_images/9b7706f2a3543f01fe713904ac7a192dc2a80dadf2324182a0541caeadcfcf51.png" />
-</div>
-</div>
-<p>Along with astrometric and radial velocity data, <code class="docutils literal notranslate"><span class="pre">Gaia</span></code> also provides photometric data for three photometric bandpasses: the broad-band <code class="docutils literal notranslate"><span class="pre">G</span></code>, the blue <code class="docutils literal notranslate"><span class="pre">BP</span></code>, and the red <code class="docutils literal notranslate"><span class="pre">RP</span></code> magnitudes. Let’s make a Gaia color-magnitude diagram using the <span class="math notranslate nohighlight">\(G_{\rm BP}-G_{\rm RP}\)</span> color and the absolute <span class="math notranslate nohighlight">\(G\)</span>-band magnitude <span class="math notranslate nohighlight">\(M_G\)</span>. We’ll compute the absolute magnitude using the distances we computed earlier — Astropy <code class="docutils literal notranslate"><span class="pre">Distance</span></code> objects have a convenient <code class="docutils literal notranslate"><span class="pre">.distmod</span></code> attribute that provides the distance modulus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M_G</span> <span class="o">=</span> <span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">dist</span><span class="o">.</span><span class="n">distmod</span>
-<span class="n">BP_RP</span> <span class="o">=</span> <span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;phot_bp_mean_mag&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">gaia_data</span><span class="p">[</span><span class="s2">&quot;phot_rp_mean_mag&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">BP_RP</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">M_G</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$G_</span><span class="si">{BP}</span><span class="s2">-G_</span><span class="si">{RP}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$M_G$&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$M_G$&#39;)
-</pre></div>
-</div>
-<img alt="_images/001aa1d84755b2b666123b0f2953236286ced1b4d9651ca5d0dd3e325a6d151d.png" src="_images/001aa1d84755b2b666123b0f2953236286ced1b4d9651ca5d0dd3e325a6d151d.png" />
-</div>
-</div>
-<p>In the above, there is a wide range of main sequence star masses which have a range of lifetimes. The most massive stars were likely born in the thin disk and their orbits therefore likely have smaller vertical amplitudes than the typical old main sequence star. To compare, we’ll create two sub-selections of the Gaia CMD to select massive and low-mass main sequence stars from the CMD for comparison. You may see two <code class="docutils literal notranslate"><span class="pre">RuntimeWarning</span></code>(s) from running the next cell — these are expected and it’s safe to ignore them.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="n">hi_mass_mask</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">BP_RP</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">BP_RP</span> <span class="o">&lt;</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">M_G</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">M_G</span> <span class="o">&lt;</span> <span class="mf">3.75</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">galcen</span><span class="o">.</span><span class="n">v_y</span> <span class="o">-</span> <span class="mi">220</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">lo_mass_mask</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="p">(</span><span class="n">BP_RP</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">BP_RP</span> <span class="o">&lt;</span> <span class="mf">2.4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">M_G</span> <span class="o">&gt;</span> <span class="mf">8.2</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">M_G</span> <span class="o">&lt;</span> <span class="mf">9.7</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">)</span>
-    <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">galcen</span><span class="o">.</span><span class="n">v_y</span> <span class="o">-</span> <span class="mi">220</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s also define default colors to use when visualizing the high- and low-mass stars:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hi_mass_color</span> <span class="o">=</span> <span class="s2">&quot;tab:red&quot;</span>
-<span class="n">lo_mass_color</span> <span class="o">=</span> <span class="s2">&quot;tab:purple&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s now visualize these two CMD selections:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">BP_RP</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">M_G</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">mask</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">lo_mass_mask</span><span class="p">,</span> <span class="n">hi_mass_mask</span><span class="p">],</span> <span class="p">[</span><span class="n">lo_mass_color</span><span class="p">,</span> <span class="n">hi_mass_color</span><span class="p">]):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="n">BP_RP</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-        <span class="n">M_G</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-        <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
-        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
-        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-    <span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$G_</span><span class="si">{BP}</span><span class="s2">-G_</span><span class="si">{RP}</span><span class="s2">$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$M_G$&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$M_G$&#39;)
-</pre></div>
-</div>
-<img alt="_images/f12aa6a59c84c04faff4cafd79624649a574debb533412f0286866c53ea80de2.png" src="_images/f12aa6a59c84c04faff4cafd79624649a574debb533412f0286866c53ea80de2.png" />
-</div>
-</div>
-<p>Thus far, we’ve used the color-magnitude diagram (using parallaxes and photometry from Gaia to compute absolute magnitudes) to select samples of high- and low-mass stars based on their colors.</p>
-<p>In what follows, we’ll compute Galactic orbits for stars in the high- and low-mass star selections above and compare.</p>
 </section>
-<section id="using-gala-to-numerically-integrate-galactic-stellar-orbits">
-<h2>Using <code class="docutils literal notranslate"><span class="pre">gala</span></code> to numerically integrate Galactic stellar orbits<a class="headerlink" href="#using-gala-to-numerically-integrate-galactic-stellar-orbits" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">gala</span></code> is an Astropy affiliated package for Galactic dynamics. <code class="docutils literal notranslate"><span class="pre">gala</span></code> provides functionality for representing analytic mass models that are commonly used in Galactic dynamics contexts for numerically integrating stellar orbits. For examples, see Chapter 3 of Binney and Tremaine (2008). The gravitational potential models are defined by specifying parameters like mass, scale radii, or shape parameters and can be combined. Once defined, they can be used in combination with numerical integrators provided in <code class="docutils literal notranslate"><span class="pre">gala</span></code> to compute orbits. <code class="docutils literal notranslate"><span class="pre">gala</span></code> comes with a pre-defined, multi-component, but <a class="reference external" href="http://gala.adrian.pw/en/latest/potential/define-milky-way-model.html">simple model for the Milky Way</a> that can be used for orbit integrations. Let’s create an instance of the <code class="docutils literal notranslate"><span class="pre">MilkyWayPotential</span></code> model and integrate orbits for the high- and low-mass main sequence stars selected above:</p>
+<section id="section-2-show-an-image-of-the-helix-nebula-with-ra-and-dec-labeled">
+<h2>Section 2: Show an image of the Helix nebula with RA and Dec labeled<a class="headerlink" href="#section-2-show-an-image-of-the-helix-nebula-with-ra-and-dec-labeled" title="Link to this heading">#</a></h2>
+<p>Most of the time we can obtain the required <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> object from the header of the FITS file from a telescope or astronomical database. This process is described below.</p>
+<section id="step-1-read-in-the-fits-file">
+<h3>Step 1: Read in the FITS file<a class="headerlink" href="#step-1-read-in-the-fits-file" title="Link to this heading">#</a></h3>
+<p>We will read the FITS file containing an image of the Helix nebula from the <code class="docutils literal notranslate"><span class="pre">astropy-data</span></code> GitHub repository using the <code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code> subpackage. The <code class="docutils literal notranslate"><span class="pre">astropy.io.fits.open()</span></code> function will load the contents of a FITS file into Python, and it accepts either a local file path or a URL (as is demonstrated here). This image (FITS file) was originally accessed from the <a class="reference external" href="https://archive.eso.org/dss/dss">Digitized Sky Survey</a> but is provided in the <code class="docutils literal notranslate"><span class="pre">astropy-data</span></code> repository for convenience:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">milky_way</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">MilkyWayPotential</span><span class="p">()</span>
-<span class="n">milky_way</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;CompositePotential disk,bulge,nucleus,halo&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>This model has mass components for the Galactic disk, bulge, nucleus, and halo, and the parameters were defined by fitting measurements of the Milky Way enclosed mass at various radii. See <a class="reference external" href="http://gala.adrian.pw/en/latest/potential/define-milky-way-model.html">this document</a> for more details. The parameters of the <code class="docutils literal notranslate"><span class="pre">MilkyWayPotential</span></code> can be changed by passing in a dictionary of parameter values to argument names set by the component names. For example, to change the disk mass to make it slightly more massive (the choice <code class="docutils literal notranslate"><span class="pre">8e10</span></code> is arbitrary!):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">different_disk_potential</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">MilkyWayPotential</span><span class="p">(</span><span class="n">disk</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mf">8e10</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Msun</span><span class="p">))</span>
-<span class="n">different_disk_potential</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;CompositePotential disk,bulge,nucleus,halo&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>To integrate orbits, we have to combine the mass model with a reference frame into a <code class="docutils literal notranslate"><span class="pre">Hamiltonian</span></code> object. If no reference frame is passed in, it’s assumed that we are in a static inertial frame moving with the center of the mass model:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">Hamiltonian</span><span class="p">(</span><span class="n">milky_way</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now that we have the mass model, we can integrate orbits. Let’s now define initial conditions for subsets of the high- and low-mass star selections we did above. Initial conditions in <code class="docutils literal notranslate"><span class="pre">gala</span></code> are specified by creating <code class="docutils literal notranslate"><span class="pre">PhaseSpacePosition</span></code> objects. We can create these objects directly from a <code class="docutils literal notranslate"><span class="pre">Galactocentric</span></code> object, like we have defined above from transforming the Gaia data — we first have to extract the data with a Cartesian representation. We can do this by calling <code class="docutils literal notranslate"><span class="pre">galcen.cartesian</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w0_hi</span> <span class="o">=</span> <span class="n">gd</span><span class="o">.</span><span class="n">PhaseSpacePosition</span><span class="p">(</span><span class="n">galcen</span><span class="p">[</span><span class="n">hi_mass_mask</span><span class="p">]</span><span class="o">.</span><span class="n">cartesian</span><span class="p">)</span>
-<span class="n">w0_lo</span> <span class="o">=</span> <span class="n">gd</span><span class="o">.</span><span class="n">PhaseSpacePosition</span><span class="p">(</span><span class="n">galcen</span><span class="p">[</span><span class="n">lo_mass_mask</span><span class="p">]</span><span class="o">.</span><span class="n">cartesian</span><span class="p">)</span>
-<span class="n">w0_hi</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">w0_lo</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((185,), (593,))
-</pre></div>
-</div>
-</div>
-</div>
-<p>From the above, we can see that we have 185 high-mass star and 577 low-mass stars in our selections. To integrate orbits, we call the <code class="docutils literal notranslate"><span class="pre">.integrate_orbit()</span></code> method on the Hamiltonian object we defined above, and pass in initial conditions. We also have to specify the timestep for integration, and how long we want to integrate for. We can do this by either specifying the amount of time to integrate for, or by specifying the number of timesteps. Let’s specify a timestep of 1 Myr and a time of 500 Myr (approximately two revolutions around the Galaxy for a Sun-like orbit):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orbits_hi</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">integrate_orbit</span><span class="p">(</span><span class="n">w0_hi</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span><span class="p">,</span> <span class="n">t1</span><span class="o">=</span><span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span><span class="p">,</span> <span class="n">t2</span><span class="o">=</span><span class="mi">500</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span><span class="p">)</span>
-
-<span class="n">orbits_lo</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">integrate_orbit</span><span class="p">(</span><span class="n">w0_lo</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span><span class="p">,</span> <span class="n">t1</span><span class="o">=</span><span class="mi">0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span><span class="p">,</span> <span class="n">t2</span><span class="o">=</span><span class="mi">500</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Myr</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The get_name method is deprecated and may be removed in a future version.
-        Use name instead. [gala.dynamics.core]
-</pre></div>
-</div>
-</div>
-</div>
-<p>By default this uses a <a class="reference external" href="https://en.wikipedia.org/wiki/Leapfrog_integration">Leapfrog</a> numerical integration scheme, but the integrator can be customized — see the <code class="docutils literal notranslate"><span class="pre">gala</span></code> <a class="reference external" href="http://gala.adrian.pw/en/latest/examples/integrate-potential-example.html">examples</a> for more details.</p>
-<p>With the orbit objects in hand, we can continue our comparison of the orbits of high-mass and low-mass main sequence stars in the solar neighborhood. Let’s start by plotting a few orbits. The <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> convenience function provides a quick way to visualize orbits in three Cartesian projections. For example, let’s plot the first orbit in each subsample on the same figure:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">orbits_hi</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">hi_mass_color</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">orbits_lo</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">lo_mass_color</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: The get_name method is deprecated and may be removed in a future version.
-        Use name instead. [gala.dynamics.orbit]
-Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed x limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
-</pre></div>
-</div>
-<img alt="_images/0768146932a0ff4fab2024b361232a67224e5f46753545b3bc71032347c5de2b.png" src="_images/0768146932a0ff4fab2024b361232a67224e5f46753545b3bc71032347c5de2b.png" />
-</div>
-</div>
-<p>Note in the above figure that the orbits are almost constrained to the x-y plane: the excursions are much larger in the x and y directions as compared to the z direction.</p>
-<p>The default plots show all Cartesian projections. This can be customized to, for example, only show specified components (including velocity components):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">orbits_hi</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;v_x&quot;</span><span class="p">],</span> <span class="n">auto_aspect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">hi_mass_color</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/68596a292108e0e5a8862bf0e23d4de5a38aee06a71226ac4ddcd1eda52fcae4.png" src="_images/68596a292108e0e5a8862bf0e23d4de5a38aee06a71226ac4ddcd1eda52fcae4.png" />
-</div>
-</div>
-<p>The representation can also be changed, for example, to a cylindrical representation:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">orbits_hi</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cylindrical</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">hi_mass_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;high mass&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header_data_unit_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+    <span class="s2">&quot;https://github.com/astropy/astropy-data/raw/6d92878d18e970ce6497b70a9253f65c925978bf/tutorials/celestial-coords1/tailored_dss.22.29.38.50-20.50.13_60arcmin.fits&quot;</span>
 <span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">orbits_lo</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cylindrical</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;rho&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">lo_mass_color</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;low mass&quot;</span>
-<span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>FITS files are a binary file format that is mainly used by astronomers and can contain information arranged in many “extensions,” which contain both header information (e.g., metadata) and data (e.g., image data). We can check how many extensions there are in a FITS file, as well as view a summary of the contents in each extension, by printing the FITS object information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header_data_unit_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.3, 0.3)
-</pre></div>
-</div>
-<img alt="_images/fc12ef0ac5c43bb5652cd032d0a24c169cf4559482620527c079a1e729f96b0e.png" src="_images/fc12ef0ac5c43bb5652cd032d0a24c169cf4559482620527c079a1e729f96b0e.png" />
-</div>
-</div>
-<p>Already in the above plot we can see that the high-mass star has an orbit with smaller eccentricity (smaller radial variations) and smaller vertical oscillations as compared to the low-mass star. Below, we’ll quantify this and look at the vertical excursions of all of the high- and low-mass stars, respectively.</p>
-<p>Let’s now compare the vertical amplitudes of the orbits in each of our sub-selections! We can compute the (approximate) maximum vertical height of each orbit using the convenience method <code class="docutils literal notranslate"><span class="pre">.zmax()</span></code> (you can see a list of all convenience methods on the <code class="docutils literal notranslate"><span class="pre">Orbit</span></code> object <a class="reference external" href="http://gala.adrian.pw/en/latest/api/gala.dynamics.Orbit.html#gala.dynamics.Orbit">in the Gala documentation here</a>):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zmax_hi</span> <span class="o">=</span> <span class="n">orbits_hi</span><span class="o">.</span><span class="n">zmax</span><span class="p">(</span><span class="n">approximate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">zmax_lo</span> <span class="o">=</span> <span class="n">orbits_lo</span><span class="o">.</span><span class="n">zmax</span><span class="p">(</span><span class="n">approximate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: /home/runner/.astropy/cache/download/url/21d072715b8ee90ab2fe1405b0e5fb1a/contents
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU     121   (2119, 2119)   int16   
 </pre></div>
 </div>
 </div>
 </div>
-<p>Let’s make histograms of the maximum <span class="math notranslate nohighlight">\(z\)</span> heights for these two samples:</p>
+<p>This shows us that our FITS file contains only one extension, labeled ‘PRIMARY’ (or extension number 0). We will copy the image data from this extension to the variable <code class="docutils literal notranslate"><span class="pre">image</span></code>, and the header data to the variable <code class="docutils literal notranslate"><span class="pre">header</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">zmax_hi</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;high-mass&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">hi_mass_color</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-    <span class="n">zmax_lo</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-    <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;low-mass&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="n">lo_mass_color</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$z_{\rm max}$&quot;</span> <span class="o">+</span> <span class="s2">&quot; [{0:latex}]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zmax_hi</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">header_data_unit_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">header</span> <span class="o">=</span> <span class="n">header_data_unit_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can print the FITS image header to screen so that all of its contents can be checked or utilized. Note that the WCS information for this information can be found near the bottom of the printed header, below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;$z_{\\rm max}$ [$\\mathrm{kpc}$]&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SIMPLE  =                    T / conforms to FITS standard                      
+BITPIX  =                   16 / array data type                                
+NAXIS   =                    2 / number of array dimensions                     
+NAXIS1  =                 2119                                                  
+NAXIS2  =                 2119                                                  
+DATE    = &#39;03/09/19          &#39; /Date of FITS file creation                      
+ORIGIN  = &#39;CASB -- STScI     &#39; /Origin of FITS image                            
+PLTLABEL= &#39;J 10265           &#39; /Observatory plate label                         
+PLATEID = &#39;04I5              &#39; /GSSS Plate ID                                   
+REGION  = &#39;S602              &#39; /GSSS Region Name                                
+DATE-OBS= &#39;1985-06-15&#39;         / UT date of Observation                         
+UT      = &#39;18:30:00.00       &#39; /UT time of observation                          
+EPOCH   =  1.9854542236328E+03 /Epoch of plate                                  
+PLTRAH  =                   22 /Plate center RA                                 
+PLTRAM  =                   26 /                                                
+PLTRAS  =  4.3474570000000E+01 /                                                
+PLTDECSN= &#39;-                 &#39; /Plate center Dec                                
+PLTDECD =                   19 /                                                
+PLTDECM =                   44 /                                                
+PLTDECS =  4.2059660000000E+01 /                                                
+EQUINOX =  2.0000000000000E+03 /Julian Reference frame equinox                  
+EXPOSURE=  7.0000000000000E+01 /Exposure time minutes                           
+BANDPASS=                    0 /GSSS Bandpass code                              
+PLTGRADE=                    1 /Plate grade                                     
+PLTSCALE=  6.7200000000000E+01 /Plate Scale arcsec per mm                       
+SITELAT = &#39;-31:16:24.00      &#39; /Latitude of Observatory                         
+SITELONG= &#39;+149:03:42.00     &#39; /Longitude of Observatory                        
+TELESCOP= &#39;UK Schmidt (new optics)&#39; /Telescope where plate taken                
+CNPIX1  =                 4541 /X corner  (pixels)                              
+CNPIX2  =                 3647 /Y corner                                        
+DATATYPE= &#39;INTEGER*2         &#39; /Type of Data                                    
+SCANIMG = &#39;S602_04I5_00_00.PIM&#39; /Name of original scan                          
+SCANNUM =                    0 /Identifies scan of the plate                    
+DCHOPPED=                    F /Image repaired for chopping effects             
+DSHEARED=                    F /Image repaired for shearing effects             
+DSCNDNUM=                    0 /Identifies descendant of plate scan image       
+XPIXELSZ=  2.5284450000000E+01 /X pixel size microns                            
+YPIXELSZ=  2.5284450000000E+01 /Y pixel size microns                            
+PPO1    =  0.0000000000000E+00 /Orientation Coefficients                        
+PPO2    =  0.0000000000000E+00 /                                                
+PPO3    =  1.7800815369865E+05 /                                                
+PPO4    =  0.0000000000000E+00 /                                                
+PPO5    =  0.0000000000000E+00 /                                                
+PPO6    =  1.7762863283887E+05 /                                                
+AMDX1   =  6.7219770175765E+01 /Plate solution x coefficients                   
+AMDX2   = -1.1880355995672E-01 /                                                
+AMDX3   = -1.3157645513770E-01 /                                                
+AMDX4   = -5.6708509711628E-06 /                                                
+AMDX5   =  6.2679885786864E-06 /                                                
+AMDX6   = -1.1142206237378E-07 /                                                
+AMDX7   =  0.0000000000000E+00 /                                                
+AMDX8   =  2.2200418019794E-06 /                                                
+AMDX9   =  7.4390602168984E-10 /                                                
+AMDX10  =  2.5668005274713E-06 /                                                
+AMDX11  = -2.6549905009760E-07 /                                                
+AMDX12  =  0.0000000000000E+00 /                                                
+AMDX13  =  0.0000000000000E+00 /                                                
+AMDX14  =  0.0000000000000E+00 /                                                
+AMDX15  =  0.0000000000000E+00 /                                                
+AMDX16  =  0.0000000000000E+00 /                                                
+AMDX17  =  0.0000000000000E+00 /                                                
+AMDX18  =  0.0000000000000E+00 /                                                
+AMDX19  =  0.0000000000000E+00 /                                                
+AMDX20  =  0.0000000000000E+00 /                                                
+AMDY1   =  6.7228009015427E+01 /Plate solution y coefficients                   
+AMDY2   =  1.2873652788750E-01 /                                                
+AMDY3   = -3.1950040128023E-01 /                                                
+AMDY4   = -3.2645385511415E-05 /                                                
+AMDY5   =  8.7305582924401E-06 /                                                
+AMDY6   =  1.8171663502226E-05 /                                                
+AMDY7   =  0.0000000000000E+00 /                                                
+AMDY8   =  2.1698493473859E-06 /                                                
+AMDY9   = -3.6671971341692E-08 /                                                
+AMDY10  =  2.4125963913336E-06 /                                                
+AMDY11  = -1.9511911767187E-08 /                                                
+AMDY12  =  0.0000000000000E+00 /                                                
+AMDY13  =  0.0000000000000E+00 /                                                
+AMDY14  =  0.0000000000000E+00 /                                                
+AMDY15  =  0.0000000000000E+00 /                                                
+AMDY16  =  0.0000000000000E+00 /                                                
+AMDY17  =  0.0000000000000E+00 /                                                
+AMDY18  =  0.0000000000000E+00 /                                                
+AMDY19  =  0.0000000000000E+00 /                                                
+AMDY20  =  0.0000000000000E+00 /                                                
+        Based on photographic data obtained using The UK Schmidt Telescope.     
+        The UK Schmidt Telescope was operated by the Royal Observatory          
+        Edinburgh, with funding from the UK Science and Engineering Research    
+        Council, until 1988 June, and thereafter by the Anglo-Australian        
+        Observatory.  Original plate material is copyright (c) the Royal        
+        Observatory Edinburgh and the Anglo-Australian Observatory.  The        
+        plates were processed into the present compressed digital form with     
+        their permission.  The Digitized Sky Survey was produced at the Space   
+        Telescope Science Institute under US Government grant NAG W-2166.       
+                                                                                
+        Investigators using these scans are requested to include the above      
+        acknowledgements in any publications.                                   
+                                                                                
+        Copyright (c) 1993, 1994, Association of Universities for Research in   
+        Astronomy, Inc.  All rights reserved.                                   
+DATAMAX =                21635 /Maximum data value                              
+DATAMIN =                  607 /Minimum data value                              
+OBJECT  = &#39;dss67608          &#39; /Object ID                                       
+OBJCTRA = &#39;22 29 38.500      &#39; /Object Right Ascension (J2000)                  
+OBJCTDEC= &#39;-20 50 13.00      &#39; /Object Declination (J2000)                      
+OBJCTX  =              5600.52 /Object X on plate (pixels)                      
+OBJCTY  =              4706.97 /Object Y on plate (pixels)                      
+CTYPE1  = &#39;RA---TAN&#39;           /R.A. in tangent plane projection                
+CTYPE2  = &#39;DEC--TAN&#39;           /DEC. in tangent plane projection                
+CRPIX1  =               1059.5 /Refpix of first axis                            
+CRPIX2  =               1059.5 /Refpix of second axis                           
+CRVAL1  =  3.3741068406866E+02 /RA at Ref pix in decimal degrees                
+CRVAL2  = -2.0837400617286E+01 /DEC at Ref pix in decimal degrees               
+CROTA1  =  3.6014388955457E-01 /Rotation angle of first axis (deg)              
+CROTA2  =  3.6014388955457E-01 /Rotation angle of second axis (deg)             
+        Warning: CROTA2 is inaccurate due to considerable skew                  
+CDELT1  = -4.7215565578926E-04 /RA pixel step (deg)                             
+CDELT2  =  4.7224980649186E-04 /DEC pixel step (deg)                            
+CD1_1   = -4.7214664002041E-04 /CD matrix                                       
+CD1_2   = -3.0184077818787E-06 /CD matrix                                       
+CD2_1   = -2.9178093186884E-06 /CD matrix                                       
+CD2_2   =  4.7224016024271E-04 /CD matrix                                       
 </pre></div>
 </div>
-<img alt="_images/c467706a763951a02ccd9ca44cfd0455f5e4595bc9ebc8cd2c04ecc5b597324e.png" src="_images/c467706a763951a02ccd9ca44cfd0455f5e4595bc9ebc8cd2c04ecc5b597324e.png" />
 </div>
 </div>
-<p>The distribution of <span class="math notranslate nohighlight">\(z\)</span>-heights for the low-mass (i.e. typically older) stars is more extended, as we predicted!</p>
-<p>In this tutorial, we’ve used <code class="docutils literal notranslate"><span class="pre">astroquery</span></code> to query the Gaia science archive to retrieve kinematic and photometric data for a small sample of stars with well-measured parallaxes from Gaia DR2. We used the colors and absolute magnitudes of these stars to select subsamples of high- and low-mass stars, which, on average, will provide us with subsamples of stars that are younger and older, respectively. We then constructed a model for the gravitational field of the Milky Way and numerically integrated the orbits of all stars in each of the two subsamples. Finally, we used the orbits to compute the maximum height that each star reaches above the Galactic midplane and showed that the younger (higher-mass) stars tend to have smaller excursions from the Galactic plane, consistent with the idea that stars are either born in a “thinner” disk and dynamically “heated,” or that older stars formed with a larger vertical scale-height.</p>
+<p>Please note that the <em>original</em> header (as downloaded from the DSS) violates the FITS WCS standards (because it includes both CDELTn keywords and a matrix of CD values; including deprecated PC-matrix keywords). The header has been cleaned up to conform to the existing standards.</p>
 </section>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Some of the low-mass star orbits have large vertical excursions from the Galactic disk (up to and above 1.5 kpc) and could therefore be stellar halo stars rather than part of the Galactic disk. Use the zmax values to select a few of these stars and plot their full orbits. Do these stars look like they are part of the disk? Why / why not?</p></li>
-<li><p><a class="reference external" href="http://gala.adrian.pw/en/latest/dynamics/orbits-in-detail.html">Orbit</a> objects also provide methods for computing apocenter and pericenter distances and eccentricities. Which types of stars (high-mass or low-mass) tend to have high eccentricity orbits within the Galaxy? Similar to the plot above, make a plot showing the two distributions of eccentricity values.</p></li>
-</ol>
+<section id="step-2-read-in-the-fits-image-coordinate-system-with-astropy-wcs-wcs">
+<h3>Step 2: Read in the FITS image coordinate system with astropy.wcs.WCS<a class="headerlink" href="#step-2-read-in-the-fits-image-coordinate-system-with-astropy-wcs-wcs" title="Link to this heading">#</a></h3>
+<p>Because the header contains WCS information and acts like a Python dictionary, an Astropy <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object can be created directly from the FITS header.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 46231.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s print the <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object to see what values were drawn from the header.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
+
+Number of WCS axes: 2
+CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39; 
+CRVAL : 336.6811440416667 -19.745016572222223 
+CRPIX : 2499.6447489941065 3378.9002584168584 
+PC1_1 PC1_2  : 0.025282857855146917 4.4684674035885186e-05 
+PC2_1 PC2_2  : -4.8420685266167345e-05 0.0252859566668733 
+CDELT : -0.01867333422948538 0.01867333422948538 
+NAXIS : 2119  2119
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-plot-the-helix-nebula-with-sky-coordinate-axes-ra-and-dec">
+<h3>Step 3: Plot the Helix nebula with sky coordinate axes (RA and Dec)<a class="headerlink" href="#step-3-plot-the-helix-nebula-with-sky-coordinate-axes-ra-and-dec" title="Link to this heading">#</a></h3>
+<p>The image data, <code class="docutils literal notranslate"><span class="pre">image</span></code>, is a 2D array of values, and by itself contains no information about the sky coordinates of the pixels. So, if we plotted the image by itself, the plot axes would show pixel values. (We will be using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library for the plotting.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f5ce4c87350&gt;
+</pre></div>
+</div>
+<img alt="_images/da5346b9c808387802c8d350906cada585964ca3a7f3da64f54aca2420b56e3d.png" src="_images/da5346b9c808387802c8d350906cada585964ca3a7f3da64f54aca2420b56e3d.png" />
+</div>
+</div>
+<p>All of the information that maps from these pixel values to sky coordinates comes from the WCS metadata, which we loaded into the <code class="docutils literal notranslate"><span class="pre">wcs_helix</span></code> object (from the FITS file header). This <code class="docutils literal notranslate"><span class="pre">WCS</span></code> object is built so that it can be provided to <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> with the  <code class="docutils literal notranslate"><span class="pre">projection</span></code> keyword, as shown in the call to <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.subplot</span></code> below, in order to produce axes that show sky coordinate information instead of pixel values. We will also overlay a coordinate grid in ICRS equatorial coordinates by passing the sky coordinate frame name (here, “icrs”) to the <code class="docutils literal notranslate"><span class="pre">ax.get_coords_overlay()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_helix</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+
+<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1731588eb07b0322a0d118a111da6c59399f102e350941893e31ac00b3b81134.png" src="_images/1731588eb07b0322a0d118a111da6c59399f102e350941893e31ac00b3b81134.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<p>Copy the code block above and instead overlay a coordinate grid in Galactic coordinates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_helix</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+
+<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">&quot;galactic&quot;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1027f1e24b70c94693fb609bf566e59aaeeb455bc2b07a349f5e72dfd334c1ec.png" src="_images/1027f1e24b70c94693fb609bf566e59aaeeb455bc2b07a349f5e72dfd334c1ec.png" />
+</div>
+</div>
+</section>
+<section id="section-3-plot-a-scale-marker-on-an-image-with-wcs">
+<h2>Section 3: Plot a scale marker on an image with WCS<a class="headerlink" href="#section-3-plot-a-scale-marker-on-an-image-with-wcs" title="Link to this heading">#</a></h2>
+<p>To add a scale marker (i.e., a line of a particular <em>angular</em> size) to the image of the Helix nebula, we will use the matplotlib <code class="docutils literal notranslate"><span class="pre">Axes.arrow</span></code> method to draw a line.</p>
+<p>First, we need to decide where to place the scale bar. In the example below, we define the center of the scale marker to be at <code class="docutils literal notranslate"><span class="pre">(RA,</span> <span class="pre">Dec)</span> <span class="pre">=</span> <span class="pre">(337</span> <span class="pre">deg,</span> <span class="pre">-21.2</span> <span class="pre">deg)</span></code>.</p>
+<p>We then use the <code class="docutils literal notranslate"><span class="pre">transform</span></code> attribute of <code class="docutils literal notranslate"><span class="pre">Axes.arrow</span></code> to draw our scale bars in degrees (instead of pixel coordinates). In this case, we draw a scale marker with a length of 0.1 degrees. The arrow method inputs are <code class="docutils literal notranslate"><span class="pre">ax.arrow(x,</span> <span class="pre">y,</span> <span class="pre">dx,</span> <span class="pre">dy,</span> <span class="pre">**kwargs)</span></code>, with <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> being the <code class="docutils literal notranslate"><span class="pre">RA</span></code> and <code class="docutils literal notranslate"><span class="pre">Dec</span></code> of the beginning of the line. We use <code class="docutils literal notranslate"><span class="pre">dx=0</span></code> so that there is no horizontal component in the bar, and <code class="docutils literal notranslate"><span class="pre">dy=0.1</span></code>, which gives the length of the arrow in the vertical direction. To ensure that the arrow is drawn in the J2000 ICRS coordinate frame, we pass <code class="docutils literal notranslate"><span class="pre">ax.get_transform('icrs')</span></code> to the <code class="docutils literal notranslate"><span class="pre">transform</span></code> keyword.</p>
+<p>Finally, we use <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.text</span></code> to mark the length of the scale marker.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_helix</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span>
+    <span class="mi">337</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">21.2</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">head_width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">head_length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="mf">337.05</span><span class="p">,</span>
+    <span class="o">-</span><span class="mf">21.18</span><span class="p">,</span>
+    <span class="s2">&quot;0.1 deg&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d35948ac284ade4062f1ec0a8ae9c78c5b23eb82e146f87b0f41738fbf0a6a0e.png" src="_images/d35948ac284ade4062f1ec0a8ae9c78c5b23eb82e146f87b0f41738fbf0a6a0e.png" />
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Make a horizontal bar with the same length. Keep in mind that 1 hour angle = 15 degrees.</p>
 </section>
 </section>
 
@@ -946,7 +844,7 @@ Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits
     {
         requestKernel: true,
         binderOptions: {
-            repo: "astropy-learn/tutorial--gaia-galactic-orbits",
+            repo: "astropy-learn/tutorial--wcs-celestial-coordinates",
             ref: "main/",
         },
         codeMirrorConfig: {
