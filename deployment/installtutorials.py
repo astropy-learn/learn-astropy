@@ -83,7 +83,7 @@ if __name__ == "__main__":
             response = s.get(url)
             response.raise_for_status()
             data = response.json()
-            list(map(process_repo, data))
+            list(map(process_repo, data, dest_dir))
             url = response.links.get("next", {}).get("url")
             if not url:
                 break
