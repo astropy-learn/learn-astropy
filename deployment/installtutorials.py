@@ -42,6 +42,7 @@ def process_repo(repo, dest_dir):
     print(f"\nProcessing {repo_name}")
 
     with tempfile.TemporaryDirectory() as tmp:
+        print(f"pwd: {os.getcwd()}")
         branch_name = "converted"
         try:
             check_call(
@@ -75,8 +76,8 @@ def process_repo(repo, dest_dir):
 
 if __name__ == "__main__":
     args = parse_args()
-    dest_dir = args.dest
-
+    dest_dir = Path(args.dest)
+    print(f"Dest_dir: {dest_dir}")
     url = "https://api.github.com/orgs/astropy-learn/repos"
     with requests.Session() as s:
         while True:
