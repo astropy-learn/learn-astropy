@@ -67,25 +67,11 @@ jobs:
           name: gatsby-build
           path: ./public
 
-      - name: Download tutorials for tutorial dispatch event
-        if: ${{ github.event == 'repository_dispatch' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          python deployment/installtutorials.py \
-            --dest public/tutorials \
-            --tutorials-run ${{ github.event.client_payload.runid }} \
-            --tutorials-artifact ${{ github.event.client_payload.artifactName }} \
-            --tutorials-repo ${{ github.event.client_payload.repo }}
-
-      - name: Download latest tutorials
-        if: ${{ github.event != 'repository_dispatch' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install tutorials into site
         run: |
           python deployment/installtutorials.py --dest public/tutorials
 
-      - name: List tutorials
+      - name: List website content
         run: |
           tree public
 
