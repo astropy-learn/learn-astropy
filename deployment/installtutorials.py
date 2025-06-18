@@ -32,10 +32,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def process_repo(repo, destination_directory):
-    """Process a tutorial repository to copy its rendered tutorial(s) into the `dest_dir` directory."""
+    """Process a tutorial repository to copy its rendered tutorial(s) into `destination_directory`."""
     repo_name = repo["full_name"]
-    destination_directory = Path(destination_directory)
-    print(f"destination_directory: {destination_directory}")
     if not repo_name.split("/")[1].startswith("tutorial--"):
         return
     if repo_name.split("/")[1] == "tutorial--template":
@@ -44,7 +42,6 @@ def process_repo(repo, destination_directory):
     print(f"\nProcessing {repo_name}")
 
     with tempfile.TemporaryDirectory() as tmp:
-        print(f"pwd: {os.getcwd()}")
         branch_name = "converted"
         try:
             check_call(
@@ -55,12 +52,10 @@ def process_repo(repo, destination_directory):
             return
 
         repo = Path(tmp)
-        print(f"pwd: {os.getcwd()}")
-        print(f"repo: {repo}")
         # tutorial filename should match repo name
         tutorial = repo_name.split("/")[1].replace("tutorial--", "")
         try:
-            shutil.copy(f"{repo}/{tutorial}.html", dest_dir)
+            shutil.copy(f"{repo}/{tutorial}.html", destination_directory)
             print(f"Found tutorial {tutorial}.html")
         except FileNotFoundError:
             # this must be a book.
@@ -73,9 +68,9 @@ def process_repo(repo, destination_directory):
             ]
             print(f"Found chapters {chapters}")
             for t in chapters:
-                shutil.copy(f"{repo}/{t}", dest_dir)
+                shutil.copy(f"{repo}/{t}", destination_directory)
             # also include the book index (first page)
-            shutil.copy(f"{repo}/index.html", dest_dir)
+            shutil.copy(f"{repo}/index.html", destination_directory)
 
 
 if __name__ == "__main__":
@@ -87,7 +82,7 @@ if __name__ == "__main__":
             response = s.get(url)
             response.raise_for_status()
             data = response.json()
-            list(map(process_repo, data, dest_dir))
+            list(map(process_repo, data, [dest_dir] * len(data)))
             url = response.links.get("next", {}).get("url")
             if not url:
                 break
