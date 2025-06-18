@@ -31,9 +31,11 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def process_repo(repo, dest_dir):
+def process_repo(repo, destination_directory):
     """Process a tutorial repository to copy its rendered tutorial(s) into the `dest_dir` directory."""
     repo_name = repo["full_name"]
+    destination_directory = Path(destination_directory)
+    print(f"destination_directory: {destination_directory}")
     if not repo_name.split("/")[1].startswith("tutorial--"):
         return
     if repo_name.split("/")[1] == "tutorial--template":
@@ -53,6 +55,8 @@ def process_repo(repo, dest_dir):
             return
 
         repo = Path(tmp)
+        print(f"pwd: {os.getcwd()}")
+        print(f"repo: {repo}")
         # tutorial filename should match repo name
         tutorial = repo_name.split("/")[1].replace("tutorial--", "")
         try:
@@ -76,8 +80,7 @@ def process_repo(repo, dest_dir):
 
 if __name__ == "__main__":
     args = parse_args()
-    dest_dir = Path(args.dest)
-    print(f"Dest_dir: {dest_dir}")
+    dest_dir = args.dest
     url = "https://api.github.com/orgs/astropy-learn/repos"
     with requests.Session() as s:
         while True:

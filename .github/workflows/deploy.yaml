@@ -4,9 +4,8 @@ name: Deploy
   push:
     branches:
       - main
-  repository_dispatch:
-    types:
-      - 'tutorials-build' # triggered from astropy/astropy-tutorials
+      - new_deploy
+  workflow_dispatch:
 
 jobs:
   build:
