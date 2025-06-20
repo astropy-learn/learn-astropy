@@ -57,7 +57,7 @@ def process_repo(repo, destination_directory):
         print(f"Found tutorial(s) {tutorials}")
         for t in tutorials:
             shutil.copy(t, destination_directory)
-            shutil.copy(f"{repo}/{os.path.basename(t)}.html", destination_directory)
+            shutil.copy(f"{repo}/{os.path.splitext(os.path.basename(t))[0]}.html", destination_directory)
         if len(tutorials) > 1:
             print("More than 1 tutorial found; treating this as a book")
             shutil.copy(f"{repo}/index.html", destination_directory)
