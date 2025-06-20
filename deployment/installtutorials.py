@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import tempfile
 from subprocess import CalledProcessError, check_call
+import glob
 import shutil
 import requests
 
@@ -52,24 +53,14 @@ def process_repo(repo, destination_directory):
             return
 
         repo = Path(tmp)
-        # tutorial filename should match repo name
-        tutorial = repo_name.split("/")[1].replace("tutorial--", "")
-        try:
-            shutil.copy(f"{repo}/{tutorial}.html", destination_directory)
-            print(f"Found tutorial {tutorial}.html")
-        except FileNotFoundError:
-            # this must be a book.
-            # filenames of tutorials (chapters in the book) should be of the format 1_Name.html
-            # (see https://github.com/astropy-learn/dev-guide/blob/main/README.md)
-            chapters = [
-                f
-                for f in os.listdir(repo)
-                if f[0].isdigit() and "_" in f[:3] and f.endswith(".html")
-            ]
-            print(f"Found chapters {chapters}")
-            for t in chapters:
-                shutil.copy(f"{repo}/{t}", destination_directory)
-            # also include the book index (first page)
+        tutorials = glob.glob(f"{repo}/*.ipynb")
+        print(f"Found tutorial(s) {tutorials}")
+        shutil.copy(f"{repo}/*.ipynb", destination_directory)
+        for t in tutorials:
+            # copy rendered html version of tutorials
+            shutil.copy(f"{os.path.splitext(t)[0]}.html", destination_directory)
+        if len(tutorials) > 1:
+            print("More than 1 tutorial found; treating this as a book")
             shutil.copy(f"{repo}/index.html", destination_directory)
 
 
