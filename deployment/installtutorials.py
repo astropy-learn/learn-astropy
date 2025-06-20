@@ -54,21 +54,22 @@ def process_repo(repo, destination_directory):
 
         repo = Path(tmp)
         tutorials = glob.glob(f"{repo}/_sources/*.ipynb")
-        print(f"Found tutorial(s) {tutorials}")
         for t in tutorials:
+            tname = os.path.splitext(os.path.basename(t))[0]
+            print(f"Copying tutorial {tname}")
             shutil.copy(t, destination_directory)
             shutil.copy(
-                f"{repo}/{os.path.splitext(os.path.basename(t))[0]}.html",
+                f"{repo}/{tname}.html",
                 destination_directory,
             )
         if len(tutorials) > 1:
-            print("More than 1 tutorial found; treating this as a book")
+            print("More than 1 tutorial found; also copying index.html")
             shutil.copy(f"{repo}/index.html", destination_directory)
         # copy images (plots) in notebook for faster page loading
         try:
             shutil.copy(f"{repo}/_images/*.png", f"{destination_directory}/nboutput")
         except FileNotFoundError:
-            pass
+            print("No notebook cell output images found to copy")
 
 
 if __name__ == "__main__":
