@@ -53,15 +53,17 @@ def process_repo(repo, destination_directory):
             return
 
         repo = Path(tmp)
-        tutorials = glob.glob(f"{repo}/*.ipynb")
+        tutorials = glob.glob(f"{repo}/_sources/*.ipynb")
         print(f"Found tutorial(s) {tutorials}")
-        shutil.copy(f"{repo}/*.ipynb", destination_directory)
         for t in tutorials:
-            # copy rendered html version of tutorials
+            shutil.copy(t, destination_directory)
             shutil.copy(f"{os.path.splitext(t)[0]}.html", destination_directory)
         if len(tutorials) > 1:
             print("More than 1 tutorial found; treating this as a book")
             shutil.copy(f"{repo}/index.html", destination_directory)
+        shutil.copy(
+            f"{repo}/_images/*.png", os.path.join(destination_directory, "nboutput")
+        )
 
 
 if __name__ == "__main__":

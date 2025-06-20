@@ -4,7 +4,6 @@ name: Deploy
   push:
     branches:
       - main
-      - new_deploy
   workflow_dispatch:
 
 jobs:
