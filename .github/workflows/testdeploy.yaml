@@ -24,11 +24,12 @@ jobs:
         run: |
           astropylibrarian --help
 
-      - name: Download latest tutorials
+      - name: Install tutorials into site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python deployment/installtutorials.py --dest public/tutorials
+          mkdir public
+          python deployment/installtutorials.py --dest public
 
       - name: List tutorials
         run: |
