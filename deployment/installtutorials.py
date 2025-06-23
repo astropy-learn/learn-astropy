@@ -63,8 +63,9 @@ def process_repo(repo, destination_directory):
                 destination_directory,
             )
         if len(tutorials) > 1:
-            print("More than 1 tutorial found; also copying index.html")
-            shutil.copy(f"{repo}/index.html", destination_directory)
+            index = glob.glob(f"{repo}/index-*.html")[0]
+            print(f"More than 1 tutorial found; also copying index file {index}")
+            shutil.copy(index, destination_directory)
         # copy images (plots) in notebook for faster page loading
         try:
             shutil.copy(f"{repo}/_images/*.png", f"{destination_directory}/nboutput")
