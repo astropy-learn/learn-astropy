@@ -32,4 +32,4 @@ jobs:
 
       - name: List tutorials
         run: |
-          tree public
+          tree .
