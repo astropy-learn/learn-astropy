@@ -24,17 +24,11 @@ jobs:
         run: |
           astropylibrarian --help
 
-      - name: Download gatsby artifact
-        uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e  # v4.2.1
-        with:
-          name: gatsby-build
-          path: ./public
-
       - name: Install tutorials into site
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python deployment/installtutorials.py --dest public/tutorials
+          python deployment/installtutorials.py --dest .
 
       - name: List tutorials
         run: |
