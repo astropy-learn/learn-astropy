@@ -34,6 +34,8 @@ def parse_args() -> argparse.Namespace:
 
 def process_repo(repo, destination_directory):
     """Process a tutorial repository to copy its rendered tutorial(s) into `destination_directory`."""
+    os.makedirs(destination_directory, exist_ok=True)
+
     repo_name = repo["full_name"]
     if not repo_name.split("/")[1].startswith("tutorial--"):
         return
@@ -53,6 +55,7 @@ def process_repo(repo, destination_directory):
             return
 
         repo = Path(tmp)
+        # os.system(f'tree {repo}')
         tutorials = glob.glob(f"{repo}/_sources/*.ipynb")
         for t in tutorials:
             tname = os.path.splitext(os.path.basename(t))[0]
@@ -67,9 +70,14 @@ def process_repo(repo, destination_directory):
             print(f"More than 1 tutorial found; also copying index file {index}")
             shutil.copy(index, destination_directory)
         # copy images (plots) in notebook for faster page loading
-        try:
-            shutil.copy(f"{repo}/_images/*.png", f"{destination_directory}/nboutput")
-        except FileNotFoundError:
+        images = glob.glob(f"{repo}/_images/*.png")
+        if len(images) > 0:
+            print("Copying notebook cell output images")
+            image_dir = f"{destination_directory}/nboutput"
+            os.makedirs(image_dir, exist_ok=True)
+            for i in images:
+                shutil.copy(i, image_dir)
+        else:
             print("No notebook cell output images found to copy")
 
 
