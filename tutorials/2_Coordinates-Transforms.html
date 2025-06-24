@@ -1,0 +1,1566 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Astronomical Coordinates 2: Transforming Coordinate Systems and Representations &#8212; Astropy  Coordinates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_Coordinates-Transforms';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Astronomical Coordinates 3: Working with Velocity Data in astropy.coordinates" href="3_Coordinates-Velocities.html" />
+    <link rel="prev" title="Astronomical Coordinates 1: Getting Started with astropy.coordinates" href="1_Coordinates-Intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index-coordinates.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Astropy  Coordinates - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Astropy  Coordinates - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index-coordinates.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Coordinates-Intro.html">Astronomical Coordinates 1: Getting Started with astropy.coordinates</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Astronomical Coordinates 2: Transforming Coordinate Systems and Representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Coordinates-Velocities.html">Astronomical Coordinates 3: Working with Velocity Data in astropy.coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Coordinates-Crossmatch.html">Astronomical Coordinates 4: Cross-matching Catalogs Using astropy.coordinates and astroquery</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-coordinates" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-coordinates/edit/main//2_Coordinates-Transforms.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-coordinates/issues/new?title=Issue%20on%20page%20%2F2_Coordinates-Transforms.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2_Coordinates-Transforms.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Astronomical Coordinates 2: Transforming Coordinate Systems and Representations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-astropy-coordinates-concepts-component-formats-representations-and-frames">Key <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> Concepts: Component Formats, Representations, and Frames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-component-formats">Coordinate Component Formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-representations">Coordinate Representations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-between-coordinate-frames">Transforming Between Coordinate Frames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-to-more-complex-coordinate-frames-computing-the-altitude-of-a-target-at-an-observatory">Transforming to More Complex Coordinate Frames: Computing the Altitude of a Target at an Observatory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-caveats">Potential Caveats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="astronomical-coordinates-2-transforming-coordinate-systems-and-representations">
+<h1>Astronomical Coordinates 2: Transforming Coordinate Systems and Representations<a class="headerlink" href="#astronomical-coordinates-2-transforming-coordinate-systems-and-representations" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Adrian Price-Whelan, Saima Siddiqui, Zihao Chen, Luthien Liu</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Introduce key concepts in <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code>: coordinate component formats, representations, and frames</p></li>
+<li><p>Demonstrate how to work with coordinate representations, for example, to change from Cartesian to Cylindrical coordinates</p></li>
+<li><p>Introduce coordinate frame transformations and demonstrate transforming from ICRS coordinates to Galactic and Altitude-Azimuth coordinates</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>coordinates, OOP</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>In the previous tutorial in this series, we showed how astronomical coordinates in the ICRS or equatorial coordinate system can be represented in Python using the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object (<a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/skycoord.html">docs</a>). There are many other coordinate systems that are commonly used in astronomical research. For example, the Galactic coordinate system is often used in radio astronomy and Galactic science, the “horizontal” or altitude-azimuth frame is often used for observatory-specific observation planning, and Ecliptic coordinates are often used for solar system science or space mission footprints. All of these coordinate frames (and others!) are supported by <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code>. As we will see below, the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object is designed to make transforming between these systems a straightforward task.</p>
+<p>In this tutorial, we will explore how the <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> package can be used to transform astronomical coordinates between different coordinate systems or frames. You may find it helpful to keep <a class="reference external" href="http://docs.astropy.org/en/stable/coordinates/index.html">the Astropy documentation for the coordinates package</a> open alongside this tutorial for reference or additional reading. In the text below, you may also see some links that look like (<a class="reference external" href="http://docs.astropy.org/en/stable/coordinates/index.html">docs</a>). These links will take you to parts of the documentation that are directly relevant to the cells from which they link.</p>
+<p><em>Note: This is the 2nd tutorial in a series of tutorials about astropy.coordinates. If you are new to astropy.coordinates, you may want to start from the beginning or an earlier tutorial.</em></p>
+</section>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<p>We start by importing some general packages that we will need below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.coordinates</span><span class="w"> </span><span class="kn">import</span> <span class="n">SkyCoord</span><span class="p">,</span> <span class="n">Galactic</span><span class="p">,</span> <span class="n">EarthLocation</span><span class="p">,</span> <span class="n">AltAz</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.coordinates</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">coord</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">QTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="key-astropy-coordinates-concepts-component-formats-representations-and-frames">
+<h2>Key <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> Concepts: Component Formats, Representations, and Frames<a class="headerlink" href="#key-astropy-coordinates-concepts-component-formats-representations-and-frames" title="Link to this heading">#</a></h2>
+<p>Usage of the term “coordinates” is overloaded in astronomy and is often used interchangeably when referring to data formats (e.g., sexagesimal vs. decimal), representations (e.g., Cartesian vs. spherical), and frames (e.g., equatorial vs. galactic). In <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code>, we have tried to formalize these three concepts and have made them a core part of the way we interact with objects in this subpackage (<a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/index.html#overview-of-astropy-coordinates-concepts">docs</a>). Here we will give an overview of these different concepts as we build up to demonstrating how to transform between different astronomical reference frames or systems.</p>
+</section>
+<section id="coordinate-component-formats">
+<h2>Coordinate Component Formats<a class="headerlink" href="#coordinate-component-formats" title="Link to this heading">#</a></h2>
+<p>In our previous tutorial, we showed that it is possible to pass in coordinate component data to the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> initializer as strings or as <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> objects in a variety of formats and units. We also saw that the coordinate components of <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> objects can be re-formatted. For example, we can change the coordinate <em>format</em> by changing the component units, or converting the data to a string:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="mf">15.9932</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">dec</span><span class="o">=-</span><span class="mf">10.52351344</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hourangle</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;hmsdms&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0662133333333335
+01h03m58.368s -10d31m24.648384s
+-10:31:24.64838
+</pre></div>
+</div>
+</div>
+</div>
+<p>See the previous tutorial <a class="reference internal" href="1_Coordinates-Intro.html"><span class="doc std std-doc">Astronomical Coordinates 1 - Getting Started</span></a> for more examples of this.</p>
+</section>
+<section id="coordinate-representations">
+<h2>Coordinate Representations<a class="headerlink" href="#coordinate-representations" title="Link to this heading">#</a></h2>
+<p>In the previous tutorial, we only worked with coordinate data in spherical representations (longitude/latitude), but <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> also supports other coordinate representations like Cartesian, cylindrical, etc. (<a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/skycoord.html#astropy-skycoord-representations">docs</a>). To retrieve the coordinate data in a different representation, we can use the <code class="docutils literal notranslate"><span class="pre">SkyCoord.represent_as()</span></code> method. This method either takes a string name of the desired representation, for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">&quot;cartesian&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;CartesianRepresentation (x, y, z) [dimensionless]
+    (0.94512547, 0.27088898, -0.18263903)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>or it accepts an <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> <code class="docutils literal notranslate"><span class="pre">Representation</span></code> class, such as:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">CartesianRepresentation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;CartesianRepresentation (x, y, z) [dimensionless]
+    (0.94512547, 0.27088898, -0.18263903)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>A list of all supported representations is given in the documentation (<a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/representations.html#astropy-coordinates-representations">docs</a>), or can be identified as class names that end in <code class="docutils literal notranslate"><span class="pre">Representaton</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Representation&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Base&quot;</span><span class="p">)]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CartesianRepresentation&#39;, &#39;CylindricalRepresentation&#39;, &#39;GRS80GeodeticRepresentation&#39;, &#39;PhysicsSphericalRepresentation&#39;, &#39;RadialRepresentation&#39;, &#39;SphericalRepresentation&#39;, &#39;UnitSphericalRepresentation&#39;, &#39;WGS72GeodeticRepresentation&#39;, &#39;WGS84GeodeticRepresentation&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object that we defined above, we only specified sky positions (i.e., no distance data), so the units of the Cartesian components that are returned above are dimensionless and are interpreted as being on the surface of the (dimensionless) unit sphere. If we instead pass in a distance to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> using the <code class="docutils literal notranslate"><span class="pre">distance</span></code> keyword argument, we instead get a <code class="docutils literal notranslate"><span class="pre">CartesianRepresentation</span></code> object for the 3D position with positional units. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="mf">15.9932</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">dec</span><span class="o">=-</span><span class="mf">10.52351344</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">127.4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">&quot;cartesian&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;CartesianRepresentation (x, y, z) in pc
+    (120.40898448, 34.5112558, -23.2682118)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or, we could represent this data with cylindrical components:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">&quot;cylindrical&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;CylindricalRepresentation (rho, phi, z) in (pc, rad, pc)
+    (125.2571368, 0.279134, -23.2682118)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>To summarize, using <code class="docutils literal notranslate"><span class="pre">SkyCoord.represent_as()</span></code> is a convenient way to retrieve your coordinate data in a different representation, like Cartesian or Cylindrical. You can also change (in place) the representation of a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object by setting the <code class="docutils literal notranslate"><span class="pre">SkyCoord.representation_type</span></code> attribute. For example, if we create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> again with a distance, the default representation type is spherical:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c3</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="mf">15.9932</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">dec</span><span class="o">=-</span><span class="mf">10.52351344</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">127.4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c3</span><span class="o">.</span><span class="n">representation_type</span><span class="p">)</span>
+<span class="n">c3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;astropy.coordinates.representation.spherical.SphericalRepresentation&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
+    (15.9932, -10.52351344, 127.4)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can, however, change the internal representation of the data by setting the <code class="docutils literal notranslate"><span class="pre">representation_type</span></code> attribute to a new <code class="docutils literal notranslate"><span class="pre">Representation</span></code> class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c3</span><span class="o">.</span><span class="n">representation_type</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">CylindricalRepresentation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This then changes the way <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> will display the components:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (rho, phi, z) in (pc, deg, pc)
+    (125.2571368, 15.9932, -23.2682118)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, however, that changing the representation will also change the components that are available on a given <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object: Once we set the <code class="docutils literal notranslate"><span class="pre">representation_type</span></code> to cylindrical, the attributes <code class="docutils literal notranslate"><span class="pre">.ra</span></code> and <code class="docutils literal notranslate"><span class="pre">.dec</span></code> will no longer work, and we instead have to use the cylindrical component names to access the data. In this case, these are <code class="docutils literal notranslate"><span class="pre">.rho</span></code> for radius, <code class="docutils literal notranslate"><span class="pre">.phi</span></code> for azimuth, <code class="docutils literal notranslate"><span class="pre">.z</span></code> for <span class="math notranslate nohighlight">\(z\)</span> position:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c3</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="n">c3</span><span class="o">.</span><span class="n">phi</span><span class="p">,</span> <span class="n">c3</span><span class="o">.</span><span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Quantity 125.2571368 pc&gt;, &lt;Angle 15.9932 deg&gt;, &lt;Quantity -23.2682118 pc&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="transforming-between-coordinate-frames">
+<h2>Transforming Between Coordinate Frames<a class="headerlink" href="#transforming-between-coordinate-frames" title="Link to this heading">#</a></h2>
+<p>The third key concept to keep in mind when thinking about astronomical coordinate data is the reference frame or coordinate system that the data are in. In the previous tutorial, and so far here, we have worked with the default frame assumed by <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code>: the International Celestial Reference System (ICRS; <a class="reference external" href="https://arxiv.org/abs/astro-ph/0602086">some important definitions and context about the ICRS is given here</a>). The ICRS is the fundamental coordinate system used in most modern astronomical contexts and is generally what people mean when they refer to “equatorial” or “J2000” or “RA/Dec” coordinates (but there are some important caveats if you are working with older data). As noted above, however, there are many other coordinate systems used in different astronomical, solar, or solar system contexts.</p>
+<p>Some other common coordinate systems are defined as a rotation away from the ICRS that is defined to make science applications easier to interpret. One example here is the Galactic coordinate system, which is rotated with respect to the ICRS to approximately align the Galactic plane with latitude=0. As an example of the <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> frame transformation machinery, we will load in a subset of a catalog of positions and distances to a set of open clusters in the Milky Way from Cantat-Gaudin et al. 2018 (<a class="reference external" href="http://vizier.u-strasbg.fr/viz-bin/VizieR-3?-source=J/A%2bA/618/A93/table1">Table 1 in this catalog</a>). We have pre-selected the 474 clusters within 2 kpc of the sun and provide the catalog as a data file next to this notebook. This catalog provides sky position (columns <code class="docutils literal notranslate"><span class="pre">RAJ2000</span></code> and <code class="docutils literal notranslate"><span class="pre">DEJ2000</span></code> in the original catalog) and distance estimates (column <code class="docutils literal notranslate"><span class="pre">dmode</span></code> in the original catalog), which we have renamed in the table we provide to column names <code class="docutils literal notranslate"><span class="pre">'ra'</span></code>, <code class="docutils literal notranslate"><span class="pre">'dec'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'distance'</span></code>. We will start by loading the catalog as a <code class="docutils literal notranslate"><span class="pre">QTable</span></code>  using <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code> (<a class="reference external" href="https://docs.astropy.org/en/stable/table/">docs</a>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Cantat-Gaudin-open-clusters.ecsv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now pass the coordinate components to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> to create a single array-valued <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent the positions of all of the open clusters in this catalog. Note that below we will explicitly specify the coordinate frame using <code class="docutils literal notranslate"><span class="pre">frame='icrs'</span></code>: Even though this is the default frame, it is often better to be explicit so that it is clearer to someone reading the code what the coordinate system is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_c</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
+    <span class="n">ra</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">],</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span>
+<span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">open_cluster_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>474
+</pre></div>
+</div>
+</div>
+</div>
+<p>To see the first few coordinate entries, we can “slice” the array-valued coordinate object like we would a Python list or numpy array:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_c</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
+    [( 51.87 , 34.981,  629.6), (288.399, 36.369,  382.2),
+     (295.548, 27.366,  522.9), (298.306, 39.349, 1034.6)]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now visualize the sky positions of all of these clusters, colored by their distances. To plot these in an all-sky spherical projection (e.g., aitoff) using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, with longitude increasing to the left as is typically done for plotting astronomical objects on the sky, we have to trick <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> a little bit: We have to pass in the <em>negative</em> angle values when plotting, then reformat the tick labels to make them positive values again. We have written a short function below to handle this trick:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">coordinates_aitoff_plot</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;aitoff&quot;</span><span class="p">))</span>
+
+    <span class="n">sph</span> <span class="o">=</span> <span class="n">coords</span><span class="o">.</span><span class="n">spherical</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="o">-</span><span class="n">sph</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">wrap_at</span><span class="p">(</span><span class="mi">180</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span><span class="o">.</span><span class="n">radian</span><span class="p">,</span> <span class="n">sph</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">radian</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">sph</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">value</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fmt_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">radian</span><span class="p">)</span><span class="o">.</span><span class="n">wrap_at</span><span class="p">(</span><span class="mi">360</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span><span class="o">.</span><span class="n">degree</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;^{\circ}$&quot;</span>
+
+    <span class="n">ticker</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">fmt_func</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">ticker</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+    <span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
+    <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;distance [pc]&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can plot the sky positions by passing our <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object in to this <code class="docutils literal notranslate"><span class="pre">coordinates_aitoff_plot()</span></code> plot helper function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">coordinates_aitoff_plot</span><span class="p">(</span><span class="n">open_cluster_c</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;RA [deg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Dec [deg]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Dec [deg]&#39;)
+</pre></div>
+</div>
+<img alt="_images/4bcd91bba193587ea889c7d17402bb8c7e1cc28ff2b98c2c20813ee082f41784.png" src="_images/4bcd91bba193587ea889c7d17402bb8c7e1cc28ff2b98c2c20813ee082f41784.png" />
+</div>
+</div>
+<p>The majority of these open clusters are relatively close to the Galactic midplane, which is why they form a fairly narrow “band” on the sky in ICRS coordinates. If we transform these positions to Galactic coordinates, we would therefore expect the points to appear around the latitude <span class="math notranslate nohighlight">\(b=0\)</span> line.</p>
+<p>To transform our coordinates from ICRS to Galactic (or any other coordinate system), we can use the <code class="docutils literal notranslate"><span class="pre">SkyCoord.transform_to()</span></code> method and pass in the new coordinate frame instance (in this case, <code class="docutils literal notranslate"><span class="pre">Galactic()</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_gal</span> <span class="o">=</span> <span class="n">open_cluster_c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">Galactic</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>While the recommended way of transforming <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> objects to new frames is by passing in a frame class <em>instance</em> as we demonstrated in the cell above, <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> also supports a shorthand for transforming some frames by accessing attributes (named as the lower-case version of the new frame name):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_gal</span> <span class="o">=</span> <span class="n">open_cluster_c</span><span class="o">.</span><span class="n">galactic</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The transformed <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object now contains coordinate data in the <code class="docutils literal notranslate"><span class="pre">Galactic</span></code> coordinate frame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_gal</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (Galactic): (l, b, distance) in (deg, deg, pc)
+    [(155.72353157, -17.76999215,  629.59997559),
+     ( 68.02807936,  11.60790067,  382.20001221),
+     ( 62.82445527,   2.06275608,  522.90002441),
+     ( 74.37841053,   6.07393592, 1034.59997559)]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Comparing this to the original <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code>, note that the names of the longitude and latitude components have changed from <code class="docutils literal notranslate"><span class="pre">ra</span></code> to <code class="docutils literal notranslate"><span class="pre">l</span></code> and from <code class="docutils literal notranslate"><span class="pre">dec</span></code> to <code class="docutils literal notranslate"><span class="pre">b</span></code>, per convention. We can therefore access the new Galactic longitude/latitude data using these new attribute names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_gal</span><span class="o">.</span><span class="n">l</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[$155^\circ43{}^\prime24.71365331{}^{\prime\prime}$
+ $68^\circ01{}^\prime41.08568525{}^{\prime\prime}$
+ $62^\circ49{}^\prime28.03898608{}^{\prime\prime}$]\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_gal</span><span class="o">.</span><span class="n">b</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[$-17^\circ46{}^\prime11.97173095{}^{\prime\prime}$
+ $11^\circ36{}^\prime28.44242147{}^{\prime\prime}$
+ $2^\circ03{}^\prime45.92187936{}^{\prime\prime}$]\]</div>
+</div>
+</div>
+<p><em>Note: the ICRS coordinate component names (<code class="docutils literal notranslate"><span class="pre">.ra</span></code>, <code class="docutils literal notranslate"><span class="pre">.dec</span></code>) will therefore <strong>not</strong> work on this new, transformed <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> instance, <code class="docutils literal notranslate"><span class="pre">open_cluster_gal</span></code></em></p>
+<p>With this new <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object (in the Galactic frame), let’s re-make a sky plot to visualize the sky positions of the open clusters in Galactic coordinates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">coordinates_aitoff_plot</span><span class="p">(</span><span class="n">open_cluster_gal</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Galactic longitude, $l$ [deg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Galactic latitude, $b$ [deg]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Galactic latitude, $b$ [deg]&#39;)
+</pre></div>
+</div>
+<img alt="_images/e27dec4cbe9ebbafa85d7b7db57d3ec47b337dd44a82550f2c84b18a5a676ac9.png" src="_images/e27dec4cbe9ebbafa85d7b7db57d3ec47b337dd44a82550f2c84b18a5a676ac9.png" />
+</div>
+</div>
+<p>As we hoped and expected, in the Galactic coordinate frame, the open clusters predominantly appear at low galactic latitudes!</p>
+</section>
+<section id="transforming-to-more-complex-coordinate-frames-computing-the-altitude-of-a-target-at-an-observatory">
+<h2>Transforming to More Complex Coordinate Frames: Computing the Altitude of a Target at an Observatory<a class="headerlink" href="#transforming-to-more-complex-coordinate-frames-computing-the-altitude-of-a-target-at-an-observatory" title="Link to this heading">#</a></h2>
+<p>To determine whether a target is observable from a given observatory on Earth or to find out what targets are observable from a city or place on Earth at some time, we sometimes need to convert a coordinate or set of coordinates to a frame that is local to an on-earth observer. The most common choice for such a frame is “horizontal” or “Altitude-Azimuth” coordinates. In this frame, the sky coordinates of a source can be specified as an altitude from the horizon and an azimuth angle at a specified time. This coordinate frame is supported in <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> through the <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> coordinate frame.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> frame is different from the previously-demonstrated <code class="docutils literal notranslate"><span class="pre">Galactic</span></code> frame in that it requires additional metadata to define the frame instance. Since the <code class="docutils literal notranslate"><span class="pre">Galactic</span></code> frame is close to being a 3D rotation away from the ICRS frame, and that rotation matrix is fixed, we could transform to <code class="docutils literal notranslate"><span class="pre">Galactic</span></code> by instantiating the class with no arguments (see the example above where we used <code class="docutils literal notranslate"><span class="pre">.transform_to(Galactic())</span></code>). In order to specify an instance of the <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> frame, we have to (at minimum) pass in (1) a location on Earth, and (2) the time (or times) we are requesting the frame at.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code>, we specify locations on Earth with the <code class="docutils literal notranslate"><span class="pre">EarthLocation</span></code> class (<a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.coordinates.EarthLocation.html">docs</a>). If we know the Earth longitude and latitude of our site, we can use these to create an instance of <code class="docutils literal notranslate"><span class="pre">EarthLocation</span></code> directly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_loc</span> <span class="o">=</span> <span class="n">EarthLocation</span><span class="o">.</span><span class="n">from_geodetic</span><span class="p">(</span><span class="n">lon</span><span class="o">=-</span><span class="mf">74.32834</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">43.05885</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">EarthLocation</span></code> class also provides handy short-hands for retrieving an instance for a given street address (by querying the <a class="reference external" href="https://www.openstreetmap.org/">OpenStreetMap</a> web API):</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_loc</span> <span class="o">=</span> <span class="n">EarthLocation</span><span class="o">.</span><span class="n">of_address</span><span class="p">(</span><span class="s2">&quot;162 Fifth Ave, New York, NY 10010&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or for an astronomical observatory (use <code class="docutils literal notranslate"><span class="pre">EarthLocation.get_site_names()</span></code> to see a list of all available sites). For example, to retrieve an <code class="docutils literal notranslate"><span class="pre">EarthLocation</span></code> instance for the position of Kitt Peak National Observatory (in AZ, USA):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">observing_location</span> <span class="o">=</span> <span class="n">EarthLocation</span><span class="o">.</span><span class="n">of_site</span><span class="p">(</span><span class="s2">&quot;Kitt Peak&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use Kitt Peak as our site.</p>
+<p>As an example, we will now compute the altitude of a few of the open clusters from our catalog above over the course of a night. We have an object to represent our location on Earth, so now we need to create a set of times to compute the <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> frame for. <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> expects time information to be passed in as an <code class="docutils literal notranslate"><span class="pre">astropy.time.Time</span></code> object (<a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.time.Time.html">docs</a>; which can contain an array of times). Let’s pretend we have an observing run coming up on Dec 18, 2020, and we would like to compute the altitude/azimuth coordinates for our open clusters over that whole night.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1AM UTC = 6PM local time (AZ mountain time), roughly the start of a night</span>
+<span class="n">observing_date</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s2">&quot;2020-12-18 1:00&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute the alt/az over a 14 hour period, starting at 6PM local time,</span>
+<span class="c1"># with 256 equally spaced time points:</span>
+<span class="n">time_grid</span> <span class="o">=</span> <span class="n">observing_date</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">hour</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we use our location, <code class="docutils literal notranslate"><span class="pre">observing_location</span></code>, and this grid of times, <code class="docutils literal notranslate"><span class="pre">time_grid</span></code>, to create an <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> frame object.</p>
+<p><em>Note: This frame accepts even more parameters about the atmosphere, which can be used to correct for atmospheric refraction. But here we leave those additional parameters set to their defaults, which ignores refraction.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">altaz</span> <span class="o">=</span> <span class="n">AltAz</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">observing_location</span><span class="p">,</span> <span class="n">obstime</span><span class="o">=</span><span class="n">time_grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can transform the ICRS <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> positions of the open clusters to <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> to get the location of each of the clusters in the sky over Kitt Peak over a night. Let’s first do this only for the first open cluster in the catalog we loaded:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oc_altaz</span> <span class="o">=</span> <span class="n">open_cluster_c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">altaz</span><span class="p">)</span>
+<span class="n">oc_altaz</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (AltAz: obstime=[&#39;2020-12-18 01:00:00.000&#39; &#39;2020-12-18 01:03:17.647&#39;
+ &#39;2020-12-18 01:06:35.294&#39; &#39;2020-12-18 01:09:52.941&#39;
+ &#39;2020-12-18 01:13:10.588&#39; &#39;2020-12-18 01:16:28.235&#39;
+ &#39;2020-12-18 01:19:45.882&#39; &#39;2020-12-18 01:23:03.529&#39;
+ &#39;2020-12-18 01:26:21.176&#39; &#39;2020-12-18 01:29:38.824&#39;
+ &#39;2020-12-18 01:32:56.471&#39; &#39;2020-12-18 01:36:14.118&#39;
+ &#39;2020-12-18 01:39:31.765&#39; &#39;2020-12-18 01:42:49.412&#39;
+ &#39;2020-12-18 01:46:07.059&#39; &#39;2020-12-18 01:49:24.706&#39;
+ &#39;2020-12-18 01:52:42.353&#39; &#39;2020-12-18 01:56:00.000&#39;
+ &#39;2020-12-18 01:59:17.647&#39; &#39;2020-12-18 02:02:35.294&#39;
+ &#39;2020-12-18 02:05:52.941&#39; &#39;2020-12-18 02:09:10.588&#39;
+ &#39;2020-12-18 02:12:28.235&#39; &#39;2020-12-18 02:15:45.882&#39;
+ &#39;2020-12-18 02:19:03.529&#39; &#39;2020-12-18 02:22:21.176&#39;
+ &#39;2020-12-18 02:25:38.824&#39; &#39;2020-12-18 02:28:56.471&#39;
+ &#39;2020-12-18 02:32:14.118&#39; &#39;2020-12-18 02:35:31.765&#39;
+ &#39;2020-12-18 02:38:49.412&#39; &#39;2020-12-18 02:42:07.059&#39;
+ &#39;2020-12-18 02:45:24.706&#39; &#39;2020-12-18 02:48:42.353&#39;
+ &#39;2020-12-18 02:52:00.000&#39; &#39;2020-12-18 02:55:17.647&#39;
+ &#39;2020-12-18 02:58:35.294&#39; &#39;2020-12-18 03:01:52.941&#39;
+ &#39;2020-12-18 03:05:10.588&#39; &#39;2020-12-18 03:08:28.235&#39;
+ &#39;2020-12-18 03:11:45.882&#39; &#39;2020-12-18 03:15:03.529&#39;
+ &#39;2020-12-18 03:18:21.176&#39; &#39;2020-12-18 03:21:38.824&#39;
+ &#39;2020-12-18 03:24:56.471&#39; &#39;2020-12-18 03:28:14.118&#39;
+ &#39;2020-12-18 03:31:31.765&#39; &#39;2020-12-18 03:34:49.412&#39;
+ &#39;2020-12-18 03:38:07.059&#39; &#39;2020-12-18 03:41:24.706&#39;
+ &#39;2020-12-18 03:44:42.353&#39; &#39;2020-12-18 03:48:00.000&#39;
+ &#39;2020-12-18 03:51:17.647&#39; &#39;2020-12-18 03:54:35.294&#39;
+ &#39;2020-12-18 03:57:52.941&#39; &#39;2020-12-18 04:01:10.588&#39;
+ &#39;2020-12-18 04:04:28.235&#39; &#39;2020-12-18 04:07:45.882&#39;
+ &#39;2020-12-18 04:11:03.529&#39; &#39;2020-12-18 04:14:21.176&#39;
+ &#39;2020-12-18 04:17:38.824&#39; &#39;2020-12-18 04:20:56.471&#39;
+ &#39;2020-12-18 04:24:14.118&#39; &#39;2020-12-18 04:27:31.765&#39;
+ &#39;2020-12-18 04:30:49.412&#39; &#39;2020-12-18 04:34:07.059&#39;
+ &#39;2020-12-18 04:37:24.706&#39; &#39;2020-12-18 04:40:42.353&#39;
+ &#39;2020-12-18 04:44:00.000&#39; &#39;2020-12-18 04:47:17.647&#39;
+ &#39;2020-12-18 04:50:35.294&#39; &#39;2020-12-18 04:53:52.941&#39;
+ &#39;2020-12-18 04:57:10.588&#39; &#39;2020-12-18 05:00:28.235&#39;
+ &#39;2020-12-18 05:03:45.882&#39; &#39;2020-12-18 05:07:03.529&#39;
+ &#39;2020-12-18 05:10:21.176&#39; &#39;2020-12-18 05:13:38.824&#39;
+ &#39;2020-12-18 05:16:56.471&#39; &#39;2020-12-18 05:20:14.118&#39;
+ &#39;2020-12-18 05:23:31.765&#39; &#39;2020-12-18 05:26:49.412&#39;
+ &#39;2020-12-18 05:30:07.059&#39; &#39;2020-12-18 05:33:24.706&#39;
+ &#39;2020-12-18 05:36:42.353&#39; &#39;2020-12-18 05:40:00.000&#39;
+ &#39;2020-12-18 05:43:17.647&#39; &#39;2020-12-18 05:46:35.294&#39;
+ &#39;2020-12-18 05:49:52.941&#39; &#39;2020-12-18 05:53:10.588&#39;
+ &#39;2020-12-18 05:56:28.235&#39; &#39;2020-12-18 05:59:45.882&#39;
+ &#39;2020-12-18 06:03:03.529&#39; &#39;2020-12-18 06:06:21.176&#39;
+ &#39;2020-12-18 06:09:38.824&#39; &#39;2020-12-18 06:12:56.471&#39;
+ &#39;2020-12-18 06:16:14.118&#39; &#39;2020-12-18 06:19:31.765&#39;
+ &#39;2020-12-18 06:22:49.412&#39; &#39;2020-12-18 06:26:07.059&#39;
+ &#39;2020-12-18 06:29:24.706&#39; &#39;2020-12-18 06:32:42.353&#39;
+ &#39;2020-12-18 06:36:00.000&#39; &#39;2020-12-18 06:39:17.647&#39;
+ &#39;2020-12-18 06:42:35.294&#39; &#39;2020-12-18 06:45:52.941&#39;
+ &#39;2020-12-18 06:49:10.588&#39; &#39;2020-12-18 06:52:28.235&#39;
+ &#39;2020-12-18 06:55:45.882&#39; &#39;2020-12-18 06:59:03.529&#39;
+ &#39;2020-12-18 07:02:21.176&#39; &#39;2020-12-18 07:05:38.824&#39;
+ &#39;2020-12-18 07:08:56.471&#39; &#39;2020-12-18 07:12:14.118&#39;
+ &#39;2020-12-18 07:15:31.765&#39; &#39;2020-12-18 07:18:49.412&#39;
+ &#39;2020-12-18 07:22:07.059&#39; &#39;2020-12-18 07:25:24.706&#39;
+ &#39;2020-12-18 07:28:42.353&#39; &#39;2020-12-18 07:32:00.000&#39;
+ &#39;2020-12-18 07:35:17.647&#39; &#39;2020-12-18 07:38:35.294&#39;
+ &#39;2020-12-18 07:41:52.941&#39; &#39;2020-12-18 07:45:10.588&#39;
+ &#39;2020-12-18 07:48:28.235&#39; &#39;2020-12-18 07:51:45.882&#39;
+ &#39;2020-12-18 07:55:03.529&#39; &#39;2020-12-18 07:58:21.176&#39;
+ &#39;2020-12-18 08:01:38.824&#39; &#39;2020-12-18 08:04:56.471&#39;
+ &#39;2020-12-18 08:08:14.118&#39; &#39;2020-12-18 08:11:31.765&#39;
+ &#39;2020-12-18 08:14:49.412&#39; &#39;2020-12-18 08:18:07.059&#39;
+ &#39;2020-12-18 08:21:24.706&#39; &#39;2020-12-18 08:24:42.353&#39;
+ &#39;2020-12-18 08:28:00.000&#39; &#39;2020-12-18 08:31:17.647&#39;
+ &#39;2020-12-18 08:34:35.294&#39; &#39;2020-12-18 08:37:52.941&#39;
+ &#39;2020-12-18 08:41:10.588&#39; &#39;2020-12-18 08:44:28.235&#39;
+ &#39;2020-12-18 08:47:45.882&#39; &#39;2020-12-18 08:51:03.529&#39;
+ &#39;2020-12-18 08:54:21.176&#39; &#39;2020-12-18 08:57:38.824&#39;
+ &#39;2020-12-18 09:00:56.471&#39; &#39;2020-12-18 09:04:14.118&#39;
+ &#39;2020-12-18 09:07:31.765&#39; &#39;2020-12-18 09:10:49.412&#39;
+ &#39;2020-12-18 09:14:07.059&#39; &#39;2020-12-18 09:17:24.706&#39;
+ &#39;2020-12-18 09:20:42.353&#39; &#39;2020-12-18 09:24:00.000&#39;
+ &#39;2020-12-18 09:27:17.647&#39; &#39;2020-12-18 09:30:35.294&#39;
+ &#39;2020-12-18 09:33:52.941&#39; &#39;2020-12-18 09:37:10.588&#39;
+ &#39;2020-12-18 09:40:28.235&#39; &#39;2020-12-18 09:43:45.882&#39;
+ &#39;2020-12-18 09:47:03.529&#39; &#39;2020-12-18 09:50:21.176&#39;
+ &#39;2020-12-18 09:53:38.824&#39; &#39;2020-12-18 09:56:56.471&#39;
+ &#39;2020-12-18 10:00:14.118&#39; &#39;2020-12-18 10:03:31.765&#39;
+ &#39;2020-12-18 10:06:49.412&#39; &#39;2020-12-18 10:10:07.059&#39;
+ &#39;2020-12-18 10:13:24.706&#39; &#39;2020-12-18 10:16:42.353&#39;
+ &#39;2020-12-18 10:20:00.000&#39; &#39;2020-12-18 10:23:17.647&#39;
+ &#39;2020-12-18 10:26:35.294&#39; &#39;2020-12-18 10:29:52.941&#39;
+ &#39;2020-12-18 10:33:10.588&#39; &#39;2020-12-18 10:36:28.235&#39;
+ &#39;2020-12-18 10:39:45.882&#39; &#39;2020-12-18 10:43:03.529&#39;
+ &#39;2020-12-18 10:46:21.176&#39; &#39;2020-12-18 10:49:38.824&#39;
+ &#39;2020-12-18 10:52:56.471&#39; &#39;2020-12-18 10:56:14.118&#39;
+ &#39;2020-12-18 10:59:31.765&#39; &#39;2020-12-18 11:02:49.412&#39;
+ &#39;2020-12-18 11:06:07.059&#39; &#39;2020-12-18 11:09:24.706&#39;
+ &#39;2020-12-18 11:12:42.353&#39; &#39;2020-12-18 11:16:00.000&#39;
+ &#39;2020-12-18 11:19:17.647&#39; &#39;2020-12-18 11:22:35.294&#39;
+ &#39;2020-12-18 11:25:52.941&#39; &#39;2020-12-18 11:29:10.588&#39;
+ &#39;2020-12-18 11:32:28.235&#39; &#39;2020-12-18 11:35:45.882&#39;
+ &#39;2020-12-18 11:39:03.529&#39; &#39;2020-12-18 11:42:21.176&#39;
+ &#39;2020-12-18 11:45:38.824&#39; &#39;2020-12-18 11:48:56.471&#39;
+ &#39;2020-12-18 11:52:14.118&#39; &#39;2020-12-18 11:55:31.765&#39;
+ &#39;2020-12-18 11:58:49.412&#39; &#39;2020-12-18 12:02:07.059&#39;
+ &#39;2020-12-18 12:05:24.706&#39; &#39;2020-12-18 12:08:42.353&#39;
+ &#39;2020-12-18 12:12:00.000&#39; &#39;2020-12-18 12:15:17.647&#39;
+ &#39;2020-12-18 12:18:35.294&#39; &#39;2020-12-18 12:21:52.941&#39;
+ &#39;2020-12-18 12:25:10.588&#39; &#39;2020-12-18 12:28:28.235&#39;
+ &#39;2020-12-18 12:31:45.882&#39; &#39;2020-12-18 12:35:03.529&#39;
+ &#39;2020-12-18 12:38:21.176&#39; &#39;2020-12-18 12:41:38.824&#39;
+ &#39;2020-12-18 12:44:56.471&#39; &#39;2020-12-18 12:48:14.118&#39;
+ &#39;2020-12-18 12:51:31.765&#39; &#39;2020-12-18 12:54:49.412&#39;
+ &#39;2020-12-18 12:58:07.059&#39; &#39;2020-12-18 13:01:24.706&#39;
+ &#39;2020-12-18 13:04:42.353&#39; &#39;2020-12-18 13:08:00.000&#39;
+ &#39;2020-12-18 13:11:17.647&#39; &#39;2020-12-18 13:14:35.294&#39;
+ &#39;2020-12-18 13:17:52.941&#39; &#39;2020-12-18 13:21:10.588&#39;
+ &#39;2020-12-18 13:24:28.235&#39; &#39;2020-12-18 13:27:45.882&#39;
+ &#39;2020-12-18 13:31:03.529&#39; &#39;2020-12-18 13:34:21.176&#39;
+ &#39;2020-12-18 13:37:38.824&#39; &#39;2020-12-18 13:40:56.471&#39;
+ &#39;2020-12-18 13:44:14.118&#39; &#39;2020-12-18 13:47:31.765&#39;
+ &#39;2020-12-18 13:50:49.412&#39; &#39;2020-12-18 13:54:07.059&#39;
+ &#39;2020-12-18 13:57:24.706&#39; &#39;2020-12-18 14:00:42.353&#39;
+ &#39;2020-12-18 14:04:00.000&#39; &#39;2020-12-18 14:07:17.647&#39;
+ &#39;2020-12-18 14:10:35.294&#39; &#39;2020-12-18 14:13:52.941&#39;
+ &#39;2020-12-18 14:17:10.588&#39; &#39;2020-12-18 14:20:28.235&#39;
+ &#39;2020-12-18 14:23:45.882&#39; &#39;2020-12-18 14:27:03.529&#39;
+ &#39;2020-12-18 14:30:21.176&#39; &#39;2020-12-18 14:33:38.824&#39;
+ &#39;2020-12-18 14:36:56.471&#39; &#39;2020-12-18 14:40:14.118&#39;
+ &#39;2020-12-18 14:43:31.765&#39; &#39;2020-12-18 14:46:49.412&#39;
+ &#39;2020-12-18 14:50:07.059&#39; &#39;2020-12-18 14:53:24.706&#39;
+ &#39;2020-12-18 14:56:42.353&#39; &#39;2020-12-18 15:00:00.000&#39;], location=(-1994502.604306139, -5037538.54232911, 3358104.9969029757) m, pressure=0.0 hPa, temperature=0.0 deg_C, relative_humidity=0.0, obswl=1.0 micron): (az, alt, distance) in (deg, deg, pc)
+    [( 68.6453125 ,  3.92957964e+01, 629.59997152),
+     ( 68.87232312,  3.99487849e+01, 629.59997152),
+     ( 69.09658831,  4.06027679e+01, 629.59997152),
+     ( 69.31808233,  4.12577232e+01, 629.59997152),
+     ( 69.53677613,  4.19136292e+01, 629.59997152),
+     ( 69.75263715,  4.25704639e+01, 629.59997152),
+     ( 69.9656291 ,  4.32282062e+01, 629.59997152),
+     ( 70.17571173,  4.38868345e+01, 629.59997152),
+     ( 70.38284052,  4.45463280e+01, 629.59997152),
+     ( 70.58696641,  4.52066657e+01, 629.59997152),
+     ( 70.7880355 ,  4.58678268e+01, 629.59997152),
+     ( 70.98598866,  4.65297907e+01, 629.59997152),
+     ( 71.18076119,  4.71925370e+01, 629.59997152),
+     ( 71.37228235,  4.78560452e+01, 629.59997152),
+     ( 71.56047493,  4.85202949e+01, 629.59997152),
+     ( 71.74525474,  4.91852660e+01, 629.59997152),
+     ( 71.92653004,  4.98509381e+01, 629.59997152),
+     ( 72.10420091,  5.05172912e+01, 629.59997152),
+     ( 72.2781586 ,  5.11843049e+01, 629.59997152),
+     ( 72.44828473,  5.18519591e+01, 629.59997152),
+     ( 72.61445048,  5.25202334e+01, 629.59997152),
+     ( 72.77651565,  5.31891073e+01, 629.59997152),
+     ( 72.9343276 ,  5.38585605e+01, 629.59997152),
+     ( 73.08772013,  5.45285720e+01, 629.59997152),
+     ( 73.23651217,  5.51991212e+01, 629.59997152),
+     ( 73.38050632,  5.58701867e+01, 629.59997152),
+     ( 73.51948725,  5.65417471e+01, 629.59997152),
+     ( 73.65321987,  5.72137807e+01, 629.59997152),
+     ( 73.78144728,  5.78862651e+01, 629.59997152),
+     ( 73.90388843,  5.85591777e+01, 629.59997152),
+     ( 74.02023555,  5.92324952e+01, 629.59997152),
+     ( 74.13015113,  5.99061937e+01, 629.59997152),
+     ( 74.23326456,  6.05802484e+01, 629.59997152),
+     ( 74.32916826,  6.12546340e+01, 629.59997152),
+     ( 74.4174133 ,  6.19293238e+01, 629.59997152),
+     ( 74.4975043 ,  6.26042903e+01, 629.59997152),
+     ( 74.56889364,  6.32795045e+01, 629.59997152),
+     ( 74.63097474,  6.39549360e+01, 629.59997152),
+     ( 74.68307425,  6.46305528e+01, 629.59997152),
+     ( 74.72444303,  6.53063208e+01, 629.59997152),
+     ( 74.75424559,  6.59822037e+01, 629.59997152),
+     ( 74.77154774,  6.66581626e+01, 629.59997152),
+     ( 74.775302  ,  6.73341557e+01, 629.59997152),
+     ( 74.7643305 ,  6.80101374e+01, 629.59997152),
+     ( 74.73730454,  6.86860586e+01, 629.59997152),
+     ( 74.69272033,  6.93618648e+01, 629.59997152),
+     ( 74.62886986,  7.00374965e+01, 629.59997152),
+     ( 74.54380585,  7.07128874e+01, 629.59997152),
+     ( 74.43529924,  7.13879634e+01, 629.59997152),
+     ( 74.30078745,  7.20626413e+01, 629.59997152),
+     ( 74.13731089,  7.27368270e+01, 629.59997152),
+     ( 73.94143462,  7.34104128e+01, 629.59997152),
+     ( 73.70915091,  7.40832754e+01, 629.59997153),
+     ( 73.43575731,  7.47552717e+01, 629.59997153),
+     ( 73.11570266,  7.54262347e+01, 629.59997153),
+     ( 72.74239115,  7.60959677e+01, 629.59997153),
+     ( 72.30793074,  7.67642369e+01, 629.59997153),
+     ( 71.80280707,  7.74307620e+01, 629.59997153),
+     ( 71.21545687,  7.80952030e+01, 629.59997153),
+     ( 70.53170387,  7.87571438e+01, 629.59997153),
+     ( 69.73400548,  7.94160683e+01, 629.59997153),
+     ( 68.80043555,  8.00713294e+01, 629.59997153),
+     ( 67.7032968 ,  8.07221043e+01, 629.59997153),
+     ( 66.4072092 ,  8.13673318e+01, 629.59997153),
+     ( 64.86645553,  8.20056224e+01, 629.59997153),
+     ( 63.02127816,  8.26351262e+01, 629.59997153),
+     ( 60.79272411,  8.32533373e+01, 629.59997153),
+     ( 58.07557898,  8.38568002e+01, 629.59997153),
+     ( 54.72909461,  8.44406656e+01, 629.59997153),
+     ( 50.56612067,  8.49980225e+01, 629.59997153),
+     ( 45.34425335,  8.55189269e+01, 629.59997153),
+     ( 38.77063621,  8.59891116e+01, 629.59997153),
+     ( 30.54878284,  8.63886760e+01, 629.59997153),
+     ( 20.51471432,  8.66919017e+01, 629.59997153),
+     (  8.87923794,  8.68706359e+01, 629.59997153),
+     (356.42132249,  8.69032357e+01, 629.59997153),
+     (344.3056594 ,  8.67852503e+01, 629.59997153),
+     (333.52847465,  8.65320218e+01, 629.59997153),
+     (324.53491904,  8.61702986e+01, 629.59997153),
+     (317.28825519,  8.57275688e+01, 629.59997153),
+     (311.52521889,  8.52263419e+01, 629.59997153),
+     (306.94165647,  8.46831629e+01, 629.59997153),
+     (303.27141217,  8.41096560e+01, 629.59997153),
+     (300.30435917,  8.35138923e+01, 629.59997153),
+     (297.8812238 ,  8.29015066e+01, 629.59997153),
+     (295.88283094,  8.22764861e+01, 629.59997153),
+     (294.21996954,  8.16416999e+01, 629.59997153),
+     (292.8253914 ,  8.09992504e+01, 629.59997153),
+     (291.64789255,  8.03507049e+01, 629.59997153),
+     (290.64804286,  7.96972524e+01, 629.59997153),
+     (289.79512546,  7.90398085e+01, 629.59997153),
+     (289.06493832,  7.83790896e+01, 629.59997153),
+     (288.43820429,  7.77156631e+01, 629.59997153),
+     (287.8994107 ,  7.70499848e+01, 629.59997153),
+     (287.43595363,  7.63824248e+01, 629.59997153),
+     (287.0375003 ,  7.57132874e+01, 629.59997153),
+     (286.69550879,  7.50428249e+01, 629.59997153),
+     (286.40286268,  7.43712488e+01, 629.59997153),
+     (286.15359017,  7.36987380e+01, 629.59997153),
+     (285.9426463 ,  7.30254454e+01, 629.59997153),
+     (285.76574234,  7.23515022e+01, 629.59997153),
+     (285.61921119,  7.16770224e+01, 629.59997153),
+     (285.49990024,  7.10021056e+01, 629.59997153),
+     (285.40508539,  7.03268395e+01, 629.59997153),
+     (285.33240167,  6.96513019e+01, 629.59997153),
+     (285.27978679,  6.89755622e+01, 629.59997153),
+     (285.24543494,  6.82996827e+01, 629.59997153),
+     (285.22775872,  6.76237200e+01, 629.59997153),
+     (285.22535766,  6.69477254e+01, 629.59997153),
+     (285.23699199,  6.62717459e+01, 629.59997153),
+     (285.26156065,  6.55958249e+01, 629.59997153),
+     (285.29808283,  6.49200024e+01, 629.59997153),
+     (285.34568241,  6.42443159e+01, 629.59997153),
+     (285.40357463,  6.35688002e+01, 629.59997153),
+     (285.47105488,  6.28934884e+01, 629.59997153),
+     (285.54748899,  6.22184115e+01, 629.59997153),
+     (285.63230496,  6.15435989e+01, 629.59997153),
+     (285.72498581,  6.08690790e+01, 629.59997153),
+     (285.82506336,  6.01948786e+01, 629.59997153),
+     (285.9321129 ,  5.95210236e+01, 629.59997153),
+     (286.04574847,  5.88475391e+01, 629.59997153),
+     (286.16561884,  5.81744494e+01, 629.59997153),
+     (286.29140388,  5.75017779e+01, 629.59997153),
+     (286.42281143,  5.68295476e+01, 629.59997153),
+     (286.55957455,  5.61577810e+01, 629.59997153),
+     (286.70144908,  5.54864999e+01, 629.59997153),
+     (286.84821144,  5.48157261e+01, 629.59997153),
+     (286.99965678,  5.41454808e+01, 629.59997153),
+     (287.15559721,  5.34757850e+01, 629.59997153),
+     (287.31586033,  5.28066595e+01, 629.59997153),
+     (287.48028784,  5.21381250e+01, 629.59997153),
+     (287.64873435,  5.14702017e+01, 629.59997153),
+     (287.82106628,  5.08029102e+01, 629.59997153),
+     (287.99716089,  5.01362707e+01, 629.59997153),
+     (288.1769054 ,  4.94703035e+01, 629.59997153),
+     (288.3601962 ,  4.88050286e+01, 629.59997153),
+     (288.54693811,  4.81404664e+01, 629.59997153),
+     (288.73704379,  4.74766371e+01, 629.59997153),
+     (288.9304331 ,  4.68135610e+01, 629.59997153),
+     (289.1270326 ,  4.61512585e+01, 629.59997153),
+     (289.32677504,  4.54897499e+01, 629.59997153),
+     (289.52959897,  4.48290560e+01, 629.59997153),
+     (289.73544828,  4.41691973e+01, 629.59997153),
+     (289.94427189,  4.35101947e+01, 629.59997153),
+     (290.15602336,  4.28520693e+01, 629.59997153),
+     (290.37066066,  4.21948422e+01, 629.59997153),
+     (290.58814581,  4.15385347e+01, 629.59997153),
+     (290.80844471,  4.08831684e+01, 629.59997153),
+     (291.03152682,  4.02287651e+01, 629.59997153),
+     (291.257365  ,  3.95753469e+01, 629.59997153),
+     (291.48593532,  3.89229359e+01, 629.59997153),
+     (291.71721684,  3.82715547e+01, 629.59997153),
+     (291.95119145,  3.76212260e+01, 629.59997153),
+     (292.18784374,  3.69719729e+01, 629.59997153),
+     (292.42716085,  3.63238188e+01, 629.59997153),
+     (292.66913231,  3.56767873e+01, 629.59997153),
+     (292.91374996,  3.50309024e+01, 629.59997153),
+     (293.16100781,  3.43861884e+01, 629.59997153),
+     (293.41090195,  3.37426698e+01, 629.59997153),
+     (293.66343043,  3.31003717e+01, 629.59997153),
+     (293.9185932 ,  3.24593194e+01, 629.59997153),
+     (294.17639201,  3.18195387e+01, 629.59997153),
+     (294.43683035,  3.11810555e+01, 629.59997153),
+     (294.69991333,  3.05438965e+01, 629.59997153),
+     (294.96564769,  2.99080885e+01, 629.59997154),
+     (295.23404165,  2.92736588e+01, 629.59997154),
+     (295.50510492,  2.86406351e+01, 629.59997154),
+     (295.77884863,  2.80090457e+01, 629.59997154),
+     (296.05528525,  2.73789192e+01, 629.59997154),
+     (296.33442856,  2.67502846e+01, 629.59997154),
+     (296.61629362,  2.61231716e+01, 629.59997154),
+     (296.9008967 ,  2.54976102e+01, 629.59997154),
+     (297.18825527,  2.48736310e+01, 629.59997154),
+     (297.47838794,  2.42512649e+01, 629.59997154),
+     (297.77131441,  2.36305437e+01, 629.59997154),
+     (298.06705548,  2.30114994e+01, 629.59997154),
+     (298.36563299,  2.23941647e+01, 629.59997154),
+     (298.66706979,  2.17785729e+01, 629.59997154),
+     (298.97138971,  2.11647577e+01, 629.59997154),
+     (299.27861753,  2.05527535e+01, 629.59997154),
+     (299.58877898,  1.99425953e+01, 629.59997154),
+     (299.90190067,  1.93343187e+01, 629.59997154),
+     (300.2180101 ,  1.87279598e+01, 629.59997154),
+     (300.53713562,  1.81235557e+01, 629.59997154),
+     (300.8593064 ,  1.75211436e+01, 629.59997154),
+     (301.18455243,  1.69207618e+01, 629.59997154),
+     (301.51290446,  1.63224491e+01, 629.59997154),
+     (301.84439401,  1.57262451e+01, 629.59997154),
+     (302.17905333,  1.51321898e+01, 629.59997154),
+     (302.51691539,  1.45403243e+01, 629.59997154),
+     (302.85801384,  1.39506902e+01, 629.59997154),
+     (303.202383  ,  1.33633298e+01, 629.59997154),
+     (303.55005782,  1.27782864e+01, 629.59997154),
+     (303.90107389,  1.21956037e+01, 629.59997154),
+     (304.25546736,  1.16153265e+01, 629.59997154),
+     (304.61327499,  1.10375003e+01, 629.59997154),
+     (304.97453405,  1.04621712e+01, 629.59997154),
+     (305.33928233,  9.88938648e+00, 629.59997154),
+     (305.70755814,  9.31919396e+00, 629.59997154),
+     (306.07940021,  8.75164240e+00, 629.59997154),
+     (306.45484773,  8.18678143e+00, 629.59997154),
+     (306.83394028,  7.62466151e+00, 629.59997154),
+     (307.21671783,  7.06533401e+00, 629.59997154),
+     (307.60322067,  6.50885117e+00, 629.59997154),
+     (307.99348941,  5.95526613e+00, 629.59997154),
+     (308.3875649 ,  5.40463297e+00, 629.59997154),
+     (308.78548828,  4.85700665e+00, 629.59997154),
+     (309.18730082,  4.31244310e+00, 629.59997154),
+     (309.593044  ,  3.77099917e+00, 629.59997154),
+     (310.00275939,  3.23273269e+00, 629.59997154),
+     (310.41648862,  2.69770243e+00, 629.59997154),
+     (310.83427336,  2.16596814e+00, 629.59997154),
+     (311.25615526,  1.63759053e+00, 629.59997154),
+     (311.68217588,  1.11263133e+00, 629.59997154),
+     (312.11237667,  5.91153243e-01, 629.59997154),
+     (312.5467989 ,  7.32199602e-02, 629.59997154),
+     (312.98548358, -4.41103810e-01, 629.59997154),
+     (313.42847146, -9.51752358e-01, 629.59997154),
+     (313.87580291, -1.45865897e+00, 629.59997154),
+     (314.32751788, -1.96175590e+00, 629.59997154),
+     (314.78365585, -2.46097443e+00, 629.59997154),
+     (315.24425573, -2.95624480e+00, 629.59997154),
+     (315.70935579, -3.44749624e+00, 629.59997154),
+     (316.17899362, -3.93465700e+00, 629.59997154),
+     (316.65320601, -4.41765429e+00, 629.59997154),
+     (317.13202889, -4.89641437e+00, 629.59997154),
+     (317.61549724, -5.37086248e+00, 629.59997154),
+     (318.10364503, -5.84092289e+00, 629.59997154),
+     (318.59650507, -6.30651890e+00, 629.59997154),
+     (319.094109  , -6.76757286e+00, 629.59997154),
+     (319.59648711, -7.22400619e+00, 629.59997154),
+     (320.10366831, -7.67573936e+00, 629.59997154),
+     (320.61567999, -8.12269198e+00, 629.59997154),
+     (321.13254794, -8.56478273e+00, 629.59997154),
+     (321.65429623, -9.00192947e+00, 629.59997154),
+     (322.1809471 , -9.43404919e+00, 629.59997154),
+     (322.71252086, -9.86105813e+00, 629.59997154),
+     (323.24903577, -1.02828717e+01, 629.59997154),
+     (323.79050794, -1.06994046e+01, 629.59997154),
+     (324.33695118, -1.11105708e+01, 629.59997154),
+     (324.88837693, -1.15162837e+01, 629.59997154),
+     (325.44479408, -1.19164560e+01, 629.59997154),
+     (326.00620892, -1.23109997e+01, 629.59997154),
+     (326.57262496, -1.26998265e+01, 629.59997154),
+     (327.14404281, -1.30828476e+01, 629.59997154),
+     (327.72046011, -1.34599736e+01, 629.59997154),
+     (328.30187136, -1.38311149e+01, 629.59997154),
+     (328.88826781, -1.41961815e+01, 629.59997154),
+     (329.47963733, -1.45550832e+01, 629.59997154),
+     (330.07596431, -1.49077297e+01, 629.59997154),
+     (330.67722954, -1.52540304e+01, 629.59997154),
+     (331.28341007, -1.55938949e+01, 629.59997154),
+     (331.89447912, -1.59272327e+01, 629.59997154),
+     (332.51040596, -1.62539535e+01, 629.59997154),
+     (333.13115581, -1.65739671e+01, 629.59997154),
+     (333.75668973, -1.68871838e+01, 629.59997154)]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a lot of information in the representation of our transformed <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code>, but note that the frame of the new object is now correctly noted as <code class="docutils literal notranslate"><span class="pre">AltAz</span></code>, as in<code class="docutils literal notranslate"><span class="pre">&lt;SkyCoord</span> <span class="pre">(AltAz:</span> <span class="pre">...</span></code>. Like transforming to <code class="docutils literal notranslate"><span class="pre">Galactic</span></code> coordinates above, the new <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object now contains the data in a new representation, so the ICRS component names <code class="docutils literal notranslate"><span class="pre">.ra</span></code> and <code class="docutils literal notranslate"><span class="pre">.dec</span></code> will not work on this new object. Instead, the data (the altitude and azimuth as a function of time) can be accessed with the <code class="docutils literal notranslate"><span class="pre">.alt</span></code> and <code class="docutils literal notranslate"><span class="pre">.az</span></code> component names. For example, let’s plot the altitude of this open cluster over the course of the night:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_grid</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">oc_altaz</span><span class="o">.</span><span class="n">alt</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date/Time [UTC]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Altitude [deg]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f6eef89cb870fede980f40744baed6a4130c3e86be90402cd539e30f0d902fc1.png" src="_images/f6eef89cb870fede980f40744baed6a4130c3e86be90402cd539e30f0d902fc1.png" />
+</div>
+</div>
+<p>Here we can see that this open cluster reaches a high altitude above the horizon from Kitt Peak, and so it looks like it would be observable from this site. The above curve only shows the altitude trajectory for the first open cluster in our catalog, but we would like to compute the equivalent for <em>all</em> of the open clusters in the catalog. To do this, we have to make use of a concept that is used heavily in Numpy: <a class="reference external" href="https://numpy.org/doc/stable/user/basics.broadcasting.html">array broadcasting</a>. We have 474 open clusters and we want to evaluate the <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> coordinates of these clusters at 256 different times.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">open_cluster_c</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">altaz</span><span class="o">.</span><span class="n">obstime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(474, 256)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We therefore want to produce a two-dimensional coordinate object that is indexed along one axis by the open cluster index, and along other axis by the time index. The <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> transformation machinery supports array-like broadcasting, so we can do this by creating new, unmatched, length-1 axes on both the open clusters <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object and the <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> frame using <code class="docutils literal notranslate"><span class="pre">numpy.newaxis</span></code> (<a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html?highlight=newaxis#numpy.newaxis">doc</a>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_altaz</span> <span class="o">=</span> <span class="n">open_cluster_c</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">altaz</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now over-plot the trajectories for the first 10 open clusters in the catalog:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_grid</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">open_cluster_altaz</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">alt</span><span class="o">.</span><span class="n">degree</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date/Time [UTC]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Altitude [deg]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/11680e3b9c73b759121a2be2f78b2c68d42c2f7b18bb32d6fe023c809e74b73f.png" src="_images/11680e3b9c73b759121a2be2f78b2c68d42c2f7b18bb32d6fe023c809e74b73f.png" />
+</div>
+</div>
+<p>From this, we can see that only two of the clusters in this batch seem to be easily observable.</p>
+</section>
+<section id="potential-caveats">
+<h2>Potential Caveats<a class="headerlink" href="#potential-caveats" title="Link to this heading">#</a></h2>
+<p>Transformations between some reference frames require knowing more information about a source. For example, the transformation from ICRS to Galactic coordinates (as demonstrated above) amounts to a 3D rotation, but no change of origin. This transformation is therefore supported for any spherical position (with or without distance information). However, some transformations include a change of origin, and therefore require that the source data (i.e., the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object) has defined distance information. For example, for a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> with only sky position, we can transform from the ICRS to the FK5 coordinate system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">icrs_c</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">SkyCoord</span><span class="p">(</span><span class="mf">150.4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="o">-</span><span class="mi">11</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">icrs_c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">FK5</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (FK5: equinox=J2000.000): (ra, dec) in deg
+    (150.40000705, -11.00000493)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, we would <strong>NOT</strong> be able to transform this position to the <code class="docutils literal notranslate"><span class="pre">Galactocentric</span></code> frame (<a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/galactocentric.html">docs</a>), because this transformation involves a shift of origin from the solar system barycenter to the Galactic center:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This cell will raise an exception and will not work (you will see a `ConvertError` exception) - this is expected!</span>
+
+<span class="n">icrs_c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ConvertError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># This cell will raise an exception and will not work (you will see a `ConvertError` exception) - this is expected!</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">icrs_c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="n">generic_frame</span> <span class="o">=</span> <span class="n">GenericFrame</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span> <span class="c1"># Do the transformation, returning a coordinate frame of the desired</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="c1"># final type (not generic).</span>
+<span class="ne">--&gt; </span><span class="mi">555</span> <span class="n">new_coord</span> <span class="o">=</span> <span class="n">trans</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">generic_frame</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="c1"># Finally make the new SkyCoord object from the `new_coord` and</span>
+<span class="g g-Whitespace">    </span><span class="mi">558</span> <span class="c1"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">new_coord</span><span class="o">.</span><span class="n">frame_attributes</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="n">frattrs</span><span class="p">[</span><span class="n">inter_frame_attr_nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">curr_toframe</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tosys</span><span class="p">(</span><span class="o">**</span><span class="n">frattrs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">113</span>     <span class="n">curr_coord</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">curr_coord</span><span class="p">,</span> <span class="n">curr_toframe</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span> <span class="c1"># this is safe even in the case where self.transforms is empty, because</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="c1"># coordinate objects are immutable, so copying is not needed</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="k">return</span> <span class="n">curr_coord</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205,</span> in <span class="ni">BaseAffineTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">205</span>     <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_affine_params</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="n">newrep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_transform</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>     <span class="k">return</span> <span class="n">toframe</span><span class="o">.</span><span class="n">realize_frame</span><span class="p">(</span><span class="n">newrep</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259,</span> in <span class="ni">AffineTransform._affine_params</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span> <span class="k">def</span><span class="w"> </span><span class="nf">_affine_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">259</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_func</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592,</span> in <span class="ni">icrs_to_galactocentric</span><span class="nt">(icrs_coord, galactocentric_frame)</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span> <span class="nd">@frame_transform_graph</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">AffineTransform</span><span class="p">,</span> <span class="n">ICRS</span><span class="p">,</span> <span class="n">Galactocentric</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">def</span><span class="w"> </span><span class="nf">icrs_to_galactocentric</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">,</span> <span class="n">galactocentric_frame</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">592</span>     <span class="n">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="k">return</span> <span class="n">get_matrix_vectors</span><span class="p">(</span><span class="n">galactocentric_frame</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571,</span> in <span class="ni">_check_coord_repr_diff_types</span><span class="nt">(c)</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">def</span><span class="w"> </span><span class="nf">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">UnitSphericalRepresentation</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">571</span>         <span class="k">raise</span> <span class="n">ConvertError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span>             <span class="s2">&quot;Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>             <span class="s2">&quot; (angle, angle, distance) or (x, y, z).&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span>     <span class="k">if</span> <span class="s2">&quot;s&quot;</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">differentials</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span>         <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">differentials</span><span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>         <span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">582</span>         <span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">583</span>     <span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span>         <span class="k">raise</span> <span class="n">ConvertError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span>             <span class="s2">&quot;Transforming to/from a Galactocentric frame requires a 3D velocity, e.g.,&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span>             <span class="s2">&quot; proper motion components and radial velocity.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span>         <span class="p">)</span>
+
+<span class="ne">ConvertError</span>: Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g. (angle, angle, distance) or (x, y, z).
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this tutorial, we have introduced the key concepts that underly the <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> framework: coordinate component formats, representations, and frames. We demonstrated how to change the representation of a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object (e.g., Cartesian to Cylindrical). We then introduce the concept of coordinate frames and frame transformations.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<p>Przybylski’s star or HD101065 is in the southern constellation of Centaurus with a right ascension of 174.4040348 degrees and a declination of -46.70953633 degrees. Create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object of its sky position.</p>
+<p>If the distance to Przybylski’s star is 108.4 pc, retrieve a 3D Cartesian representation. (Hint: we did this earlier in the tutorial and it may help to create a new 3D <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object.)</p>
+<p>Imagine it is May 2018, and you would like to take an observation of HD 101065 from Greenwich Royal Observatory. Use astropy.coordinates to figure out if you can observe the star that month (hint: use the <code class="docutils literal notranslate"><span class="pre">EarthLocation</span></code> class). You can use any time and date of that month for your timeframe.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--astropy-coordinates",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1_Coordinates-Intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Astronomical Coordinates 1: Getting Started with astropy.coordinates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3_Coordinates-Velocities.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Astronomical Coordinates 3: Working with Velocity Data in astropy.coordinates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-astropy-coordinates-concepts-component-formats-representations-and-frames">Key <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> Concepts: Component Formats, Representations, and Frames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-component-formats">Coordinate Component Formats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coordinate-representations">Coordinate Representations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-between-coordinate-frames">Transforming Between Coordinate Frames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transforming-to-more-complex-coordinate-frames-computing-the-altitude-of-a-target-at-an-observatory">Transforming to More Complex Coordinate Frames: Computing the Altitude of a Target at an Observatory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-caveats">Potential Caveats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@GITHUB-USERNAME, ORCID-ID), AUTHOR2 (@GITHUB-USERNAME, ORCID-ID)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1095 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Astronomical Coordinates 1: Getting Started with astropy.coordinates &#8212; Astropy  Coordinates</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_Coordinates-Intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Astronomical Coordinates 2: Transforming Coordinate Systems and Representations" href="2_Coordinates-Transforms.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index-coordinates.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index-coordinates.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Astropy  Coordinates - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Astropy  Coordinates - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index-coordinates.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Astronomical Coordinates 1: Getting Started with astropy.coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Coordinates-Transforms.html">Astronomical Coordinates 2: Transforming Coordinate Systems and Representations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Coordinates-Velocities.html">Astronomical Coordinates 3: Working with Velocity Data in astropy.coordinates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Coordinates-Crossmatch.html">Astronomical Coordinates 4: Cross-matching Catalogs Using astropy.coordinates and astroquery</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-coordinates" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-coordinates/edit/main//1_Coordinates-Intro.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-coordinates/issues/new?title=Issue%20on%20page%20%2F1_Coordinates-Intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/1_Coordinates-Intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Astronomical Coordinates 1: Getting Started with astropy.coordinates</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-on-sky-positions-with-astropy-coordinates">Representing On-sky Positions with <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-the-gaia-archive-to-retrieve-coordinates-of-stars-in-ngc-188">Querying the <em>Gaia</em> Archive to Retrieve Coordinates of Stars in NGC 188</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-than-just-sky-positions-including-distance-information-in-skycoord">More Than Just Sky Positions: Including Distance Information in <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="astronomical-coordinates-1-getting-started-with-astropy-coordinates">
+<h1>Astronomical Coordinates 1: Getting Started with astropy.coordinates<a class="headerlink" href="#astronomical-coordinates-1-getting-started-with-astropy-coordinates" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Adrian Price-Whelan</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Create <code class="docutils literal notranslate"><span class="pre">astropy.coordinates.SkyCoord</span></code> objects using coordinate data and object names</p></li>
+<li><p>Use SkyCoord objects to become familiar with object oriented programming (OOP)</p></li>
+<li><p>Use a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to query the <em>Gaia</em> archive using <code class="docutils literal notranslate"><span class="pre">astroquery</span></code></p></li>
+<li><p>Output coordinate data in different string representations</p></li>
+<li><p>Demonstrate working with 3D sky coordinates (including distance information for objects)</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>coordinates, OOP, astroquery, gaia</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>Astronomers use a wide variety of coordinate systems and formats to represent sky coordinates of celestial objects. For example, you may have seen terms like “right ascension” and “declination” or “galactic latitude and longitude,” and you may have seen angular coordinate components represented as “0h39m15.9s,” “00:39:15.9,” or 9.81625º. The subpackage <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> provides tools for representing the coordinates of objects and transforming them between different systems.</p>
+<p>In this tutorial, we will explore how the <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> package can be used to work with astronomical coordinates. You may find it helpful to keep <a class="reference external" href="http://docs.astropy.org/en/stable/coordinates/index.html">the Astropy documentation for the coordinates package</a> open alongside this tutorial for reference or additional reading. In the text below, you may also see some links that look like (<a class="reference external" href="http://docs.astropy.org/en/stable/coordinates/index.html">docs</a>). These links will take you to parts of the documentation that are directly relevant to the cells from which they link.</p>
+<p><em>Note: This is the 1st tutorial in a series of tutorials about astropy.coordinates.</em></p>
+</section>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<p>We start by importing some packages that we will need below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.coordinates</span><span class="w"> </span><span class="kn">import</span> <span class="n">SkyCoord</span><span class="p">,</span> <span class="n">Distance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">QTable</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.gaia</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaia</span>
+
+<span class="n">Gaia</span><span class="o">.</span><span class="n">ROW_LIMIT</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Set the row limit for returned data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="representing-on-sky-positions-with-astropy-coordinates">
+<h2>Representing On-sky Positions with <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code><a class="headerlink" href="#representing-on-sky-positions-with-astropy-coordinates" title="Link to this heading">#</a></h2>
+<p>In Astropy, the most common way of representing and working with sky coordinates is to use the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object (<a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/skycoord.html">docs</a>). A <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> can be created directly from angles or arrays of angles with associated units, as demonstrated below.</p>
+<p>To get started, let’s assume that we want to create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object for the center of the open star cluster NGC 188 so that later we can query and retrieve stars that might be members of the cluster. Let’s also assume, for now, that we already know the sky coordinates of the cluster to be (12.11, 85.26) degrees in the ICRS coordinate frame. The ICRS — sometimes referred to as “equatorial” or “J2000” coordinates (<a class="reference external" href="https://arxiv.org/abs/astro-ph/0602086">more info about the ICRS</a>) — is currently the most common astronomical coordinate frame for stellar or extragalactic astronomy, and is the default coordinate frame for <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code>. Since we already know the ICRS position of NGC 188 (see above), we can create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object for the cluster by passing the data in to the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> initializer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="mf">12.11</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="mf">85.26</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">ngc188_center</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (12.11, 85.26)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even though the default frame is ICRS, it is generally recommended to explicitly specify the frame your coordinates are in. In this case, this would be an equivalent way of creating our <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object for NGC 188:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="mf">12.11</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="mf">85.26</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+<span class="n">ngc188_center</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (12.11, 85.26)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we will see later on in this series, there are many other supported coordinate frames, so it helps to get into the habit of passing in the name of a coordinate frame.</p>
+<p>In the above initializations, we passed in <code class="docutils literal notranslate"><span class="pre">astropy.units.Quantity</span></code> objects with angular units to specify the angular components of our sky coordinates. The <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> initializer will also accept string-formatted coordinates either as separate strings for Right Ascension (RA) and Declination (Dec) or a single string. For example, if we have sexagesimal sky coordinate data: In this case, the representation of the data includes specifications of the units (the “hms” for “hour minute second”, and the “dms” for “degrees minute second”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span><span class="s2">&quot;00h48m26.4s&quot;</span><span class="p">,</span> <span class="s2">&quot;85d15m36s&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (12.11, 85.26)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some string representations do not explicitly define units, so it is sometimes necessary to specify the units of the string coordinate data explicitly if they are not implicitly included:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span><span class="s2">&quot;00:48:26.4 85:15:36&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">),</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (12.11, 85.26)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>For more information and examples on initializing <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> objects, <a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/skycoord.html">see this documentation</a>.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> initializations demonstrated above, we assumed that we already had the coordinate component values ready. If you do not know the coordinate values and the object you are interested in is in <a class="reference external" href="http://cdsweb.u-strasbg.fr/cgi-bin/Sesame">SESAME</a>, you can also automatically look up and load coordinate values from the name of the object using the <code class="docutils literal notranslate"><span class="pre">SkyCoord.from_name()</span></code> class method<sup>1</sup> (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/index.html#convenience-methods">docs</a>). Note, however, that this requires an internet connection. It is safe to skip this cell if you are not connected to the internet because we already defined the object <code class="docutils literal notranslate"><span class="pre">ngc188_center</span></code> in the cells above.</p>
+<p><sub> <sup>1</sup>If you do not know what a class method is, think of it like an alternative constructor for a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object — calling <code class="docutils literal notranslate"><span class="pre">SkyCoord.from_name()</span></code> with a name gives you a new <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object. For more detailed background on what class methods are and when they’re useful, see <a class="reference external" href="https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods">this page</a>.</sub></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;NGC 188&quot;</span><span class="p">)</span>
+<span class="n">ngc188_center</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (11.798, 85.244)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object that we defined now has various ways of accessing the coordinate information contained within it. All <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> objects have attributes that allow you to retrieve the coordinate component data, but the component names will change depending on the coordinate frame of the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> you have. In our examples we have created a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> in the ICRS frame, so the component names are lower-case abbreviations of Right Ascension, <code class="docutils literal notranslate"><span class="pre">.ra</span></code>, and Declination, <code class="docutils literal notranslate"><span class="pre">.dec</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="p">,</span> <span class="n">ngc188_center</span><span class="o">.</span><span class="n">dec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 11.798 deg&gt;, &lt;Latitude 85.244 deg&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> component attributes (here <code class="docutils literal notranslate"><span class="pre">ra</span></code> and <code class="docutils literal notranslate"><span class="pre">dec</span></code>) return specialized <code class="docutils literal notranslate"><span class="pre">Quantity</span></code>-like objects that make working with angular data easier. While <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/units/index.html">docs</a>) is a general class that represents numerical values and physical units of any kind, <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> defines subclasses of <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> that are specifically designed for working with angles, such as the <code class="docutils literal notranslate"><span class="pre">Angle</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Angle.html">docs</a>) class. The <code class="docutils literal notranslate"><span class="pre">Angle</span></code> class then has additional, more specialized subclasses <code class="docutils literal notranslate"><span class="pre">Latitude</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Latitude.html">docs</a>) and <code class="docutils literal notranslate"><span class="pre">Longitude</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Longitude.html">docs</a>). These objects store angles, provide useful attributes to quickly convert to common angular units, and enable formatting the numerical values in various formats. For example, in a Jupyter notebook, these objects know how to represent themselves using LaTeX:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[11^\circ47{}^\prime52.8{}^{\prime\prime}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">dec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[85^\circ14{}^\prime38.4{}^{\prime\prime}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(astropy.coordinates.angles.core.Longitude,
+ astropy.coordinates.angles.core.Latitude)
+</pre></div>
+</div>
+</div>
+</div>
+<p>With these objects, we can retrieve the coordinate components in different units using the <code class="docutils literal notranslate"><span class="pre">Quantity.to()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">hourangle</span><span class="p">),</span>
+    <span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">radian</span><span class="p">),</span>
+    <span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 0.78653333 hourangle&gt;,
+ &lt;Longitude 0.20591395 rad&gt;,
+ &lt;Longitude 11.798 deg&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or using the shorthand attributes, which return only the component values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">radian</span><span class="p">,</span> <span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.7865333333333335),
+ np.float64(0.205913945150291),
+ np.float64(11.798))
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also format the values into strings with specified units (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/formatting.html">docs</a>), for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">hourangle</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.str_(&#39;00:47:11.52&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="querying-the-gaia-archive-to-retrieve-coordinates-of-stars-in-ngc-188">
+<h2>Querying the <em>Gaia</em> Archive to Retrieve Coordinates of Stars in NGC 188<a class="headerlink" href="#querying-the-gaia-archive-to-retrieve-coordinates-of-stars-in-ngc-188" title="Link to this heading">#</a></h2>
+<p>Now that we have a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object for the center of NGC 188, we can use this object with the <code class="docutils literal notranslate"><span class="pre">astroquery</span></code> package to query many different astronomical databases (see a full list of <a class="reference external" href="https://astroquery.readthedocs.io/en/latest/#available-services">available services in the astroquery documentation</a>). Here, we will use the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object <code class="docutils literal notranslate"><span class="pre">ngc188_center</span></code> to select sources from the <em>Gaia</em> Data Release 2 catalog around the position of the center of NGC 188 to look for stars that might be members of the star cluster. To do this, we will use the <code class="docutils literal notranslate"><span class="pre">astroquery.gaia</span></code> subpackage (<a class="reference external" href="https://astroquery.readthedocs.io/en/latest/gaia/gaia.html">docs</a>).</p>
+<p>This requires an internet connection, but if it fails, the catalog file is included in the repository so you can load it locally (skip the next cell if you do not have an internet connection):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="o">=</span> <span class="n">Gaia</span><span class="o">.</span><span class="n">cone_search_async</span><span class="p">(</span><span class="n">ngc188_center</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
+
+<span class="c1"># only keep stars brighter than G=19 magnitude</span>
+<span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">19</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Query finished. [astroquery.utils.tap.core]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;source_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ra&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dec&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parallax&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;parallax_error&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pmra&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pmdec&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;radial_velocity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;phot_bp_mean_mag&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;phot_rp_mean_mag&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ngc188_table</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;gaia_results.fits&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above cell may not work if you do not have an internet connection, so we have included the results table along with the notebook:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;gaia_results.fits&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">ngc188_table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4876
+</pre></div>
+</div>
+</div>
+</div>
+<p>The returned <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code> <code class="docutils literal notranslate"><span class="pre">Table</span></code> object now contains about 5000 stars from <em>Gaia</em> DR2 around the coordinate position of the center of NGC 188. Let’s now construct a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object with the results table. In the <em>Gaia</em> data archive, the ICRS coordinates of a source are given as column names <code class="docutils literal notranslate"><span class="pre">&quot;ra&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;dec&quot;</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[11.830258,~11.775831,~11.78143,~\dots,~13.265345,~14.538431,~17.662272]\mathrm{{}^{\circ}}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[85.243627,~85.241932,~85.247148,~\dots,~84.775627,~84.820229,~85.284318]\mathrm{{}^{\circ}}\]</div>
+</div>
+</div>
+<p>Note that, because the <em>Gaia</em> archive provides data tables with associated units, and we read this table using the <code class="docutils literal notranslate"><span class="pre">QTable</span></code> object (<a class="reference external" href="http://docs.astropy.org/en/latest/table/mixin_columns.html#quantity-and-qtable">docs</a>), the above table columns are represented as <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> objects with units of degrees. Note also that these columns contain many (&gt;5000!) coordinate values. We can pass these directly in to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> to get a single <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent all of these coordinates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">])</span>
+<span class="n">ngc188_gaia_coords</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    [(11.83025781, 85.24362655), (11.77583082, 85.24193164),
+     (11.78143038, 85.24714775), ..., (13.26534496, 84.77562671),
+     (14.5384314 , 84.82022851), (17.6622717 , 85.2843177 )]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h3>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> for the center of the open cluster the Pleiades (either by looking up the coordinates and passing them in, or by using the convenience method we learned about above):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;NGC 188&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using only a single method/function call on the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object representing the center of NGC 188, print a string with the RA/Dec in the form ‘HH:MM:SS.S DD:MM:SS.S’. Check your answer against <a class="reference external" href="http://simbad.u-strasbg.fr/simbad/">SIMBAD</a>, which will show you sexagesimal coordinates for the object.</p>
+<p><sub>(Hint: <code class="docutils literal notranslate"><span class="pre">SkyCoord.to_string()</span></code> might be useful)</sub></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;hmsdms&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00:47:11.5 +85:14:38.4&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using a single method/function call on the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object containing the results of our <em>Gaia</em> query, compute the angular separation between each resulting star and the coordinates of the cluster center for NGC 188.</p>
+<p><sub>(Hint: <code class="docutils literal notranslate"><span class="pre">SkyCoord.separation()</span></code> might be useful)</sub></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span><span class="o">.</span><span class="n">separation</span><span class="p">(</span><span class="n">ngc188_center</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[$0^\circ00{}^\prime09.72226249{}^{\prime\prime}$
+ $0^\circ00{}^\prime09.96244424{}^{\prime\prime}$
+ $0^\circ00{}^\prime12.36353173{}^{\prime\prime}$ ...
+ $0^\circ29{}^\prime07.49547393{}^{\prime\prime}$
+ $0^\circ29{}^\prime08.08616548{}^{\prime\prime}$
+ $0^\circ29{}^\prime08.26043103{}^{\prime\prime}$]\]</div>
+</div>
+</div>
+</section>
+</section>
+<section id="more-than-just-sky-positions-including-distance-information-in-skycoord">
+<h2>More Than Just Sky Positions: Including Distance Information in <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code><a class="headerlink" href="#more-than-just-sky-positions-including-distance-information-in-skycoord" title="Link to this heading">#</a></h2>
+<p>So far, we have used <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> to represent angular sky positions (i.e., <code class="docutils literal notranslate"><span class="pre">ra</span></code> and <code class="docutils literal notranslate"><span class="pre">dec</span></code> only). It is sometimes useful to include distance information with the sky coordinates of a source, thereby specifying the full 3D position of an object. To pass in distance information, <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> accepts the keyword argument “<code class="docutils literal notranslate"><span class="pre">distance</span></code>”. So, if we knew that the distance to NGC 188 is 1.96 kpc, we could also pass in a distance (as a <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> object) using this argument:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center_3d</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="mf">12.11</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="mf">85.26</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mf">1.96</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kpc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the table of <em>Gaia</em> data we retrieved above for stars around NGC 188, <code class="docutils literal notranslate"><span class="pre">ngc188_table</span></code>, we also have parallax measurements for each star. For a precisely-measured parallax <span class="math notranslate nohighlight">\(\varpi\)</span>, the distance <span class="math notranslate nohighlight">\(d\)</span> to a star can be obtained approximately as <span class="math notranslate nohighlight">\(d \approx 1/\varpi\)</span>. This only really works if the parallax error is small relative to the parallax (<a class="reference external" href="https://arxiv.org/abs/1507.02105">see discussion in this paper</a>), so if we want to use these parallaxes to get distances we first have to filter out stars that have low signal-to-noise parallaxes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parallax_snr</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;parallax&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;parallax_error&quot;</span><span class="p">]</span>
+<span class="n">ngc188_table_3d</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">parallax_snr</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">ngc188_table_3d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2423
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above selection on <code class="docutils literal notranslate"><span class="pre">parallax_snr</span></code> keeps stars that have a ~10-sigma parallax measurement, but this is an arbitrary selection threshold that you may want to tune or remove in your own use cases. This selection removed over half of the stars in our original table, but for the remaining stars we can be confident that converting the parallax measurements to distances is mostly safe.</p>
+<p>The default way of passing in a distance to a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object, as above, is to pass in a <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> with a unit of length. However, <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> also provides a specialized object, <code class="docutils literal notranslate"><span class="pre">Distance</span></code>, for handling common transformations of different distance representations (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/index.html#distance">docs</a>). Among other things, this class supports passing in a parallax value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[1000 \; \mathrm{pc}\]</div>
+</div>
+</div>
+<p>The catalog of stars we queried from <em>Gaia</em> contains parallax information in milliarcsecond units, so we can create a <code class="docutils literal notranslate"><span class="pre">Distance</span></code> object directly from these values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaia_dist</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;parallax&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent the 3D positions of all of the <em>Gaia</em> stars by passing in this distance object to the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> initializer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_coords_3d</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
+    <span class="n">ra</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">gaia_dist</span>
+<span class="p">)</span>
+<span class="n">ngc188_coords_3d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
+    [(11.83025781, 85.24362655, 2113.23414411),
+     (11.77583082, 85.24193164, 1819.25788676),
+     (11.79608811, 85.24947769, 1878.68206887), ...,
+     (14.41522696, 85.68315506, 1167.55221538),
+     (14.5384314 , 84.82022851, 3339.63434769),
+     (17.6622717 , 85.2843177 ,  398.82213009)]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to plot the sky positions of all of these sources, colored by distance to emphasize the cluster stars:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">ngc188_coords_3d</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span>
+    <span class="n">ngc188_coords_3d</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">ngc188_coords_3d</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">kpc</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;twilight&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;distance [</span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">kpc</span><span class="si">:</span><span class="s2">latex_inline</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;RA [deg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Dec [deg]&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Gaia DR2 sources near NGC 188&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Gaia DR2 sources near NGC 188&#39;)
+</pre></div>
+</div>
+<img alt="_images/d75208174c2d44c4b16634aac80d5760492b35a7543f42da3385cba93ace43f9.png" src="_images/d75208174c2d44c4b16634aac80d5760492b35a7543f42da3385cba93ace43f9.png" />
+</div>
+</div>
+<p>Now that we have 3D position information for both the cluster center, and for the stars we queried from <em>Gaia</em>, we can compute the 3D separation (distance) between all of the <em>Gaia</em> sources and the cluster center:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sep3d</span> <span class="o">=</span> <span class="n">ngc188_coords_3d</span><span class="o">.</span><span class="n">separation_3d</span><span class="p">(</span><span class="n">ngc188_center_3d</span><span class="p">)</span>
+<span class="n">sep3d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[153.23746,~140.74633,~81.323346,~\dots,~792.54107,~1379.8059,~1561.1939] \; \mathrm{pc}\]</div>
+</div>
+</div>
+<section id="id1">
+<h3>Exercises<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Using the 3D separation values, define a boolean mask to select candidate members of the cluster. Select all stars within 50 pc of the cluster center. How many candidate members of NGC 188 do we have, based on their 3D positions?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_3d_mask</span> <span class="o">=</span> <span class="n">sep3d</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span>
+<span class="n">ngc188_3d_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(262)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this tutorial, we have introduced <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> as a way to store and represent astronomical sky coordinates. We used coordinate objects, via the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> class interface, to parse and change coordinate representations and units. We also demonstrated how to use a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object with the <code class="docutils literal notranslate"><span class="pre">astroquery</span></code> package to query an astronomical database, the <em>Gaia</em> science archive. We then created a single <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object with the queried data that represents the sky coordinates of many objects. Finally, we introduced the concept of using <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> to represent a 3D position of an object or set of objects.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--astropy-coordinates",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index-coordinates.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2_Coordinates-Transforms.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Astronomical Coordinates 2: Transforming Coordinate Systems and Representations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-on-sky-positions-with-astropy-coordinates">Representing On-sky Positions with <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-the-gaia-archive-to-retrieve-coordinates-of-stars-in-ngc-188">Querying the <em>Gaia</em> Archive to Retrieve Coordinates of Stars in NGC 188</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-than-just-sky-positions-including-distance-information-in-skycoord">More Than Just Sky Positions: Including Distance Information in <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@GITHUB-USERNAME, ORCID-ID), AUTHOR2 (@GITHUB-USERNAME, ORCID-ID)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

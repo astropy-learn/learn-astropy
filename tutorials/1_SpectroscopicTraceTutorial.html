@@ -1,0 +1,1398 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spectroscopic Data Reduction Part 1: Tracing &#8212; Spectroscopic Data Reduction Basics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_SpectroscopicTraceTutorial';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Spectroscopic Data Reduction Part 2: Wavelength Calibration" href="2_WavelengthCalibration.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index-spectroscopy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index-spectroscopy.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Spectroscopic Data Reduction Basics - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Spectroscopic Data Reduction Basics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index-spectroscopy.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spectroscopic Data Reduction Part 1: Tracing</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2_WavelengthCalibration.html">Spectroscopic Data Reduction Part 2: Wavelength Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Trace_Extract_Wavelength-CalibrateSpectrum.html">Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics/edit/main//1_SpectroscopicTraceTutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics/issues/new?title=Issue%20on%20page%20%2F1_SpectroscopicTraceTutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/1_SpectroscopicTraceTutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spectroscopic Data Reduction Part 1: Tracing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spectroscopic Data Reduction Part 1: Tracing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-examine-the-spectrum">Step 1: Examine the spectrum</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2a-try-to-find-the-spine-to-trace-using-argmax">Step 2a. Try to find the spine to trace using argmax</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2b-use-moment-analysis-to-extract-a-spine-to-trace">Step 2b: Use moment analysis to extract a spine to trace</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-fit-the-trace-profile">Step 3. Fit the trace profile</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-obtain-a-trace-profile">Step 4. Obtain a trace profile</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-extract-the-traced-spectrum">Step 5. Extract the traced spectrum</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-repeat-for-another-star">Step 6: Repeat for another star</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="spectroscopic-data-reduction-part-1-tracing">
+<h1>Spectroscopic Data Reduction Part 1: Tracing<a class="headerlink" href="#spectroscopic-data-reduction-part-1-tracing" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Adam Ginsburg, Kelle Cruz, Lia Corrales, Jonathan Sick, Adrian Price-Whelan</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Open a two-dimensional spectrum from an image file (bitmap)</p></li>
+<li><p>Fit a spectroscopic trace</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>Spectroscopy</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This tutorial will walk through the derivation of a spectroscopic trace model and extraction using astropy tools.</p>
+<p>A spectroscopic trace is the path of a point source (star) spectrum through a two-dimensional dispersed spectrum.  The trace is needed because, in general, spectra are not perfectly aligned with the axes of a detector.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-1-examine-the-spectrum">
+<h1>Step 1: Examine the spectrum<a class="headerlink" href="#step-1-examine-the-spectrum" title="Link to this heading">#</a></h1>
+<p>We’ll work with a 2D spectrum that contains <em>no</em> attached metadata, so we have to infer many of the features ourselves.</p>
+<p>All we know is that this is a spectrum of a star, Aldebaran.</p>
+<p>Our data are in the form of <code class="docutils literal notranslate"><span class="pre">.bmp</span></code> (bitmap) files, so we need PIL (Python Imaging Library) to open them.</p>
+<p>While <code class="docutils literal notranslate"><span class="pre">.bmp</span></code> files are not astronomical standard FITS files, as are commonly delivered from professional observatories, image formats like <code class="docutils literal notranslate"><span class="pre">.bmp</span></code>, <code class="docutils literal notranslate"><span class="pre">.jpg</span></code>, <code class="docutils literal notranslate"><span class="pre">.raw</span></code>, <code class="docutils literal notranslate"><span class="pre">.png</span></code>, etc. produced by consumer cameras may also be used for spectroscopy.</p>
+<p>In this case, our images are monochromatic, which is similar to standard FITS images.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;lower&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">)</span>  <span class="c1"># Optional!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum_filename</span> <span class="o">=</span> <span class="s2">&quot;aldebaran_3s_1.bmp&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_data</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">spectrum_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># because this is an image, simply entering on the command line will show it</span>
+<span class="n">image_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/24fd3f6324866259250d1eff8be512492af62b11b79463420e932b3198a89895.png" src="_images/24fd3f6324866259250d1eff8be512492af62b11b79463420e932b3198a89895.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># our data are unsigned 8-bit integers (0-255) representing a monochromatic image</span>
+<span class="c1"># we can see this by printing the array version of the image</span>
+<span class="c1"># we can also see its shape, verifying that it is indeed 2-dimensional</span>
+<span class="n">image_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image_data</span><span class="p">)</span>
+<span class="n">image_array</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[41, 43, 50, ..., 52, 28, 27],
+        [33, 22, 48, ..., 37, 35, 26],
+        [41, 64, 30, ..., 21, 30, 33],
+        ...,
+        [33, 28, 27, ..., 26, 33, 28],
+        [35, 25, 23, ..., 23, 46, 46],
+        [32, 35, 22, ..., 23, 40, 29]], shape=(1200, 1600), dtype=uint8),
+ (1200, 1600))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># but we&#39;d like to see it with axes labeled</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>  <span class="c1"># the semicolon at the end of the last line prevents ipython from printing out the object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1f73f2c53d609acf035648cb282a12095d5f824cb0edfa133e67afb10035b0ec.png" src="_images/1f73f2c53d609acf035648cb282a12095d5f824cb0edfa133e67afb10035b0ec.png" />
+</div>
+</div>
+<p>The main goal of the trace is to obtain a model <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> defining the vertical position of the light (the signal) along the detector.</p>
+<p>We’re going to start by assuming that wavelength dispersion is in the X-direction and the Y-direction is entirely spatial.</p>
+<p>This is an approximation made by inspecting the image by eye.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-2a-try-to-find-the-spine-to-trace-using-argmax">
+<h1>Step 2a. Try to find the spine to trace using argmax<a class="headerlink" href="#step-2a-try-to-find-the-spine-to-trace-using-argmax" title="Link to this heading">#</a></h1>
+<p>To obtain the trace, we first measure the Y-value at each X-value.  we’ll start with the trivial approach of using <code class="docutils literal notranslate"><span class="pre">argmax</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">xvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">image_data</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/592d6d32aff2c291ab1b01e7eb51e60331954757a808b01b7f65d9e89b2fd970.png" src="_images/592d6d32aff2c291ab1b01e7eb51e60331954757a808b01b7f65d9e89b2fd970.png" />
+</div>
+</div>
+<p>There’s a pretty clear line going through the center, which represents our signal, but there are also a lot of erroneous data points.</p>
+<p>We can get rid of most of the bad data just by filtering it out using a <code class="docutils literal notranslate"><span class="pre">pixel</span> <span class="pre">mask</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bad_pixels</span> <span class="o">=</span> <span class="p">(</span><span class="n">yvals</span> <span class="o">&lt;</span> <span class="mi">400</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">yvals</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;rx&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5f40eea635840d85ec2a972d022290ce14ae974f104f1f40a2c1e8e0b3f22705.png" src="_images/5f40eea635840d85ec2a972d022290ce14ae974f104f1f40a2c1e8e0b3f22705.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4702ac0dae48311108d8188ebb9913fff5953ef04f884b15015500e8a3592dfd.png" src="_images/4702ac0dae48311108d8188ebb9913fff5953ef04f884b15015500e8a3592dfd.png" />
+</div>
+</div>
+<p>We can be a little more precise by ‘zooming in’ along the y-axis, so we refine the mask again to be over a narrower range:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bad_pixels</span> <span class="o">=</span> <span class="p">(</span><span class="n">yvals</span> <span class="o">&lt;</span> <span class="mi">425</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">yvals</span> <span class="o">&gt;</span> <span class="mi">460</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3b5fd45c3ef390baee302e091736d835901fa48153f780e40888a712dade03fd.png" src="_images/3b5fd45c3ef390baee302e091736d835901fa48153f780e40888a712dade03fd.png" />
+</div>
+</div>
+<p>The stuff at x&gt;1100 looks bad, but there’s still signal out there.</p>
+<p>We can see there is clear signal out to nearly pixel ~1400:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/99ad85f63cb77a09a1386ac8dc9598def14d1a8046ef62e22c8173a06a3ba9b3.png" src="_images/99ad85f63cb77a09a1386ac8dc9598def14d1a8046ef62e22c8173a06a3ba9b3.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-2b-use-moment-analysis-to-extract-a-spine-to-trace">
+<h1>Step 2b: Use moment analysis to extract a spine to trace<a class="headerlink" href="#step-2b-use-moment-analysis-to-extract-a-spine-to-trace" title="Link to this heading">#</a></h1>
+<p>We can use <a class="reference external" href="https://en.wikipedia.org/wiki/Moment_(mathematics)">moments</a> to provide a different, possibly better, estimate of where the trace’s center is.
+The advantage of moment analysis is that we’re using all of the data to estimate the vertical position, not just the single brightest value, which is what we used above.</p>
+<p>Note that we need to subtract off the background to avoid a bias toward the center, so we use the median of the whole image as our background estimate.</p>
+<p>(the first-order moment is the intensity-weighted mean position,
+$<span class="math notranslate nohighlight">\(m_1 = \frac{\Sigma_i x_i f(x_i)}{\Sigma_i f(x_i)}\)</span><span class="math notranslate nohighlight">\(
+where \)</span>x_i<span class="math notranslate nohighlight">\( is the position and \)</span>f({x_i})<span class="math notranslate nohighlight">\( is the intensity at that position.  \)</span>f(x_i)<span class="math notranslate nohighlight">\( must be zero in the signal-free region for \)</span>m_1$ to return an accurate estimate of the location of the peak)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we use a cutout around the traced line, so the Y-values are from that cutout</span>
+<span class="c1"># the `repeat` command here is used to extend our Y-axis position values, which are 425, 426, ... 475</span>
+<span class="c1"># along the X-direction.  The indexing with [:, None] adds a &quot;dummy&quot; axis along the second (x) dimension,</span>
+<span class="c1"># then `repeat` copies our Y-axis values.  The resulting array has the same shape as our weight array,</span>
+<span class="c1"># which is image_array[425:475, :] minus the median</span>
+<span class="n">yaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">image_array</span><span class="p">)</span>
+<span class="c1"># moment 1 is the data-weighted average of the Y-axis coordinates</span>
+<span class="n">weighted_yaxis_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+    <span class="n">yaxis</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">background</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X Coordinate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Moment-1 estimated Y-value trace&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5d9097c44554efed53352c0628ffb0d1808b7b22a1472e810b0751757339cfde.png" src="_images/5d9097c44554efed53352c0628ffb0d1808b7b22a1472e810b0751757339cfde.png" />
+</div>
+</div>
+<p>Overplot the “weighted”, centroid locations on the data to verify they look reasonable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we need to use the &#39;extent&#39; keyword to have the axes correctly labeled</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># we stretch the image out by 10x in the y-direction</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">&quot;wx&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fd11b2a02b00ede07a08d9b66a0060ca2ecbbf890c4d525d4a59d50a27763d8f.png" src="_images/fd11b2a02b00ede07a08d9b66a0060ca2ecbbf890c4d525d4a59d50a27763d8f.png" />
+</div>
+</div>
+<p>We can also compare the argmax and weighted approaches.  They agree well at x&lt;1200, but there are simply more points from the weighted approach at x&gt;1200.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Weighted&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Argmax&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6bf350328cd6c0074d1d1a2f8facb7b947e94480feec4bbd9d9e0f987e7d5129.png" src="_images/6bf350328cd6c0074d1d1a2f8facb7b947e94480feec4bbd9d9e0f987e7d5129.png" />
+</div>
+</div>
+<p>That’s a decent set of data, we’ll use the moments instead of the argmax.  There’s still some data to flag out, though:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bad_moments</span> <span class="o">=</span> <span class="p">(</span><span class="n">weighted_yaxis_values</span> <span class="o">&gt;</span> <span class="mi">460</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">weighted_yaxis_values</span> <span class="o">&lt;</span> <span class="mi">430</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
+    <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Weighted&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Argmax&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9abc39b62d942ded837e5907437693920be38a43beaf9c74a535ce87d4c79623.png" src="_images/9abc39b62d942ded837e5907437693920be38a43beaf9c74a535ce87d4c79623.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-3-fit-the-trace-profile">
+<h1>Step 3. Fit the trace profile<a class="headerlink" href="#step-3-fit-the-trace-profile" title="Link to this heading">#</a></h1>
+<p>We want a model <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> that gives the y-value of the centroid as a function of x.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.polynomial</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polynomial1D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.fitting</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearLSQFitter</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We fit a 2nd-order polynomial</span>
+<span class="n">polymodel</span> <span class="o">=</span> <span class="n">Polynomial1D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">linfitter</span> <span class="o">=</span> <span class="n">LinearLSQFitter</span><span class="p">()</span>
+<span class="n">fitted_polymodel</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span>
+    <span class="n">polymodel</span><span class="p">,</span> <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fitted_polymodel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Polynomial1D(2, c0=454.80138106, c1=-0.02381282, c2=0.00001121)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9f2590c85e7e7fcc55b45294de6b9a8f8983ef26ed0641ea08e4b6dc6f7eb2e0.png" src="_images/9f2590c85e7e7fcc55b45294de6b9a8f8983ef26ed0641ea08e4b6dc6f7eb2e0.png" />
+</div>
+</div>
+<p>We plot and examine the residuals to visually inspect whether the fit is good:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
+    <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]</span> <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]),</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residual (data-model)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b6c1a0d8a033ba6066f526561d355e0d83ddbe3d1bdfb8d1d56fa73699e940b9.png" src="_images/b6c1a0d8a033ba6066f526561d355e0d83ddbe3d1bdfb8d1d56fa73699e940b9.png" />
+</div>
+</div>
+<p>The curvature seen at the left is a sign of a suboptimal fit.  Specifically, curvature in the residual indicates that we need to use a <em>higher order</em> model - i.e., we need more terms in the polynomial.  We change <code class="docutils literal notranslate"><span class="pre">degree=2</span></code> to <code class="docutils literal notranslate"><span class="pre">degree=3</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polymodel</span> <span class="o">=</span> <span class="n">Polynomial1D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fitted_polymodel</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span>
+    <span class="n">polymodel</span><span class="p">,</span> <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">fitted_polymodel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Polynomial1D(3, c0=453.31622273, c1=-0.01256666, c2=-0.00000651, c3=0.00000001)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8811ef519f316d691e87c3a0f7b052b9765f2b188adf2481c186b758476d5de6.png" src="_images/8811ef519f316d691e87c3a0f7b052b9765f2b188adf2481c186b758476d5de6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
+    <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]</span> <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]),</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residual (data-model)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/05fa1d982c3bc414500759fcd3f3404b1bab00f90d0906e80b2a4ed94bbb91e9.png" src="_images/05fa1d982c3bc414500759fcd3f3404b1bab00f90d0906e80b2a4ed94bbb91e9.png" />
+</div>
+</div>
+<p>Arguably, we should toss out the data at &gt;1400 pixels since there’s no clear signal there.  We’ll come back to this…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b33439ee4bf23913a77591c52d7ecfdd3954d5b72dc11f3fc9a6e047b05434fd.png" src="_images/b33439ee4bf23913a77591c52d7ecfdd3954d5b72dc11f3fc9a6e047b05434fd.png" />
+</div>
+</div>
+<p>Again, we should verify the trace by overplotting on the original data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a1c2deaf0f630e5d5a413d81573e2cb27a200685f2fc9736aa1d4a4ca1c58d24.png" src="_images/a1c2deaf0f630e5d5a413d81573e2cb27a200685f2fc9736aa1d4a4ca1c58d24.png" />
+</div>
+</div>
+<p>Seeing the curve up in the model to the right - which we do not observe in the data - suggests we should re-fit without including the x&gt;1200 data at all:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polymodel</span> <span class="o">=</span> <span class="n">Polynomial1D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fitted_polymodel</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span>
+    <span class="n">polymodel</span><span class="p">,</span>
+    <span class="n">xvals</span><span class="p">[(</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)],</span>
+    <span class="n">weighted_yaxis_values</span><span class="p">[(</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)],</span>
+<span class="p">)</span>
+<span class="n">fitted_polymodel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Polynomial1D(3, c0=453.63074008, c1=-0.01596396, c2=0.00000083, c3=0.)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now have a satisfactory fit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c4334b7dfb05a8168e5a2ed49212c827600ffffcaac647cb49d3946ca8187ac3.png" src="_images/c4334b7dfb05a8168e5a2ed49212c827600ffffcaac647cb49d3946ca8187ac3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b9fbe03074b75889b624cd710c5163f271fbdff639ea2f99474c7376c86924e4.png" src="_images/b9fbe03074b75889b624cd710c5163f271fbdff639ea2f99474c7376c86924e4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)],</span>
+    <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)]</span>
+    <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)]),</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">)],</span>
+    <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">)]</span>
+    <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">)]),</span>
+    <span class="s2">&quot;r+&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residual (data-model)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/696322a2ca4c4008094acb42802808e16184a69fba5c36f13c305b2f4b8898a4.png" src="_images/696322a2ca4c4008094acb42802808e16184a69fba5c36f13c305b2f4b8898a4.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-4-obtain-a-trace-profile">
+<h1>Step 4. Obtain a trace profile<a class="headerlink" href="#step-4-obtain-a-trace-profile" title="Link to this heading">#</a></h1>
+<p>Now we can extract the data along that trace.</p>
+<p>We want to take a “profile” of the trace to see how many pixels on either side of the line we should include.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">xvals</span><span class="p">,</span>
+    <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fca919bf17a33db319ed8c683a9e8023a81df50cff00d20527565b7770f69763.png" src="_images/fca919bf17a33db319ed8c683a9e8023a81df50cff00d20527565b7770f69763.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start by taking +/- 15 pixels</span>
+<span class="n">npixels_to_cut</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">trace_center</span> <span class="o">=</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
+<span class="n">cutouts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">image_array</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xvals</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">cutouts</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1600, 30)
+</pre></div>
+</div>
+</div>
+</div>
+<p>That last step deserves some explanation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cutouts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">image_array</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span><span class="o">-</span><span class="n">npixels_to_cut</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span><span class="o">+</span><span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xvals</span><span class="p">)])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[...</span> <span class="pre">for</span> <span class="pre">yval,</span> <span class="pre">ii</span> <span class="pre">in</span> <span class="pre">zip(trace_center,</span> <span class="pre">xvals)]</span></code> takes each trace y-value and each x-value and ‘zips’ them together, so each iteration of the for loop has one x, y pair</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">image_array[int(yval)-npixels_to_cut:int(yval)+npixels_to_cut,</span> <span class="pre">ii]</span></code> is taking a single pixel along the x-direction (the second dimension, <code class="docutils literal notranslate"><span class="pre">ii</span></code>) and a range of pixels along the y-direction, i.e., <code class="docutils literal notranslate"><span class="pre">y+/-n</span></code></p></li>
+<li><p>these are put together in a loop, so we have a y+/-n pixel region for each x-pixel</p></li>
+<li><p>then we make them all into an array</p></li>
+</ul>
+<p>We can see the result visually:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;We go from this...&quot;</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cutouts</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;...to this&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7ef482e27ba6d656e1c8147c2bff1e8c9aba81bda74fbb3ae66a8999d512bd8b.png" src="_images/7ef482e27ba6d656e1c8147c2bff1e8c9aba81bda74fbb3ae66a8999d512bd8b.png" />
+</div>
+</div>
+<p>Then we average along the X-direction to get the trace profile:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_trace_profile</span> <span class="o">=</span> <span class="p">(</span><span class="n">cutouts</span> <span class="o">-</span> <span class="n">background</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">trace_profile_xaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">npixels_to_cut</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">mean_trace_profile</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance from center&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average source profile&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6d09a5ba2b08c2af0127492cee9047abbf5c20e0a609cca8e28aa8176c54fbae.png" src="_images/6d09a5ba2b08c2af0127492cee9047abbf5c20e0a609cca8e28aa8176c54fbae.png" />
+</div>
+</div>
+<p>We want to fit that profile with a Gaussian for future use,  so we import the Gaussian model profile and non-linear fitter and run a fit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian1D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.fitting</span><span class="w"> </span><span class="kn">import</span> <span class="n">LevMarLSQFitter</span>
+
+<span class="n">lmfitter</span> <span class="o">=</span> <span class="n">LevMarLSQFitter</span><span class="p">()</span>
+<span class="n">guess</span> <span class="o">=</span> <span class="n">Gaussian1D</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="n">mean_trace_profile</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">fitted_trace_profile</span> <span class="o">=</span> <span class="n">lmfitter</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">mean_trace_profile</span>
+<span class="p">)</span>
+<span class="n">model_trace_profile</span> <span class="o">=</span> <span class="n">fitted_trace_profile</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">)</span>
+<span class="n">fitted_trace_profile</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">lmfitter</span> <span class="o">=</span> <span class="n">LevMarLSQFitter</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">guess</span> <span class="o">=</span> <span class="n">Gaussian1D</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="n">mean_trace_profile</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">fitted_trace_profile</span> <span class="o">=</span> <span class="n">lmfitter</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">model</span><span class="o">=</span><span class="n">guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">mean_trace_profile</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">model_trace_profile</span> <span class="o">=</span> <span class="n">fitted_trace_profile</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">fitted_trace_profile</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>             <span class="s2">&quot;This model does not support being fit to data with units.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">288</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="n">farg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1423</span>     <span class="n">model_copy</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1424</span>     <span class="n">weights</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1425</span> <span class="p">)</span> <span class="o">+</span> <span class="n">_convert_input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1427</span> <span class="n">fkwarg</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fit_param_indices&quot;</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="n">fit_param_indices</span><span class="p">)}</span>
+<span class="ne">-&gt; </span><span class="mi">1429</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">cov_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_fitter</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1430</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
+<span class="g g-Whitespace">   </span><span class="mi">1431</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1433</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_param_cov</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1434</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">cov_x</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">weights</span>
+<span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1437</span> <span class="n">model_copy</span><span class="o">.</span><span class="n">sync_constraints</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_fitter</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1495</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
+<span class="g g-Whitespace">   </span><span class="mi">1496</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1497</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+<span class="g g-Whitespace">   </span><span class="mi">1499</span>     <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_deriv</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">estimate_jacobian</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1500</span>         <span class="n">dfunc</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">mean_trace_profile</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">model_trace_profile</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance from center&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average source profile&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both the empirical trace profile <code class="docutils literal notranslate"><span class="pre">mean_trace_profile</span></code> and the modeled <code class="docutils literal notranslate"><span class="pre">model_trace_profile</span></code> can reasonably be used; the latter is more convenient to serialize (i.e., write to disk or on paper)</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-5-extract-the-traced-spectrum">
+<h1>Step 5. Extract the traced spectrum<a class="headerlink" href="#step-5-extract-the-traced-spectrum" title="Link to this heading">#</a></h1>
+<p>We can obtain our spectrum by directly averaging the pixels along the trace:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average_spectrum</span> <span class="o">=</span> <span class="p">(</span><span class="n">cutouts</span> <span class="o">-</span> <span class="n">background</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">average_spectrum</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or, we can obtain our spectrum by taking the trace-weighted average:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace_avg_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+            <span class="n">image_array</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">]</span>
+            <span class="o">-</span> <span class="n">background</span><span class="p">,</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">mean_trace_profile</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xvals</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also do this with the Gaussian weights:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaussian_trace_avg_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+            <span class="n">image_array</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">]</span>
+            <span class="o">-</span> <span class="n">background</span><span class="p">,</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">model_trace_profile</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xvals</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">average_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Direct Average&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_avg_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Trace-weighted average&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">gaussian_trace_avg_spectrum</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian-model-Trace-weighted average&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In general, the trace-weighted average will have higher signal-to-noise, as seen here (while we haven’t measured the noise, it is approximately constant across the image).</p>
+<p>Note that the Gaussian model and the direct trace yield nearly identical results</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-6-repeat-for-another-star">
+<h1>Step 6: Repeat for another star<a class="headerlink" href="#step-6-repeat-for-another-star" title="Link to this heading">#</a></h1>
+<p>In this last step, we go through all the above steps again for another star (Deneb), but with less explanation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_array_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;deneb_3s_13.63g_1.bmp&quot;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">[</span><span class="mi">470</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">470</span><span class="p">,</span> <span class="mi">520</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yaxis2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">470</span><span class="p">,</span> <span class="mi">520</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">image_array_2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">weighted_yaxis_values2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+    <span class="n">yaxis2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">image_array_2</span><span class="p">[</span><span class="mi">470</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">polymodel2</span> <span class="o">=</span> <span class="n">Polynomial1D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fitted_polymodel2</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span><span class="n">polymodel2</span><span class="p">,</span> <span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">)</span>
+<span class="n">trace_center2</span> <span class="o">=</span> <span class="n">fitted_polymodel2</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">trace_center2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">[</span><span class="mi">470</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">470</span><span class="p">,</span> <span class="mi">520</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">trace_center2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+            <span class="n">image_array_2</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">]</span>
+            <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">),</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">mean_trace_profile</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center2</span><span class="p">,</span> <span class="n">xvals</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spectrum2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the next tutorial, Spectroscopic Data Reduction 2, we’ll work on the wavelength calibration.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--spectroscopic-data-reduction-basics",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index-spectroscopy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2_WavelengthCalibration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spectroscopic Data Reduction Part 2: Wavelength Calibration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spectroscopic Data Reduction Part 1: Tracing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-examine-the-spectrum">Step 1: Examine the spectrum</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2a-try-to-find-the-spine-to-trace-using-argmax">Step 2a. Try to find the spine to trace using argmax</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2b-use-moment-analysis-to-extract-a-spine-to-trace">Step 2b: Use moment analysis to extract a spine to trace</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-fit-the-trace-profile">Step 3. Fit the trace profile</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-obtain-a-trace-profile">Step 4. Obtain a trace profile</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-extract-the-traced-spectrum">Step 5. Extract the traced spectrum</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-repeat-for-another-star">Step 6: Repeat for another star</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@GITHUB-USERNAME, ORCID-ID), AUTHOR2 (@GITHUB-USERNAME, ORCID-ID)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

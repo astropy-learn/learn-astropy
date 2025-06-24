@@ -1,0 +1,1687 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spectroscopic Data Reduction Part 2: Wavelength Calibration &#8212; Spectroscopic Data Reduction Basics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_WavelengthCalibration';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum" href="3_Trace_Extract_Wavelength-CalibrateSpectrum.html" />
+    <link rel="prev" title="Spectroscopic Data Reduction Part 1: Tracing" href="1_SpectroscopicTraceTutorial.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index-spectroscopy.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Spectroscopic Data Reduction Basics - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Spectroscopic Data Reduction Basics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index-spectroscopy.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_SpectroscopicTraceTutorial.html">Spectroscopic Data Reduction Part 1: Tracing</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spectroscopic Data Reduction Part 2: Wavelength Calibration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Trace_Extract_Wavelength-CalibrateSpectrum.html">Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics/edit/main//2_WavelengthCalibration.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics/issues/new?title=Issue%20on%20page%20%2F2_WavelengthCalibration.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2_WavelengthCalibration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spectroscopic Data Reduction Part 2: Wavelength Calibration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-on-our-guesses">Improving on our guesses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-the-uncertainty-of-the-wavelength-solution">Measuring the uncertainty of the wavelength solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-residual-represent">What does the residual represent?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-could-we-do-better">How could we do better?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="spectroscopic-data-reduction-part-2-wavelength-calibration">
+<h1>Spectroscopic Data Reduction Part 2: Wavelength Calibration<a class="headerlink" href="#spectroscopic-data-reduction-part-2-wavelength-calibration" title="Link to this heading">#</a></h1>
+<p>This notebook assumes you’ve completed the Spectroscopic Trace process (see <a class="reference internal" href="1_SpectroscopicTraceTutorial.html"><span class="std std-doc">Part 1</span></a>) and have a trace model handy.</p>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Adam Ginsburg, Kelle Cruz, Lia Corrales, Jonathan Sick, Adrian Price-Whelan</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Extract calibration lamp spectra from two-dimensional spectral images</p></li>
+<li><p>Fit a wavelength solution</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>Spectroscopy</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This tutorial will walk through extraction of a calibration lamp spectrum using an existing trace.</p>
+<p>It will then demonstrate line identification using the NIST line list database.</p>
+<p>Finally, it will show how to fit a wavelength solution to a calibration spectrum, integrating information from multiple calibration lamps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">PILImage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;lower&quot;</span>  <span class="c1"># we want to show images, not matrices, so we set the origin to the lower-left</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span>
+    <span class="s2">&quot;dark_background&quot;</span>
+<span class="p">)</span>  <span class="c1"># Optional configuration: if run, this will look nice on dark background notebooks</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.polynomial</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polynomial1D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian1D</span><span class="p">,</span> <span class="n">Linear1D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.fitting</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearLSQFitter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+<span class="c1"># astroquery provides an interface to the NIST atomic line database</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.nist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Nist</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have three calibration lamp spectra: Mercury, Krypton, and Neon.  These are saved as .bmp (bitmap) files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hg_filename</span> <span class="o">=</span> <span class="s2">&quot;hg_lamp_1-sixteenth_s.bmp&quot;</span>
+<span class="n">kr_filename</span> <span class="o">=</span> <span class="s2">&quot;kr_lamp_p6.bmp&quot;</span>
+<span class="n">ne_filename</span> <span class="o">=</span> <span class="s2">&quot;ne_lamp_1s.bmp&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hg_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">hg_filename</span><span class="p">))</span>
+<span class="n">kr_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">kr_filename</span><span class="p">))</span>
+<span class="n">ne_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">ne_filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hg_image</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e9bb9287c09d1436275f7d1cbcb0c92bdcf20e101367384e19fb3ff2db3c270b.png" src="_images/e9bb9287c09d1436275f7d1cbcb0c92bdcf20e101367384e19fb3ff2db3c270b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kr_image</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6ea985597889fd251db60977bbe8a210e8403d399c068dcd3b9a5c540a0afcc5.png" src="_images/6ea985597889fd251db60977bbe8a210e8403d399c068dcd3b9a5c540a0afcc5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ne_image</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0f0ecddbdd18cad5312a979b38847b46c54e20904674355217ccdeb9ff374350.png" src="_images/0f0ecddbdd18cad5312a979b38847b46c54e20904674355217ccdeb9ff374350.png" />
+</div>
+</div>
+<p>We can note by zooming in that there appear to be seven independent spectra:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hg_image</span><span class="p">[</span><span class="mi">380</span><span class="p">:</span><span class="mi">540</span><span class="p">,</span> <span class="mi">140</span><span class="p">:</span><span class="mi">180</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/acde35facaaa3f66755072c328e2bb89ecebaea249ebcef58c0ac0f02d119de7.png" src="_images/acde35facaaa3f66755072c328e2bb89ecebaea249ebcef58c0ac0f02d119de7.png" />
+</div>
+</div>
+<p>We re-create our trace model from the <a class="reference internal" href="#Spectroscopic%20Trace%20Tutorial.ipynb"><span class="xref myst">Spectroscopic Trace Tutorial</span></a> using the fitted models.</p>
+<p>(We could have used the empirical trace directly, which might result in slightly improved noise characteristics, but for simplicity - and to make the two notebooks independently usable - we use the fitted polynomial &amp; Gaussian models here)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trace_model</span> <span class="o">=</span> <span class="n">Polynomial1D</span><span class="p">(</span>
+    <span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c0</span><span class="o">=</span><span class="mf">453.6307</span><span class="p">,</span> <span class="n">c1</span><span class="o">=-</span><span class="mf">0.01596396</span><span class="p">,</span> <span class="n">c2</span><span class="o">=</span><span class="mf">0.0000008259</span><span class="p">,</span> <span class="n">c3</span><span class="o">=</span><span class="mf">3.3348554642250357e-09</span>
+<span class="p">)</span>
+<span class="n">trace_profile_model</span> <span class="o">=</span> <span class="n">Gaussian1D</span><span class="p">(</span>
+    <span class="n">amplitude</span><span class="o">=</span><span class="mf">123.84846797</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.17719819</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">5.10872134</span>
+<span class="p">)</span>
+<span class="n">xaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">hg_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">trace_center</span> <span class="o">=</span> <span class="n">trace_model</span><span class="p">(</span><span class="n">xaxis</span><span class="p">)</span>
+<span class="n">npixels_to_cut</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">yaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">npixels_to_cut</span><span class="p">)</span>
+<span class="n">model_trace_profile</span> <span class="o">=</span> <span class="n">trace_profile_model</span><span class="p">(</span><span class="n">yaxis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we use the trace to extract spectra from each of the three calibration lamp spectra.</p>
+<p>We verify that the traces look acceptable first, though:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hg_image</span><span class="p">[</span><span class="mi">430</span><span class="p">:</span><span class="mi">470</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">430</span><span class="p">,</span> <span class="mi">470</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">trace_center</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kr_image</span><span class="p">[</span><span class="mi">430</span><span class="p">:</span><span class="mi">470</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">430</span><span class="p">,</span> <span class="mi">470</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">trace_center</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ne_image</span><span class="p">[</span><span class="mi">430</span><span class="p">:</span><span class="mi">470</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">430</span><span class="p">,</span> <span class="mi">470</span><span class="p">])</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">trace_center</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ec062b623dadbebaa54ba1e6334e636c5f2075073c6e75bc0fe3b5e1bb8fd517.png" src="_images/ec062b623dadbebaa54ba1e6334e636c5f2075073c6e75bc0fe3b5e1bb8fd517.png" />
+</div>
+</div>
+<p>Strangely, the trace looks like it’s going through a minimum between the individual spectra, which may indicate that the spectrograph was shaken or jiggled between the trace and wavelength calibration observations.  Nevertheless, there’s enough signal that we can extract a calibration lamp spectrum, and the trace is perpendicular enough to the dispersion axis that we can mostly trust it.</p>
+<p>In the following three cells, we extract the trace-profile-weighted average spectrum from each of the three calibration lamps.</p>
+<p><code class="docutils literal notranslate"><span class="pre">npixels_to_cut</span></code> sets a cutout region around the trace, close to what is shown in the figures above.  The <code class="docutils literal notranslate"><span class="pre">model_trace_profile</span></code>, derived earlier, is the transmission profile we measured using the stellar trace.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hg_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+            <span class="n">hg_image</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">],</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">model_trace_profile</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xaxis</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+            <span class="n">ne_image</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">],</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">model_trace_profile</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xaxis</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kr_spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+            <span class="n">kr_image</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">],</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">model_trace_profile</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xaxis</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Neon&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b76827b45b2fdf8978ab32565b59c93ddd68ad4adeb53e98473deec1225e6fb8.png" src="_images/b76827b45b2fdf8978ab32565b59c93ddd68ad4adeb53e98473deec1225e6fb8.png" />
+</div>
+</div>
+<p>We now have spectra of a mercury lamp, a neon lamp, and a krypton lamp.</p>
+<p>If we have no prior knowledge, we would have to do some guess-and-check.  It helps to do <em>educated</em> guess-and-check, though; wikipedia is a decent resource to point us at the right line lists:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Mercury-vapor_lamp#Emission_line_spectrum">https://en.wikipedia.org/wiki/Mercury-vapor_lamp#Emission_line_spectrum</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Gas-discharge_lamp#Color">https://en.wikipedia.org/wiki/Gas-discharge_lamp#Color</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/2/29/Mercury_Spectra.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3c2330f950d8fd725f04803fb8bb44a1466b607bf8c9ef43862a176b559e28a5.jpg" src="_images/3c2330f950d8fd725f04803fb8bb44a1466b607bf8c9ef43862a176b559e28a5.jpg" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/9/99/Neon_spectra.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fe942d4f208c49bf860d6b2d506d6c03e4e1c238869cb7770aa216ec8c357ec2.jpg" src="_images/fe942d4f208c49bf860d6b2d506d6c03e4e1c238869cb7770aa216ec8c357ec2.jpg" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/a/a6/Krypton_Spectrum.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a69b70fdf526fa1043590d33a47c097ca28a48bdb97f96deec71c7b626b7b437.jpg" src="_images/a69b70fdf526fa1043590d33a47c097ca28a48bdb97f96deec71c7b626b7b437.jpg" />
+</div>
+</div>
+<p>Start with mercury.  We use a different wikipedia spectrum that looks a little more like ours to guide the eye (note that the line ratios vary from lamp to lamp at least partly because each lamp contains gas at a different pressure).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/0/0d/HG-Spektrum_crop.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1be03a859500730b8a712d189e61c72dbb8f6fdacb242d7031bb0dab280ef727.jpg" src="_images/1be03a859500730b8a712d189e61c72dbb8f6fdacb242d7031bb0dab280ef727.jpg" />
+</div>
+</div>
+<p>The optical lines of Mercury are, from Wikipedia, in Angstroms:</p>
+<ul class="simple">
+<li><p>4047 violet</p></li>
+<li><p>4358 blue</p></li>
+<li><p>5461 green</p></li>
+<li><p>5782 yellow-orange</p></li>
+<li><p>6500 red</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7eb00f5b7b14404d1e1e76df88030b3c842e7f781903c500d5e8024b181afaee.png" src="_images/7eb00f5b7b14404d1e1e76df88030b3c842e7f781903c500d5e8024b181afaee.png" />
+</div>
+</div>
+<p>At this next step, we have to write down which (approximate) pixel values correspond to known wavelengths.</p>
+<p>Guessing these just by looking at the spectra and comparing to spectral atlases is hard and takes experience.</p>
+<p>If you have spectra taken with the same setup of a known sources - such as an A0 star - you might be able to use that to give you a ‘prior’ on where the spectrum is centered.
+In this case, our set of spectra include Deneb, which is an A-star.  It has a clear absorption line (that we’ll see later, in tutorial 3) around pixel 750.
+A-stars have deep hydrogen absorption lines in their atmosphere and little else, so this is probably a hydrogen line.
+We can assume it’s either H-alpha or H-beta, since they are both in the optical and strong (higher lines, like H-delta, are all close together, so if it were one of them, we’d expect to see several adjacent lines).</p>
+<p>We can therefore compare our spectrum to the atlases assuming pixel 750 is H-beta or H-alpha.  Using the line list, we can see red is pretty unlikely: H-alpha is at 6563, so there would be a line right next to it.  If it’s H-beta, there are lines on either side, and there is a doublet on the right side.</p>
+<p>The next trick is figuring out which way the wavelength increases - to the left or the right?  Mercury doesn’t help with that, since the blue-violet and green-yellow doublets are about the same distance from one another.  It turns out, from guess-and-check work, that wavelength is increasing to the left.</p>
+<p>Again, this part is hard to do directly from the data - you generally hope to have a pretty good idea of what wavelength you’re observing before you observe!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">guessed_wavelengths</span> <span class="o">=</span> <span class="p">[</span><span class="mf">546.1</span><span class="p">,</span> <span class="mf">435.8</span><span class="p">,</span> <span class="mf">404.7</span><span class="p">]</span>
+<span class="n">guessed_xvals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">165</span><span class="p">,</span> <span class="mi">1230</span><span class="p">,</span> <span class="mi">1550</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="improving-on-our-guesses">
+<h2>Improving on our guesses<a class="headerlink" href="#improving-on-our-guesses" title="Link to this heading">#</a></h2>
+<p>We can do a lot better at determining the pixel X-values by taking the intensity-weighted coordinate (moment 1):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npixels</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">improved_xval_guesses</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+        <span class="n">xaxis</span><span class="p">[</span><span class="n">g</span> <span class="o">-</span> <span class="n">npixels</span> <span class="p">:</span> <span class="n">g</span> <span class="o">+</span> <span class="n">npixels</span><span class="p">],</span>
+        <span class="n">weights</span><span class="o">=</span><span class="n">hg_spectrum</span><span class="p">[</span><span class="n">g</span> <span class="o">-</span> <span class="n">npixels</span> <span class="p">:</span> <span class="n">g</span> <span class="o">+</span> <span class="n">npixels</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">hg_spectrum</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">guessed_xvals</span>
+<span class="p">]</span>
+<span class="n">improved_xval_guesses</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[np.float64(160.736647147187),
+ np.float64(1235.1743737214103),
+ np.float64(1548.2834755459144)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">guessed_xvals</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/709edcbe43fe2bb5638b45cef82c8d55c7859beb8248de8b47acd626e5b08337.png" src="_images/709edcbe43fe2bb5638b45cef82c8d55c7859beb8248de8b47acd626e5b08337.png" />
+</div>
+</div>
+<p>We only have three data points, but that is enough to fit a linear model and still have a free point to check that we got it close to right:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linfitter</span> <span class="o">=</span> <span class="n">LinearLSQFitter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We use a <code class="docutils literal notranslate"><span class="pre">Linear1D</span></code> model because we will want to use its inverse later (other models are not invertible)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wlmodel</span> <span class="o">=</span> <span class="n">Linear1D</span><span class="p">()</span>
+<span class="n">linfit_wlmodel</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">wlmodel</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">guessed_wavelengths</span>
+<span class="p">)</span>
+<span class="n">wavelengths</span> <span class="o">=</span> <span class="n">linfit_wlmodel</span><span class="p">(</span><span class="n">xaxis</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span>
+<span class="n">linfit_wlmodel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Linear1D(slope=-0.10210002, intercept=562.40076754)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note this fitted slope: each pixel is about 0.1 nm (about 1 angstrom), and the wavelength increases to the left.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e52b0b57dbde2d86a6d5242db6abbc8ba89202fc429d4417d7553860869471af.png" src="_images/e52b0b57dbde2d86a6d5242db6abbc8ba89202fc429d4417d7553860869471af.png" />
+</div>
+</div>
+<p>We show our model <span class="math notranslate nohighlight">\(\lambda(x)\)</span> vs the input “guesses”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\lambda(x)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x (pixels)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3621/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+  plt.ylabel(&quot;$\lambda(x)$&quot;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;x (pixels)&#39;)
+</pre></div>
+</div>
+<img alt="_images/854311f89be239f09690b0066302622972a5257fc5e575e52c0c400c5508d864.png" src="_images/854311f89be239f09690b0066302622972a5257fc5e575e52c0c400c5508d864.png" />
+</div>
+</div>
+<p>Indeed, a linear model fit excellently!</p>
+<p>We can look up neon and krypton line lists to see how well we did and maybe try to improve our fit.</p>
+<p>NIST, the National Institute of Standards and Technology, maintains <a class="reference external" href="https://physics.nist.gov/PhysRefData/ASD/lines_form.html">atomic line lists</a>.  However, we have no direct way to know which transitions from these atoms to use!  There are a few heuristics we can apply, though.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we adopt the minimum/maximum wavelength from our linear fit</span>
+<span class="n">minwave</span> <span class="o">=</span> <span class="n">wavelengths</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">maxwave</span> <span class="o">=</span> <span class="n">wavelengths</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="c1"># then we search for atomic lines</span>
+<span class="c1"># We are only interested in neutral lines, assuming the lamps are not hot enough to ionize the atoms</span>
+<span class="n">mercury_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">&quot;Hg I&quot;</span><span class="p">)</span>
+<span class="n">krypton_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">&quot;Kr I&quot;</span><span class="p">)</span>
+<span class="n">neon_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">&quot;Ne I&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can first look at what NIST reports for the mercury spectrum we already fit:</p>
+<p>(note that the wavelengths are <em>air</em> wavelengths, not vacuum)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0ee5d7b4fc8c1da8c54bb3d5d00b1a579a3bdfb04563a0cc238b61f1e0d28509.png" src="_images/0ee5d7b4fc8c1da8c54bb3d5d00b1a579a3bdfb04563a0cc238b61f1e0d28509.png" />
+</div>
+</div>
+<p>The database contains <em>many</em> more lines than we saw.</p>
+<p>The “Rel. Int” (Relative Intensity) provides “a qualitative description of what the emission spectrum of a particular element in a particular (low-density) source looks like.”</p>
+<p>We can select that column, if we clean it up a little (there are some “blank” entries)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># these lines downselect from the table to keep only those that have usable &quot;Relative Intensity&quot; measurements</span>
+<span class="c1"># first, we get rid of those whose &#39;Rel.&#39; column is masked out or is an asterisk</span>
+<span class="n">hg_keep</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">hg_wl_tbl</span> <span class="o">=</span> <span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">][</span><span class="n">hg_keep</span><span class="p">]</span>
+<span class="c1"># then, we collect the &#39;Rel.&#39; values and convert them from strings to floats</span>
+<span class="n">hg_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">][</span><span class="n">hg_keep</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
+<span class="c1"># we normalize the relative intensities to match the intensity of the spectrum so we can see both on the same plot</span>
+<span class="c1"># since they&#39;re just relative intensities, their amplitudes are arbitrary anyway</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hg_wl_tbl</span><span class="p">,</span> <span class="n">hg_rel_tbl</span> <span class="o">/</span> <span class="n">hg_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">hg_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\lambda$ [nm]&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3621/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+  plt.xlabel(&quot;$\lambda$ [nm]&quot;);
+</pre></div>
+</div>
+<img alt="_images/0bb272f346f16607980c0b1cdf6228e97328882a2f47447fa331baee7f4a27a7.png" src="_images/0bb272f346f16607980c0b1cdf6228e97328882a2f47447fa331baee7f4a27a7.png" />
+</div>
+</div>
+<p>Not bad!  See that only the three “brightest” lines show up, plus maybe a bit of a third one around 408 nm.</p>
+<p>Let’s try the same for the other lines (note that the hackery changes - this is because the NIST tables are not formatted to be machine-readable!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;*&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]])</span>
+<span class="n">ne_wl_tbl</span> <span class="o">=</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">][</span><span class="n">ne_keep</span><span class="p">]</span>
+<span class="n">ne_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">][</span><span class="n">ne_keep</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kr_keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;*&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;h&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">kr_wl_tbl</span> <span class="o">=</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">][</span><span class="n">kr_keep</span><span class="p">]</span>
+<span class="n">kr_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">][</span><span class="n">kr_keep</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">,</span> <span class="n">ne_rel_tbl</span> <span class="o">/</span> <span class="n">ne_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">ne_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\lambda$ [nm]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neon&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3621/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+  plt.xlabel(&quot;$\lambda$ [nm]&quot;)
+</pre></div>
+</div>
+<img alt="_images/93c7571e0408b6974b74cc6b9c892e177ec5d798a6e9c41128d744c3e616255d.png" src="_images/93c7571e0408b6974b74cc6b9c892e177ec5d798a6e9c41128d744c3e616255d.png" />
+</div>
+</div>
+<p>For Neon, there are many lines that match up, but a lot that don’t match well (we detect a lot that have low <code class="docutils literal notranslate"><span class="pre">Rel</span></code> values)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_wl_tbl</span><span class="p">,</span> <span class="n">kr_rel_tbl</span> <span class="o">/</span> <span class="n">kr_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">kr_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\lambda$ [nm]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Krypton&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3621/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+  plt.xlabel(&quot;$\lambda$ [nm]&quot;)
+</pre></div>
+</div>
+<img alt="_images/1a756ffcdec3ff77a29b25416c2899953bc1931d90be8429ac26ec8957ec27fe.png" src="_images/1a756ffcdec3ff77a29b25416c2899953bc1931d90be8429ac26ec8957ec27fe.png" />
+</div>
+</div>
+<p>The Krypton spectrum will be much easier to deal with: we just select those lines with intensities &gt; 70 on the scale above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kr_rel_intens</span> <span class="o">=</span> <span class="n">kr_rel_tbl</span> <span class="o">/</span> <span class="n">kr_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">kr_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">kr_keep_final</span> <span class="o">=</span> <span class="n">kr_rel_intens</span> <span class="o">&gt;</span> <span class="mi">70</span>
+<span class="n">kr_wl_final</span> <span class="o">=</span> <span class="n">kr_wl_tbl</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then take these krypton wavelengths and convert them back to pixel space:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the linear model has an inverse function that takes y = m x + b and converts to x = (y - b) / m</span>
+<span class="n">kr_pixel_vals</span> <span class="o">=</span> <span class="n">linfit_wlmodel</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">kr_wl_final</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3abb2210a01e74b32acefd114c9642623adb40b0cc2f20c874199d1b8b54e9e6.png" src="_images/3abb2210a01e74b32acefd114c9642623adb40b0cc2f20c874199d1b8b54e9e6.png" />
+</div>
+</div>
+<p>As with mercury above, we select a sub-region and measure the intensity-weighted peak position in pixel number to accurately measure the pixel center.</p>
+<p>But here we have to be careful!  These peaks are very close!  Can we still use a +/-15 pixel range?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine the pixel range, +/-15 pix, to see if it results in line overlaps</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">xx</span> <span class="o">+</span> <span class="mi">15</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">yy</span><span class="p">,</span> <span class="n">yy</span><span class="p">],</span>
+    <span class="p">)</span>  <span class="c1"># plot horizontal lines at each peak location</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="mi">1350</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d470aa1685614e88a2bc8b2739a5b5b48c5ff1b3dfd3a130ae6ac9edb97c405d.png" src="_images/d470aa1685614e88a2bc8b2739a5b5b48c5ff1b3dfd3a130ae6ac9edb97c405d.png" />
+</div>
+</div>
+<p>Yes, 15 pixels looks OK still.</p>
+<p>If these lines had overlapped with one another at all, we would have wanted to decrease the pixel range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># note that we have to force the pixel-center guesses to be integers for slicing:</span>
+<span class="n">npixels</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">improved_xval_guesses_kr</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+        <span class="n">xaxis</span><span class="p">[</span><span class="n">g</span> <span class="o">-</span> <span class="n">npixels</span> <span class="p">:</span> <span class="n">g</span> <span class="o">+</span> <span class="n">npixels</span><span class="p">],</span>
+        <span class="n">weights</span><span class="o">=</span><span class="n">kr_spectrum</span><span class="p">[</span><span class="n">g</span> <span class="o">-</span> <span class="n">npixels</span> <span class="p">:</span> <span class="n">g</span> <span class="o">+</span> <span class="n">npixels</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">kr_spectrum</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">kr_pixel_vals</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">improved_xval_guesses_kr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[np.float64(1321.3688120277354),
+ np.float64(1277.1972221744618),
+ np.float64(1222.9735220981242),
+ np.float64(1140.2780334574877),
+ np.float64(1137.7518421055224),
+ np.float64(1097.715582422276),
+ np.float64(54.2769391627054)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can plot these best-fit pixel numbers against the “true” wavelengths and overplot our previous best-fit model from mercury:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/14ff0ddb1a889dbfac2cacf7923091f430f9d6e0ab012969841a51cd0fca59ec.png" src="_images/14ff0ddb1a889dbfac2cacf7923091f430f9d6e0ab012969841a51cd0fca59ec.png" />
+</div>
+</div>
+<p>We can now jointly fit the Kr + Hg spectra with a new model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we concatenate the data sets together</span>
+<span class="n">xvals_hg_plus_kr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">improved_xval_guesses_kr</span><span class="p">])</span>
+<span class="n">waves_hg_plus_kr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">])</span>
+<span class="n">linfit_wlmodel_hgkr</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">wlmodel</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xvals_hg_plus_kr</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">waves_hg_plus_kr</span><span class="p">)</span>
+<span class="n">linfit_wlmodel_hgkr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Linear1D(slope=-0.10221918, intercept=562.56900643)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># re-plot the data with the fit overlaid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">linfit_wlmodel_hgkr</span><span class="p">(</span><span class="n">xaxis</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1d07b03a76de9f382f94290f8e077d0c698efce9846d6c9cad86092a2e7656bb.png" src="_images/1d07b03a76de9f382f94290f8e077d0c698efce9846d6c9cad86092a2e7656bb.png" />
+</div>
+</div>
+<p>These are nearly indistiguishable, but let’s look at the residuals for each:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residuals_hgonlymodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">waves_hg_plus_kr</span><span class="p">)</span> <span class="o">-</span> <span class="n">linfit_wlmodel</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">)</span>
+<span class="n">residuals_hgkrmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">waves_hg_plus_kr</span><span class="p">)</span> <span class="o">-</span> <span class="n">linfit_wlmodel_hgkr</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgonlymodel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hg-only fit&quot;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;stepfilled&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgkrmodel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hg-only fit&quot;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/37e1786c627fe302e0503ec5284b876eaa3593f837e02391617485286a7bafcb.png" src="_images/37e1786c627fe302e0503ec5284b876eaa3593f837e02391617485286a7bafcb.png" />
+</div>
+</div>
+<p>The differences are pretty marginal; the Hg-only fit was really good.</p>
+<p>Is there any shape to the residuals?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">,</span> <span class="n">residuals_hgonlymodel</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength residual (data minus model; nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/40b7c4b8540875acab08103d38a64fdeaddff36866ab62c2e50d197acbaefca6.png" src="_images/40b7c4b8540875acab08103d38a64fdeaddff36866ab62c2e50d197acbaefca6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">,</span> <span class="n">residuals_hgkrmodel</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength residual (data minus model; nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7cca089735efa8d898f6f8addfc6826658de25b33ab62e584d7da0bbd5fb6fbb.png" src="_images/7cca089735efa8d898f6f8addfc6826658de25b33ab62e584d7da0bbd5fb6fbb.png" />
+</div>
+</div>
+<p>In brief, no, there’s no sign of structure.  If there were, we might want to fit a higher-order model.</p>
+<p>We can also estimate a chi-squared-like statistic (though note that this is <em>not</em> the <span class="math notranslate nohighlight">\(\chi^2\)</span> value we would use to assess goodness of fit because we have <em>not</em> estimated the uncertainty on each wavelength point!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resid2_hgonly</span> <span class="o">=</span> <span class="p">(</span><span class="n">residuals_hgonlymodel</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">resid2_hgkr</span> <span class="o">=</span> <span class="p">(</span><span class="n">residuals_hgkrmodel</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">resid2_hgonly</span><span class="p">,</span> <span class="n">resid2_hgkr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.8290377437520076), np.float64(0.7755414146718549))
+</pre></div>
+</div>
+</div>
+</div>
+<p>These differences are also very small, again suggesting the Hg-only fit was really good.</p>
+<p>Why do we bother going through all these checks if the Hg-only fit was just fine?</p>
+<p>Besides simply not knowing, it is common for spectrographs to have slightly non-linear dispersion when measured over a wide wavelength range, so we want to be sure we haven’t missed any such curvature.</p>
+<p>We also want to measure the uncertainty on our wavelength calibration.</p>
+<p>Now let’s go back and measure the Neon spectrum</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_rel_intens</span> <span class="o">=</span> <span class="n">ne_rel_tbl</span> <span class="o">/</span> <span class="n">ne_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">ne_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/beb9656c66b5d26ea4ab17d67de4d9914e52e39a7a9661c071e6ccba3a1e7f77.png" src="_images/beb9656c66b5d26ea4ab17d67de4d9914e52e39a7a9661c071e6ccba3a1e7f77.png" />
+</div>
+</div>
+<p>We can try keeping only those with intensiy &gt;100, though we will miss some lines</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_keep_final</span> <span class="o">=</span> <span class="n">ne_rel_intens</span> <span class="o">&gt;</span> <span class="mi">100</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2b84d298646da282a8cccc567eb34ac5dce7f940a11af3c241bf8ea3cc204a15.png" src="_images/2b84d298646da282a8cccc567eb34ac5dce7f940a11af3c241bf8ea3cc204a15.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select down to just those lines we want to keep</span>
+<span class="n">ne_wl_final</span> <span class="o">=</span> <span class="n">ne_wl_tbl</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">]</span>
+<span class="n">ne_pixel_vals</span> <span class="o">=</span> <span class="n">linfit_wlmodel</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">ne_wl_final</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check for overlaps again (in the densest part of the spectrum)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_pixel_vals</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ne_pixel_vals</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">xx</span> <span class="o">+</span> <span class="mi">15</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">yy</span><span class="p">,</span> <span class="n">yy</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">850</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1413a3879620a779df2f8a9b897860d8d8bed2b39fed2985598ae779f077dfdf.png" src="_images/1413a3879620a779df2f8a9b897860d8d8bed2b39fed2985598ae779f077dfdf.png" />
+</div>
+</div>
+<p>For Neon, our automated approach isn’t very good (the third point from the left is not on a peak), and we’ll want to use a narrower pixel range.</p>
+<p>Still, rather than go back through and laboriously identify each line, we’ll stick with a semi-automated approach, just using a narrower range around each peak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npixels</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">improved_xval_guesses_ne</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+        <span class="n">xaxis</span><span class="p">[</span><span class="n">g</span> <span class="o">-</span> <span class="n">npixels</span> <span class="p">:</span> <span class="n">g</span> <span class="o">+</span> <span class="n">npixels</span><span class="p">],</span>
+        <span class="n">weights</span><span class="o">=</span><span class="n">ne_spectrum</span><span class="p">[</span><span class="n">g</span> <span class="o">-</span> <span class="n">npixels</span> <span class="p">:</span> <span class="n">g</span> <span class="o">+</span> <span class="n">npixels</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ne_spectrum</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">ne_pixel_vals</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">improved_xval_guesses_ne</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[np.float64(1060.5183193475166),
+ np.float64(895.2424884504669),
+ np.float64(893.670848263007),
+ np.float64(892.9232835842486),
+ np.float64(892.082009702997),
+ np.float64(890.6754750779604),
+ np.float64(814.5085554585149),
+ np.float64(776.6287593955387),
+ np.float64(720.1158679501369),
+ np.float64(651.4261979644568),
+ np.float64(275.48231610553455),
+ np.float64(216.88320524067413)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_ne</span><span class="p">,</span> <span class="n">ne_wl_final</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Neon&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">linfit_wlmodel_hgkr</span><span class="p">(</span><span class="n">xaxis</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9167b0bbf95c07916f74d3740126b52dd76e2596c9a29d3abba5fa43dc54cf95.png" src="_images/9167b0bbf95c07916f74d3740126b52dd76e2596c9a29d3abba5fa43dc54cf95.png" />
+</div>
+</div>
+<p>We concatenate the Neon lines onto the spectrum and re-fit again</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvals_hg_plus_kr_plus_ne</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="nb">list</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">)</span>
+    <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">)</span>
+    <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">improved_xval_guesses_ne</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">waves_hg_plus_kr_plus_ne</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="nb">list</span><span class="p">(</span><span class="n">guessed_wavelengths</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">kr_wl_final</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">ne_wl_final</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">linfit_wlmodel_hgkrne</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">wlmodel</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">xvals_hg_plus_kr_plus_ne</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">waves_hg_plus_kr_plus_ne</span>
+<span class="p">)</span>
+<span class="n">linfit_wlmodel_hgkrne</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Linear1D(slope=-0.10213663, intercept=562.38704033)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residuals_hgmodel_nedata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">waves_hg_plus_kr_plus_ne</span><span class="p">)</span> <span class="o">-</span> <span class="n">linfit_wlmodel</span><span class="p">(</span>
+    <span class="n">xvals_hg_plus_kr_plus_ne</span>
+<span class="p">)</span>
+<span class="n">residuals_hgkrmodel_nedata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">waves_hg_plus_kr_plus_ne</span><span class="p">)</span> <span class="o">-</span> <span class="n">linfit_wlmodel_hgkr</span><span class="p">(</span>
+    <span class="n">xvals_hg_plus_kr_plus_ne</span>
+<span class="p">)</span>
+<span class="n">residuals_hgkrnemodel_nedata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">waves_hg_plus_kr_plus_ne</span>
+<span class="p">)</span> <span class="o">-</span> <span class="n">linfit_wlmodel_hgkrne</span><span class="p">(</span><span class="n">xvals_hg_plus_kr_plus_ne</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate and compare the squared residuals</span>
+<span class="c1"># the model calculated for Hg-only works better than that for Krypton, but the optimal linear model is calculated</span>
+<span class="c1"># from all data, with a squared residual of 1.26 nm</span>
+<span class="n">resid2_hgonly</span> <span class="o">=</span> <span class="p">(</span><span class="n">residuals_hgmodel_nedata</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">resid2_hgkr</span> <span class="o">=</span> <span class="p">(</span><span class="n">residuals_hgkrmodel_nedata</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">resid2_hgkrne</span> <span class="o">=</span> <span class="p">(</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">resid2_hgonly</span><span class="p">,</span> <span class="n">resid2_hgkr</span><span class="p">,</span> <span class="n">resid2_hgkrne</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.2974074905657398),
+ np.float64(1.5361847762873513),
+ np.float64(1.2470762011963794))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr_plus_ne</span><span class="p">,</span> <span class="n">residuals_hgkrnemodel_nedata</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength residual (data minus model; nm)&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6a9184624b7bd466251be3c5d7135a1b339afb6ecbd24e228d2d99579525d138.png" src="_images/6a9184624b7bd466251be3c5d7135a1b339afb6ecbd24e228d2d99579525d138.png" />
+</div>
+</div>
+<p>Finally, with neon included, there is a hint of some structure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stddev = </span><span class="si">{</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e39e6c804e096943fb543ca267bf38aa297289afb82e0913729343d0f851c5af.png" src="_images/e39e6c804e096943fb543ca267bf38aa297289afb82e0913729343d0f851c5af.png" />
+</div>
+</div>
+<p>This histogram is perhaps a little skewed.</p>
+<p>There may be some curvature to this spectrum, but the evidence is not terribly compelling, particularly given the uncertain nature of the Neon line fits.</p>
+<p>The scatter in these residuals comes out to ~0.24 nm.  We’ll examine this value further below.</p>
+</section>
+<section id="measuring-the-uncertainty-of-the-wavelength-solution">
+<h2>Measuring the uncertainty of the wavelength solution<a class="headerlink" href="#measuring-the-uncertainty-of-the-wavelength-solution" title="Link to this heading">#</a></h2>
+<p>To evaluate our uncertainty, let’s first look at the uncertainty in the pixel value inferred from looking at a single line in the mercury spectrum.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Index Number&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dc3e177ee38f8ebaa4348cbb9a5e642970e65fcc445b52474339acab99159594.png" src="_images/dc3e177ee38f8ebaa4348cbb9a5e642970e65fcc445b52474339acab99159594.png" />
+</div>
+</div>
+<p>We can get a <em>coarse</em> empirical estimate of the per-pixel uncertainty by taking the standard deviation of a “blank” part of the spectrum:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">],</span> <span class="n">hg_spectrum</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">noise_estimate</span> <span class="o">=</span> <span class="n">hg_spectrum</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stddev = </span><span class="si">{</span><span class="n">noise_estimate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fd0fb202690d010e638162c2286be996fd79b5910d1e445d6f0a2716c2e8ba46.png" src="_images/fd0fb202690d010e638162c2286be996fd79b5910d1e445d6f0a2716c2e8ba46.png" />
+</div>
+</div>
+<p>The moment-1 estimate of the peak location is, for a spectrum <span class="math notranslate nohighlight">\(f(x)\)</span> and pixel location <span class="math notranslate nohighlight">\(x\)</span>
+$<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma f(x)} \)</span>$</p>
+<p>which, through propagation of error, gives us variance of moment 1:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{m_1}^2 =  \left(\frac{\Sigma \left[ (x-m_1)^2   \sigma_{f(x)}^2 \right]}{\left(\Sigma f(x)\right)^2}  +
+   \frac{\sigma_{\Sigma f(x)}^2 \Sigma \left[ (x-m_1)^2 f(x)^2 \right]}{\left(\Sigma f(x)\right)^4} \right)\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(   \sigma_{\Sigma f(x)}^2 = \Sigma \sigma_{f(x)}^2 = N \sigma_{f(x)}^2 \)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutout</span> <span class="o">=</span> <span class="n">hg_spectrum</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">hg_spectrum</span><span class="p">)</span>
+<span class="n">xcutout</span> <span class="o">=</span> <span class="n">xaxis</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="p">(</span><span class="n">xcutout</span> <span class="o">*</span> <span class="n">cutout</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">cutout</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">m1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(160.14071738720793)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncertainty on moment 1</span>
+<span class="n">sigma_m1_left</span> <span class="o">=</span> <span class="p">((</span><span class="n">xcutout</span> <span class="o">-</span> <span class="n">m1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">noise_estimate</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">cutout</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">sigma_m1_right</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">xcutout</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">noise_estimate</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">*</span> <span class="p">((</span><span class="n">xcutout</span> <span class="o">-</span> <span class="n">m1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cutout</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">/</span> <span class="n">cutout</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="p">)</span>
+<span class="n">sigma_m1</span> <span class="o">=</span> <span class="n">sigma_m1_left</span> <span class="o">+</span> <span class="n">sigma_m1_right</span>
+<span class="n">sigma_m1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.0012527166750909403)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moment analysis yields m1 = </span><span class="si">{</span><span class="n">m1</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">sigma_m1</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> pixels&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Moment analysis yields m1 = 160.141 +/- 0.001 pixels
+</pre></div>
+</div>
+</div>
+</div>
+<p>The uncertainty is about 1/1000th of a pixel for a bright line.  It may be somewhat larger for fainter lines, but it is still much smaller than our observed scatter.</p>
+<p>We can prove that the uncertainty per line is negligible by looking at a faint neon line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cut out a line and compute its moment 1</span>
+<span class="n">cutoutne</span> <span class="o">=</span> <span class="n">ne_spectrum</span><span class="p">[</span><span class="mi">640</span><span class="p">:</span><span class="mi">660</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ne_spectrum</span><span class="p">)</span>
+<span class="n">xcutoutne</span> <span class="o">=</span> <span class="n">xaxis</span><span class="p">[</span><span class="mi">640</span><span class="p">:</span><span class="mi">660</span><span class="p">]</span>
+<span class="n">m1ne</span> <span class="o">=</span> <span class="p">(</span><span class="n">xcutoutne</span> <span class="o">*</span> <span class="n">cutoutne</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">cutoutne</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># estimate the per-pixel error in the Neon spectrum</span>
+<span class="n">ne_noise_estimate</span> <span class="o">=</span> <span class="n">ne_spectrum</span><span class="p">[</span><span class="mi">1400</span><span class="p">:</span><span class="mi">1600</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">ne_noise_estimate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.0704108932039562)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xcutoutne</span><span class="p">,</span> <span class="n">cutoutne</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m1ne</span><span class="p">,</span> <span class="n">cutoutne</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cd79b682a0df3a10467d7743ed3828e5c72f2f99fcdbf15cbab2f1d59b7a60c4.png" src="_images/cd79b682a0df3a10467d7743ed3828e5c72f2f99fcdbf15cbab2f1d59b7a60c4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate Neon line centroid uncertainty</span>
+<span class="n">sigma_m1_left</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">xcutoutne</span> <span class="o">-</span> <span class="n">m1ne</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ne_noise_estimate</span><span class="o">**</span><span class="mi">2</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">cutoutne</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">sigma_m1_right</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">xcutoutne</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">ne_noise_estimate</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">*</span> <span class="p">((</span><span class="n">xcutoutne</span> <span class="o">-</span> <span class="n">m1ne</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">cutoutne</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">/</span> <span class="n">cutoutne</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">**</span> <span class="mi">4</span>
+<span class="p">)</span>
+<span class="n">sigma_m1_ne</span> <span class="o">=</span> <span class="n">sigma_m1_left</span> <span class="o">+</span> <span class="n">sigma_m1_right</span>
+<span class="n">sigma_m1_ne</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.03746963744056958)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Moment analysis for the faint Neon line yields m1 = </span><span class="si">{</span><span class="n">m1ne</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">sigma_m1_ne</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> pixels&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Moment analysis for the faint Neon line yields m1 = 651.6098 +/- 0.0375 pixels
+</pre></div>
+</div>
+</div>
+</div>
+<p>This error is ~40 times larger, but still much less than a pixel’s width.</p>
+<p>Our best fit gives that each pixel is about 0.1 nm (this comes from the slope of the fitted line), so our uncertainty is 0.0001 nm - 0.004 nm.  The scatter in the residuals is 0.23 nm, so it is not explained by our formal fit’s statistical uncertainty.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Standard Deviation of the residuals = </span><span class="si">{</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">}</span><span class="s2"> nm, &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;Faint Line uncertainty = </span><span class="si">{</span><span class="n">sigma_m1_ne</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">linfit_wlmodel_hgkrne</span><span class="o">.</span><span class="n">slope</span><span class="si">}</span><span class="s2"> nm&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard Deviation of the residuals = 0.23808671082730068 nm, Faint Line uncertainty = -0.003827022595145164 nm
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-does-the-residual-represent">
+<h2>What does the residual represent?<a class="headerlink" href="#what-does-the-residual-represent" title="Link to this heading">#</a></h2>
+<p>The residual to our fit gives us a sense of the <em>systematic</em> uncertainty from a combination of line blending and imperfect fits.  We know, from the NIST line lists, that there are in some cases multiple lines that we could not easily distinguish in the spectrum: these add a small bias to our inferred pixel locations.</p>
+<p>There may also be subtle effects from the spectrograph itself that cause small systematic variations in the wavelength solution.</p>
+</section>
+<section id="how-could-we-do-better">
+<h2>How could we do better?<a class="headerlink" href="#how-could-we-do-better" title="Link to this heading">#</a></h2>
+<p>We could attempt to <em>deblend</em> the individual spectral features by jointly fitting multiple-Gaussian models.</p>
+<p>While this procedure is commonly used, it is fraught with error and extremely difficult to automate in general.</p>
+<p>You’re done!  Now apply this calibration to the data and start measuring things in Tutorial 3</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--spectroscopic-data-reduction-basics",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1_SpectroscopicTraceTutorial.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Spectroscopic Data Reduction Part 1: Tracing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3_Trace_Extract_Wavelength-CalibrateSpectrum.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-on-our-guesses">Improving on our guesses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-the-uncertainty-of-the-wavelength-solution">Measuring the uncertainty of the wavelength solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-residual-represent">What does the residual represent?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-could-we-do-better">How could we do better?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@GITHUB-USERNAME, ORCID-ID), AUTHOR2 (@GITHUB-USERNAME, ORCID-ID)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

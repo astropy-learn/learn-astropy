@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>FITS Tables</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FITS-tables';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="None - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="None - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Viewing and manipulating data from FITS tables
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--FITS-tables" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--FITS-tables/issues/new?title=Issue%20on%20page%20%2FFITS-tables.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Viewing and manipulating data from FITS tables</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="viewing-and-manipulating-data-from-fits-tables">
+<h1>Viewing and manipulating data from FITS tables<a class="headerlink" href="#viewing-and-manipulating-data-from-fits-tables" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Lia Corrales, Kris Stern</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Download a FITS table file from a URL</p></li>
+<li><p>Open a FITS table file and view table contents</p></li>
+<li><p>Make a 2D histogram with the table data</p></li>
+<li><p>Close the FITS file after use</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>FITS, file input/output, table, numpy, matplotlib, histogram</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This tutorial demonstrates the use of <code class="docutils literal notranslate"><span class="pre">astropy.utils.data</span></code> to download a data file, then uses <code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code> and <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code> to open the file. Lastly, <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is used to visualize the data as a histogram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogNorm</span>
+
+<span class="c1"># Set up matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following line is needed to download the example FITS files used in this tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>FITS files often contain large amounts of multi-dimensional data and tables.</p>
+<p>In this particular example, we’ll open a FITS file from a Chandra observation of the Galactic Center.  The file contains a list of events with x and y coordinates, energy, and various other pieces of information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">event_filename</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
+    <span class="s2">&quot;http://data.astropy.org/tutorials/FITS-tables/chandra_events.fits&quot;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="opening-the-fits-file-and-viewing-table-contents">
+<h2>Opening the FITS file and viewing table contents<a class="headerlink" href="#opening-the-fits-file-and-viewing-table-contents" title="Link to this heading">#</a></h2>
+<p>Since the file is big, let’s open it with <code class="docutils literal notranslate"><span class="pre">memmap=True</span></code> to prevent RAM storage issues.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">event_filename</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: /home/runner/.astropy/cache/download/url/333246bccb141ea3b4e86c49e45bf8d6/contents
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU      30   ()      
+  1  EVENTS        1 BinTableHDU    890   483964R x 19C   [1D, 1I, 1I, 1J, 1I, 1I, 1I, 1I, 1E, 1E, 1E, 1E, 1J, 1J, 1E, 1J, 1I, 1I, 32X]   
+  2  GTI           3 BinTableHDU     28   1R x 2C   [1D, 1D]   
+  3  GTI           2 BinTableHDU     28   1R x 2C   [1D, 1D]   
+  4  GTI           1 BinTableHDU     28   1R x 2C   [1D, 1D]   
+  5  GTI           0 BinTableHDU     28   1R x 2C   [1D, 1D]   
+  6  GTI           6 BinTableHDU     28   1R x 2C   [1D, 1D]   
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, we’re interested in reading EVENTS, which contains information about each X-ray photon that hit the detector.</p>
+<p>To find out what information the table contains, let’s print the column names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">hdu_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ColDefs(
+    name = &#39;time&#39;; format = &#39;1D&#39;; unit = &#39;s&#39;
+    name = &#39;ccd_id&#39;; format = &#39;1I&#39;
+    name = &#39;node_id&#39;; format = &#39;1I&#39;
+    name = &#39;expno&#39;; format = &#39;1J&#39;
+    name = &#39;chipx&#39;; format = &#39;1I&#39;; unit = &#39;pixel&#39;; coord_type = &#39;CPCX&#39;; coord_unit = &#39;mm&#39;; coord_ref_point = 0.5; coord_ref_value = 0.0; coord_inc = 0.023987
+    name = &#39;chipy&#39;; format = &#39;1I&#39;; unit = &#39;pixel&#39;; coord_type = &#39;CPCY&#39;; coord_unit = &#39;mm&#39;; coord_ref_point = 0.5; coord_ref_value = 0.0; coord_inc = 0.023987
+    name = &#39;tdetx&#39;; format = &#39;1I&#39;; unit = &#39;pixel&#39;
+    name = &#39;tdety&#39;; format = &#39;1I&#39;; unit = &#39;pixel&#39;
+    name = &#39;detx&#39;; format = &#39;1E&#39;; unit = &#39;pixel&#39;; coord_type = &#39;LONG-TAN&#39;; coord_unit = &#39;deg&#39;; coord_ref_point = 4096.5; coord_ref_value = 0.0; coord_inc = 0.00013666666666667
+    name = &#39;dety&#39;; format = &#39;1E&#39;; unit = &#39;pixel&#39;; coord_type = &#39;NPOL-TAN&#39;; coord_unit = &#39;deg&#39;; coord_ref_point = 4096.5; coord_ref_value = 0.0; coord_inc = 0.00013666666666667
+    name = &#39;x&#39;; format = &#39;1E&#39;; unit = &#39;pixel&#39;; coord_type = &#39;RA---TAN&#39;; coord_unit = &#39;deg&#39;; coord_ref_point = 4096.5; coord_ref_value = 266.41519201128; coord_inc = -0.00013666666666667
+    name = &#39;y&#39;; format = &#39;1E&#39;; unit = &#39;pixel&#39;; coord_type = &#39;DEC--TAN&#39;; coord_unit = &#39;deg&#39;; coord_ref_point = 4096.5; coord_ref_value = -29.012248288366; coord_inc = 0.00013666666666667
+    name = &#39;pha&#39;; format = &#39;1J&#39;; unit = &#39;adu&#39;; null = 0
+    name = &#39;pha_ro&#39;; format = &#39;1J&#39;; unit = &#39;adu&#39;; null = 0
+    name = &#39;energy&#39;; format = &#39;1E&#39;; unit = &#39;eV&#39;
+    name = &#39;pi&#39;; format = &#39;1J&#39;; unit = &#39;chan&#39;; null = 0
+    name = &#39;fltgrade&#39;; format = &#39;1I&#39;
+    name = &#39;grade&#39;; format = &#39;1I&#39;
+    name = &#39;status&#39;; format = &#39;32X&#39;
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’ll take this data and convert it into an <a class="reference external" href="http://docs.astropy.org/en/stable/table/">astropy table</a>. While it’s possible to access FITS tables directly from the <code class="docutils literal notranslate"><span class="pre">.data</span></code> attribute, using <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.table.Table.html#astropy.table.Table">Table</a> tends to make a variety of common tasks more convenient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evt_data</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">hdu_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For example, a preview of the table is easily viewed by simply running a cell with the table as the last line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evt_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>Table length=483964</i>
+<table id="table140508377859856" class="table-striped table-bordered table-condensed">
+<thead><tr><th>time</th><th>ccd_id</th><th>node_id</th><th>expno</th><th>chipx</th><th>chipy</th><th>tdetx</th><th>tdety</th><th>detx</th><th>dety</th><th>x</th><th>y</th><th>pha</th><th>pha_ro</th><th>energy</th><th>pi</th><th>fltgrade</th><th>grade</th><th>status</th></tr></thead>
+<thead><tr><th>float64</th><th>int16</th><th>int16</th><th>int32</th><th>int16</th><th>int16</th><th>int16</th><th>int16</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>int32</th><th>int32</th><th>float32</th><th>int32</th><th>int16</th><th>int16</th><th>bool[32]</th></tr></thead>
+<tr><td>238623220.9093583</td><td>3</td><td>3</td><td>68</td><td>920</td><td>8</td><td>5124</td><td>3981</td><td>5095.641</td><td>4138.995</td><td>4168.0723</td><td>5087.772</td><td>3548</td><td>3534</td><td>13874.715</td><td>951</td><td>16</td><td>4</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>1</td><td>68</td><td>437</td><td>237</td><td>4895</td><td>3498</td><td>4865.567</td><td>4621.1826</td><td>3662.1968</td><td>4915.9336</td><td>667</td><td>629</td><td>2621.1938</td><td>180</td><td>64</td><td>2</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>2</td><td>68</td><td>719</td><td>289</td><td>4843</td><td>3780</td><td>4814.835</td><td>4340.254</td><td>3935.2207</td><td>4832.552</td><td>3033</td><td>2875</td><td>12119.018</td><td>831</td><td>8</td><td>3</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>0</td><td>68</td><td>103</td><td>295</td><td>4837</td><td>3164</td><td>4807.3643</td><td>4954.385</td><td>3324.4644</td><td>4897.2754</td><td>831</td><td>773</td><td>3253.0364</td><td>223</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>1</td><td>68</td><td>498</td><td>314</td><td>4818</td><td>3559</td><td>4788.987</td><td>4560.3276</td><td>3713.6343</td><td>4832.735</td><td>3612</td><td>3439</td><td>14214.382</td><td>974</td><td>64</td><td>2</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>3</td><td>68</td><td>791</td><td>469</td><td>4663</td><td>3852</td><td>4635.4526</td><td>4268.053</td><td>3985.8496</td><td>4645.93</td><td>500</td><td>438</td><td>1952.7239</td><td>134</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>3</td><td>68</td><td>894</td><td>839</td><td>4293</td><td>3955</td><td>4266.642</td><td>4165.3203</td><td>4044.5469</td><td>4267.605</td><td>835</td><td>713</td><td>3267.5334</td><td>224</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>3</td><td>68</td><td>857</td><td>941</td><td>4191</td><td>3918</td><td>4164.815</td><td>4202.2256</td><td>3995.9353</td><td>4170.818</td><td>975</td><td>804</td><td>3817.0366</td><td>262</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238623220.9093583</td><td>3</td><td>3</td><td>68</td><td>910</td><td>959</td><td>4173</td><td>3971</td><td>4146.9937</td><td>4149.364</td><td>4046.3376</td><td>4146.9106</td><td>576</td><td>446</td><td>2252.7295</td><td>155</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr><td>238672393.54971933</td><td>1</td><td>3</td><td>15723</td><td>933</td><td>199</td><td>4933</td><td>5040</td><td>4902.907</td><td>3082.4956</td><td>5212.4995</td><td>4766.2295</td><td>1222</td><td>1181</td><td>4819.8286</td><td>331</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238672393.54971933</td><td>1</td><td>2</td><td>15723</td><td>596</td><td>412</td><td>4720</td><td>4703</td><td>4691.51</td><td>3418.9893</td><td>4853.5117</td><td>4595.8037</td><td>3142</td><td>3020</td><td>12536.866</td><td>859</td><td>10</td><td>6</td><td>False .. False</td></tr>
+<tr><td>238672393.54971933</td><td>1</td><td>3</td><td>15723</td><td>1000</td><td>608</td><td>4524</td><td>5107</td><td>4494.713</td><td>3015.7185</td><td>5230.886</td><td>4353.018</td><td>658</td><td>585</td><td>2599.5652</td><td>179</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238672393.54971933</td><td>1</td><td>1</td><td>15723</td><td>270</td><td>917</td><td>4215</td><td>4377</td><td>4188.3325</td><td>3743.5957</td><td>4472.07</td><td>4134.221</td><td>3861</td><td>3463</td><td>15535.768</td><td>1024</td><td>16</td><td>4</td><td>False .. False</td></tr>
+<tr><td>238672393.54971933</td><td>1</td><td>0</td><td>15723</td><td>232</td><td>988</td><td>4144</td><td>4339</td><td>4117.6147</td><td>3781.8774</td><td>4425.75</td><td>4068.4873</td><td>1680</td><td>1499</td><td>6653.0815</td><td>456</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238672393.59075934</td><td>0</td><td>1</td><td>15723</td><td>366</td><td>103</td><td>3164</td><td>4766</td><td>3140.9048</td><td>3356.3208</td><td>4733.6816</td><td>3048.5664</td><td>3621</td><td>3602</td><td>14362.482</td><td>984</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238672393.59075934</td><td>0</td><td>3</td><td>15723</td><td>937</td><td>646</td><td>3707</td><td>4195</td><td>3681.2122</td><td>3925.5452</td><td>4231.8354</td><td>3651.9724</td><td>3717</td><td>3486</td><td>14653.954</td><td>1004</td><td>8</td><td>3</td><td>False .. False</td></tr>
+<tr><td>238672393.59075934</td><td>0</td><td>1</td><td>15723</td><td>406</td><td>687</td><td>3748</td><td>4726</td><td>3723.4014</td><td>3396.252</td><td>4762.421</td><td>3631.7224</td><td>1676</td><td>1536</td><td>6652.827</td><td>456</td><td>0</td><td>0</td><td>False .. False</td></tr>
+<tr><td>238672393.59075934</td><td>0</td><td>1</td><td>15723</td><td>354</td><td>870</td><td>3931</td><td>4778</td><td>3906.07</td><td>3344.775</td><td>4834.99</td><td>3807.0835</td><td>2436</td><td>2165</td><td>9672.882</td><td>663</td><td>16</td><td>4</td><td>False .. False</td></tr>
+<tr><td>238672393.63179934</td><td>6</td><td>1</td><td>15723</td><td>384</td><td>821</td><td>3259</td><td>2523</td><td>3230.9204</td><td>5596.8496</td><td>2519.2202</td><td>3401.0327</td><td>491</td><td>356</td><td>1875.9359</td><td>129</td><td>0</td><td>0</td><td>False .. False</td></tr>
+</table></div></div></div>
+</div>
+<p>We can extract data from the table by referencing the column name. Let’s try making a histogram for the energy of each photon, which will give us a sense for the spectrum (folded with the detector’s efficiency).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">evt_data</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c39d6d57ac85c09577fc5ae038d3db2f711f2e74e5a8ce18ff90a832c9e5b75d.png" src="_images/c39d6d57ac85c09577fc5ae038d3db2f711f2e74e5a8ce18ff90a832c9e5b75d.png" />
+</div>
+</div>
+</section>
+<section id="making-a-2d-histogram-with-some-table-data">
+<h2>Making a 2D histogram with some table data<a class="headerlink" href="#making-a-2d-histogram-with-some-table-data" title="Link to this heading">#</a></h2>
+<p>We’ll make an image by binning the x and y coordinates of the events into a 2D histogram.</p>
+<p>This particular observation spans five CCD chips.  First, we determine the events that only fell on the main (ACIS-I) chips, which have number ids 0, 1, 2, and 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ii</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">evt_data</span><span class="p">[</span><span class="s2">&quot;ccd_id&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3460/3072746623.py:1: DeprecationWarning: `in1d` is deprecated. Use `np.isin` instead.
+  ii = np.in1d(evt_data[&quot;ccd_id&quot;], [0, 1, 2, 3])
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(434858)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="method-1-use-numpy-to-make-a-2d-histogram-and-imshow-to-display-it">
+<h3>Method 1: Use numpy to make a 2D histogram and imshow to display it<a class="headerlink" href="#method-1-use-numpy-to-make-a-2d-histogram-and-imshow-to-display-it" title="Link to this heading">#</a></h3>
+<p>This method allows us to create an image without stretching:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NBINS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">img_zero</span><span class="p">,</span> <span class="n">yedges</span><span class="p">,</span> <span class="n">xedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">evt_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">][</span><span class="n">ii</span><span class="p">],</span> <span class="n">evt_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">][</span><span class="n">ii</span><span class="p">],</span> <span class="n">NBINS</span><span class="p">)</span>
+
+<span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="n">xedges</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xedges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yedges</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yedges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+    <span class="n">img_zero</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gist_yarg&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+
+<span class="c1"># To see more color maps</span>
+<span class="c1"># http://wiki.scipy.org/Cookbook/Matplotlib/Show_colormaps</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
+</pre></div>
+</div>
+<img alt="_images/b41c15b2aae2eb3f7323c3c9af3672a8fe3c3f93a411206230b6a8f462c28352.png" src="_images/b41c15b2aae2eb3f7323c3c9af3672a8fe3c3f93a411206230b6a8f462c28352.png" />
+</div>
+</div>
+</section>
+<section id="method-2-use-hist2d-with-a-log-normal-color-scheme">
+<h3>Method 2: Use hist2d with a log-normal color scheme<a class="headerlink" href="#method-2-use-hist2d-with-a-log-normal-color-scheme" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NBINS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">img_zero_mpl</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span>
+    <span class="n">evt_data</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">][</span><span class="n">ii</span><span class="p">],</span> <span class="n">evt_data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">][</span><span class="n">ii</span><span class="p">],</span> <span class="n">NBINS</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">])</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
+</pre></div>
+</div>
+<img alt="_images/cf14cd61877aa5baf9892c61d2b8b3361adb923b82e591fe4f9a6a5df70f13c5.png" src="_images/cf14cd61877aa5baf9892c61d2b8b3361adb923b82e591fe4f9a6a5df70f13c5.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="close-the-fits-file">
+<h2>Close the FITS file<a class="headerlink" href="#close-the-fits-file" title="Link to this heading">#</a></h2>
+<p>When you’re done using a FITS file, it’s often a good idea to close it.  That way you can be sure it won’t continue using up excess memory or file handles on your computer.  (This happens automatically when you close Python, but you never know how long that might be…)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<p>Make a scatter plot of the same data you histogrammed above.  The <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.scatter">plt.scatter</a> function is your friend for this.  What are the pros and cons of doing it this way?</p>
+<p>Try the same with the <a class="reference external" href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.hexbin">plt.hexbin</a> plotting function. Which do you think looks better for this kind of data?</p>
+<p>Choose an energy range to make a slice of the FITS table, then plot it. How does the image change with different energy ranges?</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--FITS-tables",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@GITHUB-USERNAME, ORCID-ID), AUTHOR2 (@GITHUB-USERNAME, ORCID-ID)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

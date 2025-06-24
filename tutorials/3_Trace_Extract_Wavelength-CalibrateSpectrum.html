@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum &#8212; Spectroscopic Data Reduction Basics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3_Trace_Extract_Wavelength-CalibrateSpectrum';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Spectroscopic Data Reduction Part 2: Wavelength Calibration" href="2_WavelengthCalibration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index-spectroscopy.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Spectroscopic Data Reduction Basics - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Spectroscopic Data Reduction Basics - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index-spectroscopy.html">
+                    <no title>
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_SpectroscopicTraceTutorial.html">Spectroscopic Data Reduction Part 1: Tracing</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2_WavelengthCalibration.html">Spectroscopic Data Reduction Part 2: Wavelength Calibration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics/edit/main//3_Trace_Extract_Wavelength-CalibrateSpectrum.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectroscopic-data-reduction-basics/issues/new?title=Issue%20on%20page%20%2F3_Trace_Extract_Wavelength-CalibrateSpectrum.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/3_Trace_Extract_Wavelength-CalibrateSpectrum.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-the-science-spectrum">Extract the science spectrum</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="spectroscopic-data-reduction-part-3-extracting-the-final-wavelength-calibrated-spectrum">
+<h1>Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum<a class="headerlink" href="#spectroscopic-data-reduction-part-3-extracting-the-final-wavelength-calibrated-spectrum" title="Link to this heading">#</a></h1>
+<p>This tutorial assumes you have gone through the <a class="reference internal" href="1_SpectroscopicTraceTutorial.html"><span class="std std-doc">Trace</span></a> and <a class="reference internal" href="2_WavelengthCalibration.html"><span class="doc std std-doc">Wavelength Calibration</span></a> tutorials and have their results available.</p>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Adam Ginsburg, Kelle Cruz, Lia Corrales, Jonathan Sick, Adrian Price-Whelan</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Extract a target 1D spectrum from a two-dimensional spectrum using an existing trace</p></li>
+<li><p>Apply a fitted wavelength solution to the data</p></li>
+<li><p>Fit a line profile to the wavelength-calibrated spectrum</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>Spectroscopy</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This tutorial, the third in a series, shows how to apply a trace and a wavelength solution to science data.  It then shows how to do basic analysis, i.e., line fitting.</p>
+</section>
+<section id="extract-the-science-spectrum">
+<h2>Extract the science spectrum<a class="headerlink" href="#extract-the-science-spectrum" title="Link to this heading">#</a></h2>
+<p>First, we repeat the trace-and-extract process derived in <a class="reference internal" href="#1-SpectroscopicTraceTutorial.ipynb"><span class="xref myst">Part 1</span></a>, but now for Deneb:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">PILImage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Linear1D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">quantity_support</span>
+
+<span class="n">quantity_support</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7fca47be4a10&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_array_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;deneb_3s_13.63g_1.bmp&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.polynomial</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polynomial1D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian1D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.fitting</span><span class="w"> </span><span class="kn">import</span> <span class="n">LevMarLSQFitter</span><span class="p">,</span> <span class="n">LinearLSQFitter</span>
+
+<span class="n">linfitter</span> <span class="o">=</span> <span class="n">LinearLSQFitter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yaxis2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">470</span><span class="p">,</span> <span class="mi">520</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">image_array_2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">xvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">image_array_2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">weighted_yaxis_values2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+    <span class="n">yaxis2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">image_array_2</span><span class="p">[</span><span class="mi">470</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">polymodel2</span> <span class="o">=</span> <span class="n">Polynomial1D</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fitted_polymodel2</span> <span class="o">=</span> <span class="n">linfitter</span><span class="p">(</span><span class="n">polymodel2</span><span class="p">,</span> <span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">)</span>
+<span class="n">trace_center2</span> <span class="o">=</span> <span class="n">fitted_polymodel2</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npixels_to_cut</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">trace_center</span> <span class="o">=</span> <span class="n">fitted_polymodel2</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span>
+<span class="n">cutouts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">image_array_2</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center</span><span class="p">,</span> <span class="n">xvals</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">cutouts</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">mean_trace_profile</span> <span class="o">=</span> <span class="n">cutouts</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span>
+            <span class="n">image_array_2</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">-</span> <span class="n">npixels_to_cut</span> <span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">yval</span><span class="p">)</span> <span class="o">+</span> <span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">ii</span><span class="p">],</span>
+            <span class="n">weights</span><span class="o">=</span><span class="n">mean_trace_profile</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">yval</span><span class="p">,</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">trace_center2</span><span class="p">,</span> <span class="n">xvals</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we retrieve the wavelength solution derived in Part 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wlmodel</span> <span class="o">=</span> <span class="n">Linear1D</span><span class="p">(</span><span class="n">slope</span><span class="o">=-</span><span class="mf">0.10213643</span><span class="p">,</span> <span class="n">intercept</span><span class="o">=</span><span class="mf">562.3862495</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelengths</span> <span class="o">=</span> <span class="n">wlmodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">spectrum2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fca4af67b30&gt;]
+</pre></div>
+</div>
+<img alt="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" src="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="analysis">
+<h1>Analysis<a class="headerlink" href="#analysis" title="Link to this heading">#</a></h1>
+<p>Now, we go on to do some basic analysis on our fully extracted and wavelength-calibrated spectrum</p>
+<p>We zoom in on the 4860 Angstrom line - H-Beta</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">spectrum2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">470</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">190</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
+</pre></div>
+</div>
+<img alt="_images/6825b0ca3ce17b3046ce9e511737f3ae6ecc484b76b05c93036dbbb5a32e2c1f.png" src="_images/6825b0ca3ce17b3046ce9e511737f3ae6ecc484b76b05c93036dbbb5a32e2c1f.png" />
+</div>
+</div>
+<p>We can use astropy models to construct an absorption line model, consisting of a continuum level and a negative Gaussian to represent the absorption feature</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">absorption_model_guess</span> <span class="o">=</span> <span class="n">Linear1D</span><span class="p">(</span><span class="n">slope</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">intercept</span><span class="o">=</span><span class="mi">175</span><span class="p">)</span> <span class="o">+</span> <span class="n">Gaussian1D</span><span class="p">(</span>
+    <span class="n">amplitude</span><span class="o">=-</span><span class="mi">25</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mi">486</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can overplot our guessed model - it’s not right, but it’s in the right spot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">spectrum2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">absorption_model_guess</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">470</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">190</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
+</pre></div>
+</div>
+<img alt="_images/1cdcd591a894192517b7aea604f77916b281ca3b4ba7e067ec39bc8016de78fe.png" src="_images/1cdcd591a894192517b7aea604f77916b281ca3b4ba7e067ec39bc8016de78fe.png" />
+</div>
+</div>
+<p>The Levenberg-Marquardt Least Squares fitter can be used to find the optimal fit to our data given the starting guess.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmfitter</span> <span class="o">=</span> <span class="n">LevMarLSQFitter</span><span class="p">()</span>
+<span class="n">selection</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavelengths</span> <span class="o">&gt;</span> <span class="mi">470</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wavelengths</span> <span class="o">&lt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span>
+<span class="n">fitted_absorption_model</span> <span class="o">=</span> <span class="n">lmfitter</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">absorption_model_guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">selection</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">spectrum2</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">lmfitter</span> <span class="o">=</span> <span class="n">LevMarLSQFitter</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">selection</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavelengths</span> <span class="o">&gt;</span> <span class="mi">470</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wavelengths</span> <span class="o">&lt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">fitted_absorption_model</span> <span class="o">=</span> <span class="n">lmfitter</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">model</span><span class="o">=</span><span class="n">absorption_model_guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">selection</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">spectrum2</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>             <span class="s2">&quot;This model does not support being fit to data with units.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">288</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="n">farg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1423</span>     <span class="n">model_copy</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1424</span>     <span class="n">weights</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1425</span> <span class="p">)</span> <span class="o">+</span> <span class="n">_convert_input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1427</span> <span class="n">fkwarg</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fit_param_indices&quot;</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="n">fit_param_indices</span><span class="p">)}</span>
+<span class="ne">-&gt; </span><span class="mi">1429</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">cov_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_fitter</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1430</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
+<span class="g g-Whitespace">   </span><span class="mi">1431</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1433</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_param_cov</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1434</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">cov_x</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">weights</span>
+<span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1437</span> <span class="n">model_copy</span><span class="o">.</span><span class="n">sync_constraints</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_fitter</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1495</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
+<span class="g g-Whitespace">   </span><span class="mi">1496</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1497</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+<span class="g g-Whitespace">   </span><span class="mi">1499</span>     <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_deriv</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">estimate_jacobian</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1500</span>         <span class="n">dfunc</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">spectrum2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">fitted_absorption_model</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">470</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">190</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now separate out the two components, the continuum and the absorption line model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">continuum_fit</span><span class="p">,</span> <span class="n">absorption_fit</span> <span class="o">=</span> <span class="n">fitted_absorption_model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we plot the data minus the absorption line model, we get a nice “line-free continuum”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">spectrum2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">spectrum2</span> <span class="o">-</span> <span class="n">absorption_fit</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">470</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">190</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Equivalent_width">Equivalent Width</a> of a spectral absorption line is defined to be the width of a feature that has the same integral as the absorption line, but goes all the way from the continuum level to zero.</p>
+<p>We can compute this with our model, assuming our continuum is flat (has zero slope):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EQW</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">-</span><span class="n">absorption_fit</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">selection</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">continuum_fit</span><span class="o">.</span><span class="n">intercept</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span>
+<span class="p">)</span>
+<span class="n">EQW</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">absorption_fit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have identified the line as H-beta, so we can measure some of its properties now:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_wavelength_hbeta</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mf">486.135</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span>
+<span class="p">)</span>  <span class="c1"># wikipedia https://en.wikipedia.org/wiki/Balmer_series</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Doppler Shift will tell us the velocity of the star.  Note that this is the velocity in the <em>topocentric</em> frame, i.e., in the rest frame of the observatory.  If we knew precisely when and where these observations were taken, we could convert this velocity to the heliocentric or LSR frames with <a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/velocities.html">astropy tools</a>.</p>
+<p>First, we do the calculation manually, following the optical definition
+$<span class="math notranslate nohighlight">\(v_{opt} = c \frac{\lambda-\lambda_0}{\lambda} \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doppler_velocity</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">absorption_fit</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span> <span class="o">-</span> <span class="n">air_wavelength_hbeta</span><span class="p">)</span>
+    <span class="o">/</span> <span class="p">(</span><span class="n">air_wavelength_hbeta</span><span class="p">)</span>
+    <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">c</span>
+<span class="p">)</span>
+<span class="n">doppler_velocity</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can do the same thing using <a class="reference external" href="https://docs.astropy.org/en/stable/units/equivalencies.html#spectral-doppler-equivalencies">astropy equivalencies</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doppler_velocity</span> <span class="o">=</span> <span class="p">(</span><span class="n">absorption_fit</span><span class="o">.</span><span class="n">mean</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">doppler_optical</span><span class="p">(</span><span class="n">air_wavelength_hbeta</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">doppler_velocity</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also compute the line width from our fit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linewidth_kms</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">absorption_fit</span><span class="o">.</span><span class="n">stddev</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span> <span class="o">/</span> <span class="n">air_wavelength_hbeta</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">linewidth_kms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s it!  You’ve extracted and wavelength-calibrated a spectrum.</p>
+<p>The next tricky step is flux calibration, but we will do that in a subsequent tutorial because we need a different data set; this one didn’t include the necessary data for flux calibration (though we could approximately calibrate the spectrum using a known magnitude over the observed band for Deneb)</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--spectroscopic-data-reduction-basics",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_WavelengthCalibration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Spectroscopic Data Reduction Part 2: Wavelength Calibration</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-the-science-spectrum">Extract the science spectrum</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@GITHUB-USERNAME, ORCID-ID), AUTHOR2 (@GITHUB-USERNAME, ORCID-ID)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
