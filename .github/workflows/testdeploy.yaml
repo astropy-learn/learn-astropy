@@ -28,9 +28,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir public
-          python deployment/installtutorials.py --dest public
+          mkdir -p public/tutorials
+          python deployment/installtutorials.py --dest public/tutorials
 
       - name: List tutorials
         run: |
-          tree public
+          tree public/tutorials
