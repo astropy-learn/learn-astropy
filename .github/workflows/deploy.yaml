@@ -32,24 +32,16 @@ jobs:
 
       - run: npm ci
         name: Install
-      
-      - run: |
-          mkdir ./public
-          cp ./CNAME ./public/CNAME
-        
+
       - run: npm run build
         name: Build
 
-      - run: echo ./public/CNAME
-    
       - name: Upload gatsby artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: gatsby-build
           path: ./public
 
-      - run: echo ./public/CNAME
-        
   deploy:
     runs-on: ubuntu-latest
     needs: build
