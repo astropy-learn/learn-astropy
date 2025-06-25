@@ -484,75 +484,31 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">download_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/.astropy/cache/astroquery/Mast&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">download_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">obsTable</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="s2">&quot;HD 147933&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="s2">&quot;1 arcsec&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">obsTable_spec</span> <span class="o">=</span> <span class="n">obsTable</span><span class="p">[</span><span class="n">obsTable</span><span class="p">[</span><span class="s2">&quot;dataproduct_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;spectrum&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">obsTable_spec</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/utils/class_or_instance.py:25,</span> in <span class="ni">class_or_instance.__get__.&lt;locals&gt;.f</span><span class="nt">(*args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">25</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/utils/process_asyncs.py:28,</span> in <span class="ni">async_to_sync.&lt;locals&gt;.create_method.&lt;locals&gt;.newmethod</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="nd">@class_or_instance</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">def</span><span class="w"> </span><span class="nf">newmethod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">28</span>     <span class="n">response</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">async_method_name</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;get_query_payload&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;field_help&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>         <span class="k">return</span> <span class="n">response</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/utils/class_or_instance.py:25,</span> in <span class="ni">class_or_instance.__get__.&lt;locals&gt;.f</span><span class="nt">(*args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">25</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/mast/observations.py:283,</span> in <span class="ni">ObservationsClass.query_object_async</span><span class="nt">(self, objectname, radius, pagesize, page, resolver)</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span> <span class="nd">@class_or_instance</span>
-<span class="g g-Whitespace">    </span><span class="mi">250</span> <span class="k">def</span><span class="w"> </span><span class="nf">query_object_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objectname</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">pagesize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">resolver</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">251</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">252</span><span class="sd">     Given an object name, returns a list of MAST observations.</span>
-<span class="g g-Whitespace">    </span><span class="mi">253</span><span class="sd">     See column documentation `here &lt;https://mast.stsci.edu/api/v0/_c_a_o_mfields.html&gt;`__.</span>
-<span class="sd">   (...)    280     response : list of `~requests.Response`</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">283</span>     <span class="n">coordinates</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">resolve_object</span><span class="p">(</span><span class="n">objectname</span><span class="p">,</span> <span class="n">resolver</span><span class="o">=</span><span class="n">resolver</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_region_async</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span> <span class="n">pagesize</span><span class="o">=</span><span class="n">pagesize</span><span class="p">,</span> <span class="n">page</span><span class="o">=</span><span class="n">page</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/mast/utils.py:152,</span> in <span class="ni">resolve_object</span><span class="nt">(objectname, resolver, resolve_all)</span>
-<span class="g g-Whitespace">    </span><span class="mi">150</span> <span class="k">if</span> <span class="n">resolver</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">use_resolve_all</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">151</span>     <span class="n">params</span><span class="p">[</span><span class="s1">&#39;resolver&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resolver</span>
-<span class="ne">--&gt; </span><span class="mi">152</span> <span class="n">response</span> <span class="o">=</span> <span class="n">_simple_request</span><span class="p">(</span><span class="s1">&#39;http://mastresolver.stsci.edu/Santa-war/query&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>  <span class="c1"># Raise any errors</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;resolvedCoordinate&#39;</span><span class="p">,</span> <span class="p">[])</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/mast/utils.py:85,</span> in <span class="ni">_simple_request</span><span class="nt">(url, params)</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;astroquery/</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2"> Python/</span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="si">}</span><span class="s2">) &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span>                           <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">     </span><span class="mi">81</span>            <span class="s2">&quot;Content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span>            <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">}</span>
-<span class="g g-Whitespace">     </span><span class="mi">84</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">85</span> <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">87</span> <span class="k">return</span> <span class="n">response</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/requests/models.py:1026,</span> in <span class="ni">Response.raise_for_status</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1021</span>     <span class="n">http_error_msg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> Server Error: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2"> for url: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1025</span> <span class="k">if</span> <span class="n">http_error_msg</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">http_error_msg</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span>
-
-<span class="ne">HTTPError</span>: 404 Client Error:  for url: https://mastresolver.stsci.edu/Santa-war/query?name=HD+147933&amp;outputFormat=json&amp;resolveAll=False
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div><i>Table masked=True length=131</i>
+<table id="table140134143263664" class="table-striped table-bordered table-condensed">
+<thead><tr><th>intentType</th><th>obs_collection</th><th>provenance_name</th><th>instrument_name</th><th>project</th><th>filters</th><th>wavelength_region</th><th>target_name</th><th>target_classification</th><th>obs_id</th><th>s_ra</th><th>s_dec</th><th>dataproduct_type</th><th>proposal_pi</th><th>calib_level</th><th>t_min</th><th>t_max</th><th>t_exptime</th><th>em_min</th><th>em_max</th><th>obs_title</th><th>t_obs_release</th><th>proposal_id</th><th>proposal_type</th><th>sequence_number</th><th>s_region</th><th>jpegURL</th><th>dataURL</th><th>dataRights</th><th>mtFlag</th><th>srcDen</th><th>obsid</th><th>distance</th></tr></thead>
+<thead><tr><th>str7</th><th>str5</th><th>str7</th><th>str13</th><th>str6</th><th>str11</th><th>str16</th><th>str21</th><th>str37</th><th>str53</th><th>float64</th><th>float64</th><th>str10</th><th>str22</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>str117</th><th>float64</th><th>str6</th><th>str6</th><th>int64</th><th>str23309</th><th>str137</th><th>str137</th><th>str6</th><th>bool</th><th>float64</th><th>str9</th><th>float64</th></tr></thead>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F770W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx101_00001_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>16.65</td><td>6600.0</td><td>8800.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>1</td><td>POLYGON 246.39627878764 -23.44647954388 246.39724301361 -23.44660356899 246.39708951124 -23.44763481981 246.3961218565 -23.44749665486</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358393</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F770W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx102_00002_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>16.65</td><td>6600.0</td><td>8800.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>2</td><td>POLYGON 246.39563648091 -23.44666834292 246.39660070765 -23.44679237198 246.39644720004 -23.44782362217 246.39547954459 -23.44768545326</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358394</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F770W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx103_00003_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>16.65</td><td>6600.0</td><td>8800.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>3</td><td>POLYGON 246.39618169229 -23.44654111159 246.39714591862 -23.44666513731 246.39699241542 -23.44769638803 246.39602476033 -23.44755822248</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358395</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F770W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx104_00004_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>16.65</td><td>6600.0</td><td>8800.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>4</td><td>POLYGON 246.39553961734 -23.44673086913 246.39650384445 -23.44685489878 246.39635033602 -23.44788614888 246.39538268021 -23.44774797937</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358396</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F1000W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx105_00001_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>19.425</td><td>9000.0</td><td>11000.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>5</td><td>POLYGON 246.39627878764 -23.44647954388 246.39724301361 -23.44660356899 246.39708951124 -23.44763481981 246.3961218565 -23.44749665486</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358397</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F1000W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx106_00002_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>19.425</td><td>9000.0</td><td>11000.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>6</td><td>POLYGON 246.39563648091 -23.44666834292 246.39660070765 -23.44679237198 246.39644720004 -23.44782362217 246.39547954459 -23.44768545326</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358398</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F1000W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx107_00003_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>19.425</td><td>9000.0</td><td>11000.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>7</td><td>POLYGON 246.39618169229 -23.44654111159 246.39714591862 -23.44666513731 246.39699241542 -23.44769638803 246.39602476033 -23.44755822248</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358399</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F1000W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx108_00004_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>19.425</td><td>9000.0</td><td>11000.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>8</td><td>POLYGON 246.39553961734 -23.44673086913 246.39650384445 -23.44685489878 246.39635033602 -23.44788614888 246.39538268021 -23.44774797937</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358400</td><td>0.0</td></tr>
+<tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F1280W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx109_00001_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>19.425</td><td>11600.0</td><td>14000.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>9</td><td>POLYGON 246.39627878764 -23.44647954388 246.39724301361 -23.44660356899 246.39708951124 -23.44763481981 246.3961218565 -23.44749665486</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358401</td><td>0.0</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+<tr><td>science</td><td>HST</td><td>CALHRS</td><td>HRS</td><td>HST</td><td>MIRROR-N1</td><td>UV</td><td>HD147933A</td><td>STAR;B0-B2 V-IV;</td><td>z34r0101t</td><td>246.39650225999998</td><td>-23.44680653022271</td><td>spectrum</td><td>Seab, C. Gregory</td><td>1</td><td>nan</td><td>nan</td><td>nan</td><td>nan</td><td>nan</td><td>STRUCTURALLY RESOLVED ABUNDANCES AND DEPLETIONS IN THE RHO OPH CLOUD</td><td>50525.53306704</td><td>5891</td><td>GO</td><td>--</td><td>POLYGON 246.39634951 -23.44711966 246.39616095 -23.44666639 246.39665501 -23.4464934 246.39684357 -23.44694667 246.39634951 -23.44711966</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>24790609</td><td>0.21376357547654684</td></tr>
+<tr><td>science</td><td>HST</td><td>CALHRS</td><td>HRS/1</td><td>HST</td><td>MIRROR-N1</td><td>UV</td><td>HD147933A</td><td>STAR;B0-B2 V-IV;</td><td>z34r0102t</td><td>246.3965495632</td><td>-23.44717233421</td><td>spectrum</td><td>Seab, C. Gregory</td><td>1</td><td>50159.585271331016</td><td>50159.58770188657</td><td>0.0</td><td>nan</td><td>nan</td><td>STRUCTURALLY RESOLVED ABUNDANCES AND DEPLETIONS IN THE RHO OPH CLOUD</td><td>50525.53208328</td><td>5891</td><td>GO</td><td>--</td><td>POLYGON 246.39634951 -23.44711966 246.39616095 -23.44666639 246.39665501 -23.4464934 246.39684357 -23.44694667 246.39634951 -23.44711966</td><td>--</td><td>mast:HST/product/z34r0102t_d1f.fits</td><td>PUBLIC</td><td>False</td><td>nan</td><td>24790610</td><td>0.21376357547654684</td></tr>
+<tr><td>science</td><td>HST</td><td>CALSTIS</td><td>STIS/CCD</td><td>HST</td><td>G430M</td><td>OPTICAL</td><td>HD147933</td><td>STAR;B0-B2 V-IV</td><td>oc9a01zrq</td><td>246.3962992355</td><td>-23.44727986837</td><td>spectrum</td><td>Cordiner, Martin A.</td><td>1</td><td>56904.983215775464</td><td>56904.983227349534</td><td>1.0</td><td>302.0</td><td>561.0</td><td>Probing the nature of small-scale structure towards rho Oph stars: A new avenue in diffuse interstellar band research</td><td>57270.08427085</td><td>13365</td><td>GO</td><td>--</td><td>POLYGON 246.3960922697417 -23.447426515668877 246.39608323714722 -23.447415107781204 246.39648130429998 -23.447149826707935 246.39649033689443 -23.44716123459561 246.3960922697417 -23.447426515668877</td><td>--</td><td>mast:HST/product/oc9a01zrq_raw.fits</td><td>PUBLIC</td><td>False</td><td>nan</td><td>24532244</td><td>0.22412014259879035</td></tr>
+<tr><td>science</td><td>HST</td><td>CALSTIS</td><td>STIS/FUV-MAMA</td><td>HST</td><td>E140H</td><td>UV</td><td>HD147933</td><td>STAR;B0-B2 V-IV</td><td>oc9a01010</td><td>246.3962992354</td><td>-23.44727986853</td><td>spectrum</td><td>Cordiner, Martin A.</td><td>3</td><td>56904.988200231484</td><td>56905.00924186342</td><td>1818.0</td><td>114.0</td><td>170.0</td><td>Probing the nature of small-scale structure towards rho Oph stars: A new avenue in diffuse interstellar band research</td><td>57270.08590281</td><td>13365</td><td>GO</td><td>--</td><td>POLYGON 246.3926036788305 -23.44975139274687 246.39259464623592 -23.449739984859278 246.3998692692162 -23.444892009287518 246.3998783018108 -23.44490341717511 246.3926036788305 -23.44975139274687</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>24969540</td><td>0.2243659960845965</td></tr>
+<tr><td>science</td><td>HST</td><td>CALSTIS</td><td>STIS/NUV-MAMA</td><td>HST</td><td>E230H</td><td>UV</td><td>HD147933</td><td>STAR;B0-B2 V-IV</td><td>oc9a01020</td><td>246.3962992352</td><td>-23.44727986952</td><td>spectrum</td><td>Cordiner, Martin A.</td><td>3</td><td>56905.04060760417</td><td>56905.07464699074</td><td>2941.0</td><td>162.0</td><td>315.0</td><td>Probing the nature of small-scale structure towards rho Oph stars: A new avenue in diffuse interstellar band research</td><td>57270.35305557</td><td>13365</td><td>GO</td><td>--</td><td>POLYGON 246.39260367863048 -23.449751393736868 246.3925946460359 -23.449739985849277 246.39986926901622 -23.444892010277517 246.3998783016108 -23.444903418165108 246.39260367863048 -23.449751393736868</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>24969541</td><td>0.22438001793898651</td></tr>
+<tr><td>science</td><td>HST</td><td>CALSTIS</td><td>STIS/NUV-MAMA</td><td>HST</td><td>E230H</td><td>UV</td><td>-RHO-OPH-A</td><td>STAR;B0-B2 V-IV</td><td>oenc04010</td><td>246.3962977744</td><td>-23.44732217873</td><td>spectrum</td><td>Ramburuth-Hurt, Tanita</td><td>3</td><td>59837.114333530095</td><td>59837.134993252315</td><td>1785.0</td><td>162.0</td><td>315.0</td><td>Inhomogeneities and pristine gas infall in the ISM</td><td>60018.23140046</td><td>16750</td><td>GO</td><td>--</td><td>POLYGON 246.39627822178693 -23.44734581210493 246.3962670101285 -23.447331321292502 246.396317331745 -23.44729855147096 246.39632854340343 -23.44731304228339 246.39627822178693 -23.44734581210493</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>92983052</td><td>0.4443654146632724</td></tr>
+<tr><td>science</td><td>HST</td><td>CALSTIS</td><td>STIS/CCD</td><td>HST</td><td>G430M</td><td>OPTICAL</td><td>-RHO-OPH-A</td><td>STAR;B0-B2 V-IV</td><td>oenc04t8q</td><td>246.3962977744</td><td>-23.44732217863</td><td>spectrum</td><td>Ramburuth-Hurt, Tanita</td><td>1</td><td>59837.10980130787</td><td>59837.10981288194</td><td>1.0</td><td>302.0</td><td>561.0</td><td>Inhomogeneities and pristine gas infall in the ISM</td><td>60018.14853002</td><td>16750</td><td>GO</td><td>--</td><td>POLYGON 246.39627822178667 -23.44734581200475 246.3962670101284 -23.44733132119222 246.39631733174525 -23.44729855137114 246.39632854340354 -23.447313042183673 246.39627822178667 -23.44734581200475</td><td>--</td><td>mast:HST/product/oenc04t8q_raw.fits</td><td>PUBLIC</td><td>False</td><td>nan</td><td>92969831</td><td>0.4443654146632724</td></tr>
+<tr><td>science</td><td>HST</td><td>CALSTIS</td><td>STIS/CCD</td><td>HST</td><td>G430M</td><td>OPTICAL</td><td>-RHO-OPH-A</td><td>STAR;B0-B2 V-IV</td><td>oenc04t9q</td><td>246.3962977744</td><td>-23.4473221787</td><td>spectrum</td><td>Ramburuth-Hurt, Tanita</td><td>1</td><td>59837.111653900465</td><td>59837.111665474535</td><td>1.0</td><td>302.0</td><td>561.0</td><td>Inhomogeneities and pristine gas infall in the ISM</td><td>60018.14840271</td><td>16750</td><td>GO</td><td>--</td><td>POLYGON 246.39627822178667 -23.44734581207475 246.3962670101284 -23.44733132126222 246.39631733174525 -23.44729855144114 246.39632854340354 -23.447313042253672 246.39627822178667 -23.44734581207475</td><td>--</td><td>mast:HST/product/oenc04t9q_raw.fits</td><td>PUBLIC</td><td>False</td><td>nan</td><td>92969829</td><td>0.4443654146632724</td></tr>
+<tr><td>science</td><td>HST</td><td>CALHRS</td><td>HRS</td><td>HST</td><td>MIRROR-A2</td><td>UV</td><td>HD147933</td><td>STAR;</td><td>z2b95101t</td><td>246.396760975</td><td>-23.44740896772272</td><td>spectrum</td><td>Lambert, David L.</td><td>1</td><td>nan</td><td>nan</td><td>nan</td><td>nan</td><td>nan</td><td>THE NATURE OF INTERSTELLAR CLOUD ENVELOPES -- PHYSICAL CONDITIONS AND STRUCTURE</td><td>50252.51012729</td><td>5389</td><td>GO</td><td>--</td><td>POLYGON 246.39664535 -23.44708272 246.39711658 -23.44730289 246.3968766 -23.44773521 246.39640537 -23.44751505 246.39664535 -23.44708272</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>24783889</td><td>0.7843082610073624</td></tr>
+<tr><td>science</td><td>HST</td><td>CALHRS</td><td>HRS/2</td><td>HST</td><td>MIRROR-A2</td><td>UV</td><td>HD147933</td><td>STAR;</td><td>z2b95102t</td><td>246.3964583333</td><td>-23.44716666667</td><td>spectrum</td><td>Lambert, David L.</td><td>1</td><td>49885.25756288195</td><td>49885.26320234954</td><td>0.0</td><td>nan</td><td>nan</td><td>THE NATURE OF INTERSTELLAR CLOUD ENVELOPES -- PHYSICAL CONDITIONS AND STRUCTURE</td><td>50252.51082169</td><td>5389</td><td>GO</td><td>--</td><td>POLYGON 246.39664535 -23.44708272 246.39711658 -23.44730289 246.3968766 -23.44773521 246.39640537 -23.44751505 246.39664535 -23.44708272</td><td>--</td><td>mast:HST/product/z2b95102t_d1f.fits</td><td>PUBLIC</td><td>False</td><td>nan</td><td>24783890</td><td>0.7843082610073624</td></tr>
+</table></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -567,12 +523,49 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.elbll.gz with expected size 55417. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.lilo.gz with expected size 446101. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.melol.gz with expected size 6464. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.raw.gz with expected size 285802. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.rilo.gz with expected size 291749. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.silo.gz with expected size 89943. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.gif with expected size 7406. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639.mxlo.gz with expected size 18165. [astroquery.query]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Found cached file /home/runner/.astropy/cache/astroquery/Mast/mastDownload/IUE/lwr05639/lwr05639mxlo_vo.fits with expected size 48960. [astroquery.query]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We read the downloaded files into an astropy table:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_lwr</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">download_dir</span> <span class="o">/</span> <span class="s2">&quot;mastDownload/IUE/lwr05639/lwr05639mxlo_vo.fits&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">t_lwr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         WAVE                    FLUX            ... QUALITY
+       Angstrom         erg / (Angstrom s cm2)   ...        
+--------------------- -------------------------- ... -------
+1851.4327 .. 3348.901 2.08651e-10 .. 7.39839e-11 ... 0 .. 16
 </pre></div>
 </div>
 </div>
@@ -657,6 +650,9 @@ F=F_0\ 10^{-0.4\, m}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/137cd2a4df58b54f38b5ef19e4ce20564db093cfa5edce3a652568cfe68fc5f8.png" src="_images/137cd2a4df58b54f38b5ef19e4ce20564db093cfa5edce3a652568cfe68fc5f8.png" />
+</div>
 </div>
 <p>Finally, we initialize the extinction model, choosing values <span class="math notranslate nohighlight">\(R_V = 5\)</span> and <span class="math notranslate nohighlight">\(E_{B-V} = 0.5\)</span>.  This star is famous in the ISM community for having large-<span class="math notranslate nohighlight">\(R_V\)</span> dust in the line of sight.</p>
 <div class="cell docutils container">
@@ -696,6 +692,9 @@ F=F_0\ 10^{-0.4\, m}
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b43d507c2f808ef6186bb94dafe1403fe5a5789d53ca9750cadbde06a48e19e2.png" src="_images/b43d507c2f808ef6186bb94dafe1403fe5a5789d53ca9750cadbde06a48e19e2.png" />
 </div>
 </div>
 <p>Notice that, by dereddening the spectrum, the absorption feature at 2175 Angstrom is removed.  This feature can also be seen as the prominent bump in the extinction curves in Example 1.  That we have smoothly removed the 2175 Angstrom feature suggests that the values we chose, <span class="math notranslate nohighlight">\(R_V = 5\)</span> and <span class="math notranslate nohighlight">\(E_{B-V} = 0.5\)</span>, are a reasonable model for the foreground dust.</p>
@@ -759,6 +758,9 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/d7b78ceac5105c9fa1e5b5abfb147894541509e866cabba79658026e9c1926f1.png" src="_images/d7b78ceac5105c9fa1e5b5abfb147894541509e866cabba79658026e9c1926f1.png" />
+</div>
 </div>
 <p>Now we initialize the extinction model and choose an extinction of <span class="math notranslate nohighlight">\(A_V\)</span> = 2.  To get the <code class="docutils literal notranslate"><span class="pre">dust_extinction</span></code> model working with <code class="docutils literal notranslate"><span class="pre">synphot</span></code>, we create a wavelength array and make a spectral element with the extinction model as a lookup table.</p>
 <div class="cell docutils container">
@@ -778,6 +780,9 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4e9340749b4a05d7d4d211915636fe182203ae602ef73590d28dd97f647e612.png" src="_images/d4e9340749b4a05d7d4d211915636fe182203ae602ef73590d28dd97f647e612.png" />
 </div>
 </div>
 <p>Synthetic photometry refers to modeling an observation of a star by multiplying the theoretical model for the astronomical flux through a certain filter response function, then integrating.</p>
@@ -803,6 +808,13 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <span class="c1"># Calculate extinction and compare to our chosen value.</span>
 <span class="n">Av_calc</span> <span class="o">=</span> <span class="n">sp_stim</span> <span class="o">-</span> <span class="n">sp_stim_before</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;$A_V$ = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Av_calc</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before dust, V = 10.0 mag(VEGA)
+after dust, V = 12.0 mag(VEGA)
+$A_V$ =  2.0 mag
 </pre></div>
 </div>
 </div>
@@ -837,6 +849,23 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3601.5 Angstrom , 1.12 mag
+4368.9 Angstrom , 0.63 mag
+5463.8 Angstrom , 0.0 mag
+6810.6 Angstrom , -0.48 mag
+8619.6 Angstrom , -0.97 mag
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12266.5 Angstrom , -1.43 mag
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16351.9 Angstrom , -1.65 mag
+21956.7 Angstrom , -1.79 mag
+</pre></div>
+</div>
+<img alt="_images/666d0af0e2e99da105ad3de6740cf2a80a42313fcd2090fdd79178c84ac0b10c.png" src="_images/666d0af0e2e99da105ad3de6740cf2a80a42313fcd2090fdd79178c84ac0b10c.png" />
 </div>
 </div>
 <section id="exercise">

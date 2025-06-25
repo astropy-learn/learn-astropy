@@ -414,234 +414,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">SSLCertVerificationError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:1344,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1343</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1344</span>     <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1345</span>               <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1338,</span> in <span class="ni">HTTPConnection.request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1337</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Send a complete request to the server.&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1338</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1384,</span> in <span class="ni">HTTPConnection._send_request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1383</span>     <span class="n">body</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1384</span> <span class="bp">self</span><span class="o">.</span><span class="n">endheaders</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1333,</span> in <span class="ni">HTTPConnection.endheaders</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1332</span>     <span class="k">raise</span> <span class="n">CannotSendHeader</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1333</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_output</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1093,</span> in <span class="ni">HTTPConnection._send_output</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:]</span>
-<span class="ne">-&gt; </span><span class="mi">1093</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1095</span> <span class="k">if</span> <span class="n">message_body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1096</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1097</span>     <span class="c1"># create a consistent interface to message_body</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1037,</span> in <span class="ni">HTTPConnection.send</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1036</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_open</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1037</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1479,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1477</span>     <span class="n">server_hostname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span>
-<span class="ne">-&gt; </span><span class="mi">1479</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1480</span>                                       <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/ssl.py:455,</span> in <span class="ni">SSLContext.wrap_socket</span><span class="nt">(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="k">def</span><span class="w"> </span><span class="nf">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sock</span><span class="p">,</span> <span class="n">server_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>                 <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span>                 <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span>                 <span class="n">server_hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span>     <span class="c1"># SSLSocket class handles server_hostname encoding before it calls</span>
-<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="c1"># ctx._wrap_socket()</span>
-<span class="ne">--&gt; </span><span class="mi">455</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sslsocket_class</span><span class="o">.</span><span class="n">_create</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">456</span>         <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span>         <span class="n">server_side</span><span class="o">=</span><span class="n">server_side</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span>         <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="n">do_handshake_on_connect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">459</span>         <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="n">suppress_ragged_eofs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">460</span>         <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">461</span>         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">462</span>         <span class="n">session</span><span class="o">=</span><span class="n">session</span>
-<span class="g g-Whitespace">    </span><span class="mi">463</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/ssl.py:1041,</span> in <span class="ni">SSLSocket._create</span><span class="nt">(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1040</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;do_handshake_on_connect should not be specified for non-blocking sockets&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1041</span>             <span class="bp">self</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1042</span> <span class="k">except</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/ssl.py:1319,</span> in <span class="ni">SSLSocket.do_handshake</span><span class="nt">(self, block)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1318</span>         <span class="bp">self</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1319</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1320</span> <span class="k">finally</span><span class="p">:</span>
-
-<span class="ne">SSLCertVerificationError</span>: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">URLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1246,</span> in <span class="ni">_try_url_open</span><span class="nt">(source_url, timeout, http_headers, ftp_tls, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1245</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1246</span>     <span class="k">return</span> <span class="n">urlopener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1247</span> <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:515,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
-<span class="ne">--&gt; </span><span class="mi">515</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span> <span class="c1"># post-process response</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:532,</span> in <span class="ni">OpenerDirector._open</span><span class="nt">(self, req, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
-<span class="ne">--&gt; </span><span class="mi">532</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
-<span class="g g-Whitespace">    </span><span class="mi">533</span>                           <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span> <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">492</span> <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:1392,</span> in <span class="ni">HTTPSHandler.https_open</span><span class="nt">(self, req)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1391</span> <span class="k">def</span><span class="w"> </span><span class="nf">https_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1392</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1393</span>                         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:1347,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span> <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
-<span class="ne">-&gt; </span><span class="mi">1347</span>     <span class="k">raise</span> <span class="n">URLError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1348</span> <span class="n">r</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-
-<span class="ne">URLError</span>: &lt;urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)&gt;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">URLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">conesearch</span><span class="o">.</span><span class="n">list_catalogs</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/vo_conesearch/conesearch.py:362,</span> in <span class="ni">list_catalogs</span><span class="nt">(**kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">330</span> <span class="k">def</span><span class="w"> </span><span class="nf">list_catalogs</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">331</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span><span class="sd">     Return the available Cone Search catalogs as a list of strings.</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="sd">     These can be used for the ``catalog_db`` argument to</span>
-<span class="sd">   (...)    360 </span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">362</span>     <span class="k">return</span> <span class="n">vos_catalog</span><span class="o">.</span><span class="n">list_catalogs</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">conesearch_dbname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/vo_conesearch/vos_catalog.py:937,</span> in <span class="ni">list_catalogs</span><span class="nt">(service_type, cache, verbose, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">905</span> <span class="k">def</span><span class="w"> </span><span class="nf">list_catalogs</span><span class="p">(</span><span class="n">service_type</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">906</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;List the catalogs available for the given service type.</span>
-<span class="g g-Whitespace">    </span><span class="mi">907</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">908</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)    935 </span>
-<span class="g g-Whitespace">    </span><span class="mi">936</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">937</span>     <span class="k">return</span> <span class="n">get_remote_catalog_db</span><span class="p">(</span><span class="n">service_type</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">938</span>                                  <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span><span class="o">.</span><span class="n">list_catalogs</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/vo_conesearch/vos_catalog.py:656,</span> in <span class="ni">get_remote_catalog_db</span><span class="nt">(dbname, cache, verbose)</span>
-<span class="g g-Whitespace">    </span><span class="mi">631</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_remote_catalog_db</span><span class="p">(</span><span class="n">dbname</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">632</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">633</span><span class="sd">     Get a database of VO services (which is a JSON file) from a remote</span>
-<span class="g g-Whitespace">    </span><span class="mi">634</span><span class="sd">     location.</span>
-<span class="sd">   (...)    654 </span>
-<span class="g g-Whitespace">    </span><span class="mi">655</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">656</span>     <span class="k">return</span> <span class="n">VOSDatabase</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">657</span>         <span class="n">urljoin_keep_path</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">vos_baseurl</span><span class="p">,</span> <span class="n">dbname</span> <span class="o">+</span> <span class="s1">&#39;.json&#39;</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">658</span>         <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/vo_conesearch/vos_catalog.py:524,</span> in <span class="ni">VOSDatabase.from_json</span><span class="nt">(cls, filename, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span> <span class="nd">@classmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span> <span class="k">def</span><span class="w"> </span><span class="nf">from_json</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span><span class="sd">     Create a database of VO services from a JSON file.</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span><span class="sd"> </span>
-<span class="sd">   (...)    522 </span>
-<span class="g g-Whitespace">    </span><span class="mi">523</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">524</span>     <span class="k">with</span> <span class="n">get_readable_fileobj</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span>         <span class="n">tree</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">527</span>     <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:356,</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers, use_fsspec, fsspec_kwargs, close_files)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="n">is_url</span> <span class="o">=</span> <span class="n">_is_url</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="k">if</span> <span class="n">is_url</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">356</span>     <span class="n">name_or_obj</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span>         <span class="n">name_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>         <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">359</span>         <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">remote_timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span>         <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span>         <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">363</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span> <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span> <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1584,</span> in <span class="ni">download_file</span><span class="nt">(remote_url, cache, show_progress, timeout, sources, pkgname, http_headers, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1578</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1579</span>         <span class="sa">f</span><span class="s2">&quot;No sources listed and file </span><span class="si">{</span><span class="n">remote_url</span><span class="si">}</span><span class="s2"> not in cache! &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1580</span>         <span class="s2">&quot;Please include primary URL in sources if you want it to be &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1581</span>         <span class="s2">&quot;included as a valid source.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1582</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1583</span> <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1584</span>     <span class="k">raise</span> <span class="n">errors</span><span class="p">[</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1585</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1586</span>     <span class="k">raise</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1587</span>         <span class="sa">f</span><span class="s2">&quot;Unable to open any source! Exceptions were </span><span class="si">{</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1588</span>     <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">errors</span><span class="p">[</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1548,</span> in <span class="ni">download_file</span><span class="nt">(remote_url, cache, show_progress, timeout, sources, pkgname, http_headers, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1546</span> <span class="k">for</span> <span class="n">source_url</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1547</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1548</span>         <span class="n">f_name</span> <span class="o">=</span> <span class="n">_download_file_from_source</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1549</span>             <span class="n">source_url</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1550</span>             <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1551</span>             <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1552</span>             <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1553</span>             <span class="n">remote_url</span><span class="o">=</span><span class="n">remote_url</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1554</span>             <span class="n">pkgname</span><span class="o">=</span><span class="n">pkgname</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1555</span>             <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1556</span>             <span class="n">ssl_context</span><span class="o">=</span><span class="n">ssl_context</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1557</span>             <span class="n">allow_insecure</span><span class="o">=</span><span class="n">allow_insecure</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1558</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1559</span>         <span class="c1"># Success!</span>
-<span class="g g-Whitespace">   </span><span class="mi">1560</span>         <span class="k">break</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1332,</span> in <span class="ni">_download_file_from_source</span><span class="nt">(source_url, show_progress, timeout, remote_url, cache, pkgname, http_headers, ftp_tls, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1329</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1330</span>             <span class="k">raise</span>
-<span class="ne">-&gt; </span><span class="mi">1332</span> <span class="k">with</span> <span class="n">_try_url_open</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1333</span>     <span class="n">source_url</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1334</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1335</span>     <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1336</span>     <span class="n">ftp_tls</span><span class="o">=</span><span class="n">ftp_tls</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1337</span>     <span class="n">ssl_context</span><span class="o">=</span><span class="n">ssl_context</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1338</span>     <span class="n">allow_insecure</span><span class="o">=</span><span class="n">allow_insecure</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1339</span> <span class="p">)</span> <span class="k">as</span> <span class="n">remote</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1340</span>     <span class="n">info</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1341</span>     <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1268,</span> in <span class="ni">_try_url_open</span><span class="nt">(source_url, timeout, http_headers, ftp_tls, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1261</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_insecure</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1262</span>     <span class="n">msg</span> <span class="o">+=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1263</span>         <span class="s2">&quot; or in both cases you can work around this by &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1264</span>         <span class="s2">&quot;passing allow_insecure=True, but only if you &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1265</span>         <span class="s2">&quot;understand the implications; the original error &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1266</span>         <span class="sa">f</span><span class="s2">&quot;was: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1267</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1268</span>     <span class="k">raise</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1269</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1270</span>     <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;. Re-trying with allow_insecure=True.&quot;</span>
-
-<span class="ne">URLError</span>: &lt;urlopen error Verification of TLS/SSL certificate at https://astroconda.org/aux/vo_databases/conesearch_good.json failed: this can mean either the server is misconfigured or your local root CA certificates are out-of-date; in the latter case this can usually be addressed by installing the Python package &quot;certifi&quot; (see the documentation for astropy.utils.data.download_file) or in both cases you can work around this by passing allow_insecure=True, but only if you understand the implications; the original error was: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1010)&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;2MASS All-Sky Catalog of Point Sources 1&#39;,
+ &#39;Gaia DR2 5&#39;,
+ &#39;Guide Star Catalog 2.3 Cone Search 1&#39;,
+ &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 1&#39;,
+ &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 2&#39;,
+ &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 3&#39;,
+ &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 4&#39;,
+ &#39;The HST Guide Star Catalog, Version 1.1 1&#39;,
+ &#39;The HST Guide Star Catalog, Version 1.2 1&#39;,
+ &#39;The HST Guide Star Catalog, Version GSC-ACT 1&#39;,
+ &#39;The PMM USNO-A1.0 Catalogue 1&#39;,
+ &#39;The USNO-A2.0 Catalogue 1&#39;,
+ &#39;The USNO-B1.0 Catalog 2&#39;,
+ &#39;Two Micron All Sky Survey (2MASS) 1&#39;,
+ &#39;Two Micron All Sky Survey (2MASS) 2&#39;]
 </pre></div>
 </div>
 </div>
@@ -654,12 +441,32 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (10.68470833, 41.26875)&gt;
+</pre></div>
+</div>
+</div>
 </div>
 <p>By default, a basic Cone Search goes through the list of catalogs and <em>stops</em> at the first one that returns non-empty VO table. Let’s search for objects within 0.1 degree around M31. You will see a lot of warnings that were generated by VO table parser but ignored by Cone Search service validator. VO compliance enforced by Cone Search providers is beyond the control of <code class="docutils literal notranslate"><span class="pre">astroquery.vo_conesearch</span></code> package.</p>
 <p>The result is an <a class="reference external" href="http://astropy.readthedocs.io/en/stable/table/index.html">Astropy table</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">conesearch</span><span class="o">.</span><span class="n">conesearch</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trying http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.68470833&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:46:4: W06: Invalid UCD &#39;POS_EQ_RA_MAIN&#39;: Unknown word &#39;POS_EQ_RA_MAIN&#39; [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.68470833&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:49:4: W06: Invalid UCD &#39;POS_EQ_DEC_MAIN&#39;: Unknown word &#39;POS_EQ_DEC_MAIN&#39; [astropy.io.votable.tree]
+WARNING: W03: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.68470833&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:61:4: W03: Implicitly generating an ID from a name &#39;2MASS&#39; -&gt; &#39;_2MASS&#39; [astropy.io.votable.xmlutil]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.68470833&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:61:4: W06: Invalid UCD &#39;ID_MAIN&#39;: Unknown word &#39;ID_MAIN&#39; [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.68470833&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:152:4: W06: Invalid UCD &#39;obs.field&#39;: Secondary word &#39;obs.field&#39; is not valid as a primary word [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.68470833&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:161:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.68470833&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:209:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word [astropy.io.votable.tree]
 </pre></div>
 </div>
 </div>
@@ -671,10 +478,44 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First non-empty table returned by http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?
+Number of rows is 2008
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r     RAJ2000    DEJ2000   errMaj errMin ... scanKey coaddKey coadd Opt
+            deg        deg     arcsec arcsec ...                           
+-------- ---------- ---------- ------ ------ ... ------- -------- ----- ---
+0.088860  10.699043  41.180546   0.08   0.07 ...   69157  1590592    44 Opt
+0.099056  10.692956  41.169888   0.08   0.07 ...   69157  1590592    44 Opt
+0.096789  10.696697  41.172382   0.20   0.20 ...   69157  1590592    44 Opt
+0.091839  10.699687  41.177605   0.24   0.21 ...   69157  1590592    44 Opt
+0.086295  10.699178  41.183144   0.36   0.34 ...   69157  1590592    44 Opt
+0.095003  10.711372  41.175888   0.24   0.24 ...   69157  1590592    44 Opt
+0.091538  10.712260  41.179588   0.21   0.18 ...   69157  1590592    44 Opt
+0.094139  10.714217  41.177265   0.08   0.07 ...   69157  1590592    44 Opt
+0.090449  10.728262  41.184441   0.20   0.19 ...   69157  1590592    44 Opt
+     ...        ...        ...    ...    ... ...     ...      ...   ... ...
+0.097966  10.639772  41.360718   0.07   0.06 ...   25123   577809    33 Opt
+0.080430  10.653701  41.345734   0.24   0.23 ...   69157  1590591    33 Opt
+0.078671  10.650944  41.343220   0.13   0.11 ...   25123   577809    33 Opt
+0.092843  10.671972  41.361099   0.25   0.22 ...   69157  1590591    33 Opt
+0.074682  10.654711  41.339951   0.26   0.23 ...   69157  1590591    33 Opt
+0.090105  10.661388  41.357136   0.08   0.07 ...   69157  1590591    33 Opt
+0.096558  10.622704  41.353333   0.24   0.22 ...   25123   577809    33 Opt
+0.097260  10.624244  41.354755   0.09   0.08 ...   25123   577809    33 Opt
+0.090156  10.615215  41.342255   0.15   0.14 ...   25123   577809    33 Opt
+0.098305  10.681841  41.367031   0.08   0.08 ...   69157  1590591    33 Opt
+Length = 2008 rows
 </pre></div>
 </div>
 </div>
@@ -693,6 +534,34 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result_tex</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;my_result.tex&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;ascii.latex&quot;</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result_tex</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r     RAJ2000   DEJ2000  errMaj errMin ... extKey scanKey coaddKey coadd Opt
+-------- --------- --------- ------ ------ ... ------ ------- -------- ----- ---
+ 0.08886 10.699043 41.180546   0.08   0.07 ...     --   69157  1590592    44 Opt
+0.099056 10.692956 41.169888   0.08   0.07 ...     --   69157  1590592    44 Opt
+0.096789 10.696697 41.172382    0.2    0.2 ...     --   69157  1590592    44 Opt
+0.091839 10.699687 41.177605   0.24   0.21 ...     --   69157  1590592    44 Opt
+0.086295 10.699178 41.183144   0.36   0.34 ...     --   69157  1590592    44 Opt
+0.095003 10.711372 41.175888   0.24   0.24 ...     --   69157  1590592    44 Opt
+0.091538  10.71226 41.179588   0.21   0.18 ...     --   69157  1590592    44 Opt
+0.094139 10.714217 41.177265   0.08   0.07 ...     --   69157  1590592    44 Opt
+0.090449 10.728262 41.184441    0.2   0.19 ...     --   69157  1590592    44 Opt
+0.095957 10.735452  41.18071   0.24   0.23 ...     --   69157  1590592    44 Opt
+     ...       ...       ...    ...    ... ...    ...     ...      ...   ... ...
+0.097966 10.639772 41.360718   0.07   0.06 ...     --   25123   577809    33 Opt
+ 0.08043 10.653701 41.345734   0.24   0.23 ...     --   69157  1590591    33 Opt
+0.078671 10.650944  41.34322   0.13   0.11 ...     --   25123   577809    33 Opt
+0.092843 10.671972 41.361099   0.25   0.22 ...     --   69157  1590591    33 Opt
+0.074682 10.654711 41.339951   0.26   0.23 ...     --   69157  1590591    33 Opt
+0.090105 10.661388 41.357136   0.08   0.07 ...     --   69157  1590591    33 Opt
+0.096558 10.622704 41.353333   0.24   0.22 ...     --   25123   577809    33 Opt
+ 0.09726 10.624244 41.354755   0.09   0.08 ...     --   25123   577809    33 Opt
+0.090156 10.615215 41.342255   0.15   0.14 ...     --   25123   577809    33 Opt
+0.098305 10.681841 41.367031   0.08   0.08 ...     --   69157  1590591    33 Opt
+Length = 2008 rows
 </pre></div>
 </div>
 </div>
@@ -734,6 +603,11 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ra or dec not in search results. Choose from: _r RAJ2000 DEJ2000 errMaj errMin errPA _2MASS Jmag Jcmsig e_Jmag Jsnr Hmag Hcmsig e_Hmag Hsnr Kmag Kcmsig e_Kmag Ksnr Qflg Rflg Bflg Cflg Ndet prox pxPA pxCntr Xflg Aflg Cntr Hemis Date Scan GLON GLAT Xscan JD Jpsfchi Hpsfchi Kpsfchi Jstdap e_Jstdap Hstdap e_Hstdap Kstdap e_Kstdap edgeNS edgeEW edge dup use opt Dopt PAopt Bmag Rmag Nopt extKey scanKey coaddKey coadd Opt
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now back to Cone Search… You can extract metadata of this Cone Search catalog.</p>
 <div class="cell docutils container">
@@ -744,6 +618,75 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
     <span class="n">my_cat</span> <span class="o">=</span> <span class="n">my_db</span><span class="o">.</span><span class="n">get_catalog_by_url</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;&amp;&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_cat</span><span class="o">.</span><span class="n">dumps</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;authenticated_only&quot;: 0,
+    &quot;cap_description&quot;: &quot;Cone search capability for table II/246/out (2MASS Point Source Catalogue, output (on a total of 470,992,970 sources))&quot;,
+    &quot;cap_index&quot;: 4,
+    &quot;cap_type&quot;: &quot;conesearch&quot;,
+    &quot;content_level&quot;: &quot;research&quot;,
+    &quot;content_type&quot;: &quot;catalog&quot;,
+    &quot;created&quot;: &quot;1/10/2008 11:19:42 PM&quot;,
+    &quot;creator_seq&quot;: &quot;&quot;,
+    &quot;duplicatesIgnored&quot;: 4,
+    &quot;intf_index&quot;: 1,
+    &quot;intf_role&quot;: &quot;std&quot;,
+    &quot;intf_type&quot;: &quot;vs:paramhttp&quot;,
+    &quot;ivoid&quot;: &quot;ivo://cds.vizier/ii/246&quot;,
+    &quot;mirror_url&quot;: &quot;https://vizier.iucaa.in/viz-bin/conesearch/II/246/out?#http://vizieridia.saao.ac.za/viz-bin/conesearch/II/246/out?&quot;,
+    &quot;query_type&quot;: &quot;&quot;,
+    &quot;reference_url&quot;: &quot;http://cdsarc.unistra.fr/cgi-bin/cat/II/246&quot;,
+    &quot;region_of_regard&quot;: NaN,
+    &quot;res_description&quot;: &quot;The Two Micron All Sky Survey (2MASS) project is designed to close the gap between our current technical capability and our knowledge of the near-infrared sky. In addition to providing a context for the interpretation of results obtained at infrared and other wavelengths, 2MASS will provide direct answers to immediate questions on the large-scale structure of the Milky Way and the Local Universe. To achieve these goals, 2MASS is uniformly scanning the entire sky in three near-infrared bands to detect and characterize point sources brighter than about 1 mJy in each band, with signal-to-noise ratio (SNR) greater than 10, using a pixel size of 2.0\&quot;. This will achieve an 80,000-fold improvement in sensitivity relative to earlier surveys. 2MASS uses two new, highly-automated 1.3-m telescopes, one at Mt. Hopkins, AZ, and one at CTIO, Chile. Each telescope is equipped with a three-channel camera, each channel consisting of a 256x256 array of HgCdTe detectors, capable of observing the sky simultaneously at J (1.25 {mu}m), H (1.65 {mu}m), and Ks (2.17 {mu}m), to a 3{sigma} limiting sensitivity of 17.1, 16.4 and 15.3mag in the three bands. The 2MASS arrays image the sky while the telescopes scan smoothly in declination at a rate of ~1&#39; per second. The 2MASS data \&quot;tiles\&quot; are 6 deg. long in the declination direction and one camera frame (8.5&#39;) wide. The camera field-of-view shifts by ~1/6 of a frame in declination from frame-to-frame. The camera images each point on the sky six times for a total integration time of 7.8 s, with sub-pixel \&quot;dithering\&quot;, which improves the ultimate spatial resolution of the final Atlas Images. The University of Massachusetts (UMass) is responsible for the overall management of the project, and for developing the infrared cameras and on-site computing systems at both facilities. The Infrared Processing and Analysis Center (IPAC) is responsible for all data processing through the Production Pipeline, and construction and distribution of the data products. The 2MASS project involves the participation of members of the Science Team from several different institutions. The 2MASS project is funding by the National Aeronautics and Space Administration (NASA) and the National Science Foundation (NSF).&quot;,
+    &quot;res_subject&quot;: &quot;Infrared astronomy&quot;,
+    &quot;res_type&quot;: &quot;vs:catalogservice&quot;,
+    &quot;res_version&quot;: &quot;&quot;,
+    &quot;result_type&quot;: &quot;&quot;,
+    &quot;rights&quot;: &quot;public&quot;,
+    &quot;rights_uri&quot;: &quot;&quot;,
+    &quot;short_name&quot;: &quot;II/246&quot;,
+    &quot;source_format&quot;: &quot;bibcode&quot;,
+    &quot;source_value&quot;: &quot;2003yCat.2246....0C&quot;,
+    &quot;standard_id&quot;: &quot;ivo://ivoa.net/std/conesearch&quot;,
+    &quot;std_version&quot;: &quot;&quot;,
+    &quot;title&quot;: &quot;2MASS All-Sky Catalog of Point Sources&quot;,
+    &quot;updated&quot;: &quot;10/21/2021 12:00:00 AM&quot;,
+    &quot;url&quot;: &quot;http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?&quot;,
+    &quot;url_use&quot;: &quot;base&quot;,
+    &quot;validate_expected&quot;: &quot;good&quot;,
+    &quot;validate_network_error&quot;: null,
+    &quot;validate_nexceptions&quot;: 0,
+    &quot;validate_nwarnings&quot;: 14,
+    &quot;validate_out_db_name&quot;: &quot;good&quot;,
+    &quot;validate_version&quot;: &quot;1.4&quot;,
+    &quot;validate_warning_types&quot;: [
+        &quot;W06&quot;,
+        &quot;W03&quot;
+    ],
+    &quot;validate_warnings&quot;: [
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:46:4: W06: Invalid UCD &#39;POS_EQ_RA_MAIN&#39;: Unknown word &#39;POS_EQ_RA_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:49:4: W06: Invalid UCD &#39;POS_EQ_DEC_MAIN&#39;: Unknown word &#39;POS_EQ_DEC_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W03: Implicitly generating an ID from a name &#39;2MASS&#39; -&gt; &#39;_2MASS&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W06: Invalid UCD &#39;ID_MAIN&#39;: Unknown word &#39;ID_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:152:4: W06: Invalid UCD &#39;obs.field&#39;: Secondary word &#39;obs.field&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:161:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:209:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:46:4: W06: Invalid UCD &#39;POS_EQ_RA_MAIN&#39;: Unknown word &#39;POS_EQ_RA_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:49:4: W06: Invalid UCD &#39;POS_EQ_DEC_MAIN&#39;: Unknown word &#39;POS_EQ_DEC_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W03: Implicitly generating an ID from a name &#39;2MASS&#39; -&gt; &#39;_2MASS&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W06: Invalid UCD &#39;ID_MAIN&#39;: Unknown word &#39;ID_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:152:4: W06: Invalid UCD &#39;obs.field&#39;: Secondary word &#39;obs.field&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:161:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:209:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;
+    ],
+    &quot;validate_xmllint&quot;: false,
+    &quot;validate_xmllint_content&quot;: &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:4: element VOTABLE: Schemas validity error : Element &#39;{http://www.ivoa.net/xml/VOTable/v1.3}VOTABLE&#39;: No matching global declaration available for the validation root.\n/var/www/astroconda.org/html/aux/vo_databases/daily_20250624/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml fails to validate\n&quot;,
+    &quot;waveband&quot;: &quot;infrared&quot;,
+    &quot;wsdl_url&quot;: &quot;&quot;
+}
 </pre></div>
 </div>
 </div>
@@ -770,6 +713,11 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of rows is 3
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s explore the 3 rows of astronomical objects found within 0.1 degree of M31 in the given catalog and sort them by increasing distance. For this example, the VO table has several columns that might include:</p>
 <ul class="simple">
@@ -786,11 +734,26 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;_r&#39;, &#39;USNO-A2.0&#39;, &#39;RAJ2000&#39;, &#39;DEJ2000&#39;, &#39;ACTflag&#39;, &#39;Mflag&#39;, &#39;Bmag&#39;, &#39;Rmag&#39;, &#39;Epoch&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Before sort</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r      USNO-A2.0    RAJ2000    DEJ2000   ACTflag Mflag Bmag Rmag  Epoch  
+  deg                     deg        deg                   mag  mag     yr   
+-------- ------------- ---------- ---------- ------- ----- ---- ---- --------
+0.094265 1275-00425574  10.595878  41.335328      --    -- 19.8 17.4 1953.773
+0.098040 1275-00427192  10.639945  41.360845      --    -- 19.4 18.4 1953.773
+0.063280 1275-00429939  10.712834  41.209109       A    -- 99.9 11.2       --
 </pre></div>
 </div>
 </div>
@@ -803,6 +766,16 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r      USNO-A2.0    RAJ2000    DEJ2000   ACTflag Mflag Bmag Rmag  Epoch  
+  deg                     deg        deg                   mag  mag     yr   
+-------- ------------- ---------- ---------- ------- ----- ---- ---- --------
+0.063280 1275-00429939  10.712834  41.209109       A    -- 99.9 11.2       --
+0.094265 1275-00425574  10.595878  41.335328      --    -- 19.8 17.4 1953.773
+0.098040 1275-00427192  10.639945  41.360845      --    -- 19.4 18.4 1953.773
+</pre></div>
+</div>
+</div>
 </div>
 <p>You can also convert the distance to arcseconds.</p>
 <div class="cell docutils container">
@@ -810,6 +783,10 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;_r&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[227.808,~339.354,~352.944]\mathrm{{}^{\prime\prime}}\]</div>
 </div>
 </div>
 <p>What if you want <em>all</em> the results from <em>all</em> the catalogs? And you also want to suppress all the VO table warnings and informational messages?</p>
@@ -830,6 +807,21 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>http://vizier.unistra.fr/viz-bin/conesearch/II/246/out? returned 2008 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/345/gaia2? returned 1752 rows
+http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23 returned 4028 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/220/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/254/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/255/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/243/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/252/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/284/out? returned 5 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_psc returned 2008 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_xsc returned 25 rows
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -837,6 +829,18 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 <span class="n">i220keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">all_results</span> <span class="k">if</span> <span class="s2">&quot;I/220&quot;</span> <span class="ow">in</span> <span class="n">k</span><span class="p">]</span>
 <span class="n">my_favorite_result</span> <span class="o">=</span> <span class="n">all_results</span><span class="p">[</span><span class="n">i220keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_favorite_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r       GSC      RAJ2000   DEJ2000  PosErr ... Plate  Epoch   Mult Versions
+                       deg       deg    arcsec ...          yr                 
+-------- ---------- --------- --------- ------ ... ----- -------- ---- --------
+0.063449 0280102008  10.71207  41.20873    0.2 ...  0738 1985.877    F  GSC-all
+0.043453 0280102015  10.68782  41.22536    0.2 ...  0738 1985.877    F  GSC-all
+0.096170 0280102081  10.80558  41.23727    0.2 ...  0738 1985.877    F  GSC-all
+0.066633 0280102017  10.60025  41.24853    0.2 ...  0738 1985.877    F  GSC-all
+0.082097 0280502180  10.64539  41.34535    0.2 ...  0738 1985.877    F  GSC-all
 </pre></div>
 </div>
 </div>
@@ -868,6 +872,14 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Am I running? True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 3 seconds. Am I done? True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -879,6 +891,33 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 <span class="n">all_results</span> <span class="o">=</span> <span class="n">async_search_all</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">tab</span> <span class="ow">in</span> <span class="n">all_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;returned&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">),</span> <span class="s2">&quot;rows&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Am I running? True
+Am I done? False
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=Galaxy&#39; returned 0 result [astroquery.vo_conesearch.core]
+WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=Star&#39; returned 0 result [astroquery.vo_conesearch.core]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=PhotoObjAll&#39; returned 0 result [astroquery.vo_conesearch.core]
+WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=PhotoObj&#39; returned 0 result [astroquery.vo_conesearch.core]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>http://vizier.unistra.fr/viz-bin/conesearch/II/246/out? returned 2008 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/345/gaia2? returned 1752 rows
+http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23 returned 4028 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/220/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/254/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/255/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/243/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/252/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/284/out? returned 5 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_psc returned 2008 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_xsc returned 25 rows
 </pre></div>
 </div>
 </div>
@@ -902,11 +941,21 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/43af459c612bf2dbee5118963cf575964e09871c021b86ef98deac5c247ec819.png" src="_images/43af459c612bf2dbee5118963cf575964e09871c021b86ef98deac5c247ec819.png" />
+<img alt="_images/7ea9f80b134430d9e9e4fc8a904c249b21cc94ac96c994f46daa7077ad0f6f4e.png" src="_images/7ea9f80b134430d9e9e4fc8a904c249b21cc94ac96c994f46daa7077ad0f6f4e.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted run time is&quot;</span><span class="p">,</span> <span class="n">t_est</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted number of rows is&quot;</span><span class="p">,</span> <span class="n">n_est</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted run time is 0.3825695949093538 seconds
+Predicted number of rows is 2617
 </pre></div>
 </div>
 </div>
@@ -924,11 +973,22 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: conesearch_timer took 0.49538373947143555 s on AVERAGE for 1 call(s). [astroquery.utils.timer]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Actual run time is&quot;</span><span class="p">,</span> <span class="n">t_real</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Actual number of rows is&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Actual run time is 0.49538373947143555 seconds
+Actual number of rows is 4028
 </pre></div>
 </div>
 </div>
