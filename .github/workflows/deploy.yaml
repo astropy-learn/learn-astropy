@@ -34,7 +34,7 @@ jobs:
         name: Install
       
       - run: |
-          mkdir ./public/CNAME
+          mkdir ./public
           cp ./CNAME ./public/CNAME
         
       - run: npm run build
