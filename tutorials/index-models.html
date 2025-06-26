@@ -573,7 +573,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_1$&#39;)
 </pre></div>
 </div>
-<img alt="_images/2c7430868a31864c453bf6eeea774904986f6b0a38904187dab38931519020fe.png" src="_images/2c7430868a31864c453bf6eeea774904986f6b0a38904187dab38931519020fe.png" />
+<img alt="_images/b206e7e157616fe49c4578d4e72c813d4fe0ebdbfaf76532566fee6111aacffb.png" src="_images/b206e7e157616fe49c4578d4e72c813d4fe0ebdbfaf76532566fee6111aacffb.png" />
 </div>
 </div>
 <p>To fit this data let’s remember the three steps: model, fitter and perform fit.</p>
@@ -599,9 +599,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-            c0                 c1                 c2                 c3        
-    ------------------ ------------------ ------------------ ------------------
-    -8.474181693465024 11.266137297252593 -5.502843775502853 0.8973360354644486
+            c0                c1                c2                 c3        
+    ----------------- ----------------- ------------------ ------------------
+    -9.12800757901219 12.77469171003877 -6.575706598856835 1.1054564059454586
 </pre></div>
 </div>
 </div>
@@ -634,9 +634,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-             c0                  c1                  c2                  c3        
-    ------------------- ------------------- ------------------- -------------------
-    -0.0940845418190468 -0.2695751224157016 -0.8510531934902894 0.32231617541725033
+            c0                 c1                   c2                  c3        
+    ----------------- -------------------- ------------------- -------------------
+    0.448425931971312 -0.19628287661401733 -0.8790022925273284 0.31732388584772475
 </pre></div>
 </div>
 </div>
@@ -671,7 +671,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 2.0380848248340815
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.5151632695641253
 </pre></div>
 </div>
 </div>
@@ -684,7 +684,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 4.645859203398919
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 5.108396459855349
 </pre></div>
 </div>
 </div>
@@ -703,10 +703,10 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5ca2a27e30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6f6fc23b90&gt;
 </pre></div>
 </div>
-<img alt="_images/8d0f7ce9cbb7be0373bb7283110b71eb162d92d1e3788929088008f7ec559b79.png" src="_images/8d0f7ce9cbb7be0373bb7283110b71eb162d92d1e3788929088008f7ec559b79.png" />
+<img alt="_images/a778877b480f6d98adf60320ed335116426b5908b8f05bb629cd263e8b15f03f.png" src="_images/a778877b480f6d98adf60320ed335116426b5908b8f05bb629cd263e8b15f03f.png" />
 </div>
 </div>
 <p>Results are as espected, the fit performed with the linear fitter is better than the second, non linear one.</p>
@@ -743,7 +743,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_2$&#39;)
 </pre></div>
 </div>
-<img alt="_images/c31c511b4804dad58698e20d1a40cf477946ac56000b20e07b23866cf24791d6.png" src="_images/c31c511b4804dad58698e20d1a40cf477946ac56000b20e07b23866cf24791d6.png" />
+<img alt="_images/2490abbcc794c140fa0a5e1f8580b93769ebc35a8ea0d36a888ce01cb3c6ec40.png" src="_images/2490abbcc794c140fa0a5e1f8580b93769ebc35a8ea0d36a888ce01cb3c6ec40.png" />
 </div>
 </div>
 <p>Let’s do our three steps to make the fit we want. For this fit we’re going to use a non-linear fitter, <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter</span></code>, because the model we need (<code class="docutils literal notranslate"><span class="pre">Gaussian1D</span></code>) is non-linear in the parameters.</p>
@@ -768,9 +768,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-        amplitude            mean              stddev      
-    ----------------- ------------------ ------------------
-    9.919351213300535 0.3726248055188302 10.319677387647905
+        amplitude             mean               stddev     
+    ----------------- -------------------- -----------------
+    10.25380980329387 -0.34280774429380745 9.449824403814645
 </pre></div>
 </div>
 </div>
@@ -796,7 +796,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.04977461 0.07176987 0.07212312]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05429624 0.06147289 0.06154842]
 </pre></div>
 </div>
 </div>
@@ -817,9 +817,9 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.919351213300535 +\- 0.2231022439896053
-Mean: 0.3726248055188302 +\- 0.26789898297447357
-Standard Deviation: 10.319677387647905 +\- 0.2685574753381447
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.25380980329387 +\- 0.2330155370528277
+Mean: -0.34280774429380745 +\- 0.24793727111438463
+Standard Deviation: 9.449824403814645 +\- 0.2480895430045534
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -828,11 +828,11 @@ Standard Deviation: 10.319677387647905 +\- 0.2685574753381447
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_3536/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3538/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Amplitude: {} +\- {}&quot;.format(best_fit_gauss.amplitude.value, np.sqrt(cov_diag[0]))
-/tmp/ipykernel_3536/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3538/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(best_fit_gauss.mean.value, np.sqrt(cov_diag[1])))
-/tmp/ipykernel_3536/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3538/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Standard Deviation: {} +\- {}&quot;.format(
 </pre></div>
 </div>
@@ -863,7 +863,7 @@ Standard Deviation: 10.319677387647905 +\- 0.2685574753381447
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.91935132  0.37262559 10.31967716]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.25380967 -0.3428078   9.44982465]
 </pre></div>
 </div>
 </div>
@@ -877,9 +877,9 @@ Standard Deviation: 10.319677387647905 +\- 0.2685574753381447
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.919351324668995 +\- 0.22692644067578163
-Mean: 0.3726255910714404 +\- 0.27249027313296453
-Standard Deviation: 10.319677158924282 +\- 0.2731600598915281
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.253809670516787 +\- 0.22874702438437425
+Mean: -0.3428078046174718 +\- 0.24339562710215684
+Standard Deviation: 9.449824649755104 +\- 0.24354512996537175
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -888,11 +888,11 @@ Standard Deviation: 10.319677158924282 +\- 0.2731600598915281
 &lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_3536/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3538/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Amplitude: {} +\- {}&quot;.format(p_opt[0], np.sqrt(p_cov[0, 0])))
-/tmp/ipykernel_3536/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3538/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(p_opt[1], np.sqrt(p_cov[1, 1])))
-/tmp/ipykernel_3536/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3538/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Standard Deviation: {} +\- {}&quot;.format(p_opt[2], np.sqrt(p_cov[2, 2])))
 </pre></div>
 </div>
@@ -908,7 +908,7 @@ Standard Deviation: 10.319677158924282 +\- 0.2731600598915281
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 1.034573985888868
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.9636990281912249
 </pre></div>
 </div>
 </div>
@@ -921,7 +921,7 @@ Standard Deviation: 10.319677158924282 +\- 0.2731600598915281
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 1.0345739858891707
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.9636990281913128
 </pre></div>
 </div>
 </div>
@@ -939,10 +939,10 @@ Standard Deviation: 10.319677158924282 +\- 0.2731600598915281
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5ca286fef0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6f6f9d6c00&gt;
 </pre></div>
 </div>
-<img alt="_images/09c2c445345d0c30586d49171516066734c9d829db36595ef252f7c795b9fb3c.png" src="_images/09c2c445345d0c30586d49171516066734c9d829db36595ef252f7c795b9fb3c.png" />
+<img alt="_images/9a20769891e99632aa5763a2cf8507468858807b9965ba8698e770f70c0e2bf0.png" src="_images/9a20769891e99632aa5763a2cf8507468858807b9965ba8698e770f70c0e2bf0.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Choose the method most convenient for every case you need to fit. We recomend <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> because is easier to write the name of the function you want to fit than to remember the expression every time we want to use it. Also, <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> becomes useful with more complicated models like <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">two gaussians</a> plus a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#blackbody-radiation">black body</a>, but that is another tutorial.</p>
@@ -994,7 +994,7 @@ Standard Deviation: 10.319677158924282 +\- 0.2731600598915281
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_3$&#39;)
 </pre></div>
 </div>
-<img alt="_images/bb5e4350e6ea445f773dab6b70d0ad70f4b75e523b780589353805df68dcfed3.png" src="_images/bb5e4350e6ea445f773dab6b70d0ad70f4b75e523b780589353805df68dcfed3.png" />
+<img alt="_images/f69bc99f67f5ea5c1fcc12e802847d267cda08a63da00cf92c1058311a02ab76.png" src="_images/f69bc99f67f5ea5c1fcc12e802847d267cda08a63da00cf92c1058311a02ab76.png" />
 </div>
 </div>
 </section>
@@ -1062,191 +1062,6 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">spectrum</span> <span class="o">=</span> <span class="n">SDSS</span><span class="o">.</span><span class="n">get_spectra</span><span class="p">(</span><span class="n">plate</span><span class="o">=</span><span class="mi">1349</span><span class="p">,</span> <span class="n">fiberID</span><span class="o">=</span><span class="mi">216</span><span class="p">,</span> <span class="n">mjd</span><span class="o">=</span><span class="mi">52797</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/sdss/core.py:814,</span> in <span class="ni">SDSSClass.get_spectra</span><span class="nt">(self, coordinates, radius, matches, plate, fiberID, mjd, timeout, get_query_payload, data_release, cache, show_progress)</span>
-<span class="g g-Whitespace">    </span><span class="mi">812</span>     <span class="k">return</span> <span class="n">readable_objs</span>
-<span class="g g-Whitespace">    </span><span class="mi">813</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">814</span>     <span class="k">return</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">get_fits</span><span class="p">()</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">readable_objs</span><span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/utils/commons.py:274,</span> in <span class="ni">FileContainer.get_fits</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">269</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_fits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span><span class="sd">     Assuming the contained file is a FITS file, read it</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span><span class="sd">     and return the file parsed as FITS HDUList</span>
-<span class="g g-Whitespace">    </span><span class="mi">273</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">274</span>     <span class="n">filedata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_string</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filedata</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The file retrieved was empty.&quot;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/utils/commons.py:321,</span> in <span class="ni">FileContainer.get_string</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_string&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">321</span>         <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_readable_object</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span>             <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_string</span> <span class="o">=</span> <span class="n">data</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__enter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">kwds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;generator didn&#39;t yield&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:356,</span> in <span class="ni">get_readable_fileobj</span><span class="nt">(name_or_obj, encoding, cache, show_progress, remote_timeout, sources, http_headers, use_fsspec, fsspec_kwargs, close_files)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="n">is_url</span> <span class="o">=</span> <span class="n">_is_url</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="k">if</span> <span class="n">is_url</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">356</span>     <span class="n">name_or_obj</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">357</span>         <span class="n">name_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">358</span>         <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">359</span>         <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">remote_timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span>         <span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span>         <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">363</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span> <span class="n">fileobj</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">(</span><span class="n">name_or_obj</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span> <span class="k">if</span> <span class="n">is_url</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cache</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1548,</span> in <span class="ni">download_file</span><span class="nt">(remote_url, cache, show_progress, timeout, sources, pkgname, http_headers, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1546</span> <span class="k">for</span> <span class="n">source_url</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1547</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1548</span>         <span class="n">f_name</span> <span class="o">=</span> <span class="n">_download_file_from_source</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1549</span>             <span class="n">source_url</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1550</span>             <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1551</span>             <span class="n">show_progress</span><span class="o">=</span><span class="n">show_progress</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1552</span>             <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1553</span>             <span class="n">remote_url</span><span class="o">=</span><span class="n">remote_url</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1554</span>             <span class="n">pkgname</span><span class="o">=</span><span class="n">pkgname</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1555</span>             <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1556</span>             <span class="n">ssl_context</span><span class="o">=</span><span class="n">ssl_context</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1557</span>             <span class="n">allow_insecure</span><span class="o">=</span><span class="n">allow_insecure</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1558</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1559</span>         <span class="c1"># Success!</span>
-<span class="g g-Whitespace">   </span><span class="mi">1560</span>         <span class="k">break</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1332,</span> in <span class="ni">_download_file_from_source</span><span class="nt">(source_url, show_progress, timeout, remote_url, cache, pkgname, http_headers, ftp_tls, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1329</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1330</span>             <span class="k">raise</span>
-<span class="ne">-&gt; </span><span class="mi">1332</span> <span class="k">with</span> <span class="n">_try_url_open</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1333</span>     <span class="n">source_url</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1334</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1335</span>     <span class="n">http_headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1336</span>     <span class="n">ftp_tls</span><span class="o">=</span><span class="n">ftp_tls</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1337</span>     <span class="n">ssl_context</span><span class="o">=</span><span class="n">ssl_context</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1338</span>     <span class="n">allow_insecure</span><span class="o">=</span><span class="n">allow_insecure</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1339</span> <span class="p">)</span> <span class="k">as</span> <span class="n">remote</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1340</span>     <span class="n">info</span> <span class="o">=</span> <span class="n">remote</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1341</span>     <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/utils/data.py:1246,</span> in <span class="ni">_try_url_open</span><span class="nt">(source_url, timeout, http_headers, ftp_tls, ssl_context, allow_insecure)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1243</span> <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">source_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">http_headers</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1245</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1246</span>     <span class="k">return</span> <span class="n">urlopener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1247</span> <span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1248</span>     <span class="n">reason</span> <span class="o">=</span> <span class="n">exc</span><span class="o">.</span><span class="n">reason</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:515,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="n">req</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
-<span class="ne">--&gt; </span><span class="mi">515</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span> <span class="c1"># post-process response</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span> <span class="n">meth_name</span> <span class="o">=</span> <span class="n">protocol</span><span class="o">+</span><span class="s2">&quot;_response&quot;</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:532,</span> in <span class="ni">OpenerDirector._open</span><span class="nt">(self, req, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">529</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
-<span class="ne">--&gt; </span><span class="mi">532</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
-<span class="g g-Whitespace">    </span><span class="mi">533</span>                           <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">492</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:1392,</span> in <span class="ni">HTTPSHandler.https_open</span><span class="nt">(self, req)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1391</span> <span class="k">def</span><span class="w"> </span><span class="nf">https_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1392</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1393</span>                         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/urllib/request.py:1344,</span> in <span class="ni">AbstractHTTPHandler.do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1342</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1343</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1344</span>         <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1345</span>                   <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span>     <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
-<span class="g g-Whitespace">   </span><span class="mi">1347</span>         <span class="k">raise</span> <span class="n">URLError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1338,</span> in <span class="ni">HTTPConnection.request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1335</span> <span class="k">def</span><span class="w"> </span><span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="o">*</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1336</span>             <span class="n">encode_chunked</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1337</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Send a complete request to the server.&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1338</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_send_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1384,</span> in <span class="ni">HTTPConnection._send_request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1380</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1381</span>     <span class="c1"># RFC 2616 Section 3.7.1 says that text default has a</span>
-<span class="g g-Whitespace">   </span><span class="mi">1382</span>     <span class="c1"># default charset of iso-8859-1.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1383</span>     <span class="n">body</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1384</span> <span class="bp">self</span><span class="o">.</span><span class="n">endheaders</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1333,</span> in <span class="ni">HTTPConnection.endheaders</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1331</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1332</span>     <span class="k">raise</span> <span class="n">CannotSendHeader</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1333</span> <span class="bp">self</span><span class="o">.</span><span class="n">_send_output</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1093,</span> in <span class="ni">HTTPConnection._send_output</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1091</span> <span class="n">msg</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span> <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:]</span>
-<span class="ne">-&gt; </span><span class="mi">1093</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1095</span> <span class="k">if</span> <span class="n">message_body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1096</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1097</span>     <span class="c1"># create a consistent interface to message_body</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="s1">&#39;read&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span>         <span class="c1"># Let file-like take precedence over byte-like.  This</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>         <span class="c1"># is needed to allow the current position of mmap&#39;ed</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span>         <span class="c1"># files to be taken into account.</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1037,</span> in <span class="ni">HTTPConnection.send</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1035</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1036</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_open</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1037</span>         <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="k">raise</span> <span class="n">NotConnected</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1472,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1469</span> <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1470</span>     <span class="s2">&quot;Connect to a host on a given (SSL) port.&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1472</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1474</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tunnel_host</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1475</span>         <span class="n">server_hostname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tunnel_host</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:1003,</span> in <span class="ni">HTTPConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1001</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Connect to the host and port specified in __init__.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span> <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s2">&quot;http.client.connect&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1003</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_connection</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span>     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span> <span class="c1"># Might fail in OSs that don&#39;t implement TCP_NODELAY</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/socket.py:850,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, all_errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">848</span> <span class="k">if</span> <span class="n">source_address</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">849</span>     <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">850</span> <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">851</span> <span class="c1"># Break explicitly a reference cycle</span>
-<span class="g g-Whitespace">    </span><span class="mi">852</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <section id="now-that-we-have-the-spectrum">
 <h4>Now that we have the spectrum…<a class="headerlink" href="#now-that-we-have-the-spectrum" title="Link to this heading">#</a></h4>
@@ -1254,6 +1069,20 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ColDefs(
+    name = &#39;flux&#39;; format = &#39;E&#39;
+    name = &#39;loglam&#39;; format = &#39;E&#39;
+    name = &#39;ivar&#39;; format = &#39;E&#39;
+    name = &#39;and_mask&#39;; format = &#39;J&#39;
+    name = &#39;or_mask&#39;; format = &#39;J&#39;
+    name = &#39;wdisp&#39;; format = &#39;E&#39;
+    name = &#39;sky&#39;; format = &#39;E&#39;
+    name = &#39;model&#39;; format = &#39;E&#39;
+)
 </pre></div>
 </div>
 </div>
@@ -1277,6 +1106,11 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1E-17 erg/cm^2/s/Ang
+</pre></div>
+</div>
+</div>
 </div>
 <p>Different sources will definite wavelength information differently, so we need to check the documentation. For example, this <a class="reference external" href="https://www.sdss.org/dr12/tutorials/quicklook/#python">SDSS tutorial</a> tells us what header keyword to look at.</p>
 <div class="cell docutils container">
@@ -1287,12 +1121,22 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wtype=linear label=Wavelength units=Angstroms
+</pre></div>
+</div>
+</div>
 </div>
 <p>We are going to select only the characters of the unit we care about: Angstroms</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">units_wavelength</span> <span class="o">=</span> <span class="n">units_wavelength_full</span><span class="p">[</span><span class="mi">36</span><span class="p">:]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">units_wavelength</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Angstroms
 </pre></div>
 </div>
 </div>
@@ -1308,6 +1152,9 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/04ae29712d02736d71794e854e3739fb7928f4c4988b30c7fa1bfd756df0d575.png" src="_images/04ae29712d02736d71794e854e3739fb7928f4c4988b30c7fa1bfd756df0d575.png" />
 </div>
 </div>
 <p>We just plotted our spectrum! Check different ranges of wavelength to see how the full spectrum looks like in comparison to the one we saw before.</p>
@@ -1340,11 +1187,26 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/ce021d5293b45dbb4c293d3b194c4e18e5b26e5101be5f5be31345bcad58ed83.png" src="_images/ce021d5293b45dbb4c293d3b194c4e18e5b26e5101be5f5be31345bcad58ed83.png" />
+</div>
 </div>
 <p>We can see the fit is not doing a good job. Let’s print the parameters of this fit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gaussian_fit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: Gaussian1D
+Inputs: (&#39;x&#39;,)
+Outputs: (&#39;y&#39;,)
+Model set size: 1
+Parameters:
+        amplitude             mean             stddev     
+    ------------------ ----------------- -----------------
+    16.750706286489784 9456.749529382625 2368.395705667002
 </pre></div>
 </div>
 </div>
@@ -1394,11 +1256,31 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/6394262b377b71952ae3982aa0fd28b4bd64de4421e2a1b6fab4680d4f09f79b.png" src="_images/6394262b377b71952ae3982aa0fd28b4bd64de4421e2a1b6fab4680d4f09f79b.png" />
+</div>
 </div>
 <p>It works! Let’s take a look to the fit we just made.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">compound_fit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: CompoundModel
+Inputs: (&#39;x&#39;,)
+Outputs: (&#39;y&#39;,)
+Model set size: 1
+Expression: [0] + [1]
+Components: 
+    [0]: &lt;Gaussian1D(amplitude=7.02171248, mean=6564.13272082, stddev=1.97715531)&gt;
+
+    [1]: &lt;Polynomial1D(1, c0=-12.79335637, c1=0.00323995)&gt;
+Parameters:
+       amplitude_0          mean_0      ...         c0_1                c1_1        
+    ----------------- ----------------- ... ------------------- --------------------
+    7.021712482355418 6564.132720819791 ... -12.793356369422343 0.003239952196866877
 </pre></div>
 </div>
 </div>
@@ -1411,11 +1293,25 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>amplitude_0 7.021712482355418
+mean_0 6564.132720819791
+stddev_0 1.977155311367857
+c0_1 -12.793356369422343
+c1_1 0.003239952196866877
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can see that the result includes all the fit parameters from the gaussian (mean, std and amplitude) and the two coefficients from the polynomial of degree 1. So now if we want to see just the amplitude:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compound_fit</span><span class="o">.</span><span class="n">amplitude_0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter(&#39;amplitude&#39;, value=7.021712482355418)
 </pre></div>
 </div>
 </div>
@@ -1453,10 +1349,30 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/7c2a50bda5558b4eb1c6054f682cc80ff76de6665f03449a089f6e0836cc7b45.png" src="_images/7c2a50bda5558b4eb1c6054f682cc80ff76de6665f03449a089f6e0836cc7b45.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">compound_fit_fixed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: CompoundModel
+Inputs: (&#39;x&#39;,)
+Outputs: (&#39;y&#39;,)
+Model set size: 1
+Expression: [0] + [1]
+Components: 
+    [0]: &lt;Gaussian1D(amplitude=1.53255901, mean=6563., stddev=28.57906909)&gt;
+
+    [1]: &lt;Polynomial1D(1, c0=-12.79102997, c1=0.00323745)&gt;
+Parameters:
+       amplitude_0     mean_0 ...         c0_1                c1_1        
+    ------------------ ------ ... ------------------- --------------------
+    1.5325590144558827 6563.0 ... -12.791029967444068 0.003237448589619317
 </pre></div>
 </div>
 </div>
@@ -1487,10 +1403,30 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/7cdc617a3f2e48f4217262a21cd4399a24303faffc39120fa5dae724d4e9e5f5.png" src="_images/7cdc617a3f2e48f4217262a21cd4399a24303faffc39120fa5dae724d4e9e5f5.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">compound_fit_bounded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: CompoundModel
+Inputs: (&#39;x&#39;,)
+Outputs: (&#39;y&#39;,)
+Model set size: 1
+Expression: [0] + [1]
+Components: 
+    [0]: &lt;Gaussian1D(amplitude=6.86741863, mean=6563.5, stddev=2.12272132)&gt;
+
+    [1]: &lt;Polynomial1D(1, c0=-12.79313621, c1=0.00323986)&gt;
+Parameters:
+      amplitude_0   mean_0 ...         c0_1                c1_1        
+    --------------- ------ ... ------------------- --------------------
+    6.8674186332946 6563.5 ... -12.793136209085365 0.003239857612426906
 </pre></div>
 </div>
 </div>
@@ -1539,6 +1475,9 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/a51c1abd654bb475f69434559653fda70d7c53e84ff7342989a6a8a3af20e594.png" src="_images/a51c1abd654bb475f69434559653fda70d7c53e84ff7342989a6a8a3af20e594.png" />
+</div>
 </div>
 <p>We can define a simple custom model by specifying which parameters we want to fit.</p>
 <div class="cell docutils container">
@@ -1571,10 +1510,25 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/f2ddb1ca36c83a7c87e2eead6dc74d9b0cb937d40814e36e7ccffe846d65c25e.png" src="_images/f2ddb1ca36c83a7c87e2eead6dc74d9b0cb937d40814e36e7ccffe846d65c25e.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">exp_fit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: exponential
+Inputs: (&#39;x&#39;,)
+Outputs: (&#39;y&#39;,)
+Model set size: 1
+Parameters:
+            a                   b                  c         
+    ------------------ ------------------- ------------------
+    1.1922329380023233 -2.0109794608792746 1.0013738661555753
 </pre></div>
 </div>
 </div>
@@ -1597,6 +1551,11 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_reduced_chi_square</span><span class="p">(</span><span class="n">exp_fit</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y1_err</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.057673134479884)
 </pre></div>
 </div>
 </div>
@@ -1631,6 +1590,9 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fe079aecbc3e703c629bedf611edde427c1bcb84e7d7e00902f84b91e85c44bb.png" src="_images/fe079aecbc3e703c629bedf611edde427c1bcb84e7d7e00902f84b91e85c44bb.png" />
 </div>
 </div>
 <p>For the full custom model we can easily set the <strong>derivative of the function</strong>, which is used by different <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#id21">fitters</a>, for example the <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter()</span></code>.</p>
@@ -1676,6 +1638,9 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/e4286efbf76b61ecd8b73c066dd2cd1cffe4f7520b0f3ba658a283b69367f50c.png" src="_images/e4286efbf76b61ecd8b73c066dd2cd1cffe4f7520b0f3ba658a283b69367f50c.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1683,10 +1648,27 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: SineNew
+Inputs: (&#39;x&#39;,)
+Outputs: (&#39;y&#39;,)
+Model set size: 1
+Parameters:
+            a                  b                 c                 d         
+    ------------------ ----------------- ----------------- ------------------
+    2.9885377113493634 2.009939969557606 3.959058476385397 0.9930577598793324
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calc_reduced_chi_square</span><span class="p">(</span><span class="n">sine_fit</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y2_err</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.0523087742317023)
 </pre></div>
 </div>
 </div>
@@ -1717,6 +1699,9 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/be82359b344c06ec6924b419d683da2e3acc772543409f64e4b90b7844294a95.png" src="_images/be82359b344c06ec6924b419d683da2e3acc772543409f64e4b90b7844294a95.png" />
 </div>
 </div>
 </section>

@@ -651,7 +651,7 @@ NAXIS : 0  0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f4471106cf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f9504307a70&gt;
 </pre></div>
 </div>
 <img alt="_images/7ea6258532f3b8288f0a99a7b00b5be61254d83625099953158e04a32eefee2e.png" src="_images/7ea6258532f3b8288f0a99a7b00b5be61254d83625099953158e04a32eefee2e.png" />
@@ -917,28 +917,40 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">   </span><span class="mi">1089</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1090</span>     <span class="k">while</span> <span class="ow">not</span> <span class="n">is_fp_closed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decoded_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:1252,</span> in <span class="ni">HTTPResponse.read_chunked</span><span class="nt">(self, amt, decode_content)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:1251,</span> in <span class="ni">HTTPResponse.read_chunked</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1249</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1250</span>     <span class="k">break</span>
-<span class="g g-Whitespace">   </span><span class="mi">1251</span> <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_chunk</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1252</span> <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1251</span> <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_chunk</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1252</span> <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1253</span>     <span class="n">chunk</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span> <span class="n">flush_decoder</span><span class="o">=</span><span class="kc">False</span>
 <span class="g g-Whitespace">   </span><span class="mi">1254</span> <span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1255</span> <span class="k">if</span> <span class="n">decoded</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1256</span>     <span class="k">yield</span> <span class="n">decoded</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:510,</span> in <span class="ni">BaseHTTPResponse._decode</span><span class="nt">(self, data, decode_content, flush_decoder)</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">509</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decoder</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">510</span>         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decoder</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_has_decoded_content</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span> <span class="k">except</span> <span class="bp">self</span><span class="o">.</span><span class="n">DECODER_ERROR_CLASSES</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:1197,</span> in <span class="ni">HTTPResponse._handle_chunk</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1195</span>     <span class="n">returned_chunk</span> <span class="o">=</span> <span class="n">value</span>
+<span class="g g-Whitespace">   </span><span class="mi">1196</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># amt &gt; self.chunk_left</span>
+<span class="ne">-&gt; </span><span class="mi">1197</span>     <span class="n">returned_chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span><span class="p">)</span>  <span class="c1"># type: ignore[union-attr]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1198</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># type: ignore[union-attr] # Toss the CRLF at the end of the chunk.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1199</span>     <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:111,</span> in <span class="ni">GzipDecoder.decompress</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">111</span>         <span class="n">ret</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_obj</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="k">except</span> <span class="n">zlib</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>         <span class="n">previous_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:642,</span> in <span class="ni">HTTPResponse._safe_read</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="k">def</span><span class="w"> </span><span class="nf">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">636</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Read the number of bytes requested.</span>
+<span class="g g-Whitespace">    </span><span class="mi">637</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span><span class="sd">     This function should be used when &lt;amt&gt; bytes &quot;should&quot; be present for</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span><span class="sd">     reading. If the bytes are truly not available (due to EOF), then the</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span><span class="sd">     IncompleteRead exception can be used to detect the problem.</span>
+<span class="g g-Whitespace">    </span><span class="mi">641</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">642</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">amt</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">644</span>         <span class="k">raise</span> <span class="n">IncompleteRead</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amt</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/socket.py:720,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">720</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span>     <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
