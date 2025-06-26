@@ -83,7 +83,7 @@ def process_repo(repo, destination_directory):
         images = glob.glob(f"{repo}/_images/*.png")
         if len(images) > 0:
             print("Copying notebook cell output images")
-            image_dir = f"{destination_directory}/nboutput"
+            image_dir = f"{destination_directory}/_images"
             os.makedirs(image_dir, exist_ok=True)
             for i in images:
                 shutil.copy(i, image_dir)
