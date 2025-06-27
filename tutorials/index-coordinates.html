@@ -1774,7 +1774,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># This cell will raise an exception and will not work (you will see a `ConvertError` exception) - this is expected!</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">icrs_c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
 <span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="n">generic_frame</span> <span class="o">=</span> <span class="n">GenericFrame</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">553</span> <span class="c1"># Do the transformation, returning a coordinate frame of the desired</span>
 <span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="c1"># final type (not generic).</span>
@@ -1783,7 +1783,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="g g-Whitespace">    </span><span class="mi">558</span> <span class="c1"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
 <span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">new_coord</span><span class="o">.</span><span class="n">frame_attributes</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="n">frattrs</span><span class="p">[</span><span class="n">inter_frame_attr_nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
 <span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">curr_toframe</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tosys</span><span class="p">(</span><span class="o">**</span><span class="n">frattrs</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">113</span>     <span class="n">curr_coord</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">curr_coord</span><span class="p">,</span> <span class="n">curr_toframe</span><span class="p">)</span>
@@ -1791,23 +1791,23 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="c1"># coordinate objects are immutable, so copying is not needed</span>
 <span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="k">return</span> <span class="n">curr_coord</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205,</span> in <span class="ni">BaseAffineTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205,</span> in <span class="ni">BaseAffineTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">205</span>     <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_affine_params</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="n">newrep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_transform</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">207</span>     <span class="k">return</span> <span class="n">toframe</span><span class="o">.</span><span class="n">realize_frame</span><span class="p">(</span><span class="n">newrep</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259,</span> in <span class="ni">AffineTransform._affine_params</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259,</span> in <span class="ni">AffineTransform._affine_params</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">258</span> <span class="k">def</span><span class="w"> </span><span class="nf">_affine_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">259</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_func</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592,</span> in <span class="ni">icrs_to_galactocentric</span><span class="nt">(icrs_coord, galactocentric_frame)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592,</span> in <span class="ni">icrs_to_galactocentric</span><span class="nt">(icrs_coord, galactocentric_frame)</span>
 <span class="g g-Whitespace">    </span><span class="mi">590</span> <span class="nd">@frame_transform_graph</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">AffineTransform</span><span class="p">,</span> <span class="n">ICRS</span><span class="p">,</span> <span class="n">Galactocentric</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">def</span><span class="w"> </span><span class="nf">icrs_to_galactocentric</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">,</span> <span class="n">galactocentric_frame</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">592</span>     <span class="n">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="k">return</span> <span class="n">get_matrix_vectors</span><span class="p">(</span><span class="n">galactocentric_frame</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571,</span> in <span class="ni">_check_coord_repr_diff_types</span><span class="nt">(c)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571,</span> in <span class="ni">_check_coord_repr_diff_types</span><span class="nt">(c)</span>
 <span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">def</span><span class="w"> </span><span class="nf">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">UnitSphericalRepresentation</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">571</span>         <span class="k">raise</span> <span class="n">ConvertError</span><span class="p">(</span>
@@ -2054,7 +2054,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">test_coord_1</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:555,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
 <span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="n">generic_frame</span> <span class="o">=</span> <span class="n">GenericFrame</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">553</span> <span class="c1"># Do the transformation, returning a coordinate frame of the desired</span>
 <span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="c1"># final type (not generic).</span>
@@ -2063,7 +2063,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="g g-Whitespace">    </span><span class="mi">558</span> <span class="c1"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
 <span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">new_coord</span><span class="o">.</span><span class="n">frame_attributes</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="n">frattrs</span><span class="p">[</span><span class="n">inter_frame_attr_nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
 <span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">curr_toframe</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tosys</span><span class="p">(</span><span class="o">**</span><span class="n">frattrs</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">113</span>     <span class="n">curr_coord</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">curr_coord</span><span class="p">,</span> <span class="n">curr_toframe</span><span class="p">)</span>
@@ -2071,23 +2071,23 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="c1"># coordinate objects are immutable, so copying is not needed</span>
 <span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="k">return</span> <span class="n">curr_coord</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205,</span> in <span class="ni">BaseAffineTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:205,</span> in <span class="ni">BaseAffineTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">205</span>     <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_affine_params</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="n">newrep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_transform</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">207</span>     <span class="k">return</span> <span class="n">toframe</span><span class="o">.</span><span class="n">realize_frame</span><span class="p">(</span><span class="n">newrep</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259,</span> in <span class="ni">AffineTransform._affine_params</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:259,</span> in <span class="ni">AffineTransform._affine_params</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">258</span> <span class="k">def</span><span class="w"> </span><span class="nf">_affine_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">259</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_func</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592,</span> in <span class="ni">icrs_to_galactocentric</span><span class="nt">(icrs_coord, galactocentric_frame)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:592,</span> in <span class="ni">icrs_to_galactocentric</span><span class="nt">(icrs_coord, galactocentric_frame)</span>
 <span class="g g-Whitespace">    </span><span class="mi">590</span> <span class="nd">@frame_transform_graph</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">AffineTransform</span><span class="p">,</span> <span class="n">ICRS</span><span class="p">,</span> <span class="n">Galactocentric</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">def</span><span class="w"> </span><span class="nf">icrs_to_galactocentric</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">,</span> <span class="n">galactocentric_frame</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">592</span>     <span class="n">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="k">return</span> <span class="n">get_matrix_vectors</span><span class="p">(</span><span class="n">galactocentric_frame</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571,</span> in <span class="ni">_check_coord_repr_diff_types</span><span class="nt">(c)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:571,</span> in <span class="ni">_check_coord_repr_diff_types</span><span class="nt">(c)</span>
 <span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="k">def</span><span class="w"> </span><span class="nf">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">UnitSphericalRepresentation</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">571</span>         <span class="k">raise</span> <span class="n">ConvertError</span><span class="p">(</span>
@@ -2170,7 +2170,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=2</i>
-<table id="table139925025779024">
+<table id="table140324160143040">
 <thead><tr><th>source_id</th><th>pmra</th><th>pmdec</th></tr></thead>
 <thead><tr><th></th><th>mas / yr</th><th>mas / yr</th></tr></thead>
 <thead><tr><th>int64</th><th>float64</th><th>float64</th></tr></thead>
@@ -2253,7 +2253,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 33867.416667 from DATE-OBS&#39;. [astropy.wcs.wcs]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f42d55fda30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9fc32ee450&gt;
 </pre></div>
 </div>
 <img alt="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" src="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" />
@@ -2318,7 +2318,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f42d47f79b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9fc2e64230&gt;
 </pre></div>
 </div>
 <img alt="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" src="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" />
@@ -2476,7 +2476,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>QTable length=3</i>
-<table id="table139728016653296" class="table-striped table-bordered table-condensed">
+<table id="table139993518415488" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Date</th><th>RAJ2000</th><th>DEJ2000</th><th>_2MASS</th><th>Jmag</th><th>e_Jmag</th><th>Hmag</th><th>e_Hmag</th><th>Kmag</th><th>e_Kmag</th><th>Qflg</th><th>Rflg</th><th>Bflg</th><th>Cflg</th><th>Xflg</th><th>Aflg</th></tr></thead>
 <thead><tr><th></th><th>deg</th><th>deg</th><th></th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
 <thead><tr><th>str10</th><th>float64</th><th>float64</th><th>str16</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>str3</th><th>str3</th><th>str3</th><th>str3</th><th>uint8</th><th>uint8</th></tr></thead>

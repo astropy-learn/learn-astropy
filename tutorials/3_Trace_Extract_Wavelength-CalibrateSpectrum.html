@@ -189,7 +189,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="index-spectroscopy.html">
-                    <no title>
+                    Spectroscopic Data Reduction Basics
                 </a>
             </li>
         </ul>
@@ -518,7 +518,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f558e9c1a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f20507e1ca0&gt;
 </pre></div>
 </div>
 </div>
@@ -608,7 +608,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f558ea0a9c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2052e4ff80&gt;]
 </pre></div>
 </div>
 <img alt="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" src="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" />
@@ -681,14 +681,14 @@ document.write(`
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">model</span><span class="o">=</span><span class="n">absorption_model_guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">selection</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">spectrum2</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">284</span>             <span class="s2">&quot;This model does not support being fit to data with units.&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">288</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="n">farg</span> <span class="o">=</span> <span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1423</span>     <span class="n">model_copy</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1424</span>     <span class="n">weights</span><span class="p">,</span>
@@ -702,7 +702,7 @@ document.write(`
 <span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1437</span> <span class="n">model_copy</span><span class="o">.</span><span class="n">sync_constraints</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_fitter</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1495</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
 <span class="g g-Whitespace">   </span><span class="mi">1496</span> <span class="p">):</span>

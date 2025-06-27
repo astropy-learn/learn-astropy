@@ -190,7 +190,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    <no title>
+                    Spectroscopic Data Reduction Basics
                 </a>
             </li>
         </ul>
@@ -343,7 +343,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Spectroscopic Data Reduction Basics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -376,33 +376,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>This is a set of tutorials on working with spectroscopic data. We will walk through the derivation of a spectroscopic trace model and extraction using astropy tools, extraction of a calibration lamp spectrum using an existing trace and identification using the NIST line list database, how to fit a wavelength solution to a calibration spectrum, how to apply a trace and a wavelength solution to science data, and how to do basic analysis like line fitting.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="spectroscopic-data-reduction-basics">
+<h1>Spectroscopic Data Reduction Basics<a class="headerlink" href="#spectroscopic-data-reduction-basics" title="Link to this heading">#</a></h1>
+<p>This is a set of tutorials on working with spectroscopic data. We will walk through the derivation of a spectroscopic trace model and extraction using astropy tools, extraction of a calibration lamp spectrum using an existing trace and identification using the NIST line list database, how to fit a wavelength solution to a calibration spectrum, how to apply a trace and a wavelength solution to science data, and how to do basic analysis like line fitting.</p>
 <div class="toctree-wrapper compound">
 <span id="document-1_SpectroscopicTraceTutorial"></span><section class="tex2jax_ignore mathjax_ignore" id="spectroscopic-data-reduction-part-1-tracing">
-<h1>Spectroscopic Data Reduction Part 1: Tracing<a class="headerlink" href="#spectroscopic-data-reduction-part-1-tracing" title="Link to this heading">#</a></h1>
+<h2>Spectroscopic Data Reduction Part 1: Tracing<a class="headerlink" href="#spectroscopic-data-reduction-part-1-tracing" title="Link to this heading">#</a></h2>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h3>
 <p>Adam Ginsburg, Kelle Cruz, Lia Corrales, Jonathan Sick, Adrian Price-Whelan</p>
 </section>
 <section id="learning-goals">
-<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h3>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Open a two-dimensional spectrum from an image file (bitmap)</p></li>
 <li><p>Fit a spectroscopic trace</p></li>
 </ul>
 </section>
 <section id="keywords">
-<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<h3>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h3>
 <p>Spectroscopy</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
 <p>This tutorial will walk through the derivation of a spectroscopic trace model and extraction using astropy tools.</p>
 <p>A spectroscopic trace is the path of a point source (star) spectrum through a two-dimensional dispersed spectrum.  The trace is needed because, in general, spectra are not perfectly aligned with the axes of a detector.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-1-examine-the-spectrum">
-<h1>Step 1: Examine the spectrum<a class="headerlink" href="#step-1-examine-the-spectrum" title="Link to this heading">#</a></h1>
+<h2>Step 1: Examine the spectrum<a class="headerlink" href="#step-1-examine-the-spectrum" title="Link to this heading">#</a></h2>
 <p>We’ll work with a 2D spectrum that contains <em>no</em> attached metadata, so we have to infer many of the features ourselves.</p>
 <p>All we know is that this is a spectrum of a star, Aldebaran.</p>
 <p>Our data are in the form of <code class="docutils literal notranslate"><span class="pre">.bmp</span></code> (bitmap) files, so we need PIL (Python Imaging Library) to open them.</p>
@@ -486,7 +488,7 @@ document.write(`
 <p>This is an approximation made by inspecting the image by eye.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-2a-try-to-find-the-spine-to-trace-using-argmax">
-<h1>Step 2a. Try to find the spine to trace using argmax<a class="headerlink" href="#step-2a-try-to-find-the-spine-to-trace-using-argmax" title="Link to this heading">#</a></h1>
+<h2>Step 2a. Try to find the spine to trace using argmax<a class="headerlink" href="#step-2a-try-to-find-the-spine-to-trace-using-argmax" title="Link to this heading">#</a></h2>
 <p>To obtain the trace, we first measure the Y-value at each X-value.  we’ll start with the trivial approach of using <code class="docutils literal notranslate"><span class="pre">argmax</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -577,7 +579,7 @@ document.write(`
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-2b-use-moment-analysis-to-extract-a-spine-to-trace">
-<h1>Step 2b: Use moment analysis to extract a spine to trace<a class="headerlink" href="#step-2b-use-moment-analysis-to-extract-a-spine-to-trace" title="Link to this heading">#</a></h1>
+<h2>Step 2b: Use moment analysis to extract a spine to trace<a class="headerlink" href="#step-2b-use-moment-analysis-to-extract-a-spine-to-trace" title="Link to this heading">#</a></h2>
 <p>We can use <a class="reference external" href="https://en.wikipedia.org/wiki/Moment_(mathematics)">moments</a> to provide a different, possibly better, estimate of where the trace’s center is.
 The advantage of moment analysis is that we’re using all of the data to estimate the vertical position, not just the single brightest value, which is what we used above.</p>
 <p>Note that we need to subtract off the background to avoid a bias toward the center, so we use the median of the whole image as our background estimate.</p>
@@ -669,7 +671,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-3-fit-the-trace-profile">
-<h1>Step 3. Fit the trace profile<a class="headerlink" href="#step-3-fit-the-trace-profile" title="Link to this heading">#</a></h1>
+<h2>Step 3. Fit the trace profile<a class="headerlink" href="#step-3-fit-the-trace-profile" title="Link to this heading">#</a></h2>
 <p>We want a model <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> that gives the y-value of the centroid as a function of x.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -869,7 +871,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-4-obtain-a-trace-profile">
-<h1>Step 4. Obtain a trace profile<a class="headerlink" href="#step-4-obtain-a-trace-profile" title="Link to this heading">#</a></h1>
+<h2>Step 4. Obtain a trace profile<a class="headerlink" href="#step-4-obtain-a-trace-profile" title="Link to this heading">#</a></h2>
 <p>Now we can extract the data along that trace.</p>
 <p>We want to take a “profile” of the trace to see how many pixels on either side of the line we should include.</p>
 <div class="cell docutils container">
@@ -984,14 +986,14 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">model_trace_profile</span> <span class="o">=</span> <span class="n">fitted_trace_profile</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">fitted_trace_profile</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">284</span>             <span class="s2">&quot;This model does not support being fit to data with units.&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">288</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="n">farg</span> <span class="o">=</span> <span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1423</span>     <span class="n">model_copy</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1424</span>     <span class="n">weights</span><span class="p">,</span>
@@ -1005,7 +1007,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1437</span> <span class="n">model_copy</span><span class="o">.</span><span class="n">sync_constraints</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_fitter</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1495</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
 <span class="g g-Whitespace">   </span><span class="mi">1496</span> <span class="p">):</span>
@@ -1032,7 +1034,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <p>Both the empirical trace profile <code class="docutils literal notranslate"><span class="pre">mean_trace_profile</span></code> and the modeled <code class="docutils literal notranslate"><span class="pre">model_trace_profile</span></code> can reasonably be used; the latter is more convenient to serialize (i.e., write to disk or on paper)</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-5-extract-the-traced-spectrum">
-<h1>Step 5. Extract the traced spectrum<a class="headerlink" href="#step-5-extract-the-traced-spectrum" title="Link to this heading">#</a></h1>
+<h2>Step 5. Extract the traced spectrum<a class="headerlink" href="#step-5-extract-the-traced-spectrum" title="Link to this heading">#</a></h2>
 <p>We can obtain our spectrum by directly averaging the pixels along the trace:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1096,7 +1098,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <p>Note that the Gaussian model and the direct trace yield nearly identical results</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="step-6-repeat-for-another-star">
-<h1>Step 6: Repeat for another star<a class="headerlink" href="#step-6-repeat-for-another-star" title="Link to this heading">#</a></h1>
+<h2>Step 6: Repeat for another star<a class="headerlink" href="#step-6-repeat-for-another-star" title="Link to this heading">#</a></h2>
 <p>In this last step, we go through all the above steps again for another star (Deneb), but with less explanation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1172,25 +1174,25 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <p>In the next tutorial, Spectroscopic Data Reduction 2, we’ll work on the wavelength calibration.</p>
 </section>
 <span id="document-2_WavelengthCalibration"></span><section class="tex2jax_ignore mathjax_ignore" id="spectroscopic-data-reduction-part-2-wavelength-calibration">
-<h1>Spectroscopic Data Reduction Part 2: Wavelength Calibration<a class="headerlink" href="#spectroscopic-data-reduction-part-2-wavelength-calibration" title="Link to this heading">#</a></h1>
+<h2>Spectroscopic Data Reduction Part 2: Wavelength Calibration<a class="headerlink" href="#spectroscopic-data-reduction-part-2-wavelength-calibration" title="Link to this heading">#</a></h2>
 <p>This notebook assumes you’ve completed the Spectroscopic Trace process (see <a class="reference internal" href="#document-1_SpectroscopicTraceTutorial"><span class="std std-doc">Part 1</span></a>) and have a trace model handy.</p>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h3>
 <p>Adam Ginsburg, Kelle Cruz, Lia Corrales, Jonathan Sick, Adrian Price-Whelan</p>
 </section>
 <section id="learning-goals">
-<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h3>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Extract calibration lamp spectra from two-dimensional spectral images</p></li>
 <li><p>Fit a wavelength solution</p></li>
 </ul>
 </section>
 <section id="keywords">
-<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<h3>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h3>
 <p>Spectroscopy</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
 <p>This tutorial will walk through extraction of a calibration lamp spectrum using an existing trace.</p>
 <p>It will then demonstrate line identification using the NIST line list database.</p>
 <p>Finally, it will show how to fit a wavelength solution to a calibration spectrum, integrating information from multiple calibration lamps.</p>
@@ -1472,7 +1474,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </section>
 <section id="improving-on-our-guesses">
-<h2>Improving on our guesses<a class="headerlink" href="#improving-on-our-guesses" title="Link to this heading">#</a></h2>
+<h3>Improving on our guesses<a class="headerlink" href="#improving-on-our-guesses" title="Link to this heading">#</a></h3>
 <p>We can do a lot better at determining the pixel X-values by taking the intensity-weighted coordinate (moment 1):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1559,7 +1561,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3570/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3567/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.ylabel(&quot;$\lambda(x)$&quot;)
 </pre></div>
 </div>
@@ -1627,7 +1629,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3570/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3567/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;);
 </pre></div>
 </div>
@@ -1671,7 +1673,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3570/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3567/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
@@ -1691,7 +1693,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3570/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3567/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
@@ -2081,7 +2083,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <p>The scatter in these residuals comes out to ~0.24 nm.  We’ll examine this value further below.</p>
 </section>
 <section id="measuring-the-uncertainty-of-the-wavelength-solution">
-<h2>Measuring the uncertainty of the wavelength solution<a class="headerlink" href="#measuring-the-uncertainty-of-the-wavelength-solution" title="Link to this heading">#</a></h2>
+<h3>Measuring the uncertainty of the wavelength solution<a class="headerlink" href="#measuring-the-uncertainty-of-the-wavelength-solution" title="Link to this heading">#</a></h3>
 <p>To evaluate our uncertainty, let’s first look at the uncertainty in the pixel value inferred from looking at a single line in the mercury spectrum.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2256,26 +2258,26 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </div>
 </section>
 <section id="what-does-the-residual-represent">
-<h2>What does the residual represent?<a class="headerlink" href="#what-does-the-residual-represent" title="Link to this heading">#</a></h2>
+<h3>What does the residual represent?<a class="headerlink" href="#what-does-the-residual-represent" title="Link to this heading">#</a></h3>
 <p>The residual to our fit gives us a sense of the <em>systematic</em> uncertainty from a combination of line blending and imperfect fits.  We know, from the NIST line lists, that there are in some cases multiple lines that we could not easily distinguish in the spectrum: these add a small bias to our inferred pixel locations.</p>
 <p>There may also be subtle effects from the spectrograph itself that cause small systematic variations in the wavelength solution.</p>
 </section>
 <section id="how-could-we-do-better">
-<h2>How could we do better?<a class="headerlink" href="#how-could-we-do-better" title="Link to this heading">#</a></h2>
+<h3>How could we do better?<a class="headerlink" href="#how-could-we-do-better" title="Link to this heading">#</a></h3>
 <p>We could attempt to <em>deblend</em> the individual spectral features by jointly fitting multiple-Gaussian models.</p>
 <p>While this procedure is commonly used, it is fraught with error and extremely difficult to automate in general.</p>
 <p>You’re done!  Now apply this calibration to the data and start measuring things in Tutorial 3</p>
 </section>
 </section>
 <span id="document-3_Trace_Extract_Wavelength-CalibrateSpectrum"></span><section class="tex2jax_ignore mathjax_ignore" id="spectroscopic-data-reduction-part-3-extracting-the-final-wavelength-calibrated-spectrum">
-<h1>Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum<a class="headerlink" href="#spectroscopic-data-reduction-part-3-extracting-the-final-wavelength-calibrated-spectrum" title="Link to this heading">#</a></h1>
+<h2>Spectroscopic Data Reduction Part 3: Extracting the final wavelength-calibrated spectrum<a class="headerlink" href="#spectroscopic-data-reduction-part-3-extracting-the-final-wavelength-calibrated-spectrum" title="Link to this heading">#</a></h2>
 <p>This tutorial assumes you have gone through the <a class="reference internal" href="#document-1_SpectroscopicTraceTutorial"><span class="std std-doc">Trace</span></a> and <a class="reference internal" href="#document-2_WavelengthCalibration"><span class="doc std std-doc">Wavelength Calibration</span></a> tutorials and have their results available.</p>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<h3>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h3>
 <p>Adam Ginsburg, Kelle Cruz, Lia Corrales, Jonathan Sick, Adrian Price-Whelan</p>
 </section>
 <section id="learning-goals">
-<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h3>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Extract a target 1D spectrum from a two-dimensional spectrum using an existing trace</p></li>
 <li><p>Apply a fitted wavelength solution to the data</p></li>
@@ -2283,15 +2285,15 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </ul>
 </section>
 <section id="keywords">
-<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<h3>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h3>
 <p>Spectroscopy</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
 <p>This tutorial, the third in a series, shows how to apply a trace and a wavelength solution to science data.  It then shows how to do basic analysis, i.e., line fitting.</p>
 </section>
 <section id="extract-the-science-spectrum">
-<h2>Extract the science spectrum<a class="headerlink" href="#extract-the-science-spectrum" title="Link to this heading">#</a></h2>
+<h3>Extract the science spectrum<a class="headerlink" href="#extract-the-science-spectrum" title="Link to this heading">#</a></h3>
 <p>First, we repeat the trace-and-extract process derived in <a class="reference internal" href="#1-SpectroscopicTraceTutorial.ipynb"><span class="xref myst">Part 1</span></a>, but now for Deneb:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2316,7 +2318,7 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f558e9c1a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f20507e1ca0&gt;
 </pre></div>
 </div>
 </div>
@@ -2406,7 +2408,7 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f558ea0a9c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2052e4ff80&gt;]
 </pre></div>
 </div>
 <img alt="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" src="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" />
@@ -2415,7 +2417,7 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="analysis">
-<h1>Analysis<a class="headerlink" href="#analysis" title="Link to this heading">#</a></h1>
+<h2>Analysis<a class="headerlink" href="#analysis" title="Link to this heading">#</a></h2>
 <p>Now, we go on to do some basic analysis on our fully extracted and wavelength-calibrated spectrum</p>
 <p>We zoom in on the 4860 Angstrom line - H-Beta</p>
 <div class="cell docutils container">
@@ -2479,14 +2481,14 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">model</span><span class="o">=</span><span class="n">absorption_model_guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">selection</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">spectrum2</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">284</span>             <span class="s2">&quot;This model does not support being fit to data with units.&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">288</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="n">farg</span> <span class="o">=</span> <span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1423</span>     <span class="n">model_copy</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1424</span>     <span class="n">weights</span><span class="p">,</span>
@@ -2500,7 +2502,7 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 <span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1437</span> <span class="n">model_copy</span><span class="o">.</span><span class="n">sync_constraints</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_fitter</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1495</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
 <span class="g g-Whitespace">   </span><span class="mi">1496</span> <span class="p">):</span>
@@ -2610,6 +2612,7 @@ $<span class="math notranslate nohighlight">\(v_{opt} = c \frac{\lambda-\lambda_
 <p>The next tricky step is flux calibration, but we will do that in a subsequent tutorial because we need a different data set; this one didn’t include the necessary data for flux calibration (though we could approximately calibrate the spectrum using a known magnitude over the observed band for Deneb)</p>
 </section>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {

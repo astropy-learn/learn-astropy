@@ -400,7 +400,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
@@ -651,7 +651,7 @@ NAXIS : 0  0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f9504307a70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x7f3220de8410&gt;
 </pre></div>
 </div>
 <img alt="_images/7ea6258532f3b8288f0a99a7b00b5be61254d83625099953158e04a32eefee2e.png" src="_images/7ea6258532f3b8288f0a99a7b00b5be61254d83625099953158e04a32eefee2e.png" />
@@ -833,7 +833,7 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="s2">&quot;350&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>  <span class="c1"># Display some information about the 350 micron image</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/esasky/core.py:1083,</span> in <span class="ni">ESASkyClass.get_maps</span><span class="nt">(self, query_table_list, missions, download_dir, cache, verbose)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/esasky/core.py:1083,</span> in <span class="ni">ESASkyClass.get_maps</span><span class="nt">(self, query_table_list, missions, download_dir, cache, verbose)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1080</span>     <span class="k">if</span> <span class="n">query_mission</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">sanitized_missions</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1081</span>         <span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_table_for_mission</span><span class="p">(</span><span class="n">query_mission</span><span class="p">,</span> <span class="n">descriptors</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1082</span>         <span class="n">maps</span><span class="p">[</span><span class="n">query_mission</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
@@ -843,14 +843,14 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">   </span><span class="mi">1087</span>         <span class="k">for</span> <span class="n">mission</span> <span class="ow">in</span> <span class="n">maps</span><span class="p">]):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1088</span>     <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No maps got downloaded, check errors above.&quot;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/esasky/core.py:1500,</span> in <span class="ni">ESASkyClass._get_maps_for_mission</span><span class="nt">(self, maps_table, mission, download_dir, cache, table, is_spectra, verbose)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/esasky/core.py:1500,</span> in <span class="ni">ESASkyClass._get_maps_for_mission</span><span class="nt">(self, maps_table, mission, download_dir, cache, table, is_spectra, verbose)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1498</span>         <span class="n">maps</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_herschel_spectra</span><span class="p">(</span><span class="n">product_url</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1499</span>     <span class="k">else</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1500</span>         <span class="n">maps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_herschel_map</span><span class="p">(</span><span class="n">product_url</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">))</span>
 <span class="g g-Whitespace">   </span><span class="mi">1501</span> <span class="k">except</span> <span class="n">HTTPError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1502</span>     <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Download failed with </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/esasky/core.py:1585,</span> in <span class="ni">ESASkyClass._get_herschel_map</span><span class="nt">(self, product_url, directory_path, cache, verbose)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/esasky/core.py:1585,</span> in <span class="ni">ESASkyClass._get_herschel_map</span><span class="nt">(self, product_url, directory_path, cache, verbose)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1583</span> <span class="k">def</span><span class="w"> </span><span class="nf">_get_herschel_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_url</span><span class="p">,</span> <span class="n">directory_path</span><span class="p">,</span> <span class="n">cache</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1584</span>     <span class="n">observation</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
 <span class="ne">-&gt; </span><span class="mi">1585</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="n">product_url</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">,</span>
@@ -858,7 +858,7 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">   </span><span class="mi">1587</span>     <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 <span class="g g-Whitespace">   </span><span class="mi">1589</span>     <span class="k">with</span> <span class="n">esatar</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fileobj</span><span class="o">=</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span> <span class="k">as</span> <span class="n">tar</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/query.py:386,</span> in <span class="ni">BaseQuery._request</span><span class="nt">(self, method, url, params, data, headers, files, save, savedir, timeout, cache, stream, auth, continuation, verify, allow_redirects, json, return_response_on_save)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/query.py:386,</span> in <span class="ni">BaseQuery._request</span><span class="nt">(self, method, url, params, data, headers, files, save, savedir, timeout, cache, stream, auth, continuation, verify, allow_redirects, json, return_response_on_save)</span>
 <span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">379</span>         <span class="n">response</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">380</span>                                  <span class="bp">self</span><span class="o">.</span><span class="n">cache_location</span><span class="p">,</span>
@@ -869,21 +869,21 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">    </span><span class="mi">388</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_query</span> <span class="o">=</span> <span class="n">query</span>
 <span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="k">return</span> <span class="n">response</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/astroquery/query.py:36,</span> in <span class="ni">to_cache</span><span class="nt">(response, cache_file)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/query.py:36,</span> in <span class="ni">to_cache</span><span class="nt">(response, cache_file)</span>
 <span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="k">def</span><span class="w"> </span><span class="nf">to_cache</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">cache_file</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Caching data to </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cache_file</span><span class="p">))</span>
 <span class="ne">---&gt; </span><span class="mi">36</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="s1">&#39;request&#39;</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">hooks</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/copy.py:151,</span> in <span class="ni">deepcopy</span><span class="nt">(x, memo, _nil)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/copy.py:151,</span> in <span class="ni">deepcopy</span><span class="nt">(x, memo, _nil)</span>
 <span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="n">reductor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;__reduce_ex__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">150</span> <span class="k">if</span> <span class="n">reductor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">151</span>     <span class="n">rv</span> <span class="o">=</span> <span class="n">reductor</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">153</span>     <span class="n">reductor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;__reduce__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/requests/models.py:715,</span> in <span class="ni">Response.__getstate__</span><span class="nt">(self)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/requests/models.py:715,</span> in <span class="ni">Response.__getstate__</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">711</span> <span class="k">def</span><span class="w"> </span><span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">712</span>     <span class="c1"># Consume everything; accessing the content attribute makes</span>
 <span class="g g-Whitespace">    </span><span class="mi">713</span>     <span class="c1"># sure the content has been fully read.</span>
@@ -891,7 +891,7 @@ Note that the below command requires an internet connection to download five qui
 <span class="ne">--&gt; </span><span class="mi">715</span>         <span class="bp">self</span><span class="o">.</span><span class="n">content</span>
 <span class="g g-Whitespace">    </span><span class="mi">717</span>     <span class="k">return</span> <span class="p">{</span><span class="n">attr</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__attrs__</span><span class="p">}</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/requests/models.py:902,</span> in <span class="ni">Response.content</span><span class="nt">(self)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/requests/models.py:902,</span> in <span class="ni">Response.content</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">900</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="g g-Whitespace">    </span><span class="mi">901</span>     <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">902</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">CONTENT_CHUNK_SIZE</span><span class="p">))</span> <span class="ow">or</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
@@ -899,14 +899,14 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">    </span><span class="mi">905</span> <span class="c1"># don&#39;t need to release the connection; that&#39;s been handled by urllib3</span>
 <span class="g g-Whitespace">    </span><span class="mi">906</span> <span class="c1"># since we exhausted the data.</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/requests/models.py:820,</span> in <span class="ni">Response.iter_content.&lt;locals&gt;.generate</span><span class="nt">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/requests/models.py:820,</span> in <span class="ni">Response.iter_content.&lt;locals&gt;.generate</span><span class="nt">()</span>
 <span class="g g-Whitespace">    </span><span class="mi">818</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="s2">&quot;stream&quot;</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">819</span>     <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">820</span>         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">821</span>     <span class="k">except</span> <span class="n">ProtocolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">822</span>         <span class="k">raise</span> <span class="n">ChunkedEncodingError</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:1088,</span> in <span class="ni">HTTPResponse.stream</span><span class="nt">(self, amt, decode_content)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/response.py:1088,</span> in <span class="ni">HTTPResponse.stream</span><span class="nt">(self, amt, decode_content)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1072</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">1073</span><span class="sd"> A generator wrapper for the read() method. A call will block until</span>
 <span class="g g-Whitespace">   </span><span class="mi">1074</span><span class="sd"> ``amt`` bytes have been read from the connection or until the</span>
@@ -917,7 +917,7 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">   </span><span class="mi">1089</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1090</span>     <span class="k">while</span> <span class="ow">not</span> <span class="n">is_fp_closed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decoded_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:1251,</span> in <span class="ni">HTTPResponse.read_chunked</span><span class="nt">(self, amt, decode_content)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/response.py:1251,</span> in <span class="ni">HTTPResponse.read_chunked</span><span class="nt">(self, amt, decode_content)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1249</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1250</span>     <span class="k">break</span>
 <span class="ne">-&gt; </span><span class="mi">1251</span> <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_chunk</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
@@ -926,14 +926,14 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">   </span><span class="mi">1254</span> <span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1255</span> <span class="k">if</span> <span class="n">decoded</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/site-packages/urllib3/response.py:1197,</span> in <span class="ni">HTTPResponse._handle_chunk</span><span class="nt">(self, amt)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/response.py:1197,</span> in <span class="ni">HTTPResponse._handle_chunk</span><span class="nt">(self, amt)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1195</span>     <span class="n">returned_chunk</span> <span class="o">=</span> <span class="n">value</span>
 <span class="g g-Whitespace">   </span><span class="mi">1196</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># amt &gt; self.chunk_left</span>
 <span class="ne">-&gt; </span><span class="mi">1197</span>     <span class="n">returned_chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span><span class="p">)</span>  <span class="c1"># type: ignore[union-attr]</span>
 <span class="g g-Whitespace">   </span><span class="mi">1198</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># type: ignore[union-attr] # Toss the CRLF at the end of the chunk.</span>
 <span class="g g-Whitespace">   </span><span class="mi">1199</span>     <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="kc">None</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/http/client.py:642,</span> in <span class="ni">HTTPResponse._safe_read</span><span class="nt">(self, amt)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/http/client.py:642,</span> in <span class="ni">HTTPResponse._safe_read</span><span class="nt">(self, amt)</span>
 <span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="k">def</span><span class="w"> </span><span class="nf">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">636</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Read the number of bytes requested.</span>
 <span class="g g-Whitespace">    </span><span class="mi">637</span><span class="sd"> </span>
@@ -945,7 +945,7 @@ Note that the below command requires an internet connection to download five qui
 <span class="g g-Whitespace">    </span><span class="mi">643</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">amt</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">644</span>         <span class="k">raise</span> <span class="n">IncompleteRead</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amt</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.10/x64/lib/python3.12/socket.py:720,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/socket.py:720,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
 <span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">719</span>     <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">720</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
