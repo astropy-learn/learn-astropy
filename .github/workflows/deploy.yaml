@@ -91,4 +91,4 @@ jobs:
           astropylibrarian index tutorial-site \
             public/tutorials \
             https://learn.astropy.org/tutorials \
-            --ignore ["*/_static/*"]
+            --ignore "_static/*.html"
