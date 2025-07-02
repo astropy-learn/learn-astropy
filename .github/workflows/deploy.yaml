@@ -90,5 +90,4 @@ jobs:
         run: |
           astropylibrarian index tutorial-site \
             public/tutorials \
-            https://learn.astropy.org/tutorials \
-            --ignore "_static/*.html"
+            https://learn.astropy.org/tutorials
