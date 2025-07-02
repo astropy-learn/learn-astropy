@@ -390,6 +390,7 @@ Finally, it shows how to do the reprojection using <a class="reference external"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astroquery</span>
 </pre></div>
 </div>
 </div>
@@ -479,30 +480,7 @@ These are moderately large files, with sizes 18 MB and 337 MB.</p>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: ExperimentalImplementationWarning: The line-finding routine is experimental.  Please report bugs on the Issues page: https://github.com/radio-astro-tools/spectral-cube/issues [spectral_cube.spectral_cube]
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cube1</span><span class="o">.</span><span class="n">find_lines</span><span class="p">(</span><span class="n">chemical_name</span><span class="o">=</span><span class="s2">&quot; H2CS &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show_in_notebook</span><span class="p">()</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/spectral_cube/spectral_cube.py:2620,</span> in <span class="ni">BaseSpectralCube.find_lines</span><span class="nt">(self, velocity_offset, velocity_convention, rest_value, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2597</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2598</span><span class="sd"> Using astroquery&#39;s splatalogue interface, search for lines within the</span>
-<span class="g g-Whitespace">   </span><span class="mi">2599</span><span class="sd"> spectral band.  See `astroquery.splatalogue.Splatalogue` for</span>
-<span class="sd">   (...)   2613     `with_spectral_unit`</span>
-<span class="g g-Whitespace">   </span><span class="mi">2614</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2615</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The line-finding routine is experimental.  Please &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2616</span>               <span class="s2">&quot;report bugs on the Issues page: &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2617</span>               <span class="s2">&quot;https://github.com/radio-astro-tools/spectral-cube/issues&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2618</span>               <span class="n">ExperimentalImplementationWarning</span>
-<span class="g g-Whitespace">   </span><span class="mi">2619</span>              <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2620</span> <span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.splatalogue</span><span class="w"> </span><span class="kn">import</span> <span class="n">Splatalogue</span>
-<span class="g g-Whitespace">   </span><span class="mi">2621</span> <span class="k">if</span> <span class="n">velocity_convention</span> <span class="ow">in</span> <span class="n">DOPPLER_CONVENTIONS</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2622</span>     <span class="n">velocity_convention</span> <span class="o">=</span> <span class="n">DOPPLER_CONVENTIONS</span><span class="p">[</span><span class="n">velocity_convention</span><span class="p">]</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;astroquery&#39;
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b5a507dafc8548b192d544e0dc59b9d0"}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -510,6 +488,11 @@ These are moderately large files, with sizes 18 MB and 337 MB.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: ExperimentalImplementationWarning: The line-finding routine is experimental.  Please report bugs on the Issues page: https://github.com/radio-astro-tools/spectral-cube/issues [spectral_cube.spectral_cube]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "125fd5e4a9fb4683959d200b12009f91"}</script></div>
 </div>
 </section>
 <section id="step-3-convert-cubes-from-frequency-to-velocity">
@@ -531,6 +514,14 @@ These are moderately large files, with sizes 18 MB and 337 MB.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+ n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+ n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+ n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -538,6 +529,14 @@ These are moderately large files, with sizes 18 MB and 337 MB.</p>
     <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">velocity_convention</span><span class="o">=</span><span class="s2">&quot;radio&quot;</span><span class="p">,</span> <span class="n">rest_value</span><span class="o">=</span><span class="mf">217.104984</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">GHz</span>
 <span class="p">)</span>
 <span class="n">cube2vel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(478, 420, 420) and unit=Jy / beam:
+ n_x:    420  type_x: RA---SIN  unit_x: deg    range:   266.537002 deg:  266.551600 deg
+ n_y:    420  type_y: DEC--SIN  unit_y: deg    range:   -28.711371 deg:  -28.698569 deg
+ n_s:    478  type_s: VRAD      unit_s: km / s  range:     -118.278 km / s:     203.359 km / s
 </pre></div>
 </div>
 </div>
@@ -550,6 +549,46 @@ These are moderately large files, with sizes 18 MB and 337 MB.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mx</span> <span class="o">=</span> <span class="n">cube1</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: PossiblySlowWarning: This function (&lt;function BaseSpectralCube.max at 0x7fd9ed7b79c0&gt;) requires loading the entire cube into memory and may therefore be slow. [spectral_cube.utils]
+/opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/spectral_cube/spectral_cube.py:440: RuntimeWarning: All-NaN slice encountered
+  out = function(self._get_filled_data(fill=fill,
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/spectral_cube/lower_dimensional_structures.py:430,</span> in <span class="ni">Projection.quicklook</span><span class="nt">(self, filename, use_aplpy, aplpy_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;FITSFigure&#39;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">430</span>     <span class="kn">import</span><span class="w"> </span><span class="nn">aplpy</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span>     <span class="bp">self</span><span class="o">.</span><span class="n">FITSFigure</span> <span class="o">=</span> <span class="n">aplpy</span><span class="o">.</span><span class="n">FITSFigure</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hdu</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span>                                        <span class="o">**</span><span class="n">aplpy_kwargs</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;aplpy&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">mx</span> <span class="o">=</span> <span class="n">cube1</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">mx</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/spectral_cube/lower_dimensional_structures.py:439,</span> in <span class="ni">Projection.quicklook</span><span class="nt">(self, filename, use_aplpy, aplpy_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">437</span>             <span class="bp">self</span><span class="o">.</span><span class="n">FITSFigure</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span>     <span class="k">except</span> <span class="p">(</span><span class="n">wcs</span><span class="o">.</span><span class="n">InconsistentAxisTypesError</span><span class="p">,</span> <span class="ne">ImportError</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">439</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_quicklook_mpl</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">440</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_quicklook_mpl</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/spectral_cube/lower_dimensional_structures.py:444,</span> in <span class="ni">Projection._quicklook_mpl</span><span class="nt">(self, filename)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span> <span class="k">def</span><span class="w"> </span><span class="nf">_quicklook_mpl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">444</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">figure</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>     <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
 </pre></div>
 </div>
 </div>
