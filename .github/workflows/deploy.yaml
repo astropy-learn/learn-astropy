@@ -84,7 +84,11 @@ jobs:
           ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
           ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
           ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
+        # using --ignore, exclude .html files that aren't tutorials from indexing
+        # (jupyterbook produces some .html files to define Sphinx macros, placing them
+        # in the _static directory)
         run: |
           astropylibrarian index tutorial-site \
             public/tutorials \
-            https://learn.astropy.org/tutorials
+            https://learn.astropy.org/tutorials \
+            --ignore ["*/_static/*"]

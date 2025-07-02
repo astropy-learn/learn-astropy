@@ -82,9 +82,6 @@ export default function Footer() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Learn Astropy</Link>
-            </li>
-            <li>
               <Link to="/contributing/">Contribute to Learn Astropy</Link>
             </li>
           </ul>
