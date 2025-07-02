@@ -2,6 +2,7 @@ name: Test deployment scripts
 
 'on':
   pull_request:
+  workflow_dispatch:
 
 jobs:
   deploy:
