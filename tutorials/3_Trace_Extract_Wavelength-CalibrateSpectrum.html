@@ -501,7 +501,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">)</span>
+<span class="c1"># plt.style.use(&quot;dark_background&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -518,7 +518,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f0a2ecd3ad0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f198ae07740&gt;
 </pre></div>
 </div>
 </div>
@@ -608,10 +608,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0a2eb10890&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f198ae7c2f0&gt;]
 </pre></div>
 </div>
-<img alt="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" src="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" />
+<img alt="_images/f5856af0055098758a823d4a1fbc0772f9825558f198a8dc16c1f3cbc89a1d40.png" src="_images/f5856af0055098758a823d4a1fbc0772f9825558f198a8dc16c1f3cbc89a1d40.png" />
 </div>
 </div>
 </section>
@@ -631,7 +631,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
 </pre></div>
 </div>
-<img alt="_images/6825b0ca3ce17b3046ce9e511737f3ae6ecc484b76b05c93036dbbb5a32e2c1f.png" src="_images/6825b0ca3ce17b3046ce9e511737f3ae6ecc484b76b05c93036dbbb5a32e2c1f.png" />
+<img alt="_images/9394d129dec1ed20444b0db8a41fa23ae32d8a5024c22a56dc21ab0d20367140.png" src="_images/9394d129dec1ed20444b0db8a41fa23ae32d8a5024c22a56dc21ab0d20367140.png" />
 </div>
 </div>
 <p>We can use astropy models to construct an absorption line model, consisting of a continuum level and a negative Gaussian to represent the absorption feature</p>
@@ -657,7 +657,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
 </pre></div>
 </div>
-<img alt="_images/1cdcd591a894192517b7aea604f77916b281ca3b4ba7e067ec39bc8016de78fe.png" src="_images/1cdcd591a894192517b7aea604f77916b281ca3b4ba7e067ec39bc8016de78fe.png" />
+<img alt="_images/18341fc0fd1472c6f5b43f4c4b752955523f2205d72adf7d5a017e775da49b79.png" src="_images/18341fc0fd1472c6f5b43f4c4b752955523f2205d72adf7d5a017e775da49b79.png" />
 </div>
 </div>
 <p>The Levenberg-Marquardt Least Squares fitter can be used to find the optimal fit to our data given the starting guess.</p>
@@ -684,7 +684,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
 </pre></div>
 </div>
-<img alt="_images/69df4cbf0eb1ed6b5b048cd57b7c9450b4f78909617d53f435737b5852129a4a.png" src="_images/69df4cbf0eb1ed6b5b048cd57b7c9450b4f78909617d53f435737b5852129a4a.png" />
+<img alt="_images/75aa8f6095d241b7120128bbe465c8503fcc8b1d6be5e737502edb10d53f91b9.png" src="_images/75aa8f6095d241b7120128bbe465c8503fcc8b1d6be5e737502edb10d53f91b9.png" />
 </div>
 </div>
 <p>We can now separate out the two components, the continuum and the absorption line model:</p>
@@ -708,7 +708,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
 </pre></div>
 </div>
-<img alt="_images/e96dcc6c2e738fd3ce788ae58311b04f62c11658d2d25c1dd18908b232844e28.png" src="_images/e96dcc6c2e738fd3ce788ae58311b04f62c11658d2d25c1dd18908b232844e28.png" />
+<img alt="_images/376ee09560fddbc6739a59d03d94a1c7770c82aa400df03b84517e93d010e938.png" src="_images/376ee09560fddbc6739a59d03d94a1c7770c82aa400df03b84517e93d010e938.png" />
 </div>
 </div>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Equivalent_width">Equivalent Width</a> of a spectral absorption line is defined to be the width of a feature that has the same integral as the absorption line, but goes all the way from the continuum level to zero.</p>

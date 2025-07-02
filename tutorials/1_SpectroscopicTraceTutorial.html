@@ -513,7 +513,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;lower&quot;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;dark_background&quot;</span><span class="p">)</span>  <span class="c1"># Optional!</span>
+<span class="c1"># plt.style.use(&quot;dark_background&quot;)  # Optional!</span>
 </pre></div>
 </div>
 </div>
@@ -575,7 +575,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1f73f2c53d609acf035648cb282a12095d5f824cb0edfa133e67afb10035b0ec.png" src="_images/1f73f2c53d609acf035648cb282a12095d5f824cb0edfa133e67afb10035b0ec.png" />
+<img alt="_images/e3a6ca9ae484047da67ad5db2a1ab3d20d555a74439a40ebe26a86c137d5fda2.png" src="_images/e3a6ca9ae484047da67ad5db2a1ab3d20d555a74439a40ebe26a86c137d5fda2.png" />
 </div>
 </div>
 <p>The main goal of the trace is to obtain a model <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> defining the vertical position of the light (the signal) along the detector.</p>
@@ -602,7 +602,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/592d6d32aff2c291ab1b01e7eb51e60331954757a808b01b7f65d9e89b2fd970.png" src="_images/592d6d32aff2c291ab1b01e7eb51e60331954757a808b01b7f65d9e89b2fd970.png" />
+<img alt="_images/e2503f7acf41e1760559178bb115d90c7a42e8da524a0792bc05e1155e6d7f47.png" src="_images/e2503f7acf41e1760559178bb115d90c7a42e8da524a0792bc05e1155e6d7f47.png" />
 </div>
 </div>
 <p>There’s a pretty clear line going through the center, which represents our signal, but there are also a lot of erroneous data points.</p>
@@ -624,7 +624,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5f40eea635840d85ec2a972d022290ce14ae974f104f1f40a2c1e8e0b3f22705.png" src="_images/5f40eea635840d85ec2a972d022290ce14ae974f104f1f40a2c1e8e0b3f22705.png" />
+<img alt="_images/b812922aacde1169cbcc75a7ece86791e36c427ec7f05d3bc7ab90c563a24b40.png" src="_images/b812922aacde1169cbcc75a7ece86791e36c427ec7f05d3bc7ab90c563a24b40.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -636,7 +636,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4702ac0dae48311108d8188ebb9913fff5953ef04f884b15015500e8a3592dfd.png" src="_images/4702ac0dae48311108d8188ebb9913fff5953ef04f884b15015500e8a3592dfd.png" />
+<img alt="_images/e6fab047dc7b63150bfab40e0b4b5c2140ba2852c688b4cea8be3db48d1110d3.png" src="_images/e6fab047dc7b63150bfab40e0b4b5c2140ba2852c688b4cea8be3db48d1110d3.png" />
 </div>
 </div>
 <p>We can be a little more precise by ‘zooming in’ along the y-axis, so we refine the mask again to be over a narrower range:</p>
@@ -656,7 +656,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3b5fd45c3ef390baee302e091736d835901fa48153f780e40888a712dade03fd.png" src="_images/3b5fd45c3ef390baee302e091736d835901fa48153f780e40888a712dade03fd.png" />
+<img alt="_images/78f3e624ff746686df970cbf25783d7a98b2d6f328680a61d72ed7e452ea94a3.png" src="_images/78f3e624ff746686df970cbf25783d7a98b2d6f328680a61d72ed7e452ea94a3.png" />
 </div>
 </div>
 <p>The stuff at x&gt;1100 looks bad, but there’s still signal out there.</p>
@@ -669,7 +669,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/99ad85f63cb77a09a1386ac8dc9598def14d1a8046ef62e22c8173a06a3ba9b3.png" src="_images/99ad85f63cb77a09a1386ac8dc9598def14d1a8046ef62e22c8173a06a3ba9b3.png" />
+<img alt="_images/12ac613ad3685afb8e48526c552aa387ddee3973fddec9c0ad4e4a98bd02af2f.png" src="_images/12ac613ad3685afb8e48526c552aa387ddee3973fddec9c0ad4e4a98bd02af2f.png" />
 </div>
 </div>
 </section>
@@ -707,7 +707,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5d9097c44554efed53352c0628ffb0d1808b7b22a1472e810b0751757339cfde.png" src="_images/5d9097c44554efed53352c0628ffb0d1808b7b22a1472e810b0751757339cfde.png" />
+<img alt="_images/943b1c83fc34ce00d625377b463367cc58facc3bfcce54fe5c2413c90234de8e.png" src="_images/943b1c83fc34ce00d625377b463367cc58facc3bfcce54fe5c2413c90234de8e.png" />
 </div>
 </div>
 <p>Overplot the “weighted”, centroid locations on the data to verify they look reasonable.</p>
@@ -722,7 +722,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fd11b2a02b00ede07a08d9b66a0060ca2ecbbf890c4d525d4a59d50a27763d8f.png" src="_images/fd11b2a02b00ede07a08d9b66a0060ca2ecbbf890c4d525d4a59d50a27763d8f.png" />
+<img alt="_images/02e47dfaecfb87e612651696368c8c11f5900540fb06550e18ff951b94b3a8df.png" src="_images/02e47dfaecfb87e612651696368c8c11f5900540fb06550e18ff951b94b3a8df.png" />
 </div>
 </div>
 <p>We can also compare the argmax and weighted approaches.  They agree well at x&lt;1200, but there are simply more points from the weighted approach at x&gt;1200.</p>
@@ -735,7 +735,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6bf350328cd6c0074d1d1a2f8facb7b947e94480feec4bbd9d9e0f987e7d5129.png" src="_images/6bf350328cd6c0074d1d1a2f8facb7b947e94480feec4bbd9d9e0f987e7d5129.png" />
+<img alt="_images/f28512f5c73422149e40d82fe3669818cf22c365a4658a0f42a8f499f43ba0b7.png" src="_images/f28512f5c73422149e40d82fe3669818cf22c365a4658a0f42a8f499f43ba0b7.png" />
 </div>
 </div>
 <p>That’s a decent set of data, we’ll use the moments instead of the argmax.  There’s still some data to flag out, though:</p>
@@ -761,7 +761,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9abc39b62d942ded837e5907437693920be38a43beaf9c74a535ce87d4c79623.png" src="_images/9abc39b62d942ded837e5907437693920be38a43beaf9c74a535ce87d4c79623.png" />
+<img alt="_images/c37db28f424129ca80c33f186de730aa85df8c7fc0b0b0743cd64ebdf4f6d803.png" src="_images/c37db28f424129ca80c33f186de730aa85df8c7fc0b0b0743cd64ebdf4f6d803.png" />
 </div>
 </div>
 </section>
@@ -808,7 +808,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9f2590c85e7e7fcc55b45294de6b9a8f8983ef26ed0641ea08e4b6dc6f7eb2e0.png" src="_images/9f2590c85e7e7fcc55b45294de6b9a8f8983ef26ed0641ea08e4b6dc6f7eb2e0.png" />
+<img alt="_images/bebb5459fd398d9844227bf3e47be13b84b7c0172005e4ace4dcbb48b272313f.png" src="_images/bebb5459fd398d9844227bf3e47be13b84b7c0172005e4ace4dcbb48b272313f.png" />
 </div>
 </div>
 <p>We plot and examine the residuals to visually inspect whether the fit is good:</p>
@@ -824,7 +824,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b6c1a0d8a033ba6066f526561d355e0d83ddbe3d1bdfb8d1d56fa73699e940b9.png" src="_images/b6c1a0d8a033ba6066f526561d355e0d83ddbe3d1bdfb8d1d56fa73699e940b9.png" />
+<img alt="_images/21ae6d9af2c772903b90c4c0551d94e0b3d19bcbbd68285c0e8cf863ddc28215.png" src="_images/21ae6d9af2c772903b90c4c0551d94e0b3d19bcbbd68285c0e8cf863ddc28215.png" />
 </div>
 </div>
 <p>The curvature seen at the left is a sign of a suboptimal fit.  Specifically, curvature in the residual indicates that we need to use a <em>higher order</em> model - i.e., we need more terms in the polynomial.  We change <code class="docutils literal notranslate"><span class="pre">degree=2</span></code> to <code class="docutils literal notranslate"><span class="pre">degree=3</span></code>.</p>
@@ -852,7 +852,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8811ef519f316d691e87c3a0f7b052b9765f2b188adf2481c186b758476d5de6.png" src="_images/8811ef519f316d691e87c3a0f7b052b9765f2b188adf2481c186b758476d5de6.png" />
+<img alt="_images/24ff10bc0217fc10765983edf208aeab792c4c95c5d76d69b802b972abfb6d22.png" src="_images/24ff10bc0217fc10765983edf208aeab792c4c95c5d76d69b802b972abfb6d22.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -867,7 +867,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05fa1d982c3bc414500759fcd3f3404b1bab00f90d0906e80b2a4ed94bbb91e9.png" src="_images/05fa1d982c3bc414500759fcd3f3404b1bab00f90d0906e80b2a4ed94bbb91e9.png" />
+<img alt="_images/c04aaa16fa2f466b5b32c484912a46418347989cc25fe65a354cbf3c2c77101c.png" src="_images/c04aaa16fa2f466b5b32c484912a46418347989cc25fe65a354cbf3c2c77101c.png" />
 </div>
 </div>
 <p>Arguably, we should toss out the data at &gt;1400 pixels since there’s no clear signal there.  We’ll come back to this…</p>
@@ -879,7 +879,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b33439ee4bf23913a77591c52d7ecfdd3954d5b72dc11f3fc9a6e047b05434fd.png" src="_images/b33439ee4bf23913a77591c52d7ecfdd3954d5b72dc11f3fc9a6e047b05434fd.png" />
+<img alt="_images/d066a95fdfed3d237c8747d530a05e71c5f90d3030186c8a3d166a5922a46ed7.png" src="_images/d066a95fdfed3d237c8747d530a05e71c5f90d3030186c8a3d166a5922a46ed7.png" />
 </div>
 </div>
 <p>Again, we should verify the trace by overplotting on the original data:</p>
@@ -893,7 +893,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a1c2deaf0f630e5d5a413d81573e2cb27a200685f2fc9736aa1d4a4ca1c58d24.png" src="_images/a1c2deaf0f630e5d5a413d81573e2cb27a200685f2fc9736aa1d4a4ca1c58d24.png" />
+<img alt="_images/7435c0565cc40fcd045ce1d64ccd7774e13a06a5b7465c9e7b4962a2d344cafc.png" src="_images/7435c0565cc40fcd045ce1d64ccd7774e13a06a5b7465c9e7b4962a2d344cafc.png" />
 </div>
 </div>
 <p>Seeing the curve up in the model to the right - which we do not observe in the data - suggests we should re-fit without including the x&gt;1200 data at all:</p>
@@ -926,7 +926,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c4334b7dfb05a8168e5a2ed49212c827600ffffcaac647cb49d3946ca8187ac3.png" src="_images/c4334b7dfb05a8168e5a2ed49212c827600ffffcaac647cb49d3946ca8187ac3.png" />
+<img alt="_images/227429105af6fcead80bcfc5ffe9d884848c96a540603cacc0ba2feae5d2e2ae.png" src="_images/227429105af6fcead80bcfc5ffe9d884848c96a540603cacc0ba2feae5d2e2ae.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -937,7 +937,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b9fbe03074b75889b624cd710c5163f271fbdff639ea2f99474c7376c86924e4.png" src="_images/b9fbe03074b75889b624cd710c5163f271fbdff639ea2f99474c7376c86924e4.png" />
+<img alt="_images/afa6b17845b4e87f1a3dc21a5c134f3bcefc6cf9de7d6326719a9951a547f215.png" src="_images/afa6b17845b4e87f1a3dc21a5c134f3bcefc6cf9de7d6326719a9951a547f215.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -961,7 +961,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/696322a2ca4c4008094acb42802808e16184a69fba5c36f13c305b2f4b8898a4.png" src="_images/696322a2ca4c4008094acb42802808e16184a69fba5c36f13c305b2f4b8898a4.png" />
+<img alt="_images/3a2a96e8d314c2f90fe7389f3810704432bbf24c01cdd30041e7b9f0d04a1239.png" src="_images/3a2a96e8d314c2f90fe7389f3810704432bbf24c01cdd30041e7b9f0d04a1239.png" />
 </div>
 </div>
 </section>
@@ -985,7 +985,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fca919bf17a33db319ed8c683a9e8023a81df50cff00d20527565b7770f69763.png" src="_images/fca919bf17a33db319ed8c683a9e8023a81df50cff00d20527565b7770f69763.png" />
+<img alt="_images/abe404834c490a20b2022482b52c1cfb949c6c8fd7d8f5080c280b12d591aa65.png" src="_images/abe404834c490a20b2022482b52c1cfb949c6c8fd7d8f5080c280b12d591aa65.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1035,7 +1035,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ef482e27ba6d656e1c8147c2bff1e8c9aba81bda74fbb3ae66a8999d512bd8b.png" src="_images/7ef482e27ba6d656e1c8147c2bff1e8c9aba81bda74fbb3ae66a8999d512bd8b.png" />
+<img alt="_images/22dcd2899940af2083f16fe03e4510e651a9a87c9f77dc1d4ea784a5dcd366b1.png" src="_images/22dcd2899940af2083f16fe03e4510e651a9a87c9f77dc1d4ea784a5dcd366b1.png" />
 </div>
 </div>
 <p>Then we average along the X-direction to get the trace profile:</p>
@@ -1050,7 +1050,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6d09a5ba2b08c2af0127492cee9047abbf5c20e0a609cca8e28aa8176c54fbae.png" src="_images/6d09a5ba2b08c2af0127492cee9047abbf5c20e0a609cca8e28aa8176c54fbae.png" />
+<img alt="_images/5223cfba18ae6658a052859a94491a061d227e50e60df347c0e707a8307791cb.png" src="_images/5223cfba18ae6658a052859a94491a061d227e50e60df347c0e707a8307791cb.png" />
 </div>
 </div>
 <p>We want to fit that profile with a Gaussian for future use,  so we import the Gaussian model profile and non-linear fitter and run a fit:</p>
@@ -1086,7 +1086,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e61af8a11079e298ff7fb41a2ca6d718bfa206ef41f65e8322d542e73998bcd2.png" src="_images/e61af8a11079e298ff7fb41a2ca6d718bfa206ef41f65e8322d542e73998bcd2.png" />
+<img alt="_images/af9c6df9c1516ad80fd3ac7b4a56ac8220fad5e4aba3d4b238bc6601303d76d8.png" src="_images/af9c6df9c1516ad80fd3ac7b4a56ac8220fad5e4aba3d4b238bc6601303d76d8.png" />
 </div>
 </div>
 <p>Both the empirical trace profile <code class="docutils literal notranslate"><span class="pre">mean_trace_profile</span></code> and the modeled <code class="docutils literal notranslate"><span class="pre">model_trace_profile</span></code> can reasonably be used; the latter is more convenient to serialize (i.e., write to disk or on paper)</p>
@@ -1102,7 +1102,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/222b854d74ffe94332ff058c5bbdbc749d007ee1ea08dd32b4640f815b83eaa3.png" src="_images/222b854d74ffe94332ff058c5bbdbc749d007ee1ea08dd32b4640f815b83eaa3.png" />
+<img alt="_images/347cc32a8dd42a36d8cdb8b9f39cde3377e86bba9ec54054f8dbdac43a3599ca.png" src="_images/347cc32a8dd42a36d8cdb8b9f39cde3377e86bba9ec54054f8dbdac43a3599ca.png" />
 </div>
 </div>
 <p>Or, we can obtain our spectrum by taking the trace-weighted average:</p>
@@ -1155,7 +1155,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9fbfdd454cb11976e533ec7425c329ffa4832ace3edd227ceb56af98ec12096f.png" src="_images/9fbfdd454cb11976e533ec7425c329ffa4832ace3edd227ceb56af98ec12096f.png" />
+<img alt="_images/cd1e06e23f9c21bc415cbf2501f32d23d8968b00cbe823ca4cc3f8240ae779e4.png" src="_images/cd1e06e23f9c21bc415cbf2501f32d23d8968b00cbe823ca4cc3f8240ae779e4.png" />
 </div>
 </div>
 <p>In general, the trace-weighted average will have higher signal-to-noise, as seen here (while we haven’t measured the noise, it is approximately constant across the image).</p>
@@ -1173,7 +1173,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e69332ef45dcf098ba94119432017e0bc594ad3eb3aaa93a0f6b651418132303.png" src="_images/e69332ef45dcf098ba94119432017e0bc594ad3eb3aaa93a0f6b651418132303.png" />
+<img alt="_images/e4ac0b7bf1a0827f70d5b2edf8a58b5c769e42c1a67546e39838acbad686b21a.png" src="_images/e4ac0b7bf1a0827f70d5b2edf8a58b5c769e42c1a67546e39838acbad686b21a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1184,7 +1184,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9948fe125b5c365ea3c47e4bb76edc69022be05b4eb1d70b789ad0896ff79537.png" src="_images/9948fe125b5c365ea3c47e4bb76edc69022be05b4eb1d70b789ad0896ff79537.png" />
+<img alt="_images/c8fadb8e54114f07db449c066a52340f13b59dcc9a6010754bbeb492048c9656.png" src="_images/c8fadb8e54114f07db449c066a52340f13b59dcc9a6010754bbeb492048c9656.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1208,7 +1208,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/999a7e446794339a57cec9f45799413a52de5243d3b08991dd2b07d281404067.png" src="_images/999a7e446794339a57cec9f45799413a52de5243d3b08991dd2b07d281404067.png" />
+<img alt="_images/9f60433a7eea78d031771b395e57d3b357f2b6f8c1ef0a604622b92e4c144fee.png" src="_images/9f60433a7eea78d031771b395e57d3b357f2b6f8c1ef0a604622b92e4c144fee.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1221,7 +1221,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/901d36b4233d98fa969b4a92ac223522ba52115cfc80bb57ce1593ca85ef45f4.png" src="_images/901d36b4233d98fa969b4a92ac223522ba52115cfc80bb57ce1593ca85ef45f4.png" />
+<img alt="_images/9a38e59367657c2a888d646d89dac4691b9ee81b4c1e4d01be7e43f6ee37552c.png" src="_images/9a38e59367657c2a888d646d89dac4691b9ee81b4c1e4d01be7e43f6ee37552c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1247,7 +1247,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a7ced1bbc172dc189f95732cdda727fd2bb811b11d72eb229b477e1f135a87cf.png" src="_images/a7ced1bbc172dc189f95732cdda727fd2bb811b11d72eb229b477e1f135a87cf.png" />
+<img alt="_images/b634437a4737c19edea7c6fc4cf0a07eb0ab1fac4de3921f9ff42ce9d6e02527.png" src="_images/b634437a4737c19edea7c6fc4cf0a07eb0ab1fac4de3921f9ff42ce9d6e02527.png" />
 </div>
 </div>
 <p>In the next tutorial, Spectroscopic Data Reduction 2, we’ll work on the wavelength calibration.</p>

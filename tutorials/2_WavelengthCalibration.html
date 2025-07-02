@@ -500,9 +500,9 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;lower&quot;</span>  <span class="c1"># we want to show images, not matrices, so we set the origin to the lower-left</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span>
-    <span class="s2">&quot;dark_background&quot;</span>
-<span class="p">)</span>  <span class="c1"># Optional configuration: if run, this will look nice on dark background notebooks</span>
+<span class="c1"># plt.style.use(</span>
+<span class="c1">#     &quot;dark_background&quot;</span>
+<span class="c1"># )  # Optional configuration: if run, this will look nice on dark background notebooks</span>
 </pre></div>
 </div>
 </div>
@@ -547,7 +547,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e9bb9287c09d1436275f7d1cbcb0c92bdcf20e101367384e19fb3ff2db3c270b.png" src="_images/e9bb9287c09d1436275f7d1cbcb0c92bdcf20e101367384e19fb3ff2db3c270b.png" />
+<img alt="_images/c94ca0b6145a864bf81296a1d3cf5246e76fe8e3d74193c35501e63c18835e20.png" src="_images/c94ca0b6145a864bf81296a1d3cf5246e76fe8e3d74193c35501e63c18835e20.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -557,7 +557,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ea985597889fd251db60977bbe8a210e8403d399c068dcd3b9a5c540a0afcc5.png" src="_images/6ea985597889fd251db60977bbe8a210e8403d399c068dcd3b9a5c540a0afcc5.png" />
+<img alt="_images/18596dfae1a4c2f1e59db62ffb1be5e48b4198b7f5347f5f1a3ab86735b6980d.png" src="_images/18596dfae1a4c2f1e59db62ffb1be5e48b4198b7f5347f5f1a3ab86735b6980d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -567,7 +567,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f0ecddbdd18cad5312a979b38847b46c54e20904674355217ccdeb9ff374350.png" src="_images/0f0ecddbdd18cad5312a979b38847b46c54e20904674355217ccdeb9ff374350.png" />
+<img alt="_images/49720473b91930f31e2ec5d19cb1c35f6c846b05756ef3f347c69e0cdf083f2a.png" src="_images/49720473b91930f31e2ec5d19cb1c35f6c846b05756ef3f347c69e0cdf083f2a.png" />
 </div>
 </div>
 <p>We can note by zooming in that there appear to be seven independent spectra:</p>
@@ -578,7 +578,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/acde35facaaa3f66755072c328e2bb89ecebaea249ebcef58c0ac0f02d119de7.png" src="_images/acde35facaaa3f66755072c328e2bb89ecebaea249ebcef58c0ac0f02d119de7.png" />
+<img alt="_images/be3baae80b7c3326d7f6c31f811c00fb2d4eedfbacf91b991d91876540fa7105.png" src="_images/be3baae80b7c3326d7f6c31f811c00fb2d4eedfbacf91b991d91876540fa7105.png" />
 </div>
 </div>
 <p>We re-create our trace model from the <a class="reference internal" href="#Spectroscopic%20Trace%20Tutorial.ipynb"><span class="xref myst">Spectroscopic Trace Tutorial</span></a> using the fitted models.</p>
@@ -621,7 +621,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ec062b623dadbebaa54ba1e6334e636c5f2075073c6e75bc0fe3b5e1bb8fd517.png" src="_images/ec062b623dadbebaa54ba1e6334e636c5f2075073c6e75bc0fe3b5e1bb8fd517.png" />
+<img alt="_images/c3541962d6bfb4d448719fa7c6bc7480e66370e559f26fe795e71fb7ce34019c.png" src="_images/c3541962d6bfb4d448719fa7c6bc7480e66370e559f26fe795e71fb7ce34019c.png" />
 </div>
 </div>
 <p>Strangely, the trace looks like it’s going through a minimum between the individual spectra, which may indicate that the spectrograph was shaken or jiggled between the trace and wavelength calibration observations.  Nevertheless, there’s enough signal that we can extract a calibration lamp spectrum, and the trace is perpendicular enough to the dispersion axis that we can mostly trust it.</p>
@@ -682,7 +682,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b76827b45b2fdf8978ab32565b59c93ddd68ad4adeb53e98473deec1225e6fb8.png" src="_images/b76827b45b2fdf8978ab32565b59c93ddd68ad4adeb53e98473deec1225e6fb8.png" />
+<img alt="_images/0f94cf26d4cec2e38e3b5f199ede7b294482fdc226fc135e797e1a4920d6a9fb.png" src="_images/0f94cf26d4cec2e38e3b5f199ede7b294482fdc226fc135e797e1a4920d6a9fb.png" />
 </div>
 </div>
 <p>We now have spectra of a mercury lamp, a neon lamp, and a krypton lamp.</p>
@@ -747,7 +747,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7eb00f5b7b14404d1e1e76df88030b3c842e7f781903c500d5e8024b181afaee.png" src="_images/7eb00f5b7b14404d1e1e76df88030b3c842e7f781903c500d5e8024b181afaee.png" />
+<img alt="_images/fd4be1a3bb40aae6b400e4e30eba7113f60c7d09d4c34a94438b74ba43ff7fd3.png" src="_images/fd4be1a3bb40aae6b400e4e30eba7113f60c7d09d4c34a94438b74ba43ff7fd3.png" />
 </div>
 </div>
 <p>At this next step, we have to write down which (approximate) pixel values correspond to known wavelengths.</p>
@@ -802,7 +802,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/709edcbe43fe2bb5638b45cef82c8d55c7859beb8248de8b47acd626e5b08337.png" src="_images/709edcbe43fe2bb5638b45cef82c8d55c7859beb8248de8b47acd626e5b08337.png" />
+<img alt="_images/84e7ef8416b4ef8c18d48328fd36d5e4775a4d3bf2c764d7d8098cf1b71b9b03.png" src="_images/84e7ef8416b4ef8c18d48328fd36d5e4775a4d3bf2c764d7d8098cf1b71b9b03.png" />
 </div>
 </div>
 <p>We only have three data points, but that is enough to fit a linear model and still have a free point to check that we got it close to right:</p>
@@ -840,7 +840,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e52b0b57dbde2d86a6d5242db6abbc8ba89202fc429d4417d7553860869471af.png" src="_images/e52b0b57dbde2d86a6d5242db6abbc8ba89202fc429d4417d7553860869471af.png" />
+<img alt="_images/1b6740d1bea9ec7aad73b67a6fc309783cae6d2bb7ea107662a00cf4cfaeee19.png" src="_images/1b6740d1bea9ec7aad73b67a6fc309783cae6d2bb7ea107662a00cf4cfaeee19.png" />
 </div>
 </div>
 <p>We show our model <span class="math notranslate nohighlight">\(\lambda(x)\)</span> vs the input “guesses”:</p>
@@ -856,14 +856,14 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3585/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3606/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.ylabel(&quot;$\lambda(x)$&quot;)
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;x (pixels)&#39;)
 </pre></div>
 </div>
-<img alt="_images/854311f89be239f09690b0066302622972a5257fc5e575e52c0c400c5508d864.png" src="_images/854311f89be239f09690b0066302622972a5257fc5e575e52c0c400c5508d864.png" />
+<img alt="_images/230afce72a5ba83fc67801e588754ff9ab5a4852fe6a07e26ddd932765820e3f.png" src="_images/230afce72a5ba83fc67801e588754ff9ab5a4852fe6a07e26ddd932765820e3f.png" />
 </div>
 </div>
 <p>Indeed, a linear model fit excellently!</p>
@@ -893,7 +893,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0ee5d7b4fc8c1da8c54bb3d5d00b1a579a3bdfb04563a0cc238b61f1e0d28509.png" src="_images/0ee5d7b4fc8c1da8c54bb3d5d00b1a579a3bdfb04563a0cc238b61f1e0d28509.png" />
+<img alt="_images/3cde996b530ee97a5a6ba6fb711e718cefedb4c7aaec8f794fe105a938238078.png" src="_images/3cde996b530ee97a5a6ba6fb711e718cefedb4c7aaec8f794fe105a938238078.png" />
 </div>
 </div>
 <p>The database contains <em>many</em> more lines than we saw.</p>
@@ -924,11 +924,11 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3585/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3606/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;);
 </pre></div>
 </div>
-<img alt="_images/0bb272f346f16607980c0b1cdf6228e97328882a2f47447fa331baee7f4a27a7.png" src="_images/0bb272f346f16607980c0b1cdf6228e97328882a2f47447fa331baee7f4a27a7.png" />
+<img alt="_images/dd309536b8864f32a772b15e136c07594b6288d9648a978f7e887e051dd296d6.png" src="_images/dd309536b8864f32a772b15e136c07594b6288d9648a978f7e887e051dd296d6.png" />
 </div>
 </div>
 <p>Not bad!  See that only the three “brightest” lines show up, plus maybe a bit of a third one around 408 nm.</p>
@@ -968,11 +968,11 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3585/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3606/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
-<img alt="_images/93c7571e0408b6974b74cc6b9c892e177ec5d798a6e9c41128d744c3e616255d.png" src="_images/93c7571e0408b6974b74cc6b9c892e177ec5d798a6e9c41128d744c3e616255d.png" />
+<img alt="_images/4453d657f647a417c4130ac0beb1e6ea97836dd6b3d875fe64836480037e1eb9.png" src="_images/4453d657f647a417c4130ac0beb1e6ea97836dd6b3d875fe64836480037e1eb9.png" />
 </div>
 </div>
 <p>For Neon, there are many lines that match up, but a lot that don’t match well (we detect a lot that have low <code class="docutils literal notranslate"><span class="pre">Rel</span></code> values)</p>
@@ -988,11 +988,11 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3585/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3606/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
-<img alt="_images/1a756ffcdec3ff77a29b25416c2899953bc1931d90be8429ac26ec8957ec27fe.png" src="_images/1a756ffcdec3ff77a29b25416c2899953bc1931d90be8429ac26ec8957ec27fe.png" />
+<img alt="_images/db1b52bca86d79d4db81da445ebeeaf3a6b992bda997bffed338b29ace8cb6a9.png" src="_images/db1b52bca86d79d4db81da445ebeeaf3a6b992bda997bffed338b29ace8cb6a9.png" />
 </div>
 </div>
 <p>The Krypton spectrum will be much easier to deal with: we just select those lines with intensities &gt; 70 on the scale above:</p>
@@ -1022,7 +1022,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3abb2210a01e74b32acefd114c9642623adb40b0cc2f20c874199d1b8b54e9e6.png" src="_images/3abb2210a01e74b32acefd114c9642623adb40b0cc2f20c874199d1b8b54e9e6.png" />
+<img alt="_images/5fa839588ec028d1e5a02518aca7fae9f9b56a1f1b259b6f9cf2ce3c75632717.png" src="_images/5fa839588ec028d1e5a02518aca7fae9f9b56a1f1b259b6f9cf2ce3c75632717.png" />
 </div>
 </div>
 <p>As with mercury above, we select a sub-region and measure the intensity-weighted peak position in pixel number to accurately measure the pixel center.</p>
@@ -1042,7 +1042,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d470aa1685614e88a2bc8b2739a5b5b48c5ff1b3dfd3a130ae6ac9edb97c405d.png" src="_images/d470aa1685614e88a2bc8b2739a5b5b48c5ff1b3dfd3a130ae6ac9edb97c405d.png" />
+<img alt="_images/7a5f8af969be94f67f75b23f522f876b039bc80f229523d42d59a05f587df860.png" src="_images/7a5f8af969be94f67f75b23f522f876b039bc80f229523d42d59a05f587df860.png" />
 </div>
 </div>
 <p>Yes, 15 pixels looks OK still.</p>
@@ -1087,7 +1087,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/14ff0ddb1a889dbfac2cacf7923091f430f9d6e0ab012969841a51cd0fca59ec.png" src="_images/14ff0ddb1a889dbfac2cacf7923091f430f9d6e0ab012969841a51cd0fca59ec.png" />
+<img alt="_images/27bc0fd931f2f9b33bbe4ed2bbcb7760e02e0273ffb65114bc2d57fa10ee45ed.png" src="_images/27bc0fd931f2f9b33bbe4ed2bbcb7760e02e0273ffb65114bc2d57fa10ee45ed.png" />
 </div>
 </div>
 <p>We can now jointly fit the Kr + Hg spectra with a new model:</p>
@@ -1121,7 +1121,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d07b03a76de9f382f94290f8e077d0c698efce9846d6c9cad86092a2e7656bb.png" src="_images/1d07b03a76de9f382f94290f8e077d0c698efce9846d6c9cad86092a2e7656bb.png" />
+<img alt="_images/afaacd2a7a7ef548dd216792b58346924ca5245511803a4ff8402ec78734c770.png" src="_images/afaacd2a7a7ef548dd216792b58346924ca5245511803a4ff8402ec78734c770.png" />
 </div>
 </div>
 <p>These are nearly indistiguishable, but let’s look at the residuals for each:</p>
@@ -1135,7 +1135,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/37e1786c627fe302e0503ec5284b876eaa3593f837e02391617485286a7bafcb.png" src="_images/37e1786c627fe302e0503ec5284b876eaa3593f837e02391617485286a7bafcb.png" />
+<img alt="_images/ed567cfa3e2152175ab50fb13b897d939b10dabb367dd810ac053d32a6c73ae5.png" src="_images/ed567cfa3e2152175ab50fb13b897d939b10dabb367dd810ac053d32a6c73ae5.png" />
 </div>
 </div>
 <p>The differences are pretty marginal; the Hg-only fit was really good.</p>
@@ -1149,7 +1149,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/40b7c4b8540875acab08103d38a64fdeaddff36866ab62c2e50d197acbaefca6.png" src="_images/40b7c4b8540875acab08103d38a64fdeaddff36866ab62c2e50d197acbaefca6.png" />
+<img alt="_images/6f033b66d4aecf7ad4a12bc675006b9c903e8d04c50130ff8106fe737ae0db3d.png" src="_images/6f033b66d4aecf7ad4a12bc675006b9c903e8d04c50130ff8106fe737ae0db3d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1161,7 +1161,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7cca089735efa8d898f6f8addfc6826658de25b33ab62e584d7da0bbd5fb6fbb.png" src="_images/7cca089735efa8d898f6f8addfc6826658de25b33ab62e584d7da0bbd5fb6fbb.png" />
+<img alt="_images/803decfd449fbdfae8e419b4817b8879a6b7262d85287eee62c8993885506fed.png" src="_images/803decfd449fbdfae8e419b4817b8879a6b7262d85287eee62c8993885506fed.png" />
 </div>
 </div>
 <p>In brief, no, there’s no sign of structure.  If there were, we might want to fit a higher-order model.</p>
@@ -1195,7 +1195,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/beb9656c66b5d26ea4ab17d67de4d9914e52e39a7a9661c071e6ccba3a1e7f77.png" src="_images/beb9656c66b5d26ea4ab17d67de4d9914e52e39a7a9661c071e6ccba3a1e7f77.png" />
+<img alt="_images/a711baad052ee07e661f7f8e8387d682c1e68fe7c6622124e30e2dfaf929903b.png" src="_images/a711baad052ee07e661f7f8e8387d682c1e68fe7c6622124e30e2dfaf929903b.png" />
 </div>
 </div>
 <p>We can try keeping only those with intensiy &gt;100, though we will miss some lines</p>
@@ -1209,7 +1209,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2b84d298646da282a8cccc567eb34ac5dce7f940a11af3c241bf8ea3cc204a15.png" src="_images/2b84d298646da282a8cccc567eb34ac5dce7f940a11af3c241bf8ea3cc204a15.png" />
+<img alt="_images/ac1028620c5bfa17ef8e76f2ca6a6307994554bf5e680f129b0feb30cb886622.png" src="_images/ac1028620c5bfa17ef8e76f2ca6a6307994554bf5e680f129b0feb30cb886622.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1237,7 +1237,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1413a3879620a779df2f8a9b897860d8d8bed2b39fed2985598ae779f077dfdf.png" src="_images/1413a3879620a779df2f8a9b897860d8d8bed2b39fed2985598ae779f077dfdf.png" />
+<img alt="_images/bffe47310ef783695d36671e4c9b5f9f6c179d3d82d527590c33e849278f81b3.png" src="_images/bffe47310ef783695d36671e4c9b5f9f6c179d3d82d527590c33e849278f81b3.png" />
 </div>
 </div>
 <p>For Neon, our automated approach isn’t very good (the third point from the left is not on a peak), and we’ll want to use a narrower pixel range.</p>
@@ -1287,7 +1287,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9167b0bbf95c07916f74d3740126b52dd76e2596c9a29d3abba5fa43dc54cf95.png" src="_images/9167b0bbf95c07916f74d3740126b52dd76e2596c9a29d3abba5fa43dc54cf95.png" />
+<img alt="_images/b3745dddebef95e875a53b51491d5a0eed05a4fb112df45bf361dec69cdfd56b.png" src="_images/b3745dddebef95e875a53b51491d5a0eed05a4fb112df45bf361dec69cdfd56b.png" />
 </div>
 </div>
 <p>We concatenate the Neon lines onto the spectrum and re-fit again</p>
@@ -1358,7 +1358,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6a9184624b7bd466251be3c5d7135a1b339afb6ecbd24e228d2d99579525d138.png" src="_images/6a9184624b7bd466251be3c5d7135a1b339afb6ecbd24e228d2d99579525d138.png" />
+<img alt="_images/593d0c32baa47e3823fc2bb92b3015d2fdc79022d92e41787a7e71ab5e52a19f.png" src="_images/593d0c32baa47e3823fc2bb92b3015d2fdc79022d92e41787a7e71ab5e52a19f.png" />
 </div>
 </div>
 <p>Finally, with neon included, there is a hint of some structure</p>
@@ -1370,7 +1370,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e39e6c804e096943fb543ca267bf38aa297289afb82e0913729343d0f851c5af.png" src="_images/e39e6c804e096943fb543ca267bf38aa297289afb82e0913729343d0f851c5af.png" />
+<img alt="_images/a9a6dcc0f65c8cfb961821b3e4c8d4dd6b6f09a5c656e40ce1712d50e1d47f38.png" src="_images/a9a6dcc0f65c8cfb961821b3e4c8d4dd6b6f09a5c656e40ce1712d50e1d47f38.png" />
 </div>
 </div>
 <p>This histogram is perhaps a little skewed.</p>
@@ -1389,7 +1389,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dc3e177ee38f8ebaa4348cbb9a5e642970e65fcc445b52474339acab99159594.png" src="_images/dc3e177ee38f8ebaa4348cbb9a5e642970e65fcc445b52474339acab99159594.png" />
+<img alt="_images/91206c4b4d59cdd36f2d4e75ee9637df48e3415b146f55100378d258af293e0f.png" src="_images/91206c4b4d59cdd36f2d4e75ee9637df48e3415b146f55100378d258af293e0f.png" />
 </div>
 </div>
 <p>We can get a <em>coarse</em> empirical estimate of the per-pixel uncertainty by taking the standard deviation of a “blank” part of the spectrum:</p>
@@ -1402,7 +1402,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fd0fb202690d010e638162c2286be996fd79b5910d1e445d6f0a2716c2e8ba46.png" src="_images/fd0fb202690d010e638162c2286be996fd79b5910d1e445d6f0a2716c2e8ba46.png" />
+<img alt="_images/f4b2eee7e2857b50cf478aacf40252eb93a3580dad29a79cb275e035ae111b15.png" src="_images/f4b2eee7e2857b50cf478aacf40252eb93a3580dad29a79cb275e035ae111b15.png" />
 </div>
 </div>
 <p>The moment-1 estimate of the peak location is, for a spectrum <span class="math notranslate nohighlight">\(f(x)\)</span> and pixel location <span class="math notranslate nohighlight">\(x\)</span>
@@ -1495,7 +1495,7 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cd79b682a0df3a10467d7743ed3828e5c72f2f99fcdbf15cbab2f1d59b7a60c4.png" src="_images/cd79b682a0df3a10467d7743ed3828e5c72f2f99fcdbf15cbab2f1d59b7a60c4.png" />
+<img alt="_images/4b40cf64e14ea2afcd1a79f971753a447d1f2953d1590190fbc07c7c45c80e36.png" src="_images/4b40cf64e14ea2afcd1a79f971753a447d1f2953d1590190fbc07c7c45c80e36.png" />
 </div>
 </div>
 <div class="cell docutils container">
