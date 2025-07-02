@@ -588,8 +588,37 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
-    (11.798, 85.244)&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameResolveError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;NGC 188&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ngc188_center</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:1909,</span> in <span class="ni">SkyCoord.from_name</span><span class="nt">(cls, name, frame, parse, cache)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1875</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1876</span><span class="sd"> Given a name, query the CDS name resolver to attempt to retrieve</span>
+<span class="g g-Whitespace">   </span><span class="mi">1877</span><span class="sd"> coordinate information for that object. The search database, sesame</span>
+<span class="sd">   (...)   1905     Instance of the SkyCoord class.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1906</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1907</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.name_resolve</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_icrs_coordinates</span>
+<span class="ne">-&gt; </span><span class="mi">1909</span> <span class="n">icrs_coord</span> <span class="o">=</span> <span class="n">get_icrs_coordinates</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parse</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1910</span> <span class="n">icrs_sky_coord</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1911</span> <span class="k">if</span> <span class="n">frame</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">,</span> <span class="n">icrs_coord</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/name_resolve.py:196,</span> in <span class="ni">get_icrs_coordinates</span><span class="nt">(name, parse, cache)</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="c1"># All Sesame URL&#39;s failed...</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">exceptions</span><span class="p">)]</span>
+<span class="ne">--&gt; </span><span class="mi">196</span>     <span class="k">raise</span> <span class="n">NameResolveError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>         <span class="s2">&quot;All Sesame queries failed. Unable to retrieve coordinates. See errors per&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>         <span class="sa">f</span><span class="s2">&quot; URL below: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">_parse_response</span><span class="p">(</span><span class="n">resp_data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="k">if</span> <span class="n">ra</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="ne">NameResolveError</span>: All Sesame queries failed. Unable to retrieve coordinates. See errors per URL below: 
+ <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cds</span><span class="o">.</span><span class="n">unistra</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">nph</span><span class="o">-</span><span class="n">sesame</span><span class="o">/</span><span class="n">SNV</span><span class="err">?</span><span class="n">NGC</span><span class="o">%</span><span class="k">20188</span>: timed out
+<span class="ne">http</span>://vizier.cfa.harvard.edu/viz-bin/nph-sesame/SNV?NGC%20188: Request took longer than the allowed 10.0 seconds
 </pre></div>
 </div>
 </div>
@@ -601,11 +630,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 11.798 deg&gt;, &lt;Latitude 85.244 deg&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> component attributes (here <code class="docutils literal notranslate"><span class="pre">ra</span></code> and <code class="docutils literal notranslate"><span class="pre">dec</span></code>) return specialized <code class="docutils literal notranslate"><span class="pre">Quantity</span></code>-like objects that make working with angular data easier. While <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/units/index.html">docs</a>) is a general class that represents numerical values and physical units of any kind, <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> defines subclasses of <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> that are specifically designed for working with angles, such as the <code class="docutils literal notranslate"><span class="pre">Angle</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Angle.html">docs</a>) class. The <code class="docutils literal notranslate"><span class="pre">Angle</span></code> class then has additional, more specialized subclasses <code class="docutils literal notranslate"><span class="pre">Latitude</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Latitude.html">docs</a>) and <code class="docutils literal notranslate"><span class="pre">Longitude</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Longitude.html">docs</a>). These objects store angles, provide useful attributes to quickly convert to common angular units, and enable formatting the numerical values in various formats. For example, in a Jupyter notebook, these objects know how to represent themselves using LaTeX:</p>
 <div class="cell docutils container">
@@ -614,10 +638,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[11^\circ47{}^\prime52.8{}^{\prime\prime}\]</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -625,20 +645,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[85^\circ14{}^\prime38.4{}^{\prime\prime}\]</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(astropy.coordinates.angles.core.Longitude,
- astropy.coordinates.angles.core.Latitude)
 </pre></div>
 </div>
 </div>
@@ -654,13 +664,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 0.78653333 hourangle&gt;,
- &lt;Longitude 0.20591395 rad&gt;,
- &lt;Longitude 11.798 deg&gt;)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Or using the shorthand attributes, which return only the component values:</p>
 <div class="cell docutils container">
@@ -669,23 +672,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.7865333333333335),
- np.float64(0.205913945150291),
- np.float64(11.798))
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can also format the values into strings with specified units (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/formatting.html">docs</a>), for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">hourangle</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.str_(&#39;00:47:11.52&#39;)
 </pre></div>
 </div>
 </div>
@@ -702,11 +693,6 @@ document.write(`
 
 <span class="c1"># only keep stars brighter than G=19 magnitude</span>
 <span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">19</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Query finished. [astroquery.utils.tap.core]
 </pre></div>
 </div>
 </div>
@@ -745,11 +731,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4876
-</pre></div>
-</div>
-</div>
 </div>
 <p>The returned <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code> <code class="docutils literal notranslate"><span class="pre">Table</span></code> object now contains about 5000 stars from <em>Gaia</em> DR2 around the coordinate position of the center of NGC 188. Let’s now construct a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object with the results table. In the <em>Gaia</em> data archive, the ICRS coordinates of a source are given as column names <code class="docutils literal notranslate"><span class="pre">&quot;ra&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;dec&quot;</span></code>:</p>
 <div class="cell docutils container">
@@ -758,10 +739,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[[11.830258,~11.775831,~11.78143,~\dots,~13.265345,~14.538431,~17.662272]\mathrm{{}^{\circ}}\]</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -769,24 +746,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[[85.243627,~85.241932,~85.247148,~\dots,~84.775627,~84.820229,~85.284318]\mathrm{{}^{\circ}}\]</div>
-</div>
 </div>
 <p>Note that, because the <em>Gaia</em> archive provides data tables with associated units, and we read this table using the <code class="docutils literal notranslate"><span class="pre">QTable</span></code> object (<a class="reference external" href="http://docs.astropy.org/en/latest/table/mixin_columns.html#quantity-and-qtable">docs</a>), the above table columns are represented as <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> objects with units of degrees. Note also that these columns contain many (&gt;5000!) coordinate values. We can pass these directly in to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> to get a single <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent all of these coordinates:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">])</span>
 <span class="n">ngc188_gaia_coords</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
-    [(11.83025781, 85.24362655), (11.77583082, 85.24193164),
-     (11.78143038, 85.24714775), ..., (13.26534496, 84.77562671),
-     (14.5384314 , 84.82022851), (17.6622717 , 85.2843177 )]&gt;
 </pre></div>
 </div>
 </div>
@@ -809,11 +774,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00:47:11.5 +85:14:38.4&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Using a single method/function call on the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object containing the results of our <em>Gaia</em> query, compute the angular separation between each resulting star and the coordinates of the cluster center for NGC 188.</p>
 <p><sub>(Hint: <code class="docutils literal notranslate"><span class="pre">SkyCoord.separation()</span></code> might be useful)</sub></p>
@@ -822,15 +782,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span><span class="o">.</span><span class="n">separation</span><span class="p">(</span><span class="n">ngc188_center</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[[$0^\circ00{}^\prime09.72226249{}^{\prime\prime}$
- $0^\circ00{}^\prime09.96244424{}^{\prime\prime}$
- $0^\circ00{}^\prime12.36353173{}^{\prime\prime}$ ...
- $0^\circ29{}^\prime07.49547393{}^{\prime\prime}$
- $0^\circ29{}^\prime08.08616548{}^{\prime\prime}$
- $0^\circ29{}^\prime08.26043103{}^{\prime\prime}$]\]</div>
 </div>
 </div>
 </section>
@@ -854,11 +805,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2423
-</pre></div>
-</div>
-</div>
 </div>
 <p>The above selection on <code class="docutils literal notranslate"><span class="pre">parallax_snr</span></code> keeps stars that have a ~10-sigma parallax measurement, but this is an arbitrary selection threshold that you may want to tune or remove in your own use cases. This selection removed over half of the stars in our original table, but for the remaining stars we can be confident that converting the parallax measurements to distances is mostly safe.</p>
 <p>The default way of passing in a distance to a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object, as above, is to pass in a <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> with a unit of length. However, <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> also provides a specialized object, <code class="docutils literal notranslate"><span class="pre">Distance</span></code>, for handling common transformations of different distance representations (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/index.html#distance">docs</a>). Among other things, this class supports passing in a parallax value:</p>
@@ -867,10 +813,6 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[1000 \; \mathrm{pc}\]</div>
 </div>
 </div>
 <p>The catalog of stars we queried from <em>Gaia</em> contains parallax information in milliarcsecond units, so we can create a <code class="docutils literal notranslate"><span class="pre">Distance</span></code> object directly from these values:</p>
@@ -888,17 +830,6 @@ document.write(`
     <span class="n">ra</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">gaia_dist</span>
 <span class="p">)</span>
 <span class="n">ngc188_coords_3d</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
-    [(11.83025781, 85.24362655, 2113.23414411),
-     (11.77583082, 85.24193164, 1819.25788676),
-     (11.79608811, 85.24947769, 1878.68206887), ...,
-     (14.41522696, 85.68315506, 1167.55221538),
-     (14.5384314 , 84.82022851, 3339.63434769),
-     (17.6622717 , 85.2843177 ,  398.82213009)]&gt;
 </pre></div>
 </div>
 </div>
@@ -926,12 +857,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Gaia DR2 sources near NGC 188&#39;)
-</pre></div>
-</div>
-<img alt="_images/d75208174c2d44c4b16634aac80d5760492b35a7543f42da3385cba93ace43f9.png" src="_images/d75208174c2d44c4b16634aac80d5760492b35a7543f42da3385cba93ace43f9.png" />
-</div>
 </div>
 <p>Now that we have 3D position information for both the cluster center, and for the stars we queried from <em>Gaia</em>, we can compute the 3D separation (distance) between all of the <em>Gaia</em> sources and the cluster center:</p>
 <div class="cell docutils container">
@@ -941,10 +866,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[[153.23746,~140.74633,~81.323346,~\dots,~792.54107,~1379.8059,~1561.1939] \; \mathrm{pc}\]</div>
-</div>
 </div>
 <section id="id1">
 <h3>Exercises<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
@@ -953,11 +874,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_3d_mask</span> <span class="o">=</span> <span class="n">sep3d</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span>
 <span class="n">ngc188_3d_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(262)
 </pre></div>
 </div>
 </div>

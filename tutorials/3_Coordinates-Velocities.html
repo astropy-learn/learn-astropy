@@ -772,6 +772,41 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameResolveError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Skip this cell if you are not connected to the internet</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">gaia_tbl</span> <span class="o">=</span> <span class="n">Gaia</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;HD 219829&quot;</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcmin</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:1909,</span> in <span class="ni">SkyCoord.from_name</span><span class="nt">(cls, name, frame, parse, cache)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1875</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1876</span><span class="sd"> Given a name, query the CDS name resolver to attempt to retrieve</span>
+<span class="g g-Whitespace">   </span><span class="mi">1877</span><span class="sd"> coordinate information for that object. The search database, sesame</span>
+<span class="sd">   (...)   1905     Instance of the SkyCoord class.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1906</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1907</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.name_resolve</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_icrs_coordinates</span>
+<span class="ne">-&gt; </span><span class="mi">1909</span> <span class="n">icrs_coord</span> <span class="o">=</span> <span class="n">get_icrs_coordinates</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parse</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1910</span> <span class="n">icrs_sky_coord</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1911</span> <span class="k">if</span> <span class="n">frame</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">,</span> <span class="n">icrs_coord</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/name_resolve.py:196,</span> in <span class="ni">get_icrs_coordinates</span><span class="nt">(name, parse, cache)</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="c1"># All Sesame URL&#39;s failed...</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">exceptions</span><span class="p">)]</span>
+<span class="ne">--&gt; </span><span class="mi">196</span>     <span class="k">raise</span> <span class="n">NameResolveError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>         <span class="s2">&quot;All Sesame queries failed. Unable to retrieve coordinates. See errors per&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>         <span class="sa">f</span><span class="s2">&quot; URL below: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">_parse_response</span><span class="p">(</span><span class="n">resp_data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="k">if</span> <span class="n">ra</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="ne">NameResolveError</span>: All Sesame queries failed. Unable to retrieve coordinates. See errors per URL below: 
+ <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cds</span><span class="o">.</span><span class="n">unistra</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">nph</span><span class="o">-</span><span class="n">sesame</span><span class="o">/</span><span class="n">SNV</span><span class="err">?</span><span class="n">HD</span><span class="o">%</span><span class="k">20219829</span>: timed out
+<span class="ne">http</span>://vizier.cfa.harvard.edu/viz-bin/nph-sesame/SNV?HD%20219829: Request took longer than the allowed 10.0 seconds
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,14 +827,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><i>Row index=2</i>
-<table id="table140324160143040">
-<thead><tr><th>source_id</th><th>pmra</th><th>pmdec</th></tr></thead>
-<thead><tr><th></th><th>mas / yr</th><th>mas / yr</th></tr></thead>
-<thead><tr><th>int64</th><th>float64</th><th>float64</th></tr></thead>
-<tr><td>2661015540210781568</td><td>483.4165901889734</td><td>-114.8633971841528</td></tr>
-</table></div></div>
 </div>
 <p>Indeed, it looks like this is our source! Let’s construct a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object for this source using the data from the <em>Gaia</em> archive:</p>
 <p><em>Note about the Gaia catalog proper motion column names: The names in the Gaia archive and other repositories containing Gaia data give Right Ascension proper motion values simply as “pmra”. These components implicitly contain the <code class="docutils literal notranslate"><span class="pre">cos(dec)</span></code> term, so we do <strong>not</strong> have to modify these values in order to pass them in to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> as <code class="docutils literal notranslate"><span class="pre">pm_ra_cosdec</span></code></em></p>
@@ -815,14 +842,6 @@ document.write(`
 <span class="p">)</span>
 
 <span class="n">hd219829_coord</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
-    (349.72896716, 5.40511585, 34.47896069)
- (pm_ra_cosdec, pm_dec) in mas / yr
-    (483.41659019, -114.86339718)&gt;
 </pre></div>
 </div>
 </div>
@@ -873,26 +892,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 33867.416667 from DATE-OBS&#39;. [astropy.wcs.wcs]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9fc32ee450&gt;
-</pre></div>
-</div>
-<img alt="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" src="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" />
-</div>
 </div>
 <p>The brighest star (as observed by DSS) in this image is our target, and the red circle is where <em>Gaia</em> observed this star. As we excpected, it has moved quite a bit since the 1950’s! We can account for this motion and predict the position of the star at around the time the DSS plate was observed. Let’s assume that this plate was observed in 1950 exactly (this is not strictly correct, but should get us close enough).</p>
 <p>To account for the proper motion of the source and evolve the position to a new time, we can use the <code class="docutils literal notranslate"><span class="pre">SkyCoord.apply_space_motion()</span></code> method (<a class="reference external" href="http://docs.astropy.org/en/latest/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord.apply_space_motion">docs</a>). Because we defined the <code class="docutils literal notranslate"><span class="pre">obstime</span></code> when we defined the coordinate object for HD 219829, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hd219829_coord</span><span class="o">.</span><span class="n">obstime</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Time object: scale=&#39;tt&#39; format=&#39;jyear&#39; value=2015.5&gt;
 </pre></div>
 </div>
 </div>
@@ -940,12 +945,6 @@ document.write(`
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f9fc2e64230&gt;
-</pre></div>
-</div>
-<img alt="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" src="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" />
 </div>
 </div>
 <p>The red circle is the same as in the previous image and shows the position of the source in the <em>Gaia</em> catalog (in 2015.5). The blue circle shows our prediction for the position of the source in 1950 - this looks much closer to where the star is in the DSS image!</p>
