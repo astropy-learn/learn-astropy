@@ -975,47 +975,7 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">lmfitter</span> <span class="o">=</span> <span class="n">LevMarLSQFitter</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">guess</span> <span class="o">=</span> <span class="n">Gaussian1D</span><span class="p">(</span><span class="n">amplitude</span><span class="o">=</span><span class="n">mean_trace_profile</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">fitted_trace_profile</span> <span class="o">=</span> <span class="n">lmfitter</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">model</span><span class="o">=</span><span class="n">guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">mean_trace_profile</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">model_trace_profile</span> <span class="o">=</span> <span class="n">fitted_trace_profile</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">fitted_trace_profile</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>             <span class="s2">&quot;This model does not support being fit to data with units.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">288</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="n">farg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1423</span>     <span class="n">model_copy</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1424</span>     <span class="n">weights</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1425</span> <span class="p">)</span> <span class="o">+</span> <span class="n">_convert_input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1427</span> <span class="n">fkwarg</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fit_param_indices&quot;</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="n">fit_param_indices</span><span class="p">)}</span>
-<span class="ne">-&gt; </span><span class="mi">1429</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">cov_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_fitter</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1430</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
-<span class="g g-Whitespace">   </span><span class="mi">1431</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1433</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_param_cov</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1434</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">cov_x</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">weights</span>
-<span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1437</span> <span class="n">model_copy</span><span class="o">.</span><span class="n">sync_constraints</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_fitter</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1495</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
-<span class="g g-Whitespace">   </span><span class="mi">1496</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1497</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
-<span class="g g-Whitespace">   </span><span class="mi">1499</span>     <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_deriv</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">estimate_jacobian</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1500</span>         <span class="n">dfunc</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Gaussian1D(amplitude=123.84846797, mean=0.17719819, stddev=5.10872134)&gt;
 </pre></div>
 </div>
 </div>
@@ -1030,6 +990,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/e61af8a11079e298ff7fb41a2ca6d718bfa206ef41f65e8322d542e73998bcd2.png" src="_images/e61af8a11079e298ff7fb41a2ca6d718bfa206ef41f65e8322d542e73998bcd2.png" />
+</div>
 </div>
 <p>Both the empirical trace profile <code class="docutils literal notranslate"><span class="pre">mean_trace_profile</span></code> and the modeled <code class="docutils literal notranslate"><span class="pre">model_trace_profile</span></code> can reasonably be used; the latter is more convenient to serialize (i.e., write to disk or on paper)</p>
 </section>
@@ -1042,6 +1005,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">average_spectrum</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/222b854d74ffe94332ff058c5bbdbc749d007ee1ea08dd32b4640f815b83eaa3.png" src="_images/222b854d74ffe94332ff058c5bbdbc749d007ee1ea08dd32b4640f815b83eaa3.png" />
 </div>
 </div>
 <p>Or, we can obtain our spectrum by taking the trace-weighted average:</p>
@@ -1093,6 +1059,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/9fbfdd454cb11976e533ec7425c329ffa4832ace3edd227ceb56af98ec12096f.png" src="_images/9fbfdd454cb11976e533ec7425c329ffa4832ace3edd227ceb56af98ec12096f.png" />
+</div>
 </div>
 <p>In general, the trace-weighted average will have higher signal-to-noise, as seen here (while we haven’t measured the noise, it is approximately constant across the image).</p>
 <p>Note that the Gaussian model and the direct trace yield nearly identical results</p>
@@ -1108,6 +1077,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/e69332ef45dcf098ba94119432017e0bc594ad3eb3aaa93a0f6b651418132303.png" src="_images/e69332ef45dcf098ba94119432017e0bc594ad3eb3aaa93a0f6b651418132303.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1115,6 +1087,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9948fe125b5c365ea3c47e4bb76edc69022be05b4eb1d70b789ad0896ff79537.png" src="_images/9948fe125b5c365ea3c47e4bb76edc69022be05b4eb1d70b789ad0896ff79537.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1137,6 +1112,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/999a7e446794339a57cec9f45799413a52de5243d3b08991dd2b07d281404067.png" src="_images/999a7e446794339a57cec9f45799413a52de5243d3b08991dd2b07d281404067.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1146,6 +1124,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/901d36b4233d98fa969b4a92ac223522ba52115cfc80bb57ce1593ca85ef45f4.png" src="_images/901d36b4233d98fa969b4a92ac223522ba52115cfc80bb57ce1593ca85ef45f4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1169,6 +1150,9 @@ where \)</span>x_i<span class="math notranslate nohighlight">\( is the position 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spectrum2</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a7ced1bbc172dc189f95732cdda727fd2bb811b11d72eb229b477e1f135a87cf.png" src="_images/a7ced1bbc172dc189f95732cdda727fd2bb811b11d72eb229b477e1f135a87cf.png" />
 </div>
 </div>
 <p>In the next tutorial, Spectroscopic Data Reduction 2, we’ll work on the wavelength calibration.</p>
@@ -1561,7 +1545,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3564/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3585/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.ylabel(&quot;$\lambda(x)$&quot;)
 </pre></div>
 </div>
@@ -1629,7 +1613,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3564/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3585/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;);
 </pre></div>
 </div>
@@ -1673,7 +1657,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3564/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3585/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
@@ -1693,7 +1677,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_3564/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_3585/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
@@ -2318,7 +2302,7 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f6e51c2e3f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7f0a2ecd3ad0&gt;
 </pre></div>
 </div>
 </div>
@@ -2408,7 +2392,7 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6e51caea80&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0a2eb10890&gt;]
 </pre></div>
 </div>
 <img alt="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" src="_images/1ac185efd3ede81e3d41b5e2c940f9b8ff22883ba025eae76c9814dcc8380968.png" />
@@ -2471,49 +2455,6 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">lmfitter</span> <span class="o">=</span> <span class="n">LevMarLSQFitter</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">selection</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavelengths</span> <span class="o">&gt;</span> <span class="mi">470</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wavelengths</span> <span class="o">&lt;</span> <span class="mi">500</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">nm</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">fitted_absorption_model</span> <span class="o">=</span> <span class="n">lmfitter</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">model</span><span class="o">=</span><span class="n">absorption_model_guess</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="n">selection</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">spectrum2</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:288,</span> in <span class="ni">fitter_unit_support.&lt;locals&gt;.wrapper</span><span class="nt">(self, model, x, y, z, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>             <span class="s2">&quot;This model does not support being fit to data with units.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">288</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1429,</span> in <span class="ni">_NonLinearLSQFitter.__call__</span><span class="nt">(self, model, x, y, z, weights, maxiter, acc, epsilon, estimate_jacobian, filter_non_finite, inplace)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1422</span> <span class="n">farg</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1423</span>     <span class="n">model_copy</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1424</span>     <span class="n">weights</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1425</span> <span class="p">)</span> <span class="o">+</span> <span class="n">_convert_input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1427</span> <span class="n">fkwarg</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fit_param_indices&quot;</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="n">fit_param_indices</span><span class="p">)}</span>
-<span class="ne">-&gt; </span><span class="mi">1429</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">cov_x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_fitter</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1430</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
-<span class="g g-Whitespace">   </span><span class="mi">1431</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1433</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_param_cov</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1434</span>     <span class="n">model_copy</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">init_values</span><span class="p">,</span> <span class="n">cov_x</span><span class="p">,</span> <span class="n">fitparams</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">weights</span>
-<span class="g g-Whitespace">   </span><span class="mi">1435</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1437</span> <span class="n">model_copy</span><span class="o">.</span><span class="n">sync_constraints</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/modeling/fitting.py:1497,</span> in <span class="ni">LevMarLSQFitter._run_fitter</span><span class="nt">(self, model, farg, fkwarg, maxiter, acc, epsilon, estimate_jacobian)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1494</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_fitter</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1495</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">farg</span><span class="p">,</span> <span class="n">fkwarg</span><span class="p">,</span> <span class="n">maxiter</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">estimate_jacobian</span>
-<span class="g g-Whitespace">   </span><span class="mi">1496</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1497</span>     <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
-<span class="g g-Whitespace">   </span><span class="mi">1499</span>     <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">fit_deriv</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">estimate_jacobian</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1500</span>         <span class="n">dfunc</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2522,6 +2463,12 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">470</span><span class="p">,</span> <span class="mi">510</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mi">190</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
+</pre></div>
+</div>
+<img alt="_images/69df4cbf0eb1ed6b5b048cd57b7c9450b4f78909617d53f435737b5852129a4a.png" src="_images/69df4cbf0eb1ed6b5b048cd57b7c9450b4f78909617d53f435737b5852129a4a.png" />
 </div>
 </div>
 <p>We can now separate out the two components, the continuum and the absorption line model:</p>
@@ -2541,6 +2488,12 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(470.0), np.float64(510.0), np.float64(140.0), np.float64(190.0))
+</pre></div>
+</div>
+<img alt="_images/e96dcc6c2e738fd3ce788ae58311b04f62c11658d2d25c1dd18908b232844e28.png" src="_images/e96dcc6c2e738fd3ce788ae58311b04f62c11658d2d25c1dd18908b232844e28.png" />
+</div>
 </div>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Equivalent_width">Equivalent Width</a> of a spectral absorption line is defined to be the width of a feature that has the same integral as the absorption line, but goes all the way from the continuum level to zero.</p>
 <p>We can compute this with our model, assuming our continuum is flat (has zero slope):</p>
@@ -2553,10 +2506,19 @@ $<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[1.7127193 \; \mathrm{nm}\]</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">absorption_fit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Gaussian1D(amplitude=-22.81498285, mean=486.34294504, stddev=0.49692951)&gt;
 </pre></div>
 </div>
 </div>
@@ -2585,6 +2547,10 @@ $<span class="math notranslate nohighlight">\(v_{opt} = c \frac{\lambda-\lambda_
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[128.23671 \; \mathrm{\frac{km}{s}}\]</div>
+</div>
 </div>
 <p>We can do the same thing using <a class="reference external" href="https://docs.astropy.org/en/stable/units/equivalencies.html#spectral-doppler-equivalencies">astropy equivalencies</a>:</p>
 <div class="cell docutils container">
@@ -2596,6 +2562,10 @@ $<span class="math notranslate nohighlight">\(v_{opt} = c \frac{\lambda-\lambda_
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[128.23671 \; \mathrm{\frac{km}{s}}\]</div>
+</div>
 </div>
 <p>We can also compute the line width from our fit:</p>
 <div class="cell docutils container">
@@ -2606,6 +2576,10 @@ $<span class="math notranslate nohighlight">\(v_{opt} = c \frac{\lambda-\lambda_
 <span class="n">linewidth_kms</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[306.44928 \; \mathrm{\frac{km}{s}}\]</div>
 </div>
 </div>
 <p>That’s it!  You’ve extracted and wavelength-calibrated a spectrum.</p>
