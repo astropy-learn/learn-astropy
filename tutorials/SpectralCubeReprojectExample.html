@@ -1,0 +1,1058 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spectral Cube Reprojection</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"a22adb16c6e4416ab26d2943cedc8d97": {"model_name": "VegaExprModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "VegaExprModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "VegaExprView", "value": "default_value"}}, "8392b664186043ae9bb25c9f27669a00": {"model_name": "VegaExprModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "VegaExprModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "VegaExprView", "value": "default_value"}}, "91b0e1114a9c4a2c978e480a224e6ab5": {"model_name": "TextRendererModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "TextRendererModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "TextRendererView", "background_color": "IPY_MODEL_a22adb16c6e4416ab26d2943cedc8d97", "font": "12px sans-serif", "format": null, "format_type": "number", "horizontal_alignment": "left", "missing": "", "text_color": "IPY_MODEL_8392b664186043ae9bb25c9f27669a00", "text_elide_direction": "right", "text_value": null, "text_wrap": false, "vertical_alignment": "center"}}, "b8bbc09bf1e445b5aa864f28206efe9b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b855ad8fb74645ce97f79941506fb694": {"model_name": "DataGridModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_data": {"data": {"key": {"dtype": "int32", "shape": [4], "type": null}, "species_id": {"dtype": "int32", "shape": [4], "type": null}, "name": ["H<sub>2</sub>CS", "H<sub>2</sub>CS", "H<sub>2</sub>CS", "H<sub>2</sub>CS"], "chemical_name": ["Thioformaldehyde", "Thioformaldehyde", "Thioformaldehyde", "Thioformaldehyde"], "resolved_QNs": [" 4( 1, 3)- 3( 1, 2)", " 4( 1, 3)- 3( 1, 2)", "      4(  1, 3)-   3(  1, 2)", "4(1,3)-3(1,2)"], "linelist": ["JPL", "CDMS", "SLAIM", "Lovas"], "LovasASTIntensity": [" 0.17", " ", " 0.17", " 0.17"], "lower_state_energy": {"dtype": "float64", "shape": [4], "type": null}, "upper_state_energy": {"dtype": "float64", "shape": [4], "type": null}, "sijmu2": {"dtype": "float64", "shape": [4], "type": null}, "sij": {"dtype": "float64", "shape": [4], "type": null}, "aij": {"dtype": "float64", "shape": [4], "type": null}, "intintensity": ["", "", "", ""], "Lovas_NRAO": {"dtype": "int32", "shape": [4], "type": null}, "orderedfreq": {"dtype": "float64", "shape": [4], "type": null}, "lower_state_energy_K": {"dtype": "float64", "shape": [4], "type": null}, "upper_state_energy_K": {"dtype": "float64", "shape": [4], "type": null}, "orderedFreq": [" <span style = 'color: #DC143C'></span>", " <span style = 'color: #DC143C'></span>", "139.483699 (0.017), <span style = 'color: #DC143C'>139.483699</span>", "139.483699 (0.017), <span style = 'color: #DC143C'>139.483699</span>"], "measFreq": ["139.48341 (0.28), <span style = 'color: #DC143C'>139.48341</span>", "139.4836816 (0.05), <span style = 'color: #DC143C'>139.4836816</span>", "139.483741 (0.024), <span style = 'color: #DC143C'>139.483741</span>", " <span style = 'color: #DC143C'></span>"], "upperStateDegen": ["27", "27", "8.5", ""], "moleculeTag": {"dtype": "int32", "shape": [4], "type": null}, "qnCode": {"dtype": "int32", "shape": [4], "type": null}, "labref_Lovas_NIST": [" ", " ", "   Mar05", ""], "rel_int_HFS_Lovas": [" ", " ", "", " "], "unres_quantum_numbers": [" 4 1 3       3 1 2", " 4 1 3       3 1 2", "      4(  1, 3)-   3(  1, 2)", "4(1,3)-3(1,2)"], "lineid": {"dtype": "int32", "shape": [4], "type": null}, "transition_in_space": {"dtype": "int32", "shape": [4], "type": null}, "transition_in_G358": {"dtype": "int32", "shape": [4], "type": null}, "obsref_Lovas_NIST": ["Lor84a", " ", " ", "Lor84a"], "source_Lovas_NIST": [" rho Oph B1", " ", " ", " rho Oph B1"], "telescope_Lovas_NIST": [" MMWO    4.9m", " ", " ", " MMWO    4.9m"], "transitionBandColor": ["datatablegreen", "datatablegreen", "datatablegreen", "datatablegreen"], "searchErrorMessage": ["", "", "", ""], "sqlquery": {"value": ["$NaN$", "$NaN$", "$NaN$", "$NaN$"], "type": "raw"}, "requestnumber": {"dtype": "int32", "shape": [4], "type": null}, "ipydguuid": {"dtype": "int32", "shape": [4], "type": null}}, "schema": {"fields": [{"name": "key", "type": "integer"}, {"name": "species_id", "type": "integer"}, {"name": "name", "type": "string"}, {"name": "chemical_name", "type": "string"}, {"name": "resolved_QNs", "type": "string"}, {"name": "linelist", "type": "string"}, {"name": "LovasASTIntensity", "type": "string"}, {"name": "lower_state_energy", "type": "number"}, {"name": "upper_state_energy", "type": "number"}, {"name": "sijmu2", "type": "number"}, {"name": "sij", "type": "number"}, {"name": "aij", "type": "number"}, {"name": "intintensity", "type": "string"}, {"name": "Lovas_NRAO", "type": "integer"}, {"name": "orderedfreq", "type": "number"}, {"name": "lower_state_energy_K", "type": "number"}, {"name": "upper_state_energy_K", "type": "number"}, {"name": "orderedFreq", "type": "string"}, {"name": "measFreq", "type": "string"}, {"name": "upperStateDegen", "type": "string"}, {"name": "moleculeTag", "type": "integer"}, {"name": "qnCode", "type": "integer"}, {"name": "labref_Lovas_NIST", "type": "string"}, {"name": "rel_int_HFS_Lovas", "type": "string"}, {"name": "unres_quantum_numbers", "type": "string"}, {"name": "lineid", "type": "integer"}, {"name": "transition_in_space", "type": "integer"}, {"name": "transition_in_G358", "type": "integer"}, {"name": "obsref_Lovas_NIST", "type": "string"}, {"name": "source_Lovas_NIST", "type": "string"}, {"name": "telescope_Lovas_NIST", "type": "string"}, {"name": "transitionBandColor", "type": "string"}, {"name": "searchErrorMessage", "type": "string"}, {"name": "sqlquery", "type": "string"}, {"name": "requestnumber", "type": "integer"}, {"name": "ipydguuid", "type": "integer"}], "primaryKey": ["key", "ipydguuid"], "pandas_version": "1.4.0", "primaryKeyUuid": "ipydguuid"}, "fields": [{"key": "$NaN$"}, {"species_id": "$NaN$"}, {"name": "$NaN$"}, {"chemical_name": "$NaN$"}, {"resolved_QNs": "$NaN$"}, {"linelist": "$NaN$"}, {"LovasASTIntensity": "$NaN$"}, {"lower_state_energy": "$NaN$"}, {"upper_state_energy": "$NaN$"}, {"sijmu2": "$NaN$"}, {"sij": "$NaN$"}, {"aij": "$NaN$"}, {"intintensity": "$NaN$"}, {"Lovas_NRAO": "$NaN$"}, {"orderedfreq": "$NaN$"}, {"lower_state_energy_K": "$NaN$"}, {"upper_state_energy_K": "$NaN$"}, {"orderedFreq": "$NaN$"}, {"measFreq": "$NaN$"}, {"upperStateDegen": "$NaN$"}, {"moleculeTag": "$NaN$"}, {"qnCode": "$NaN$"}, {"labref_Lovas_NIST": "$NaN$"}, {"rel_int_HFS_Lovas": "$NaN$"}, {"unres_quantum_numbers": "$NaN$"}, {"lineid": "$NaN$"}, {"transition_in_space": "$NaN$"}, {"transition_in_G358": "$NaN$"}, {"obsref_Lovas_NIST": "$NaN$"}, {"source_Lovas_NIST": "$NaN$"}, {"telescope_Lovas_NIST": "$NaN$"}, {"transitionBandColor": "$NaN$"}, {"searchErrorMessage": "$NaN$"}, {"sqlquery": "$NaN$"}, {"requestnumber": "$NaN$"}, {"ipydguuid": "$NaN$"}]}, "_dom_classes": [], "_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "DataGridModel", "_transforms": [], "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "DataGridView", "_visible_rows": [], "auto_fit_columns": false, "auto_fit_params": {"area": "all", "padding": 30, "numCols": null}, "base_column_header_size": 20, "base_column_size": 64, "base_row_header_size": 64, "base_row_size": 20, "column_widths": {}, "corner_renderer": null, "default_renderer": "IPY_MODEL_91b0e1114a9c4a2c978e480a224e6ab5", "editable": false, "grid_style": {}, "header_renderer": null, "header_visibility": "all", "horizontal_stripes": false, "layout": "IPY_MODEL_b8bbc09bf1e445b5aa864f28206efe9b", "renderers": {}, "selection_mode": "none", "selections": [], "tabbable": null, "tooltip": null, "vertical_stripes": false}, "buffers": [{"data": "AAAAAAEAAAACAAAAAwAAAA==", "encoding": "base64", "path": ["_data", "data", "key", "value"]}, {"data": "0gAAANIAAADSAAAA0gAAAA==", "encoding": "base64", "path": ["_data", "data", "species_id", "value"]}, {"data": "L90kBoElMEBuowG8BSIwQDVeukkMIjBAAAAAAAAAAAA=", "encoding": "base64", "path": ["_data", "data", "lower_state_energy", "value"]}, {"data": "v/G1Z5bMNED+t5IdG8k0QAwfEVMiyTRAAAAAAAAAAAA=", "encoding": "base64", "path": ["_data", "data", "upper_state_energy", "value"]}, {"data": "+IiYEkmEPkBwd9Zuu5g+QPFG5pE/mD5AAAAAAAAAAAA=", "encoding": "base64", "path": ["_data", "data", "sijmu2", "value"]}, {"data": "GQRWDi1yJkCNl24Sg4AmQAAAAAAAAA5AAAAAAAAAAAA=", "encoding": "base64", "path": ["_data", "data", "sij", "value"]}, {"data": "C2MLQQ7KEcB+NQcI5sgRwCBe1y/YjQ/AAAAAAAAAAAA=", "encoding": "base64", "path": ["_data", "data", "aij", "value"]}, {"data": "AQAAAAAAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "Lovas_NRAO", "value"]}, {"data": "exSuR9sGAUFos+pz3QYBQd9PjZfdBgFB30+Nl90GAUE=", "encoding": "base64", "path": ["_data", "data", "orderedfreq", "value"]}, {"data": "esISDyg7N0DnxvSEJTY3QMoyxLEuNjdAAAAAAAAAAAA=", "encoding": "base64", "path": ["_data", "data", "lower_state_energy_K", "value"]}, {"data": "FJZ4QNnsPUDHRiBe1+c9QPJetTLh5z1AAAAAAAAAAAA=", "encoding": "base64", "path": ["_data", "data", "upper_state_energy_K", "value"]}, {"data": "TUz//1NK//8AAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "moleculeTag", "value"]}, {"data": "LwEAAC8BAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "qnCode", "value"]}, {"data": "lwk+ANoLPgDnIjkAt/o4AA==", "encoding": "base64", "path": ["_data", "data", "lineid", "value"]}, {"data": "AAAAAAAAAAABAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "transition_in_space", "value"]}, {"data": "AAAAAAAAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "transition_in_G358", "value"]}, {"data": "AAAAAAAAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "requestnumber", "value"]}, {"data": "AAAAAAEAAAACAAAAAwAAAA==", "encoding": "base64", "path": ["_data", "data", "ipydguuid", "value"]}]}, "c6ae48ed37244c3e8f44068c8836baa9": {"model_name": "VegaExprModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "VegaExprModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "VegaExprView", "value": "default_value"}}, "51a750adce3940ce81c3177e8cb30608": {"model_name": "VegaExprModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "VegaExprModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "VegaExprView", "value": "default_value"}}, "25d079a64b6e414e9f519b0f54f90a6e": {"model_name": "TextRendererModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "TextRendererModel", "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "TextRendererView", "background_color": "IPY_MODEL_c6ae48ed37244c3e8f44068c8836baa9", "font": "12px sans-serif", "format": null, "format_type": "number", "horizontal_alignment": "left", "missing": "", "text_color": "IPY_MODEL_51a750adce3940ce81c3177e8cb30608", "text_elide_direction": "right", "text_value": null, "text_wrap": false, "vertical_alignment": "center"}}, "b0ea0f1d73bb41d9a27b270bed09d5bc": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "28997028e5634bc8ae448fa0559a72dc": {"model_name": "DataGridModel", "model_module": "ipydatagrid", "model_module_version": "^1.4.0", "state": {"_data": {"data": {"key": {"dtype": "int32", "shape": [4], "type": null}, "species_id": {"dtype": "int32", "shape": [4], "type": null}, "name": ["SiO <font color=\"red\">v = 0 </font>", "SiO <font color=\"red\">v = 0 </font>", "SiO <font color=\"red\">v = 0 </font>", "SiO <font color=\"red\">v = 0 </font>"], "chemical_name": ["Silicon Monoxide", "Silicon Monoxide", "Silicon Monoxide", "Silicon Monoxide"], "resolved_QNs": [" 5- 4", "5-4 ", "5-4 ", "      5        -   4"], "linelist": ["CDMS", "JPL", "Lovas", "SLAIM"], "LovasASTIntensity": [" ", " 1.6", " 1.6", " "], "lower_state_energy": {"dtype": "float64", "shape": [4], "type": null}, "upper_state_energy": {"dtype": "float64", "shape": [4], "type": null}, "sijmu2": {"dtype": "float64", "shape": [4], "type": null}, "sij": {"dtype": "float64", "shape": [4], "type": null}, "aij": {"dtype": "float64", "shape": [4], "type": null}, "intintensity": ["-1.3211", "-1.3166", "", ""], "Lovas_NRAO": {"dtype": "int32", "shape": [4], "type": null}, "orderedfreq": {"dtype": "float64", "shape": [4], "type": null}, "lower_state_energy_K": {"dtype": "float64", "shape": [4], "type": null}, "upper_state_energy_K": {"dtype": "float64", "shape": [4], "type": null}, "orderedFreq": [" <span style = 'color: #DC143C'></span>", " <span style = 'color: #DC143C'></span>", "217.104984 (0.014), <span style = 'color: #DC143C'>217.104984</span>", "217.104984 (0.014), <span style = 'color: #DC143C'>217.104984</span>"], "measFreq": ["217.104919 (0.002), <span style = 'color: #DC143C'>217.104919</span>", "217.10498 (0.08), <span style = 'color: #DC143C'>217.10498</span>", " <span style = 'color: #DC143C'></span>", "217.10498 (0.1), <span style = 'color: #DC143C'>217.10498</span>"], "upperStateDegen": ["11", "11", "", "11"], "moleculeTag": {"dtype": "int32", "shape": [4], "type": null}, "qnCode": {"dtype": "int32", "shape": [4], "type": null}, "labref_Lovas_NIST": [" ", " ", "", "    Man77"], "rel_int_HFS_Lovas": [" ", " ", " ", ""], "unres_quantum_numbers": [" 5 0         4 0       ", "J=5-4 v=0", "5-4 v=0", "      5        -   4 v=0"], "lineid": {"dtype": "int32", "shape": [4], "type": null}, "transition_in_space": {"dtype": "int32", "shape": [4], "type": null}, "transition_in_G358": {"dtype": "int32", "shape": [4], "type": null}, "obsref_Lovas_NIST": [" ", "Lor84a", "Lor84a", " "], "source_Lovas_NIST": [" ", " OriMC-1", " OriMC-1", " "], "telescope_Lovas_NIST": [" ", " MMWO    4.9m", " MMWO    4.9m", " "], "transitionBandColor": ["datatablelightpurple", "datatablelightpurple", "datatablelightpurple", "datatablelightpurple"], "searchErrorMessage": ["", "", "", ""], "sqlquery": {"value": ["$NaN$", "$NaN$", "$NaN$", "$NaN$"], "type": "raw"}, "requestnumber": {"dtype": "int32", "shape": [4], "type": null}, "ipydguuid": {"dtype": "int32", "shape": [4], "type": null}}, "schema": {"fields": [{"name": "key", "type": "integer"}, {"name": "species_id", "type": "integer"}, {"name": "name", "type": "string"}, {"name": "chemical_name", "type": "string"}, {"name": "resolved_QNs", "type": "string"}, {"name": "linelist", "type": "string"}, {"name": "LovasASTIntensity", "type": "string"}, {"name": "lower_state_energy", "type": "number"}, {"name": "upper_state_energy", "type": "number"}, {"name": "sijmu2", "type": "number"}, {"name": "sij", "type": "number"}, {"name": "aij", "type": "number"}, {"name": "intintensity", "type": "string"}, {"name": "Lovas_NRAO", "type": "integer"}, {"name": "orderedfreq", "type": "number"}, {"name": "lower_state_energy_K", "type": "number"}, {"name": "upper_state_energy_K", "type": "number"}, {"name": "orderedFreq", "type": "string"}, {"name": "measFreq", "type": "string"}, {"name": "upperStateDegen", "type": "string"}, {"name": "moleculeTag", "type": "integer"}, {"name": "qnCode", "type": "integer"}, {"name": "labref_Lovas_NIST", "type": "string"}, {"name": "rel_int_HFS_Lovas", "type": "string"}, {"name": "unres_quantum_numbers", "type": "string"}, {"name": "lineid", "type": "integer"}, {"name": "transition_in_space", "type": "integer"}, {"name": "transition_in_G358", "type": "integer"}, {"name": "obsref_Lovas_NIST", "type": "string"}, {"name": "source_Lovas_NIST", "type": "string"}, {"name": "telescope_Lovas_NIST", "type": "string"}, {"name": "transitionBandColor", "type": "string"}, {"name": "searchErrorMessage", "type": "string"}, {"name": "sqlquery", "type": "string"}, {"name": "requestnumber", "type": "integer"}, {"name": "ipydguuid", "type": "integer"}], "primaryKey": ["key", "ipydguuid"], "pandas_version": "1.4.0", "primaryKeyUuid": "ipydguuid"}, "fields": [{"key": "$NaN$"}, {"species_id": "$NaN$"}, {"name": "$NaN$"}, {"chemical_name": "$NaN$"}, {"resolved_QNs": "$NaN$"}, {"linelist": "$NaN$"}, {"LovasASTIntensity": "$NaN$"}, {"lower_state_energy": "$NaN$"}, {"upper_state_energy": "$NaN$"}, {"sijmu2": "$NaN$"}, {"sij": "$NaN$"}, {"aij": "$NaN$"}, {"intintensity": "$NaN$"}, {"Lovas_NRAO": "$NaN$"}, {"orderedfreq": "$NaN$"}, {"lower_state_energy_K": "$NaN$"}, {"upper_state_energy_K": "$NaN$"}, {"orderedFreq": "$NaN$"}, {"measFreq": "$NaN$"}, {"upperStateDegen": "$NaN$"}, {"moleculeTag": "$NaN$"}, {"qnCode": "$NaN$"}, {"labref_Lovas_NIST": "$NaN$"}, {"rel_int_HFS_Lovas": "$NaN$"}, {"unres_quantum_numbers": "$NaN$"}, {"lineid": "$NaN$"}, {"transition_in_space": "$NaN$"}, {"transition_in_G358": "$NaN$"}, {"obsref_Lovas_NIST": "$NaN$"}, {"source_Lovas_NIST": "$NaN$"}, {"telescope_Lovas_NIST": "$NaN$"}, {"transitionBandColor": "$NaN$"}, {"searchErrorMessage": "$NaN$"}, {"sqlquery": "$NaN$"}, {"requestnumber": "$NaN$"}, {"ipydguuid": "$NaN$"}]}, "_dom_classes": [], "_model_module": "ipydatagrid", "_model_module_version": "^1.4.0", "_model_name": "DataGridModel", "_transforms": [], "_view_count": null, "_view_module": "ipydatagrid", "_view_module_version": "^1.4.0", "_view_name": "DataGridView", "_visible_rows": [], "auto_fit_columns": false, "auto_fit_params": {"area": "all", "padding": 30, "numCols": null}, "base_column_header_size": 20, "base_column_size": 64, "base_row_header_size": 64, "base_row_size": 20, "column_widths": {}, "corner_renderer": null, "default_renderer": "IPY_MODEL_25d079a64b6e414e9f519b0f54f90a6e", "editable": false, "grid_style": {}, "header_renderer": null, "header_visibility": "all", "horizontal_stripes": false, "layout": "IPY_MODEL_b0ea0f1d73bb41d9a27b270bed09d5bc", "renderers": {}, "selection_mode": "none", "selections": [], "tabbable": null, "tooltip": null, "vertical_stripes": false}, "buffers": [{"data": "AAAAAAEAAAACAAAAAwAAAA==", "encoding": "base64", "path": ["_data", "data", "key", "value"]}, {"data": "FAAAABQAAAAUAAAAFAAAAA==", "encoding": "base64", "path": ["_data", "data", "species_id", "value"]}, {"data": "1edqK/b3LEDV52or9vcsQAAAAAAAAAAAK4cW2c73LEA=", "encoding": "base64", "path": ["_data", "data", "lower_state_energy", "value"]}, {"data": "RFGgT+S5NUBEUaBP5Lk1QAAAAAAAAAAA7yB2ptC5NUA=", "encoding": "base64", "path": ["_data", "data", "upper_state_energy", "value"]}, {"data": "rVEP0ej+R0C7RPXWwBJIQAAAAAAAAAAA5IOezarXR0A=", "encoding": "base64", "path": ["_data", "data", "sijmu2", "value"]}, {"data": "AAAAAAAAFEAAAAAAAAAUQAAAAAAAAAAAAAAAAAAAFEA=", "encoding": "base64", "path": ["_data", "data", "sij", "value"]}, {"data": "g6Pk1TlGCsAziuWWVkMKwAAAAAAAAAAAB+v/HOZLCsA=", "encoding": "base64", "path": ["_data", "data", "aij", "value"]}, {"data": "AQAAAAAAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "Lovas_NRAO", "value"]}, {"data": "CKwcWoeACkFxPQrXh4AKQVpkO9+HgApBWmQ734eACkE=", "encoding": "base64", "path": ["_data", "data", "orderedfreq", "value"]}, {"data": "ngd3Z+3WNECeB3dn7dY0QAAAAAAAAAAArRdDOdHWNEA=", "encoding": "base64", "path": ["_data", "data", "lower_state_energy_K", "value"]}, {"data": "7kJznUZCP0DuQnOdRkI/QAAAAAAAAAAA/FI/bypCP0A=", "encoding": "base64", "path": ["_data", "data", "upper_state_energy_K", "value"]}, {"data": "J1L//x5U//8AAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "moleculeTag", "value"]}, {"data": "sgQAAGUAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "qnCode", "value"]}, {"data": "5Wj4AAjQEQBe1TgAwgI8AA==", "encoding": "base64", "path": ["_data", "data", "lineid", "value"]}, {"data": "AAAAAAAAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "transition_in_space", "value"]}, {"data": "AAAAAAAAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "transition_in_G358", "value"]}, {"data": "AAAAAAAAAAAAAAAAAAAAAA==", "encoding": "base64", "path": ["_data", "data", "requestnumber", "value"]}, {"data": "AAAAAAEAAAACAAAAAwAAAA==", "encoding": "base64", "path": ["_data", "data", "ipydguuid", "value"]}]}, "c63ec7415a8f414483bad2e303f255b8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5e9e075b86924b2c9318e6b6d00ba261": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "b1ab80f611364b078c5d5f4810e1db68": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_c63ec7415a8f414483bad2e303f255b8", "max": 176400.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_5e9e075b86924b2c9318e6b6d00ba261", "tabbable": null, "tooltip": null, "value": 176400.0}}, "56cb893618dd4424b392939d1cd9cb74": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "28a7a648ff134b1ab3c862ba6cff8f61": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "d754c9907b4c4ef0aa67a1b5b87915f2": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_56cb893618dd4424b392939d1cd9cb74", "placeholder": "\u200b", "style": "IPY_MODEL_28a7a648ff134b1ab3c862ba6cff8f61", "tabbable": null, "tooltip": null, "value": "Spectral\u2007Interpolate:\u2007100%"}}, "cf20c89d8dd741c98b865554f278c61a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "29cf1ea398cf4412bd438aab73bf829c": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "10db086cf635413f886bf6fa25ed2a68": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_cf20c89d8dd741c98b865554f278c61a", "placeholder": "\u200b", "style": "IPY_MODEL_29cf1ea398cf4412bd438aab73bf829c", "tabbable": null, "tooltip": null, "value": "\u2007176400/176400\u2007[00:09&lt;00:00,\u200752610.84it/s]"}}, "fede0031c4f340aeb381f17d94539dc3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "80561cd584074f79aa27f5a8c396561f": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_d754c9907b4c4ef0aa67a1b5b87915f2", "IPY_MODEL_b1ab80f611364b078c5d5f4810e1db68", "IPY_MODEL_10db086cf635413f886bf6fa25ed2a68"], "layout": "IPY_MODEL_fede0031c4f340aeb381f17d94539dc3", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'SpectralCubeReprojectExample';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="None - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="None - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Cube Reprojection Tutorial
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectral-cube-reprojection" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--spectral-cube-reprojection/issues/new?title=Issue%20on%20page%20%2FSpectralCubeReprojectExample.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cube Reprojection Tutorial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cube-reprojection-tutorial">
+<h1>Cube Reprojection Tutorial<a class="headerlink" href="#cube-reprojection-tutorial" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Adam Ginsburg, Eric Koch</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>reproject a cube spectrally</p></li>
+<li><p>smooth it spectrally</p></li>
+<li><p>reproject it spatially</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>spectral cube, radio astronomy, astroquery, units, dask</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>Spectroscopic cube observations taken at different wavelength can trace the motion of gas or stars using spectral lines, but often lines at different wavelengths give different information.
+For example, one might observe a galaxy in the 21cm line of HI and the 115 GHz line of CO, or a protoplanetary disk in a line of N2H+ and a line of CO, or a galactic disk in the H-alpha and H-beta lines (in absorption or emission).
+In order to compare these data sets pixel-by-pixel, they must be placed onto a common grid with common resolution.</p>
+<p>This tutorial shows how to take two spectral cubes observed toward the same part of the sky, but different frequencies, and put them onto the same grid using <a class="reference internal" href="#spectral-cube.readthedocs.io"><span class="xref myst">spectral-cube</span></a>.</p>
+<p>It uses <a class="reference external" href="https://astroquery.readthedocs.io/">astroquery</a> to obtain line frequencies from <a class="reference external" href="https://astroquery.readthedocs.io/en/latest/splatalogue/splatalogue.html">splatalogue</a>; this example uses radio-wavelength data for which Splatalogue’s molecular line lists are appropriate.
+Finally, it shows how to do the reprojection using <a class="reference external" href="https://dask.org">dask</a> to enable parallelization.</p>
+</section>
+<section id="index">
+<h2>Index<a class="headerlink" href="#index" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#Step-1:-Download-the-data"><span class="xref myst">Step 1: Download</span></a></p></li>
+<li><p><a class="reference internal" href="#Step-2:-Load-the-cubes"><span class="xref myst">Step 2: Open files, collect metadata</span></a></p></li>
+<li><p><a class="reference internal" href="#Step-3:-Convert-cubes-from-frequency-to-velocity"><span class="xref myst">Step 3: Convert to velocity</span></a></p></li>
+<li><p><a class="reference internal" href="#Step-4.-Spectral-Interpolation"><span class="xref myst">Step 4: Spectral Interpolation</span></a></p></li>
+<li><p><a class="reference internal" href="#Step-5.-Spatial-Smoothing"><span class="xref myst">Step 5: Spatial Smoothing</span></a></p></li>
+<li><p><a class="reference internal" href="#Step-6.-Reprojection"><span class="xref myst">Step 6: Reprojection</span></a></p></li>
+</ul>
+<p>In this example, we do spectral smoothing and interpolation (step 4) before spatial smoothing and interpolation (step 5), but if you have a varying-resolution cube (with a different beam size for each channel), you have to do spatial smoothing first.   For more information see the <a class="reference internal" href="#spectral-cube.readthedocs.io"><span class="xref myst">spectral-cube documentation</span></a>.</p>
+</section>
+<section id="step-1-download-the-data">
+<h2>Step 1: Download the data<a class="headerlink" href="#step-1-download-the-data" title="Link to this heading">#</a></h2>
+<p>(you might not have to do this step, since you may already have data)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We download two example spectral cubes of a point in the Galactic center from a permalink on the ALMA archives.
+These are moderately large files, with sizes 18 MB and 337 MB.</p>
+<p>If you have trouble with these downloads, try changing to a different ALMA server (e.g., almascience.eso.org-&gt;<a class="reference external" href="http://almascience.nrao.edu">almascience.nrao.edu</a>) or increase the timeout.  See the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.utils.data.download_file.html">download_file</a> documentation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename_1</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
+    <span class="s2">&quot;https://almascience.eso.org/dataPortal/member.uid___A001_X1465_X3a33.BrickMaser_sci.spw71.cube.I.manual.image.pbcor.fits&quot;</span><span class="p">,</span>
+    <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename_2</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
+    <span class="s2">&quot;https://almascience.eso.org/dataPortal/member.uid___A001_X87d_X141.a_sma1_sci.spw27.cube.I.pbcor.fits&quot;</span><span class="p">,</span>
+    <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-load-the-cubes">
+<h2>Step 2: Load the cubes<a class="headerlink" href="#step-2-load-the-cubes" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">spectral_cube</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpectralCube</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube1</span> <span class="o">=</span> <span class="n">SpectralCube</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename_1</span><span class="p">)</span>
+<span class="n">cube1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: StokesWarning: Cube is a Stokes cube, returning spectral cube for I component [spectral_cube.io.core]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+ n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+ n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+ n_s:     75  type_s: FREQ      unit_s: Hz     range: 139434992275.503 Hz:139503942362.300 Hz
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2</span> <span class="o">=</span> <span class="n">SpectralCube</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename_2</span><span class="p">)</span>
+<span class="n">cube2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: StokesWarning: Cube is a Stokes cube, returning spectral cube for I component [spectral_cube.io.core]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(478, 420, 420) and unit=Jy / beam:
+ n_x:    420  type_x: RA---SIN  unit_x: deg    range:   266.537002 deg:  266.551600 deg
+ n_y:    420  type_y: DEC--SIN  unit_y: deg    range:   -28.711371 deg:  -28.698569 deg
+ n_s:    478  type_s: FREQ      unit_s: Hz     range: 216957714464.027 Hz:217190639088.700 Hz
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cubes are at different frequencies - 139 and 217 GHz.</p>
+<p>The first cube covers the H2CS 4(1,3)-3(1,2) line at 139.483699	GHz.</p>
+<p>The second covers SiO v=5-4 at 217.104984 GHz</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">find_lines</span></code> tool to query <a class="reference external" href="https://splatalogue.online/">splatalogue</a> with <a class="reference external" href="https://astroquery.readthedocs.io/en/latest/splatalogue/splatalogue.html">astroquery</a> over the spectral range covered by the cube.  It returns a table of matching lines.  Note that some line names will be repeated because Splatalogue includes several different databases and most chemical species are present in all of these.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube1</span><span class="o">.</span><span class="n">find_lines</span><span class="p">(</span><span class="n">chemical_name</span><span class="o">=</span><span class="s2">&quot; H2CS &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show_in_notebook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: ExperimentalImplementationWarning: The line-finding routine is experimental.  Please report bugs on the Issues page: https://github.com/radio-astro-tools/spectral-cube/issues [spectral_cube.spectral_cube]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b855ad8fb74645ce97f79941506fb694"}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2</span><span class="o">.</span><span class="n">find_lines</span><span class="p">(</span><span class="n">chemical_name</span><span class="o">=</span><span class="s2">&quot;SiO&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show_in_notebook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: ExperimentalImplementationWarning: The line-finding routine is experimental.  Please report bugs on the Issues page: https://github.com/radio-astro-tools/spectral-cube/issues [spectral_cube.spectral_cube]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "28997028e5634bc8ae448fa0559a72dc"}</script></div>
+</div>
+</section>
+<section id="step-3-convert-cubes-from-frequency-to-velocity">
+<h2>Step 3: Convert cubes from frequency to velocity<a class="headerlink" href="#step-3-convert-cubes-from-frequency-to-velocity" title="Link to this heading">#</a></h2>
+<p>To compare the kinematic structure of the target, we need to convert from the observed frequency (which must be in a common reference frame; in this case, it already is) to the doppler velocity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube1vel</span> <span class="o">=</span> <span class="n">cube1</span><span class="o">.</span><span class="n">with_spectral_unit</span><span class="p">(</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">velocity_convention</span><span class="o">=</span><span class="s2">&quot;radio&quot;</span><span class="p">,</span> <span class="n">rest_value</span><span class="o">=</span><span class="mf">139.483699</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">GHz</span>
+<span class="p">)</span>
+<span class="n">cube1vel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+ n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+ n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+ n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2vel</span> <span class="o">=</span> <span class="n">cube2</span><span class="o">.</span><span class="n">with_spectral_unit</span><span class="p">(</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">velocity_convention</span><span class="o">=</span><span class="s2">&quot;radio&quot;</span><span class="p">,</span> <span class="n">rest_value</span><span class="o">=</span><span class="mf">217.104984</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">GHz</span>
+<span class="p">)</span>
+<span class="n">cube2vel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(478, 420, 420) and unit=Jy / beam:
+ n_x:    420  type_x: RA---SIN  unit_x: deg    range:   266.537002 deg:  266.551600 deg
+ n_y:    420  type_y: DEC--SIN  unit_y: deg    range:   -28.711371 deg:  -28.698569 deg
+ n_s:    478  type_s: VRAD      unit_s: km / s  range:     -118.278 km / s:     203.359 km / s
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the shape of the cube, we can see the H2CS cube is narrower in velocity, so we’ll use that as the target spectral reprojection.  However, the SiO cube is the smaller footprint on the sky.</p>
+<section id="create-spatial-maps-of-the-peak-intensity-to-quickly-explore-the-cubes">
+<h3>Create spatial maps of the peak intensity to quickly explore the cubes:<a class="headerlink" href="#create-spatial-maps-of-the-peak-intensity-to-quickly-explore-the-cubes" title="Link to this heading">#</a></h3>
+<p>One way to quickly explore the structure in the data cubes is to produce a peak intensity map, or the maximum along the spectral axis (<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mx</span> <span class="o">=</span> <span class="n">cube1</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">mx</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: PossiblySlowWarning: This function (&lt;function BaseSpectralCube.max at 0x7fa61a16b740&gt;) requires loading the entire cube into memory and may therefore be slow. [spectral_cube.utils]
+/opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/spectral_cube/spectral_cube.py:436: RuntimeWarning: All-NaN slice encountered
+  out = function(self._get_filled_data(fill=fill,
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: AstropyDeprecationWarning: CoordinateHelper.ticks should not be accessed directly and is deprecated [astropy.visualization.wcsaxes.coordinate_helpers]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Auto-setting vmin to -7.398e-05 [aplpy.core]
+INFO: Auto-setting vmax to  4.143e-02 [aplpy.core]
+</pre></div>
+</div>
+<img alt="_images/55c20ae991f6396842b97c72e7cd171a7c39580b40429cae498c375936a7aa11.png" src="_images/55c20ae991f6396842b97c72e7cd171a7c39580b40429cae498c375936a7aa11.png" />
+</div>
+</div>
+<p>We can do the same thing all on one line (for the other cube this time):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: PossiblySlowWarning: This function (&lt;function BaseSpectralCube.max at 0x7fa61a16b740&gt;) requires loading the entire cube into memory and may therefore be slow. [spectral_cube.utils]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/spectral_cube/spectral_cube.py:436: RuntimeWarning: All-NaN slice encountered
+  out = function(self._get_filled_data(fill=fill,
+WARNING: AstropyDeprecationWarning: CoordinateHelper.ticks should not be accessed directly and is deprecated [astropy.visualization.wcsaxes.coordinate_helpers]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Auto-setting vmin to  7.850e-04 [aplpy.core]
+INFO: Auto-setting vmax to  5.298e-02 [aplpy.core]
+</pre></div>
+</div>
+<img alt="_images/5675bfb8b8d12071ca5188e2f299ea1b67e54d8a36fa12c0908901f57fb41797.png" src="_images/5675bfb8b8d12071ca5188e2f299ea1b67e54d8a36fa12c0908901f57fb41797.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-4-spectral-interpolation">
+<h1>Step 4. Spectral Interpolation<a class="headerlink" href="#step-4-spectral-interpolation" title="Link to this heading">#</a></h1>
+<p>We can choose to do either the spatial or spectral step first.<br />
+In this case, we choose the spectral step first because the H<span class="math notranslate nohighlight">\(_2\)</span>CS cube is narrower in velocity (<code class="docutils literal notranslate"><span class="pre">cube1vel</span></code>) and this will reduce the number of channels we need to spatially interpolate over in the next step.</p>
+<p>We need to match resolution to the cube with the largest channel width:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">velocity_res_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">velocity_res_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">cube2vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">velocity_res_1</span><span class="p">,</span> <span class="n">velocity_res_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Quantity 2.00262828 km / s&gt;, &lt;Quantity 0.67429189 km / s&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we will reduce <code class="docutils literal notranslate"><span class="pre">cube2vel</span></code> to have the same spectral range as <code class="docutils literal notranslate"><span class="pre">cube1vel</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2vel_cutout</span> <span class="o">=</span> <span class="n">cube2vel</span><span class="o">.</span><span class="n">spectral_slab</span><span class="p">(</span>
+    <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">cube1vel</span><span class="p">,</span> <span class="n">cube2vel_cutout</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+  n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+  n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+  n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s,
+ SpectralCube with shape=(221, 420, 420) and unit=Jy / beam:
+  n_x:    420  type_x: RA---SIN  unit_x: deg    range:   266.537002 deg:  266.551600 deg
+  n_y:    420  type_y: DEC--SIN  unit_y: deg    range:   -28.711371 deg:  -28.698569 deg
+  n_s:    221  type_s: VRAD      unit_s: km / s  range:      -43.432 km / s:     104.913 km / s)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that it is important for the to-be-interpolated cube, in this case <code class="docutils literal notranslate"><span class="pre">cube2</span></code>, to have pixels bounding <code class="docutils literal notranslate"><span class="pre">cube1</span></code>’s spectral axis, but in this case it does not.  If the pixel range doesn’t overlap perfectly, it may blank out one of the edge pixels.  So, to fix this, we add a little buffer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2vel_cutout</span> <span class="o">=</span> <span class="n">cube2vel</span><span class="o">.</span><span class="n">spectral_slab</span><span class="p">(</span>
+    <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">velocity_res_2</span><span class="p">,</span> <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">cube1vel</span><span class="p">,</span> <span class="n">cube2vel_cutout</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+  n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+  n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+  n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s,
+ SpectralCube with shape=(222, 420, 420) and unit=Jy / beam:
+  n_x:    420  type_x: RA---SIN  unit_x: deg    range:   266.537002 deg:  266.551600 deg
+  n_y:    420  type_y: DEC--SIN  unit_y: deg    range:   -28.711371 deg:  -28.698569 deg
+  n_s:    222  type_s: VRAD      unit_s: km / s  range:      -44.106 km / s:     104.913 km / s)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our H2CS cube (<code class="docutils literal notranslate"><span class="pre">cube1vel</span></code>) has broader channels.  We need to first smooth <code class="docutils literal notranslate"><span class="pre">cube2vel</span></code> to the broader channel width before doing the spatial reprojection.</p>
+<p>To do this, we will spectrally smooth with a Gaussian with width set such that smoothing <code class="docutils literal notranslate"><span class="pre">cube2vel</span></code> will result in the same width as <code class="docutils literal notranslate"><span class="pre">cube1vel</span></code>.   We do this by finding the difference in widths when deconvolving the <code class="docutils literal notranslate"><span class="pre">cube1vel</span></code> channel width from <code class="docutils literal notranslate"><span class="pre">cube2vel</span></code>. For further information see the <a class="reference external" href="https://spectral-cube.readthedocs.io/en/latest/smoothing.html#spectral-smoothing">documentation on smoothing</a>.</p>
+<p>Note that if we did not do this smoothing step, we would under-sample the <code class="docutils literal notranslate"><span class="pre">cube2vel</span></code> data in the next downsampling step, reducing our signal-to-noise ratio.</p>
+<p>We have adopted a width equal to the channel width; the <a class="reference external" href="https://help.almascience.org/kb/articles/what-spectral-resolution-will-i-get-for-a-given-channel-spacing">line spread function</a> is actually a Hanning-smoothed tophat.  We are making a coarse approximation here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fwhm_gaussian</span> <span class="o">=</span> <span class="p">(</span><span class="n">velocity_res_1</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">velocity_res_2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+<span class="n">fwhm_gaussian</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[1.8856963 \; \mathrm{\frac{km}{s}}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.convolution</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian1DKernel</span>
+
+<span class="n">fwhm_to_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># we want the kernel in pixel units, so we force to km/s and take the value</span>
+<span class="n">spectral_smoothing_kernel</span> <span class="o">=</span> <span class="n">Gaussian1DKernel</span><span class="p">(</span>
+    <span class="n">stddev</span><span class="o">=</span><span class="n">fwhm_gaussian</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="n">fwhm_to_sigma</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then smooth with the kernel.  Note that this is doing 420x420 = 176400 smoothing operations on a length-221 spectrum: it will take a little time</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2vel_smooth</span> <span class="o">=</span> <span class="n">cube2vel_cutout</span><span class="o">.</span><span class="n">spectral_smooth</span><span class="p">(</span><span class="n">spectral_smoothing_kernel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: nan_treatment=&#39;interpolate&#39;, however, NaN values detected post convolution. A contiguous region of NaN values, larger than the kernel size, are present in the input array. Increase the kernel size to avoid this. [astropy.convolution.convolve]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve done spectral smoothing, we can resample the spectral axis of <code class="docutils literal notranslate"><span class="pre">cube2vel_smooth</span></code> to match <code class="docutils literal notranslate"><span class="pre">cube1vel</span></code> by interpolating <code class="docutils literal notranslate"><span class="pre">cube2vel_smooth</span></code> onto <code class="docutils literal notranslate"><span class="pre">cube1vel</span></code>’s grid:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2vel_spectralresample</span> <span class="o">=</span> <span class="n">cube2vel_smooth</span><span class="o">.</span><span class="n">spectral_interpolate</span><span class="p">(</span>
+    <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">suppress_smooth_warning</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">cube2vel_spectralresample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "80561cd584074f79aa27f5a8c396561f"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(75, 420, 420) and unit=Jy / beam:
+ n_x:    420  type_x: RA---SIN  unit_x: deg    range:   266.537002 deg:  266.551600 deg
+ n_y:    420  type_y: DEC--SIN  unit_y: deg    range:   -28.711371 deg:  -28.698569 deg
+ n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we included the <code class="docutils literal notranslate"><span class="pre">suppress_smooth_warning=True</span></code> argument.  That is to hide this warning:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">SmoothingWarning</span><span class="p">:</span> <span class="n">Input</span> <span class="n">grid</span> <span class="n">has</span> <span class="n">too</span> <span class="n">small</span> <span class="n">a</span> <span class="n">spacing</span><span class="o">.</span> <span class="n">The</span> <span class="n">data</span> <span class="n">should</span> <span class="n">be</span> <span class="n">smoothed</span> <span class="n">prior</span> <span class="n">to</span> <span class="n">resampling</span><span class="o">.</span> <span class="p">[</span><span class="n">spectral_cube</span><span class="o">.</span><span class="n">spectral_cube</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>which will tell you if the operation will under-sample the original data.  The smoothing work we did above is specifically to make sure we are properly sampling, so this warning does not apply.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-5-spatial-smoothing">
+<h1>Step 5. Spatial Smoothing<a class="headerlink" href="#step-5-spatial-smoothing" title="Link to this heading">#</a></h1>
+<p>Now that we’ve done spectral smoothing, we also need to follow a similar procedure of smoothing then resampling for the spatial axes.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">beam</span></code> is the resolution element of our cubes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube1vel</span><span class="o">.</span><span class="n">beam</span><span class="p">,</span> <span class="n">cube2vel_spectralresample</span><span class="o">.</span><span class="n">beam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Beam: BMAJ=1.29719604986604 arcsec BMIN=1.04247149438736 arcsec BPA=82.95313553702 deg,
+ Beam: BMAJ=0.8935712308515601 arcsec BMIN=0.6649610689789199 arcsec BPA=85.81119797802 deg)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">cube1</span></code> again hase the larger beam, so we’ll smooth <code class="docutils literal notranslate"><span class="pre">cube2</span></code> to its resolution</p>
+<section id="aside-mixed-beams">
+<h2>Aside: mixed beams<a class="headerlink" href="#aside-mixed-beams" title="Link to this heading">#</a></h2>
+<p>If cube1 and cube2 had different sized beams, but neither was clearly larger, we would have to convolve <em>both</em> to a <a class="reference external" href="https://radio-beam.readthedocs.io/en/latest/commonbeam.html#finding-the-smallest-common-beam">common beam</a>.</p>
+<p>In this case, it’s redundant and we could have just used <code class="docutils literal notranslate"><span class="pre">cube1</span></code>’s beam, but this is the more general approach:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">radio_beam</span>
+
+<span class="n">common_beam</span> <span class="o">=</span> <span class="n">radio_beam</span><span class="o">.</span><span class="n">commonbeam</span><span class="o">.</span><span class="n">common_2beams</span><span class="p">(</span>
+    <span class="n">radio_beam</span><span class="o">.</span><span class="n">Beams</span><span class="p">(</span><span class="n">beams</span><span class="o">=</span><span class="p">[</span><span class="n">cube1vel</span><span class="o">.</span><span class="n">beam</span><span class="p">,</span> <span class="n">cube2vel</span><span class="o">.</span><span class="n">beam</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">common_beam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[Beam: BMAJ=$1.29719604986604^{''}$ BMIN=$1.04247149438736^{''}$ BPA=$82.95313553702^\circ$\]</div>
+</div>
+</div>
+<p>We then convolve:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for v&lt;0.6, we convert to Kelvin to ensure the units are preserved:</span>
+<span class="c1"># cube2vel_spatialspectralsmooth = cube2vel_spectralresample.to(u.K).convolve_to(common_beam)</span>
+<span class="c1"># in more recent versions, the unit conversion is handled appropriately,</span>
+<span class="c1"># so unit conversion isn&#39;t needed</span>
+<span class="n">cube2vel_spatialspectralsmooth</span> <span class="o">=</span> <span class="n">cube2vel_spectralresample</span><span class="o">.</span><span class="n">convolve_to</span><span class="p">(</span><span class="n">common_beam</span><span class="p">)</span>
+<span class="n">cube2vel_spatialspectralsmooth</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(75, 420, 420) and unit=Jy / beam:
+ n_x:    420  type_x: RA---SIN  unit_x: deg    range:   266.537002 deg:  266.551600 deg
+ n_y:    420  type_y: DEC--SIN  unit_y: deg    range:   -28.711371 deg:  -28.698569 deg
+ n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="step-6-reprojection">
+<h1>Step 6. Reprojection<a class="headerlink" href="#step-6-reprojection" title="Link to this heading">#</a></h1>
+<p>Now we can do the spatial resampling as the final step for producing two cubes matched to the same spatial and spectral pixel grid:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first we make a copy of the target (cube1vel) header and set its rest frequency</span>
+<span class="c1"># to that of the cube we&#39;re reprojecting (cube2vel_spatialspectralsmooth)</span>
+<span class="c1"># (see https://github.com/radio-astro-tools/spectral-cube/issues/874)</span>
+<span class="n">tgthdr</span> <span class="o">=</span> <span class="n">cube1vel</span><span class="o">.</span><span class="n">header</span>
+<span class="n">tgthdr</span><span class="p">[</span><span class="s2">&quot;RESTFRQ&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cube2vel_spatialspectralsmooth</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;RESTFRQ&quot;</span><span class="p">]</span>
+
+<span class="c1"># now we continue with the reprojection</span>
+<span class="n">cube2vel_reproj</span> <span class="o">=</span> <span class="n">cube2vel_spatialspectralsmooth</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="n">tgthdr</span><span class="p">)</span>
+<span class="n">cube2vel_reproj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+ n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+ n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+ n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s
+</pre></div>
+</div>
+</div>
+</div>
+<p>These two cubes are now on an identical grid, and can be directly compared:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube2vel_reproj</span><span class="p">,</span> <span class="n">cube1vel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+  n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+  n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+  n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s,
+ SpectralCube with shape=(75, 250, 250) and unit=Jy / beam:
+  n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+  n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+  n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s)
+</pre></div>
+</div>
+</div>
+</div>
+<p>These spectra can now be overplotted as they are in the same unit with the same beam.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube1vel</span><span class="p">[:,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span>
+<span class="n">cube2vel_reproj</span><span class="p">[:,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span><span class="o">.</span><span class="n">quicklook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d47a978fffba8b3c2d132091b7fa0b9669f5b6278b2779865b9d6b49ea811080.png" src="_images/d47a978fffba8b3c2d132091b7fa0b9669f5b6278b2779865b9d6b49ea811080.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dask">
+<h1>Dask<a class="headerlink" href="#dask" title="Link to this heading">#</a></h1>
+<p>All of the above can be done using <code class="docutils literal notranslate"><span class="pre">dask</span></code> as the underlying framework to parallelize the operations.
+See <a class="reference external" href="https://spectral-cube.readthedocs.io/en/latest/dask.html">the spectral-cube documentation on dask integration</a> or the <a class="reference external" href="https://dask.org/">dask documentation</a> for further details.</p>
+<p>The dask approach can be made more memory-efficient (avoid using too much RAM) by writing intermediate steps to disk.  The non-dask approach used above will generally need to read the whole cube into memory.  Depending on the situation, either approach may be faster, but <code class="docutils literal notranslate"><span class="pre">dask</span></code> may be needed if the cube is larger than memory.</p>
+<p>We repeat all the operations above using dask.  We use a <code class="docutils literal notranslate"><span class="pre">ProgressBar</span></code> so you can see how long it takes.  We also suppress warnings to make the output look cleaner (we already saw all the important warnings above).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dask.diagnostics</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProgressBar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">ProgressBar</span><span class="p">():</span>
+        <span class="n">cube2dask</span> <span class="o">=</span> <span class="n">SpectralCube</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename_2</span><span class="p">,</span> <span class="n">use_dask</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">cube2daskvel</span> <span class="o">=</span> <span class="n">cube2dask</span><span class="o">.</span><span class="n">with_spectral_unit</span><span class="p">(</span>
+            <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">velocity_convention</span><span class="o">=</span><span class="s2">&quot;radio&quot;</span><span class="p">,</span> <span class="n">rest_value</span><span class="o">=</span><span class="mf">217.104984</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">GHz</span>
+        <span class="p">)</span>
+        <span class="n">cube2daskvel_cutout</span> <span class="o">=</span> <span class="n">cube2daskvel</span><span class="o">.</span><span class="n">spectral_slab</span><span class="p">(</span>
+            <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">velocity_res_2</span><span class="p">,</span> <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">cube2daskvel_smooth</span> <span class="o">=</span> <span class="n">cube2daskvel_cutout</span><span class="o">.</span><span class="n">spectral_smooth</span><span class="p">(</span>
+            <span class="n">spectral_smoothing_kernel</span>
+        <span class="p">)</span>
+        <span class="n">cube2daskvel_spectralresample</span> <span class="o">=</span> <span class="n">cube2daskvel_smooth</span><span class="o">.</span><span class="n">spectral_interpolate</span><span class="p">(</span>
+            <span class="n">cube1vel</span><span class="o">.</span><span class="n">spectral_axis</span><span class="p">,</span> <span class="n">suppress_smooth_warning</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">cube2daskvel_spatialspectralsmooth</span> <span class="o">=</span> <span class="n">cube2daskvel_spectralresample</span><span class="o">.</span><span class="n">convolve_to</span><span class="p">(</span>
+            <span class="n">common_beam</span>
+        <span class="p">)</span>
+        <span class="n">cube2daskvel_reproj</span> <span class="o">=</span> <span class="n">cube2daskvel_spatialspectralsmooth</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span>
+            <span class="n">tgthdr</span>
+        <span class="p">)</span>  <span class="c1"># as above, tgthdr is altered cube1vel header</span>
+<span class="n">cube2daskvel_reproj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 223.09 us
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 103.40 ms
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 211.56 ms
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 440.48 ms
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 805.98 ms
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 1.58 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 1.68 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 1.93 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 2.17 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 2.28 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 2.38 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 3.20 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 3.30 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 3.40 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 152.94 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 153.05 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 153.15 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 153.39 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 153.61 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 153.72 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 154.47 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 154.57 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                                        ] | 0% Completed | 154.67 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[########################################] | 100% Completed | 154.77 s
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DaskSpectralCube with shape=(75, 250, 250) and unit=Jy / beam and chunk size (75, 250, 250):
+ n_x:    250  type_x: RA---SIN  unit_x: deg    range:   266.534072 deg:  266.554577 deg
+ n_y:    250  type_y: DEC--SIN  unit_y: deg    range:   -28.713958 deg:  -28.695975 deg
+ n_s:     75  type_s: VRAD      unit_s: km / s  range:      -43.509 km / s:     104.685 km / s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--spectral-cube-reprojection",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@GITHUB-USERNAME, ORCID-ID), AUTHOR2 (@GITHUB-USERNAME, ORCID-ID)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
