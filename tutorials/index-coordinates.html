@@ -486,37 +486,8 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameResolveError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;NGC 188&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ngc188_center</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:1909,</span> in <span class="ni">SkyCoord.from_name</span><span class="nt">(cls, name, frame, parse, cache)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1875</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1876</span><span class="sd"> Given a name, query the CDS name resolver to attempt to retrieve</span>
-<span class="g g-Whitespace">   </span><span class="mi">1877</span><span class="sd"> coordinate information for that object. The search database, sesame</span>
-<span class="sd">   (...)   1905     Instance of the SkyCoord class.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1906</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1907</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.name_resolve</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_icrs_coordinates</span>
-<span class="ne">-&gt; </span><span class="mi">1909</span> <span class="n">icrs_coord</span> <span class="o">=</span> <span class="n">get_icrs_coordinates</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parse</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1910</span> <span class="n">icrs_sky_coord</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1911</span> <span class="k">if</span> <span class="n">frame</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">,</span> <span class="n">icrs_coord</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/name_resolve.py:196,</span> in <span class="ni">get_icrs_coordinates</span><span class="nt">(name, parse, cache)</span>
-<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="c1"># All Sesame URL&#39;s failed...</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">exceptions</span><span class="p">)]</span>
-<span class="ne">--&gt; </span><span class="mi">196</span>     <span class="k">raise</span> <span class="n">NameResolveError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span>         <span class="s2">&quot;All Sesame queries failed. Unable to retrieve coordinates. See errors per&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span>         <span class="sa">f</span><span class="s2">&quot; URL below: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">_parse_response</span><span class="p">(</span><span class="n">resp_data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="k">if</span> <span class="n">ra</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="ne">NameResolveError</span>: All Sesame queries failed. Unable to retrieve coordinates. See errors per URL below: 
- <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cds</span><span class="o">.</span><span class="n">unistra</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">nph</span><span class="o">-</span><span class="n">sesame</span><span class="o">/</span><span class="n">SNV</span><span class="err">?</span><span class="n">NGC</span><span class="o">%</span><span class="k">20188</span>: timed out
-<span class="ne">http</span>://vizier.cfa.harvard.edu/viz-bin/nph-sesame/SNV?NGC%20188: Request took longer than the allowed 10.0 seconds
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    (11.8117, 85.245)&gt;
 </pre></div>
 </div>
 </div>
@@ -528,6 +499,11 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 11.8117 deg&gt;, &lt;Latitude 85.245 deg&gt;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> component attributes (here <code class="docutils literal notranslate"><span class="pre">ra</span></code> and <code class="docutils literal notranslate"><span class="pre">dec</span></code>) return specialized <code class="docutils literal notranslate"><span class="pre">Quantity</span></code>-like objects that make working with angular data easier. While <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/units/index.html">docs</a>) is a general class that represents numerical values and physical units of any kind, <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> defines subclasses of <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> that are specifically designed for working with angles, such as the <code class="docutils literal notranslate"><span class="pre">Angle</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Angle.html">docs</a>) class. The <code class="docutils literal notranslate"><span class="pre">Angle</span></code> class then has additional, more specialized subclasses <code class="docutils literal notranslate"><span class="pre">Latitude</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Latitude.html">docs</a>) and <code class="docutils literal notranslate"><span class="pre">Longitude</span></code> (<a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.coordinates.Longitude.html">docs</a>). These objects store angles, provide useful attributes to quickly convert to common angular units, and enable formatting the numerical values in various formats. For example, in a Jupyter notebook, these objects know how to represent themselves using LaTeX:</p>
 <div class="cell docutils container">
@@ -536,6 +512,10 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[11^\circ48{}^\prime42.12{}^{\prime\prime}\]</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -543,10 +523,20 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[85^\circ14{}^\prime42{}^{\prime\prime}\]</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">dec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(astropy.coordinates.angles.core.Longitude,
+ astropy.coordinates.angles.core.Latitude)
 </pre></div>
 </div>
 </div>
@@ -562,6 +552,13 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 0.78744667 hourangle&gt;,
+ &lt;Longitude 0.20615306 rad&gt;,
+ &lt;Longitude 11.8117 deg&gt;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Or using the shorthand attributes, which return only the component values:</p>
 <div class="cell docutils container">
@@ -570,11 +567,23 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.7874466666666669),
+ np.float64(0.20615305525781422),
+ np.float64(11.8117))
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also format the values into strings with specified units (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/formatting.html">docs</a>), for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">hourangle</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.str_(&#39;00:47:14.808&#39;)
 </pre></div>
 </div>
 </div>
@@ -591,6 +600,11 @@ We will introduce many of the key concepts underlying how to represent and trans
 
 <span class="c1"># only keep stars brighter than G=19 magnitude</span>
 <span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">19</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Query finished. [astroquery.utils.tap.core]
 </pre></div>
 </div>
 </div>
@@ -629,6 +643,11 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4870
+</pre></div>
+</div>
+</div>
 </div>
 <p>The returned <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code> <code class="docutils literal notranslate"><span class="pre">Table</span></code> object now contains about 5000 stars from <em>Gaia</em> DR2 around the coordinate position of the center of NGC 188. Let’s now construct a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object with the results table. In the <em>Gaia</em> data archive, the ICRS coordinates of a source are given as column names <code class="docutils literal notranslate"><span class="pre">&quot;ra&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;dec&quot;</span></code>:</p>
 <div class="cell docutils container">
@@ -637,6 +656,10 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[11.830258,~11.78143,~11.775831,~\dots,~13.380355,~6.1428143,~15.883725]\mathrm{{}^{\circ}}\]</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -644,12 +667,24 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[85.243627,~85.247148,~85.241932,~\dots,~85.71469,~85.142685,~85.606562]\mathrm{{}^{\circ}}\]</div>
+</div>
 </div>
 <p>Note that, because the <em>Gaia</em> archive provides data tables with associated units, and we read this table using the <code class="docutils literal notranslate"><span class="pre">QTable</span></code> object (<a class="reference external" href="http://docs.astropy.org/en/latest/table/mixin_columns.html#quantity-and-qtable">docs</a>), the above table columns are represented as <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> objects with units of degrees. Note also that these columns contain many (&gt;5000!) coordinate values. We can pass these directly in to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> to get a single <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent all of these coordinates:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">])</span>
 <span class="n">ngc188_gaia_coords</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
+    [(11.83025781, 85.24362655), (11.78143038, 85.24714775),
+     (11.77583082, 85.24193164), ..., (13.38035513, 85.71468997),
+     ( 6.14281433, 85.14268532), (15.88372451, 85.60656188)]&gt;
 </pre></div>
 </div>
 </div>
@@ -672,6 +707,11 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00:47:14.8 +85:14:42.0&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Using a single method/function call on the <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object containing the results of our <em>Gaia</em> query, compute the angular separation between each resulting star and the coordinates of the cluster center for NGC 188.</p>
 <p><sub>(Hint: <code class="docutils literal notranslate"><span class="pre">SkyCoord.separation()</span></code> might be useful)</sub></p>
@@ -680,6 +720,15 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span><span class="o">.</span><span class="n">separation</span><span class="p">(</span><span class="n">ngc188_center</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[$0^\circ00{}^\prime07.42471524{}^{\prime\prime}$
+ $0^\circ00{}^\prime11.88878937{}^{\prime\prime}$
+ $0^\circ00{}^\prime15.38406054{}^{\prime\prime}$ ...
+ $0^\circ29{}^\prime08.31723589{}^{\prime\prime}$
+ $0^\circ29{}^\prime08.33277052{}^{\prime\prime}$
+ $0^\circ29{}^\prime08.79347319{}^{\prime\prime}$]\]</div>
 </div>
 </div>
 </section>
@@ -703,6 +752,11 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2423
+</pre></div>
+</div>
+</div>
 </div>
 <p>The above selection on <code class="docutils literal notranslate"><span class="pre">parallax_snr</span></code> keeps stars that have a ~10-sigma parallax measurement, but this is an arbitrary selection threshold that you may want to tune or remove in your own use cases. This selection removed over half of the stars in our original table, but for the remaining stars we can be confident that converting the parallax measurements to distances is mostly safe.</p>
 <p>The default way of passing in a distance to a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object, as above, is to pass in a <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> with a unit of length. However, <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> also provides a specialized object, <code class="docutils literal notranslate"><span class="pre">Distance</span></code>, for handling common transformations of different distance representations (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/index.html#distance">docs</a>). Among other things, this class supports passing in a parallax value:</p>
@@ -711,6 +765,10 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[1000 \; \mathrm{pc}\]</div>
 </div>
 </div>
 <p>The catalog of stars we queried from <em>Gaia</em> contains parallax information in milliarcsecond units, so we can create a <code class="docutils literal notranslate"><span class="pre">Distance</span></code> object directly from these values:</p>
@@ -728,6 +786,17 @@ We will introduce many of the key concepts underlying how to represent and trans
     <span class="n">ra</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">gaia_dist</span>
 <span class="p">)</span>
 <span class="n">ngc188_coords_3d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
+    [(11.83025781, 85.24362655, 2113.23414411),
+     (11.77583082, 85.24193164, 1819.25788676),
+     (11.79608811, 85.24947769, 1878.68206887), ...,
+     (13.38035513, 85.71468997,  820.05330166),
+     ( 6.14281433, 85.14268532, 1950.38491004),
+     (15.88372451, 85.60656188,  356.47807826)]&gt;
 </pre></div>
 </div>
 </div>
@@ -755,6 +824,12 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Gaia DR2 sources near NGC 188&#39;)
+</pre></div>
+</div>
+<img alt="_images/7c8fdd404491d8e6dc5f2b15fcd38ac97303624131353d6ff5182015fada98c8.png" src="_images/7c8fdd404491d8e6dc5f2b15fcd38ac97303624131353d6ff5182015fada98c8.png" />
+</div>
 </div>
 <p>Now that we have 3D position information for both the cluster center, and for the stars we queried from <em>Gaia</em>, we can compute the 3D separation (distance) between all of the <em>Gaia</em> sources and the cluster center:</p>
 <div class="cell docutils container">
@@ -764,6 +839,10 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[153.23746,~140.74633,~81.323346,~\dots,~1139.9932,~19.958413,~1603.5359] \; \mathrm{pc}\]</div>
+</div>
 </div>
 <section id="id1">
 <h3>Exercises<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
@@ -772,6 +851,11 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_3d_mask</span> <span class="o">=</span> <span class="n">sep3d</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span>
 <span class="n">ngc188_3d_mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(262)
 </pre></div>
 </div>
 </div>
@@ -2064,41 +2148,6 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameResolveError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Skip this cell if you are not connected to the internet</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">gaia_tbl</span> <span class="o">=</span> <span class="n">Gaia</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;HD 219829&quot;</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcmin</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:1909,</span> in <span class="ni">SkyCoord.from_name</span><span class="nt">(cls, name, frame, parse, cache)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1875</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1876</span><span class="sd"> Given a name, query the CDS name resolver to attempt to retrieve</span>
-<span class="g g-Whitespace">   </span><span class="mi">1877</span><span class="sd"> coordinate information for that object. The search database, sesame</span>
-<span class="sd">   (...)   1905     Instance of the SkyCoord class.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1906</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1907</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.name_resolve</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_icrs_coordinates</span>
-<span class="ne">-&gt; </span><span class="mi">1909</span> <span class="n">icrs_coord</span> <span class="o">=</span> <span class="n">get_icrs_coordinates</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">parse</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1910</span> <span class="n">icrs_sky_coord</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1911</span> <span class="k">if</span> <span class="n">frame</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">,</span> <span class="n">icrs_coord</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/coordinates/name_resolve.py:196,</span> in <span class="ni">get_icrs_coordinates</span><span class="nt">(name, parse, cache)</span>
-<span class="g g-Whitespace">    </span><span class="mi">193</span> <span class="c1"># All Sesame URL&#39;s failed...</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">urls</span><span class="p">,</span> <span class="n">exceptions</span><span class="p">)]</span>
-<span class="ne">--&gt; </span><span class="mi">196</span>     <span class="k">raise</span> <span class="n">NameResolveError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span>         <span class="s2">&quot;All Sesame queries failed. Unable to retrieve coordinates. See errors per&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span>         <span class="sa">f</span><span class="s2">&quot; URL below: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">_parse_response</span><span class="p">(</span><span class="n">resp_data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="k">if</span> <span class="n">ra</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dec</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="ne">NameResolveError</span>: All Sesame queries failed. Unable to retrieve coordinates. See errors per URL below: 
- <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cds</span><span class="o">.</span><span class="n">unistra</span><span class="o">.</span><span class="n">fr</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span><span class="n">nph</span><span class="o">-</span><span class="n">sesame</span><span class="o">/</span><span class="n">SNV</span><span class="err">?</span><span class="n">HD</span><span class="o">%</span><span class="k">20219829</span>: timed out
-<span class="ne">http</span>://vizier.cfa.harvard.edu/viz-bin/nph-sesame/SNV?HD%20219829: Request took longer than the allowed 10.0 seconds
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2119,6 +2168,14 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><i>Row index=2</i>
+<table id="table140709306297104">
+<thead><tr><th>source_id</th><th>pmra</th><th>pmdec</th></tr></thead>
+<thead><tr><th></th><th>mas / yr</th><th>mas / yr</th></tr></thead>
+<thead><tr><th>int64</th><th>float64</th><th>float64</th></tr></thead>
+<tr><td>2661015540210781568</td><td>483.4165901889734</td><td>-114.8633971841528</td></tr>
+</table></div></div>
 </div>
 <p>Indeed, it looks like this is our source! Let’s construct a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object for this source using the data from the <em>Gaia</em> archive:</p>
 <p><em>Note about the Gaia catalog proper motion column names: The names in the Gaia archive and other repositories containing Gaia data give Right Ascension proper motion values simply as “pmra”. These components implicitly contain the <code class="docutils literal notranslate"><span class="pre">cos(dec)</span></code> term, so we do <strong>not</strong> have to modify these values in order to pass them in to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> as <code class="docutils literal notranslate"><span class="pre">pm_ra_cosdec</span></code></em></p>
@@ -2134,6 +2191,14 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="p">)</span>
 
 <span class="n">hd219829_coord</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
+    (349.72896716, 5.40511585, 34.47896069)
+ (pm_ra_cosdec, pm_dec) in mas / yr
+    (483.41659019, -114.86339718)&gt;
 </pre></div>
 </div>
 </div>
@@ -2184,12 +2249,26 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 33867.416667 from DATE-OBS&#39;. [astropy.wcs.wcs]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7ff96124edb0&gt;
+</pre></div>
+</div>
+<img alt="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" src="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" />
+</div>
 </div>
 <p>The brighest star (as observed by DSS) in this image is our target, and the red circle is where <em>Gaia</em> observed this star. As we excpected, it has moved quite a bit since the 1950’s! We can account for this motion and predict the position of the star at around the time the DSS plate was observed. Let’s assume that this plate was observed in 1950 exactly (this is not strictly correct, but should get us close enough).</p>
 <p>To account for the proper motion of the source and evolve the position to a new time, we can use the <code class="docutils literal notranslate"><span class="pre">SkyCoord.apply_space_motion()</span></code> method (<a class="reference external" href="http://docs.astropy.org/en/latest/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord.apply_space_motion">docs</a>). Because we defined the <code class="docutils literal notranslate"><span class="pre">obstime</span></code> when we defined the coordinate object for HD 219829, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hd219829_coord</span><span class="o">.</span><span class="n">obstime</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Time object: scale=&#39;tt&#39; format=&#39;jyear&#39; value=2015.5&gt;
 </pre></div>
 </div>
 </div>
@@ -2237,6 +2316,12 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7ff960dbc290&gt;
+</pre></div>
+</div>
+<img alt="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" src="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" />
 </div>
 </div>
 <p>The red circle is the same as in the previous image and shows the position of the source in the <em>Gaia</em> catalog (in 2015.5). The blue circle shows our prediction for the position of the source in 1950 - this looks much closer to where the star is in the DSS image!</p>
@@ -2369,165 +2454,6 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">v</span> <span class="o">=</span> <span class="n">Vizier</span><span class="p">(</span><span class="n">catalog</span><span class="o">=</span><span class="s2">&quot;II/246&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;Date&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">v</span><span class="o">.</span><span class="n">ROW_LIMIT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">result</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">query_region</span><span class="p">(</span><span class="n">ngc188_center_3d</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">tmass_table</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/utils/class_or_instance.py:25,</span> in <span class="ni">class_or_instance.__get__.&lt;locals&gt;.f</span><span class="nt">(*args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">25</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/utils/process_asyncs.py:28,</span> in <span class="ni">async_to_sync.&lt;locals&gt;.create_method.&lt;locals&gt;.newmethod</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="nd">@class_or_instance</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">def</span><span class="w"> </span><span class="nf">newmethod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">28</span>     <span class="n">response</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">async_method_name</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;get_query_payload&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;field_help&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>         <span class="k">return</span> <span class="n">response</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/vizier/core.py:540,</span> in <span class="ni">VizierClass.query_region_async</span><span class="nt">(self, coordinates, radius, inner_radius, width, height, catalog, get_query_payload, cache, return_type, column_filters, frame)</span>
-<span class="g g-Whitespace">    </span><span class="mi">537</span> <span class="k">if</span> <span class="n">get_query_payload</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="k">return</span> <span class="n">data_payload</span>
-<span class="ne">--&gt; </span><span class="mi">540</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span>     <span class="n">method</span><span class="o">=</span><span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_server_to_url</span><span class="p">(</span><span class="n">return_type</span><span class="o">=</span><span class="n">return_type</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span>     <span class="n">data</span><span class="o">=</span><span class="n">data_payload</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">TIMEOUT</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="n">cache</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span> <span class="k">return</span> <span class="n">response</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/query.py:379,</span> in <span class="ni">BaseQuery._request</span><span class="nt">(self, method, url, params, data, headers, files, save, savedir, timeout, cache, stream, auth, continuation, verify, allow_redirects, json, return_response_on_save)</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">from_cache</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_location</span><span class="p">,</span> <span class="n">cache_conf</span><span class="o">.</span><span class="n">cache_timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">378</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">379</span>         <span class="n">response</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">380</span>                                  <span class="bp">self</span><span class="o">.</span><span class="n">cache_location</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">381</span>                                  <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">382</span>                                  <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">383</span>                                  <span class="n">allow_redirects</span><span class="o">=</span><span class="n">allow_redirects</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">384</span>                                  <span class="n">verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span>                                  <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">386</span>         <span class="n">to_cache</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">query</span><span class="o">.</span><span class="n">request_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_location</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">388</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_query</span> <span class="o">=</span> <span class="n">query</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/query.py:77,</span> in <span class="ni">AstroQuery.request</span><span class="nt">(self, session, cache_location, stream, auth, verify, allow_redirects, json)</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="k">def</span><span class="w"> </span><span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">cache_location</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>             <span class="n">auth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span>             <span class="n">json</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">77</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span>                            <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span>                            <span class="n">files</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span>                            <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">81</span>                            <span class="n">allow_redirects</span><span class="o">=</span><span class="n">allow_redirects</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span>                            <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/requests/adapters.py:667,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">664</span>     <span class="n">timeout</span> <span class="o">=</span> <span class="n">TimeoutSauce</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">read</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">666</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">667</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">668</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">669</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">670</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">672</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">673</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">674</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">675</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">676</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">677</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">678</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">681</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:787,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="n">response_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">release_conn</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span> <span class="c1"># Make the request on the HTTPConnection object</span>
-<span class="ne">--&gt; </span><span class="mi">787</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">790</span>     <span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">response_conn</span><span class="o">=</span><span class="n">response_conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">preload_content</span><span class="o">=</span><span class="n">preload_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="o">**</span><span class="n">response_kw</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">800</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span> <span class="c1"># Everything went great!</span>
-<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="n">clean_exit</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:464,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
-<span class="g g-Whitespace">    </span><span class="mi">461</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">462</span>     <span class="c1"># Trigger any extra validation we need to do.</span>
-<span class="g g-Whitespace">    </span><span class="mi">463</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">464</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">465</span>     <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">466</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">conn</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/connectionpool.py:1093,</span> in <span class="ni">HTTPSConnectionPool._validate_conn</span><span class="nt">(self, conn)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1091</span> <span class="c1"># Force connect early to allow us to validate the connection.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span> <span class="k">if</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_closed</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1093</span>     <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1095</span> <span class="c1"># TODO revise this, see https://github.com/urllib3/urllib3/issues/2791</span>
-<span class="g g-Whitespace">   </span><span class="mi">1096</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_verified</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">proxy_is_verified</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/connection.py:753,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">751</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">752</span>     <span class="n">sock</span><span class="p">:</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span> <span class="o">|</span> <span class="n">ssl</span><span class="o">.</span><span class="n">SSLSocket</span>
-<span class="ne">--&gt; </span><span class="mi">753</span>     <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_conn</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">754</span>     <span class="n">server_hostname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span>
-<span class="g g-Whitespace">    </span><span class="mi">755</span>     <span class="n">tls_in_tls</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/connection.py:198,</span> in <span class="ni">HTTPConnection._new_conn</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">193</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Establish a socket connection and set nodelay settings on it.</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span><span class="sd"> :return: New socket connection.</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">198</span>     <span class="n">sock</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span>         <span class="n">source_address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span>         <span class="n">socket_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">socket_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">205</span>     <span class="k">raise</span> <span class="n">NameResolutionError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/urllib3/util/connection.py:73,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, socket_options)</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="k">if</span> <span class="n">source_address</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">73</span> <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="c1"># Break explicitly a reference cycle</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span> <span class="n">err</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <p>Alternatively, we can read the 2MASS table provided along with this tutorial:</p>
 <div class="cell docutils container">
@@ -2548,12 +2474,27 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><i>QTable length=3</i>
+<table id="table140331604735520" class="table-striped table-bordered table-condensed">
+<thead><tr><th>Date</th><th>RAJ2000</th><th>DEJ2000</th><th>_2MASS</th><th>Jmag</th><th>e_Jmag</th><th>Hmag</th><th>e_Hmag</th><th>Kmag</th><th>e_Kmag</th><th>Qflg</th><th>Rflg</th><th>Bflg</th><th>Cflg</th><th>Xflg</th><th>Aflg</th></tr></thead>
+<thead><tr><th></th><th>deg</th><th>deg</th><th></th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
+<thead><tr><th>str10</th><th>float64</th><th>float64</th><th>str16</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>str3</th><th>str3</th><th>str3</th><th>str3</th><th>uint8</th><th>uint8</th></tr></thead>
+<tr><td>1999-10-19</td><td>9.633532</td><td>84.808350</td><td>00383204+8448300</td><td>13.079</td><td>0.030</td><td>12.742</td><td>0.033</td><td>12.729</td><td>0.035</td><td>AAA</td><td>222</td><td>111</td><td>000</td><td>0</td><td>0</td></tr>
+<tr><td>1999-10-19</td><td>8.562472</td><td>84.873627</td><td>00341499+8452250</td><td>14.459</td><td>0.029</td><td>14.103</td><td>0.041</td><td>14.166</td><td>0.063</td><td>AAA</td><td>222</td><td>111</td><td>000</td><td>0</td><td>0</td></tr>
+<tr><td>1999-10-19</td><td>8.645318</td><td>84.868584</td><td>00343487+8452069</td><td>10.356</td><td>0.026</td><td>10.057</td><td>0.032</td><td>10.000</td><td>0.020</td><td>AAA</td><td>222</td><td>111</td><td>000</td><td>0</td><td>0</td></tr>
+</table></div></div></div>
 </div>
 <p>From looking at the column names, the two relevant sky coordinate columns are <code class="docutils literal notranslate"><span class="pre">RAJ2000</span></code> for <code class="docutils literal notranslate"><span class="pre">ra</span></code> and <code class="docutils literal notranslate"><span class="pre">DEJ2000</span></code> for <code class="docutils literal notranslate"><span class="pre">dec</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmass_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">tmass_table</span><span class="p">[</span><span class="s2">&quot;RAJ2000&quot;</span><span class="p">],</span> <span class="n">tmass_table</span><span class="p">[</span><span class="s2">&quot;DEJ2000&quot;</span><span class="p">])</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">tmass_coords</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5014
 </pre></div>
 </div>
 </div>
@@ -2565,6 +2506,11 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">&lt;Column name=&apos;Date&apos; dtype=&apos;str10&apos; description=&apos;(date) Observation date&apos; length=1&gt;
+<table>
+<tr><td>1999-10-19</td></tr>
+</table></div></div>
 </div>
 <p>It looks like all of the sources in our 2MASS table have the same epoch, so let’s create an <code class="docutils literal notranslate"><span class="pre">astropy.time.Time</span></code> object to represent this date:</p>
 <div class="cell docutils container">
@@ -2604,11 +2550,19 @@ We will introduce many of the key concepts underlying how to represent and trans
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/424ddcbb790c4eff564ffd8f16725ebbe2ce09e173e9249cb550c69728d37b9e.png" src="_images/424ddcbb790c4eff564ffd8f16725ebbe2ce09e173e9249cb550c69728d37b9e.png" />
+</div>
 </div>
 <p>From this, it looks like all of sources in our <em>Gaia</em> NGC 188 member list cross-match to another sources within a few arcseconds, so these all seem like they are correctly matches to a 2MASS source!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">sep2d_gaia</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">ngc188_members</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.int64(256), 265)
 </pre></div>
 </div>
 </div>
@@ -2644,6 +2598,9 @@ We will introduce many of the key concepts underlying how to represent and trans
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d7352de31abd9f5d96ec43b8cfc67e0fb609103c50703b4bb13d8e144e81b111.png" src="_images/d7352de31abd9f5d96ec43b8cfc67e0fb609103c50703b4bb13d8e144e81b111.png" />
 </div>
 </div>
 <p>Those both look like color-magnitude diagrams of a main sequence + red giant branch of an intermediate-age stellar cluster, so it looks like our selection and cross-matching has worked!</p>

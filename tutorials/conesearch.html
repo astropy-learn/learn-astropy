@@ -414,11 +414,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Guide Star Catalog 2.3 Cone Search 1&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;2MASS All-Sky Catalog of Point Sources 1&#39;,
+ &#39;Gaia DR2 5&#39;,
+ &#39;Guide Star Catalog 2.3 Cone Search 1&#39;,
  &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 1&#39;,
  &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 2&#39;,
  &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 3&#39;,
  &#39;SDSS DR7 - Sloan Digital Sky Survey Data Release 7 4&#39;,
+ &#39;The HST Guide Star Catalog, Version 1.1 1&#39;,
+ &#39;The HST Guide Star Catalog, Version 1.2 1&#39;,
+ &#39;The HST Guide Star Catalog, Version GSC-ACT 1&#39;,
+ &#39;The PMM USNO-A1.0 Catalogue 1&#39;,
+ &#39;The USNO-A2.0 Catalogue 1&#39;,
+ &#39;The USNO-B1.0 Catalog 2&#39;,
  &#39;Two Micron All Sky Survey (2MASS) 1&#39;,
  &#39;Two Micron All Sky Survey (2MASS) 2&#39;]
 </pre></div>
@@ -449,10 +457,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trying http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23&amp;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trying http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: W50: http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:154:0: W50: Invalid unit string &#39;pixel&#39; [astropy.io.votable.tree]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:46:4: W06: Invalid UCD &#39;POS_EQ_RA_MAIN&#39;: Unknown word &#39;POS_EQ_RA_MAIN&#39; [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:49:4: W06: Invalid UCD &#39;POS_EQ_DEC_MAIN&#39;: Unknown word &#39;POS_EQ_DEC_MAIN&#39; [astropy.io.votable.tree]
+WARNING: W03: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:61:4: W03: Implicitly generating an ID from a name &#39;2MASS&#39; -&gt; &#39;_2MASS&#39; [astropy.io.votable.xmlutil]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:61:4: W06: Invalid UCD &#39;ID_MAIN&#39;: Unknown word &#39;ID_MAIN&#39; [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:152:4: W06: Invalid UCD &#39;obs.field&#39;: Secondary word &#39;obs.field&#39; is not valid as a primary word [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:161:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word [astropy.io.votable.tree]
+WARNING: W06: http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?RA=10.6847083&amp;DEC=41.26875&amp;SR=0.1&amp;VERB=1:209:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word [astropy.io.votable.tree]
 </pre></div>
 </div>
 </div>
@@ -465,8 +479,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First non-empty table returned by http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23
-Number of rows is 4028
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First non-empty table returned by http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?
+Number of rows is 2008
 </pre></div>
 </div>
 </div>
@@ -478,30 +492,30 @@ Number of rows is 4028
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    objID           gsc2ID      gsc1ID ... multipleFlag compassGSC2id   Mag  
-                                       ...                              mag  
--------------- ---------------- ------ ... ------------ ------------- -------
-23323175812944 00424433+4116085        ...            0 6453800072293   9.453
-23323175812948 00424403+4116069        ...            0 6453800072297   9.321
-23323175812933 00424455+4116103        ...            0 6453800072282  10.773
-23323175812939 00424464+4116092        ...            0 6453800072288   9.299
-23323175812930 00424403+4116108        ...            0 6453800072279  11.507
-23323175812931 00424464+4116106        ...            0 6453800072280   9.399
-23323175812973 00424446+4116016        ...            0 6453800072322   12.07
-23323175812966 00424398+4116028        ...            0 6453800072315  12.136
-23323175812979 00424420+4116009        ...            0 6453800072328  10.065
-           ...              ...    ... ...          ...           ...     ...
- 1330012229027    N330012229027        ...            0 6453800029027 20.3122
- 1330012247547    N330012247547        ...            0 6453800047547 21.5449
- 1330012244072    N330012244072        ...            0 6453800044072 20.9598
- 1330012248107    N330012248107        ...            0 6453800048107 21.6947
-  133001227000     N33001227000        ...            0 6453800007000 20.1382
- 1330012244001    N330012244001        ...            0 6453800044001 21.8968
- 1330012228861    N330012228861        ...            0 6453800028861 20.3572
- 1330012212014    N330012212014        ...            0 6453800012014 16.5079
- 1330012231849    N330012231849        ...            0 6453800031849 20.2869
- 1330012210212    N330012210212        ...            0 6453800010212 20.2767
-Length = 4028 rows
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r     RAJ2000    DEJ2000   errMaj errMin ... scanKey coaddKey coadd Opt
+            deg        deg     arcsec arcsec ...                           
+-------- ---------- ---------- ------ ------ ... ------- -------- ----- ---
+0.088860  10.699043  41.180546   0.08   0.07 ...   69157  1590592    44 Opt
+0.099056  10.692956  41.169888   0.08   0.07 ...   69157  1590592    44 Opt
+0.096789  10.696697  41.172382   0.20   0.20 ...   69157  1590592    44 Opt
+0.091839  10.699687  41.177605   0.24   0.21 ...   69157  1590592    44 Opt
+0.086295  10.699178  41.183144   0.36   0.34 ...   69157  1590592    44 Opt
+0.095003  10.711372  41.175888   0.24   0.24 ...   69157  1590592    44 Opt
+0.091538  10.712260  41.179588   0.21   0.18 ...   69157  1590592    44 Opt
+0.094139  10.714217  41.177265   0.08   0.07 ...   69157  1590592    44 Opt
+0.090449  10.728262  41.184441   0.20   0.19 ...   69157  1590592    44 Opt
+     ...        ...        ...    ...    ... ...     ...      ...   ... ...
+0.097966  10.639772  41.360718   0.07   0.06 ...   25123   577809    33 Opt
+0.080430  10.653701  41.345734   0.24   0.23 ...   69157  1590591    33 Opt
+0.078671  10.650944  41.343220   0.13   0.11 ...   25123   577809    33 Opt
+0.092843  10.671972  41.361099   0.25   0.22 ...   69157  1590591    33 Opt
+0.074682  10.654711  41.339951   0.26   0.23 ...   69157  1590591    33 Opt
+0.090105  10.661388  41.357136   0.08   0.07 ...   69157  1590591    33 Opt
+0.096558  10.622704  41.353333   0.24   0.22 ...   25123   577809    33 Opt
+0.097260  10.624244  41.354755   0.09   0.08 ...   25123   577809    33 Opt
+0.090156  10.615215  41.342255   0.15   0.14 ...   25123   577809    33 Opt
+0.098305  10.681841  41.367031   0.08   0.08 ...   69157  1590591    33 Opt
+Length = 2008 rows
 </pre></div>
 </div>
 </div>
@@ -524,30 +538,30 @@ Length = 4028 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    objID           gsc2ID      gsc1ID ... multipleFlag compassGSC2id   Mag  
--------------- ---------------- ------ ... ------------ ------------- -------
-23323175812944 00424433+4116085     -- ...            0 6453800072293   9.453
-23323175812948 00424403+4116069     -- ...            0 6453800072297   9.321
-23323175812933 00424455+4116103     -- ...            0 6453800072282  10.773
-23323175812939 00424464+4116092     -- ...            0 6453800072288   9.299
-23323175812930 00424403+4116108     -- ...            0 6453800072279  11.507
-23323175812931 00424464+4116106     -- ...            0 6453800072280   9.399
-23323175812973 00424446+4116016     -- ...            0 6453800072322   12.07
-23323175812966 00424398+4116028     -- ...            0 6453800072315  12.136
-23323175812979 00424420+4116009     -- ...            0 6453800072328  10.065
-23323175812958 00424377+4116045     -- ...            0 6453800072307  12.446
-           ...              ...    ... ...          ...           ...     ...
- 1330012229027    N330012229027     -- ...            0 6453800029027 20.3122
- 1330012247547    N330012247547     -- ...            0 6453800047547 21.5449
- 1330012244072    N330012244072     -- ...            0 6453800044072 20.9598
- 1330012248107    N330012248107     -- ...            0 6453800048107 21.6947
-  133001227000     N33001227000     -- ...            0 6453800007000 20.1382
- 1330012244001    N330012244001     -- ...            0 6453800044001 21.8968
- 1330012228861    N330012228861     -- ...            0 6453800028861 20.3572
- 1330012212014    N330012212014     -- ...            0 6453800012014 16.5079
- 1330012231849    N330012231849     -- ...            0 6453800031849 20.2869
- 1330012210212    N330012210212     -- ...            0 6453800010212 20.2767
-Length = 4028 rows
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r     RAJ2000   DEJ2000  errMaj errMin ... extKey scanKey coaddKey coadd Opt
+-------- --------- --------- ------ ------ ... ------ ------- -------- ----- ---
+ 0.08886 10.699043 41.180546   0.08   0.07 ...     --   69157  1590592    44 Opt
+0.099056 10.692956 41.169888   0.08   0.07 ...     --   69157  1590592    44 Opt
+0.096789 10.696697 41.172382    0.2    0.2 ...     --   69157  1590592    44 Opt
+0.091839 10.699687 41.177605   0.24   0.21 ...     --   69157  1590592    44 Opt
+0.086295 10.699178 41.183144   0.36   0.34 ...     --   69157  1590592    44 Opt
+0.095003 10.711372 41.175888   0.24   0.24 ...     --   69157  1590592    44 Opt
+0.091538  10.71226 41.179588   0.21   0.18 ...     --   69157  1590592    44 Opt
+0.094139 10.714217 41.177265   0.08   0.07 ...     --   69157  1590592    44 Opt
+0.090449 10.728262 41.184441    0.2   0.19 ...     --   69157  1590592    44 Opt
+0.095957 10.735452  41.18071   0.24   0.23 ...     --   69157  1590592    44 Opt
+     ...       ...       ...    ...    ... ...    ...     ...      ...   ... ...
+0.097966 10.639772 41.360718   0.07   0.06 ...     --   25123   577809    33 Opt
+ 0.08043 10.653701 41.345734   0.24   0.23 ...     --   69157  1590591    33 Opt
+0.078671 10.650944  41.34322   0.13   0.11 ...     --   25123   577809    33 Opt
+0.092843 10.671972 41.361099   0.25   0.22 ...     --   69157  1590591    33 Opt
+0.074682 10.654711 41.339951   0.26   0.23 ...     --   69157  1590591    33 Opt
+0.090105 10.661388 41.357136   0.08   0.07 ...     --   69157  1590591    33 Opt
+0.096558 10.622704 41.353333   0.24   0.22 ...     --   25123   577809    33 Opt
+ 0.09726 10.624244 41.354755   0.09   0.08 ...     --   25123   577809    33 Opt
+0.090156 10.615215 41.342255   0.15   0.14 ...     --   25123   577809    33 Opt
+0.098305 10.681841 41.367031   0.08   0.08 ...     --   69157  1590591    33 Opt
+Length = 2008 rows
 </pre></div>
 </div>
 </div>
@@ -590,35 +604,7 @@ For example, you can query SIMBAD for the first entry in your result above.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Searching SIMBAD for
-&lt;SkyCoord (ICRS): (ra, dec) in deg
-    (10.684737, 41.269035)&gt;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               main_id                        ra         ...     coo_bibcode    
-                                             deg         ...                    
-------------------------------------- ------------------ ... -------------------
-                          [PSC2013] 9 10.683583333333333 ... 2013MNRAS.430.1219P
-                        [HPH2013] 165           10.68477 ... 2013A&amp;A...555A..65H
-                         [WSB85] C  4 10.684166666666666 ...                    
-          [K2002] J004244.35+411608.9 10.684795833333332 ... 2002ApJ...577..738K
-                         [LGF2011] S1 10.684833333333334 ... 2011ApJ...728L..10L
-                        M31N 2004-09b 10.685208333333332 ... 2007A&amp;A...465..375P
-                           [LFG93] P3           10.68475 ... 2010ApJ...710..755G
-                        [HPH2013] 172           10.68531 ... 2013A&amp;A...555A..65H
-[CHM2007] LDC   31 J004244.33+4116074  10.68458333333333 ... 2007ApJ...655..790C
-                                  ...                ... ...                 ...
-                        [HPH2013] 169           10.68497 ... 2013A&amp;A...555A..65H
-                        [HPH2013] 164           10.68457 ... 2013A&amp;A...555A..65H
-                        [HPH2013] 167           10.68485 ... 2013A&amp;A...555A..65H
-                        [HPH2013] 170           10.68501 ... 2013A&amp;A...555A..65H
-          [KPM2002] G121.1741-21.5730 10.684458333333334 ... 2002AJ....124.2990K
-      NAME Nova Treffers 1993 in M 31 10.683333333333334 ...                    
-              CXOGMP J004244.2+411609 10.684291666666667 ... 2000ApJ...537L..23G
-                            NAME M31* 10.684708333333333 ... 1993ApJ...411L.107C
-              CXOM31 J004244.3+411605 10.684291666666667 ... 2002ApJ...577...31C
-           LAMOST J004244.33+411605.6 10.684708333333333 ... 2023ApJS..264...17Z
-Length = 25 rows
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ra or dec not in search results. Choose from: _r RAJ2000 DEJ2000 errMaj errMin errPA _2MASS Jmag Jcmsig e_Jmag Jsnr Hmag Hcmsig e_Hmag Hsnr Kmag Kcmsig e_Kmag Ksnr Qflg Rflg Bflg Cflg Ndet prox pxPA pxCntr Xflg Aflg Cntr Hemis Date Scan GLON GLAT Xscan JD Jpsfchi Hpsfchi Kpsfchi Jstdap e_Jstdap Hstdap e_Hstdap Kstdap e_Kstdap edgeNS edgeEW edge dup use opt Dopt PAopt Bmag Rmag Nopt extKey scanKey coaddKey coadd Opt
 </pre></div>
 </div>
 </div>
@@ -636,23 +622,71 @@ Length = 25 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">MissingCatalog</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">my_db</span> <span class="o">=</span> <span class="n">vos_catalog</span><span class="o">.</span><span class="n">get_remote_catalog_db</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">conesearch_dbname</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">my_cat</span> <span class="o">=</span> <span class="n">my_db</span><span class="o">.</span><span class="n">get_catalog_by_url</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">my_cat</span> <span class="o">=</span> <span class="n">my_db</span><span class="o">.</span><span class="n">get_catalog_by_url</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;&amp;&quot;</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astroquery/vo_conesearch/vos_catalog.py:259,</span> in <span class="ni">VOSDatabase.get_catalog_by_url</span><span class="nt">(self, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">256</span> <span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url_keys</span><span class="p">[</span><span class="n">url</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">259</span>     <span class="k">raise</span> <span class="n">MissingCatalog</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">260</span>         <span class="s2">&quot;No catalog with URL &#39;</span><span class="si">{0}</span><span class="s2">&#39; found.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="k">return</span> <span class="n">VOSCatalog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_catalogs</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-
-<span class="ne">MissingCatalog</span>: No catalog with URL &#39;http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23&#39; found.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;authenticated_only&quot;: 0,
+    &quot;cap_description&quot;: &quot;Cone search capability for table II/246/out (2MASS Point Source Catalogue, output (on a total of 470,992,970 sources))&quot;,
+    &quot;cap_index&quot;: 4,
+    &quot;cap_type&quot;: &quot;conesearch&quot;,
+    &quot;content_level&quot;: &quot;research&quot;,
+    &quot;content_type&quot;: &quot;catalog&quot;,
+    &quot;created&quot;: &quot;1/10/2008 11:19:42 PM&quot;,
+    &quot;creator_seq&quot;: &quot;&quot;,
+    &quot;duplicatesIgnored&quot;: 4,
+    &quot;intf_index&quot;: 1,
+    &quot;intf_role&quot;: &quot;std&quot;,
+    &quot;intf_type&quot;: &quot;vs:paramhttp&quot;,
+    &quot;ivoid&quot;: &quot;ivo://cds.vizier/ii/246&quot;,
+    &quot;mirror_url&quot;: &quot;https://vizier.iucaa.in/viz-bin/conesearch/II/246/out?#http://vizieridia.saao.ac.za/viz-bin/conesearch/II/246/out?&quot;,
+    &quot;query_type&quot;: &quot;&quot;,
+    &quot;reference_url&quot;: &quot;http://cdsarc.unistra.fr/cgi-bin/cat/II/246&quot;,
+    &quot;region_of_regard&quot;: NaN,
+    &quot;res_description&quot;: &quot;The Two Micron All Sky Survey (2MASS) project is designed to close the gap between our current technical capability and our knowledge of the near-infrared sky. In addition to providing a context for the interpretation of results obtained at infrared and other wavelengths, 2MASS will provide direct answers to immediate questions on the large-scale structure of the Milky Way and the Local Universe. To achieve these goals, 2MASS is uniformly scanning the entire sky in three near-infrared bands to detect and characterize point sources brighter than about 1 mJy in each band, with signal-to-noise ratio (SNR) greater than 10, using a pixel size of 2.0\&quot;. This will achieve an 80,000-fold improvement in sensitivity relative to earlier surveys. 2MASS uses two new, highly-automated 1.3-m telescopes, one at Mt. Hopkins, AZ, and one at CTIO, Chile. Each telescope is equipped with a three-channel camera, each channel consisting of a 256x256 array of HgCdTe detectors, capable of observing the sky simultaneously at J (1.25 {mu}m), H (1.65 {mu}m), and Ks (2.17 {mu}m), to a 3{sigma} limiting sensitivity of 17.1, 16.4 and 15.3mag in the three bands. The 2MASS arrays image the sky while the telescopes scan smoothly in declination at a rate of ~1&#39; per second. The 2MASS data \&quot;tiles\&quot; are 6 deg. long in the declination direction and one camera frame (8.5&#39;) wide. The camera field-of-view shifts by ~1/6 of a frame in declination from frame-to-frame. The camera images each point on the sky six times for a total integration time of 7.8 s, with sub-pixel \&quot;dithering\&quot;, which improves the ultimate spatial resolution of the final Atlas Images. The University of Massachusetts (UMass) is responsible for the overall management of the project, and for developing the infrared cameras and on-site computing systems at both facilities. The Infrared Processing and Analysis Center (IPAC) is responsible for all data processing through the Production Pipeline, and construction and distribution of the data products. The 2MASS project involves the participation of members of the Science Team from several different institutions. The 2MASS project is funding by the National Aeronautics and Space Administration (NASA) and the National Science Foundation (NSF).&quot;,
+    &quot;res_subject&quot;: &quot;Infrared astronomy&quot;,
+    &quot;res_type&quot;: &quot;vs:catalogservice&quot;,
+    &quot;res_version&quot;: &quot;&quot;,
+    &quot;result_type&quot;: &quot;&quot;,
+    &quot;rights&quot;: &quot;public&quot;,
+    &quot;rights_uri&quot;: &quot;&quot;,
+    &quot;short_name&quot;: &quot;II/246&quot;,
+    &quot;source_format&quot;: &quot;bibcode&quot;,
+    &quot;source_value&quot;: &quot;2003yCat.2246....0C&quot;,
+    &quot;standard_id&quot;: &quot;ivo://ivoa.net/std/conesearch&quot;,
+    &quot;std_version&quot;: &quot;&quot;,
+    &quot;title&quot;: &quot;2MASS All-Sky Catalog of Point Sources&quot;,
+    &quot;updated&quot;: &quot;10/21/2021 12:00:00 AM&quot;,
+    &quot;url&quot;: &quot;http://vizier.unistra.fr/viz-bin/conesearch/II/246/out?&quot;,
+    &quot;url_use&quot;: &quot;base&quot;,
+    &quot;validate_expected&quot;: &quot;good&quot;,
+    &quot;validate_network_error&quot;: null,
+    &quot;validate_nexceptions&quot;: 0,
+    &quot;validate_nwarnings&quot;: 14,
+    &quot;validate_out_db_name&quot;: &quot;good&quot;,
+    &quot;validate_version&quot;: &quot;1.4&quot;,
+    &quot;validate_warning_types&quot;: [
+        &quot;W06&quot;,
+        &quot;W03&quot;
+    ],
+    &quot;validate_warnings&quot;: [
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:46:4: W06: Invalid UCD &#39;POS_EQ_RA_MAIN&#39;: Unknown word &#39;POS_EQ_RA_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:49:4: W06: Invalid UCD &#39;POS_EQ_DEC_MAIN&#39;: Unknown word &#39;POS_EQ_DEC_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W03: Implicitly generating an ID from a name &#39;2MASS&#39; -&gt; &#39;_2MASS&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W06: Invalid UCD &#39;ID_MAIN&#39;: Unknown word &#39;ID_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:152:4: W06: Invalid UCD &#39;obs.field&#39;: Secondary word &#39;obs.field&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:161:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:209:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:46:4: W06: Invalid UCD &#39;POS_EQ_RA_MAIN&#39;: Unknown word &#39;POS_EQ_RA_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:49:4: W06: Invalid UCD &#39;POS_EQ_DEC_MAIN&#39;: Unknown word &#39;POS_EQ_DEC_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W03: Implicitly generating an ID from a name &#39;2MASS&#39; -&gt; &#39;_2MASS&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:61:4: W06: Invalid UCD &#39;ID_MAIN&#39;: Unknown word &#39;ID_MAIN&#39;&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:152:4: W06: Invalid UCD &#39;obs.field&#39;: Secondary word &#39;obs.field&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:161:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;,
+        &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:209:4: W06: Invalid UCD &#39;pos.cartesian;instr.det&#39;: Secondary word &#39;pos.cartesian&#39; is not valid as a primary word&quot;
+    ],
+    &quot;validate_xmllint&quot;: false,
+    &quot;validate_xmllint_content&quot;: &quot;/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml:4: element VOTABLE: Schemas validity error : Element &#39;{http://www.ivoa.net/xml/VOTable/v1.3}VOTABLE&#39;: No matching global declaration available for the validation root.\n/var/www/astroconda.org/html/aux/vo_databases/daily_20250709/results/78/a8/966dc94b2099b663d5f839c4d89c/vo.xml fails to validate\n&quot;,
+    &quot;waveband&quot;: &quot;infrared&quot;,
+    &quot;wsdl_url&quot;: &quot;&quot;
+}
 </pre></div>
 </div>
 </div>
@@ -679,6 +713,11 @@ Length = 25 rows
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of rows is 3
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s explore the 3 rows of astronomical objects found within 0.1 degree of M31 in the given catalog and sort them by increasing distance. For this example, the VO table has several columns that might include:</p>
 <ul class="simple">
@@ -695,11 +734,26 @@ Length = 25 rows
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;_r&#39;, &#39;USNO-A2.0&#39;, &#39;RAJ2000&#39;, &#39;DEJ2000&#39;, &#39;ACTflag&#39;, &#39;Mflag&#39;, &#39;Bmag&#39;, &#39;Rmag&#39;, &#39;Epoch&#39;]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Before sort</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r      USNO-A2.0    RAJ2000    DEJ2000   ACTflag Mflag Bmag Rmag  Epoch  
+  deg                     deg        deg                   mag  mag     yr   
+-------- ------------- ---------- ---------- ------- ----- ---- ---- --------
+0.094265 1275-00425574  10.595878  41.335328      --    -- 19.8 17.4 1953.773
+0.098040 1275-00427192  10.639945  41.360845      --    -- 19.4 18.4 1953.773
+0.063280 1275-00429939  10.712834  41.209109       A    -- 99.9 11.2       --
 </pre></div>
 </div>
 </div>
@@ -712,6 +766,16 @@ Length = 25 rows
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r      USNO-A2.0    RAJ2000    DEJ2000   ACTflag Mflag Bmag Rmag  Epoch  
+  deg                     deg        deg                   mag  mag     yr   
+-------- ------------- ---------- ---------- ------- ----- ---- ---- --------
+0.063280 1275-00429939  10.712834  41.209109       A    -- 99.9 11.2       --
+0.094265 1275-00425574  10.595878  41.335328      --    -- 19.8 17.4 1953.773
+0.098040 1275-00427192  10.639945  41.360845      --    -- 19.4 18.4 1953.773
+</pre></div>
+</div>
+</div>
 </div>
 <p>You can also convert the distance to arcseconds.</p>
 <div class="cell docutils container">
@@ -719,6 +783,10 @@ Length = 25 rows
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;_r&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[227.808,~339.354,~352.944]\mathrm{{}^{\prime\prime}}\]</div>
 </div>
 </div>
 <p>What if you want <em>all</em> the results from <em>all</em> the catalogs? And you also want to suppress all the VO table warnings and informational messages?</p>
@@ -739,6 +807,21 @@ Length = 25 rows
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>http://vizier.unistra.fr/viz-bin/conesearch/II/246/out? returned 2008 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/345/gaia2? returned 1752 rows
+http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23 returned 4028 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/220/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/254/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/255/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/243/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/252/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/284/out? returned 5 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_psc returned 2008 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_xsc returned 25 rows
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,6 +829,18 @@ Length = 25 rows
 <span class="n">i220keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">all_results</span> <span class="k">if</span> <span class="s2">&quot;I/220&quot;</span> <span class="ow">in</span> <span class="n">k</span><span class="p">]</span>
 <span class="n">my_favorite_result</span> <span class="o">=</span> <span class="n">all_results</span><span class="p">[</span><span class="n">i220keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_favorite_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   _r       GSC      RAJ2000   DEJ2000  PosErr ... Plate  Epoch   Mult Versions
+                       deg       deg    arcsec ...          yr                 
+-------- ---------- --------- --------- ------ ... ----- -------- ---- --------
+0.063449 0280102008  10.71207  41.20873    0.2 ...  0738 1985.877    F  GSC-all
+0.043453 0280102015  10.68782  41.22536    0.2 ...  0738 1985.877    F  GSC-all
+0.096170 0280102081  10.80558  41.23727    0.2 ...  0738 1985.877    F  GSC-all
+0.066633 0280102017  10.60025  41.24853    0.2 ...  0738 1985.877    F  GSC-all
+0.082097 0280502180  10.64539  41.34535    0.2 ...  0738 1985.877    F  GSC-all
 </pre></div>
 </div>
 </div>
@@ -777,6 +872,14 @@ Length = 25 rows
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Am I running? True
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After 3 seconds. Am I done? True
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -788,6 +891,33 @@ Length = 25 rows
 <span class="n">all_results</span> <span class="o">=</span> <span class="n">async_search_all</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">url</span><span class="p">,</span> <span class="n">tab</span> <span class="ow">in</span> <span class="n">all_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;returned&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">),</span> <span class="s2">&quot;rows&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Am I running? True
+Am I done? False
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=Galaxy&#39; returned 0 result [astroquery.vo_conesearch.core]
+WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=Star&#39; returned 0 result [astroquery.vo_conesearch.core]
+WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=PhotoObjAll&#39; returned 0 result [astroquery.vo_conesearch.core]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: NoResultsWarning: Catalog server &#39;http://wfaudata.roe.ac.uk/sdssdr7-dsa/DirectCone?DSACAT=SDSS_DR7&amp;DSATAB=PhotoObj&#39; returned 0 result [astroquery.vo_conesearch.core]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>http://vizier.unistra.fr/viz-bin/conesearch/II/246/out? returned 2008 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/345/gaia2? returned 1752 rows
+http://gsss.stsci.edu/webservices/vo/ConeSearch.aspx?CAT=GSC23 returned 4028 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/220/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/254/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/255/out? returned 5 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/243/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/252/out? returned 3 rows
+http://vizier.unistra.fr/viz-bin/conesearch/I/284/out? returned 5 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_psc returned 2008 rows
+http://wfaudata.roe.ac.uk/twomass-dsa/DirectCone?DSACAT=TWOMASS&amp;DSATAB=twomass_xsc returned 25 rows
 </pre></div>
 </div>
 </div>
@@ -811,11 +941,21 @@ Length = 25 rows
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/6adbef2dae941cd438437333e7a6733651647ceae126ab6e70c9fc1cf89323c2.png" src="_images/6adbef2dae941cd438437333e7a6733651647ceae126ab6e70c9fc1cf89323c2.png" />
+<img alt="_images/7ea9f80b134430d9e9e4fc8a904c249b21cc94ac96c994f46daa7077ad0f6f4e.png" src="_images/7ea9f80b134430d9e9e4fc8a904c249b21cc94ac96c994f46daa7077ad0f6f4e.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted run time is&quot;</span><span class="p">,</span> <span class="n">t_est</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted number of rows is&quot;</span><span class="p">,</span> <span class="n">n_est</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted run time is 0.37225799580924523 seconds
+Predicted number of rows is 2617
 </pre></div>
 </div>
 </div>
@@ -833,11 +973,22 @@ Length = 25 rows
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: conesearch_timer took 0.48606419563293457 s on AVERAGE for 1 call(s). [astroquery.utils.timer]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Actual run time is&quot;</span><span class="p">,</span> <span class="n">t_real</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Actual number of rows is&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tab</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Actual run time is 0.48606419563293457 seconds
+Actual number of rows is 4028
 </pre></div>
 </div>
 </div>
