@@ -6,7 +6,7 @@ name: Deploy
       - main
   schedule:
     # run weekly on Sunday
-    - cron: "20 07 * * 0"
+    - cron: "20 10 * * 0"
   # allow manual triggering of workflow
   workflow_dispatch:
 
