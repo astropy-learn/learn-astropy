@@ -384,7 +384,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/d26bf6aa308dfeccc3f4c6cd1e7934c0092ac1e0da4af4604a470968a4029785.png"><img alt="_images/d26bf6aa308dfeccc3f4c6cd1e7934c0092ac1e0da4af4604a470968a4029785.png" src="_images/d26bf6aa308dfeccc3f4c6cd1e7934c0092ac1e0da4af4604a470968a4029785.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="_images/93e0896a67117567fb354c5897d0b4e01ea36e1527cbcc520d50554f11ed33dc.png"><img alt="_images/93e0896a67117567fb354c5897d0b4e01ea36e1527cbcc520d50554f11ed33dc.png" src="_images/93e0896a67117567fb354c5897d0b4e01ea36e1527cbcc520d50554f11ed33dc.png" style="width: 500px;" />
 </a>
 </div>
 </div>
@@ -416,69 +416,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">zvals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">cosmo</span><span class="o">.</span><span class="n">angular_diameter_distance</span><span class="p">(</span><span class="n">zvals</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/cosmology/_src/flrw/base.py:1275,</span> in <span class="ni">FLRW.angular_diameter_distance</span><span class="nt">(self, z)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1249</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Angular diameter distance in Mpc at a given redshift.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1250</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1251</span><span class="sd"> This gives the proper (sometimes called &#39;physical&#39;) transverse</span>
-<span class="sd">   (...)   1272 .. [3] Peebles, P. (1993). Principles of Physical Cosmology, pp 325-327.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1273</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1274</span> <span class="n">z</span> <span class="o">=</span> <span class="n">aszarr</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1275</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">comoving_transverse_distance</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/cosmology/_src/flrw/base.py:1209,</span> in <span class="ni">FLRW.comoving_transverse_distance</span><span class="nt">(self, z)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1183</span> <span class="nd">@deprecated_keywords</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">since</span><span class="o">=</span><span class="s2">&quot;7.0&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1184</span> <span class="k">def</span><span class="w"> </span><span class="nf">comoving_transverse_distance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1185</span><span class="w">     </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Comoving transverse distance in Mpc at a given redshift.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1186</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1187</span><span class="sd">     This value is the transverse comoving distance at redshift ``z``</span>
-<span class="sd">   (...)   1207     This quantity is also called the &#39;proper motion distance&#39; in some texts.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1208</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1209</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comoving_transverse_distance_z1z2</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/cosmology/_src/flrw/base.py:1237,</span> in <span class="ni">FLRW._comoving_transverse_distance_z1z2</span><span class="nt">(self, z1, z2)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1212</span><span class="w"> </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Comoving transverse distance in Mpc between two redshifts.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1213</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1214</span><span class="sd"> This value is the transverse comoving distance at redshift ``z2`` as</span>
-<span class="sd">   (...)   1234 This quantity is also called the &#39;proper motion distance&#39; in some texts.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1235</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1236</span> <span class="n">Ok0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Ok0</span>
-<span class="ne">-&gt; </span><span class="mi">1237</span> <span class="n">dc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comoving_distance_z1z2</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1238</span> <span class="k">if</span> <span class="n">Ok0</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1239</span>     <span class="k">return</span> <span class="n">dc</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/cosmology/_src/flrw/lambdacdm.py:395,</span> in <span class="ni">LambdaCDM._hypergeometric_comoving_distance_z1z2</span><span class="nt">(self, z1, z2)</span>
-<span class="g g-Whitespace">    </span><span class="mi">392</span> <span class="c1"># Use np.sqrt here to handle negative s (Om0&gt;1).</span>
-<span class="g g-Whitespace">    </span><span class="mi">393</span> <span class="n">prefactor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hubble_distance</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Om0</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">394</span> <span class="k">return</span> <span class="n">prefactor</span> <span class="o">*</span> <span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">395</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_T_hypergeometric</span><span class="p">(</span><span class="n">s</span> <span class="o">/</span> <span class="p">(</span><span class="n">z1</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">396</span>     <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_T_hypergeometric</span><span class="p">(</span><span class="n">s</span> <span class="o">/</span> <span class="p">(</span><span class="n">z2</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/cosmology/_src/flrw/lambdacdm.py:419,</span> in <span class="ni">LambdaCDM._T_hypergeometric</span><span class="nt">(self, x)</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> <span class="k">def</span><span class="w"> </span><span class="nf">_T_hypergeometric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="o">/</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">400</span><span class="w">     </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute value using Gauss Hypergeometric function 2F1.</span>
-<span class="g g-Whitespace">    </span><span class="mi">401</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">402</span><span class="sd">     .. math::</span>
-<span class="sd">   (...)    417        in a flat cosmology. MNRAS, 468(1), 927-930.</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">419</span>     <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">hyp2f1</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">7.0</span> <span class="o">/</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/cosmology/_src/flrw/lambdacdm.py:27,</span> in <span class="ni">hyp2f1</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="k">def</span><span class="w"> </span><span class="nf">hyp2f1</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">27</span>     <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span><span class="s2">&quot;No module named &#39;scipy.special&#39;&quot;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy.special&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note that we passed an array of redshifts to <code class="docutils literal notranslate"><span class="pre">cosmo.angular_diameter_distance</span></code> and it produced a corresponding array of distance values, one for each redshift. Let’s plot them:</p>
 <div class="cell docutils container">
@@ -489,6 +426,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f258eab4920&gt;]
+</pre></div>
+</div>
+<img alt="_images/738401d20e4d94be172193649401b92f307eeb4ca59d888ddd91d44ecde16cba.png" src="_images/738401d20e4d94be172193649401b92f307eeb4ca59d888ddd91d44ecde16cba.png" />
+</div>
 </div>
 <p>To check the units of the angular diameter distance, take a look at the unit attribute:</p>
 <div class="cell docutils container">
@@ -496,6 +439,10 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">.</span><span class="n">unit</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\mathrm{Mpc}\]</div>
 </div>
 </div>
 <p>Now let’s put some age labels on the top axis. We’re going to pick a series of round age values where we want to place axis ticks. You may need to tweak these depending on your redshift range to get nice, evenly spaced ticks.</p>
@@ -527,6 +474,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.axis.XTick at 0x7f258eb504a0&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258eb0bc20&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f25921ac3b0&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258eb53f50&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258e97ca40&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258eb539e0&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258e97d6a0&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258e97e030&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258e97ea20&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258e97f410&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f258e97e270&gt;]
+</pre></div>
+</div>
+<img alt="_images/905748858b445069c6b9b9521547529548e6d9135aaedb57870356fc3dcbf2c4.png" src="_images/905748858b445069c6b9b9521547529548e6d9135aaedb57870356fc3dcbf2c4.png" />
+</div>
 </div>
 <p>We have ticks on the top axis at the correct ages, but they’re labelled with the redshift, not the age. We can fix this by setting the tick labels by hand.</p>
 <div class="cell docutils container">
@@ -539,6 +502,22 @@ document.write(`
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s2">&quot;</span><span class="si">{:g}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">age</span><span class="p">)</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">ages</span><span class="o">.</span><span class="n">value</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.0342654242473072, 1, &#39;13&#39;),
+ Text(0.3052996987053906, 1, &#39;10&#39;),
+ Text(0.5622761997285899, 1, &#39;8&#39;),
+ Text(0.939431308199015, 1, &#39;6&#39;),
+ Text(1.2114538180402323, 1, &#39;5&#39;),
+ Text(1.5867361300254539, 1, &#39;4&#39;),
+ Text(2.153211270001333, 1, &#39;3&#39;),
+ Text(3.150381753523928, 1, &#39;2&#39;),
+ Text(4.035713900198319, 1, &#39;1.5&#39;),
+ Text(4.847670846184227, 1, &#39;1.2&#39;),
+ Text(5.606047443188421, 1, &#39;1&#39;)]
+</pre></div>
+</div>
+<img alt="_images/1f6f47e9f0b604ea2a3f2b8472a20724eebf7d5231499a7abda3473dce2cc4b3.png" src="_images/1f6f47e9f0b604ea2a3f2b8472a20724eebf7d5231499a7abda3473dce2cc4b3.png" />
 </div>
 </div>
 <p>We need to make sure the top and bottom axes have the same redshift limits. They may not line up properly in the above plot, for example, depending on your setup (the age of the universe should be ~13 Gyr at z=0).</p>
@@ -555,6 +534,12 @@ document.write(`
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">zmin</span><span class="p">,</span> <span class="n">zmax</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 5.9)
+</pre></div>
+</div>
+<img alt="_images/9df1c7360bf6268538d008dba23633f9695b06978ce04870519f4dad7b7c32aa.png" src="_images/9df1c7360bf6268538d008dba23633f9695b06978ce04870519f4dad7b7c32aa.png" />
 </div>
 </div>
 <p>We’re almost done. We just need to label all the axes, and add some minor ticks. Let’s also tweak the y axis limits to avoid putting labels right near the top of the plot.</p>
@@ -576,6 +561,9 @@ document.write(`
 <span class="n">ax</span><span class="o">.</span><span class="n">minorticks_on</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/56a095a2164356507f57d5791bb1e75eaf98679e86d6495d6088dc19b59fc435.png" src="_images/56a095a2164356507f57d5791bb1e75eaf98679e86d6495d6088dc19b59fc435.png" />
 </div>
 </div>
 <p>Now for comparison, let’s add the angular diameter distance for a different cosmology, from the Planck 2013 results. And then finally, we save the figure to a png file.</p>
@@ -604,6 +592,15 @@ document.write(`
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;ang_dist.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\ &#39;
+&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\ &#39;
+/tmp/ipykernel_3577/1680874098.py:8: SyntaxWarning: invalid escape sequence &#39;\ &#39;
+  ax.plot(zvals, dist, label=&quot;$h=0.7,\ \Omega_M=0.3,\ \Omega_\Lambda=0.7$&quot;)
+</pre></div>
+</div>
+<img alt="_images/f71119549fbf68cdefba553ac99b0457aa7f336969881ce1adeadfe81bb53001.png" src="_images/f71119549fbf68cdefba553ac99b0457aa7f336969881ce1adeadfe81bb53001.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">bbox_inches='tight'</span></code> automatically trims any whitespace from around the plot edges.</p>
