@@ -1,0 +1,1273 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Working with large FITS files</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FITS-large';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="None - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="None - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Working with large FITS files
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--working-with-large-FITS-files" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--working-with-large-FITS-files/issues/new?title=Issue%20on%20page%20%2FFITS-large.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Working with large FITS files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-large-fits-files">
+<h1>Working with large FITS files<a class="headerlink" href="#working-with-large-fits-files" title="Link to this heading">#</a></h1>
+<p>This tutorial, built on the <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/appendix/faq.html#how-can-i-create-a-very-large-fits-file-from-scratch">Create a very large FITS file from scratch</a> guide, works through building a very large (too large to fit in memory) FITS file with multiple HDUs. It covers creating both large Image and Table extensions. It is aimed at users already quite familiar with the FITS format.</p>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>C. E. Brasseur</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Build a <em>large</em> FITS file (<em>large</em> means is too large to fit in memory all at once)</p></li>
+<li><p>Make a <em>large</em> FITS Image extension</p></li>
+<li><p>Make a <em>large</em> FITS Table extension</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>FITS, file input/output, memory mapping</p>
+</section>
+<section id="companion-content">
+<h2>Companion Content<a class="headerlink" href="#companion-content" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://fits.gsfc.nasa.gov/fits_standard.html">FITS Standard</a></p></li>
+<li><p><a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/">Astropy FITS Documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/mmap.html#mmap.mmap.madvise">Python madvise documentation</a></p></li>
+<li><p><a class="reference external" href="https://man7.org/linux/man-pages/man2/madvise.2.html">Madvise system call documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/appendix/faq.html#how-can-i-create-a-very-large-fits-file-from-scratch">Create a very large FITS file from scratch</a></p></li>
+</ul>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This is an advanced tutorial. We will be building a very large multi-extension FITS file from scratch, going through both how to create Images and Arrays too large to fit in memory, and how to fill those structures once created.</p>
+<p>If you don’t want to know about the inner workings of the FITS format, just stop here. If you don’t want to know but nevertheless neeed to, proceed with caution, that’s how I started and now here I am writing this tutorial.</p>
+</section>
+<section id="building-a-large-fits-file">
+<h2>Building a large FITS file<a class="headerlink" href="#building-a-large-fits-file" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#Imports"><span class="xref myst">Imports</span></a></p></li>
+<li><p><a class="reference internal" href="#Primary-HDU"><span class="xref myst">Primary HDU</span></a></p></li>
+<li><p><a class="reference internal" href="#Large-Image-HDU"><span class="xref myst">Large Image HDU</span></a></p></li>
+<li><p><a class="reference internal" href="#Large-Table-HDU"><span class="xref myst">Large Table HDU</span></a></p></li>
+<li><p><a class="reference internal" href="#Adding-an-Extra-Small-HDU"><span class="xref myst">Adding an Extra Small HDU</span></a></p></li>
+<li><p><a class="reference internal" href="#Cleanup"><span class="xref myst">Cleanup</span></a></p></li>
+</ol>
+<section id="but-before-we-begin">
+<h3>But before we begin…<a class="headerlink" href="#but-before-we-begin" title="Link to this heading">#</a></h3>
+<p>There are a few things we need to know about the FITS format so I will collect them there. And if you are either now, or in the future, wondering “why is it like that” the answer is that the FITS format was originally designed and optimised for magnetic tape. This means that the FITS format was originally designed for sequentual reading rather than random access, so the FITS format has no index (listing at what bytes various parts of the file start) but instead is formatted in 2880 byte chunks so that a tape reader head can simply skip forward by 2880 bytes repeatedly and check if a new section has begun. This is mostly trivia for us as modern users, but there are a few implications. Firstly, when reading FITS files the Astropy FITS module by default reads them “lazily” meaning that it does not tabulate all the extensions until it needs to (i.e. when the user requests a specific extension or calls the <code class="docutils literal notranslate"><span class="pre">info()</span></code> function). Secondly, and most crucially for this tutorial, when creating FITS extension manually, the most critical part of creating a new <em>valid</em> FITS extension is making sure the number of bytes is a multiple of 2880. These are of course but a few of the quirks of the FITS format, to read about all of them in their full and eccentric glory, see the <a class="reference external" href="https://fits.gsfc.nasa.gov/fits_standard.html">FITS standard</a> document.</p>
+<p><strong>A short review of terminology:</strong></p>
+<ul class="simple">
+<li><p>The basic block of a FITS file is called a Header Data Unit (HDU).</p></li>
+<li><p>Each HDU contains two elements, the header and the data.</p></li>
+<li><p>A FITS file consistes of one or more HDUs.</p></li>
+<li><p>Astropy represents a FITS file as an HDUList, where each extension is an HDU of a specific type (i.e PrimaryHDU, ImageHDU, etc).</p></li>
+<li><p>For more details see the <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/">Astropy FITS Documentation</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<p>We  don’t need many modules for this. The central one is of course <code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code>; the <code class="docutils literal notranslate"><span class="pre">mmap</span></code> import helps with efficiency, but is not available on all systems, and is ultimately not essential. So if yours is a system without it never fear, you can just comment out those lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">MADV_SEQUENTIAL</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-little-helper-function">
+<h3>A little helper function<a class="headerlink" href="#a-little-helper-function" title="Link to this heading">#</a></h3>
+<p>Because this tutorial is all about building a huge file, we’ll write a little function to print the file size in a a variety of units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_file_size</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">byte</span>
+
+    <span class="k">if</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;KB&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">kB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;MB&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">MB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;GB&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">GB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;FITS&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2880</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> FITS block&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="primary-hdu">
+<h2>Primary HDU<a class="headerlink" href="#primary-hdu" title="Link to this heading">#</a></h2>
+<p>In this tutorial we are going to build a properly formated multi-extension FITS file, so before we get into the matter of creating a massive FITS file we will build a basic Primary HDU, and write it to file where it will be the basis for our monstrous FITS file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make some header entries for important information</span>
+<span class="n">primary_header_cards</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;ORIGIN&quot;</span><span class="p">,</span> <span class="s2">&quot;Fancy Archive&quot;</span><span class="p">,</span> <span class="s2">&quot;Where the data came from&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-03-05&quot;</span><span class="p">,</span> <span class="s2">&quot;Creation date&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;MJD&quot;</span><span class="p">,</span> <span class="mi">60374</span><span class="p">,</span> <span class="s2">&quot;Creation date in MJD&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;CREATOR&quot;</span><span class="p">,</span> <span class="s2">&quot;Me&quot;</span><span class="p">,</span> <span class="s2">&quot;Who created this file&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># Build the Primary HDU object and put it in an HDU list</span>
+<span class="n">primary_hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">(</span><span class="n">header</span><span class="o">=</span><span class="n">fits</span><span class="o">.</span><span class="n">Header</span><span class="p">(</span><span class="n">primary_header_cards</span><span class="p">))</span>
+<span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">HDUList</span><span class="p">([</span><span class="n">primary_hdu</span><span class="p">])</span>
+
+<span class="c1"># Write the HDU list to file</span>
+<span class="n">big_fits_fle</span> <span class="o">=</span> <span class="s2">&quot;./patagotitan.fits&quot;</span>
+<span class="n">hdu_list</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we continue let’s verify our (currently tiny) FITS file is valid. We will do this by calling the <code class="docutils literal notranslate"><span class="pre">info()</span></code> function which will hang if the file is not a valid FITS format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu_list</span><span class="p">:</span>
+    <span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: ./patagotitan.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU       7   ()      
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s also look at the file size in bytes and FITS blocks. Note that it is exactly one FITS block.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
+<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;FITS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2880 byte
+1.0 FITS block
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="large-image-hdu">
+<h2>Large Image HDU<a class="headerlink" href="#large-image-hdu" title="Link to this heading">#</a></h2>
+<p>Now we get to the meat of the tutorial. We are going to expand out the FITS file to fit a 40,000 x 40,000 pixel image (~13 GB).</p>
+<p><em>Note</em>: If this is problamatically big for your system, adjust <code class="docutils literal notranslate"><span class="pre">array_dims</span></code> below. All of the steps will still work as expected with smaller data, it’s simply an unnessesarily complex methodology when dealing with data sizes that fit in memory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40_000</span><span class="p">,</span> <span class="mi">40_000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First we build an ImageHDU object with a small data array. The data in the array does not matter because we won’t be using it, but the data type needs to be correct, and you need to take note of how many bytes per element goes with that data type. In this example we are building a <code class="docutils literal notranslate"><span class="pre">float64</span></code> array, so each element uses 8 bytes of memory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">ImageHDU</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we pull out just the header, and adjust the NAXIS keywords to match our desired giant-array dimensions. This is a critical step, it is telling the FITS file how large the data array is and must match the data array size we are going to add.</p>
+<p>We also set a name for the extension which is optional, but helpful, because it allows us to refer to that extension by name as well as index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;BIG_IMG&quot;</span>
+<span class="n">header</span> <span class="o">=</span> <span class="n">hdu</span><span class="o">.</span><span class="n">header</span>
+
+<span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next step is to write <em>just the header</em> to the end of our soon to balloon FITS file.</p>
+<p><em>Note:</em> At the end of this step our file is temporarily NOT a valid FITS file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>  <span class="c1"># &#39;ab&#39; means open to append bytes</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
+<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;FITS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5760 byte
+2.0 FITS block
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we calculate the number of bytes we need for our gargantuan array, remembering that the result <em>must</em> to be a multiple of 2880 bytes to conform to the FITS standard.</p>
+<p><em>Note:</em> The <code class="docutils literal notranslate"><span class="pre">astype(np.int64)</span></code> is not necessary on all systems, but some still default to int32 and therefore
+throw an overflow error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elt_size</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># Bytes needed for an array element</span>
+<span class="n">arraysize_in_bytes</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">array_dims</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="o">*</span> <span class="n">elt_size</span> <span class="o">+</span> <span class="mi">2880</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2880</span>
+<span class="p">)</span> <span class="o">*</span> <span class="mi">2880</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we need to expand the file by that many bytes. To do this we seek to the desired new end of the file and write a null byte.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filelen</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;r+b&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">filelen</span> <span class="o">+</span> <span class="n">arraysize_in_bytes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now lets see how big our FITS file has become.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">)</span>
+<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;FITS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.8 Gbyte
+4444447.0 FITS block
+</pre></div>
+</div>
+</div>
+</div>
+<p>So just about 13 GB as expected. And a lot more FITS blocks, but still an exact multiple of the FITS block size which is what we want to see.</p>
+<section id="filling-the-big-array">
+<h3>Filling the big array<a class="headerlink" href="#filling-the-big-array" title="Link to this heading">#</a></h3>
+<p>Now we have a big ol’ empty array that we want to put some stuff in. At this point we are working with a gigantic file, so we need to start being careful we don’t ask for it to be loaded wholesale into memory (if you <em>do</em> try to do that, it won’t break anything you will just get a <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">allocate</span> <span class="pre">memory</span></code> error).</p>
+<p>What this means is that the memmap argument must be set to True. This is usually the default (unless you have changed it in your astropy configuration settings). There are also a number of modes the file can be opened with:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">readonly</span></code>: Default behavior. Opens the file in readonly mode, meaning that to save any changes you need to write to a whole new file (or overwrite the existing one). This means that while with <code class="docutils literal notranslate"><span class="pre">memmap=True</span></code> the entire FITS file is not loaded into memory, the system is prepared to load it all in memory if the user changes something, and so will still throw an error if it is not <em>possible</em> to allocate memory for the whole file even as it does not allocate it at the minute. For big files where this is not possible it will fall back to <code class="docutils literal notranslate"><span class="pre">denywrite</span></code> mode and produce a warning.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">denywrite</span></code>: This is similar to readonly except that it does not allow the FITS object to be altered and then written to a new file. For our tremendous FITS file we will use this mode when we want to access but not change the file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update</span></code>: This mode allows a file to be updated in place.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">append</span></code>: This allows more extensions to be added to an existing FITS file, but doe <em>not</em> allow changing data already in the file when it is opened.</p></li>
+</ul>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">update</span></code> mode to fill our immense array in place.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we comence we will call the <code class="docutils literal notranslate"><span class="pre">info()</span></code> function to verify that our FITS file is valid and the enormous array is the size we expect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: ./patagotitan.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU       8   ()      
+  1  BIG_IMG       1 ImageHDU         8   (40000, 40000)   float64   
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pulling out the majestic array for convenience.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_array</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are on a system with the <code class="docutils literal notranslate"><span class="pre">madvise</span></code> call (you’re on your own figuring that out), you can set madvise to <code class="docutils literal notranslate"><span class="pre">MADV_SEQUENTIAL</span></code> for the <code class="docutils literal notranslate"><span class="pre">data_array</span></code>. This tells the memory mapping that you are going to be accessing the array in a sequential manner and allows it to be more efficient in how it handles memory allocation based on that. How much this actually affects the time it takes to perform the filling operation will depend on your specific system and the array sizes you are working with.</p>
+<p><em>Note:</em> If you change how you fill your array to something not sequential, don’t set this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mm</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">_get_array_mmap</span><span class="p">(</span><span class="n">data_array</span><span class="p">)</span>
+<span class="n">mm</span><span class="o">.</span><span class="n">madvise</span><span class="p">(</span><span class="n">MADV_SEQUENTIAL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we fill the jumbo array block by block. We want the block size to comfortably fit in memory. The <code class="docutils literal notranslate"><span class="pre">block_size</span></code> I am using yields an ~1.3 GB array, adjust as your system requires.</p>
+<p>We also print the time it take for every block. If you have the <code class="docutils literal notranslate"><span class="pre">MADV_SEQUENTIAL</span></code> flag set, the individual block fill operation will generally take longer, and the close operation quite fast, while if the <code class="docutils literal notranslate"><span class="pre">MADV_SEQUENTIAL</span></code> flag is not set the reverse is generally true. This is because in the first case, the data is being flushed to disk at once, while in the second it builds up untill the system needs more memory or the file is closed and it writes it all at once. Which is more efficent on your setup will vary with block and file size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">block_size</span> <span class="o">=</span> <span class="mi">4000</span>
+
+<span class="n">tt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">block_size</span><span class="p">)):</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="n">sub_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">block_size</span><span class="p">,</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">*</span> <span class="n">i</span>
+    <span class="n">data_array</span><span class="p">[</span><span class="n">j</span> <span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">sub_arr</span>
+
+    <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+    <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+<span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 2 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 2 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: 2 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 3 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 3 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5: 3 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6: 3 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7: 3 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8: 3 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9: 2 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 6 sec
+Total fill time: 0.5 min
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-the-file-contents">
+<h3>Checking the file contents<a class="headerlink" href="#checking-the-file-contents" title="Link to this heading">#</a></h3>
+<p>We’ve filled our outsize array, but we want to make sure that it is correct. So we’ll open the elephantine file in <code class="docutils literal notranslate"><span class="pre">denywrite</span></code> mode and check.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;denywrite&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data_array</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">block_size</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: Data match is </span><span class="si">{</span><span class="p">(</span><span class="n">data_array</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">block_size</span><span class="p">,</span><span class="w"> </span><span class="p">:]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">it</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span>
+    <span class="p">)</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+<span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: Data match is True: 1 sec
+1: Data match is True: 0 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: Data match is True: 0 sec
+3: Data match is True: 0 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: Data match is True: 0 sec
+5: Data match is True: 0 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6: Data match is True: 0 sec
+7: Data match is True: 0 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8: Data match is True: 0 sec
+9: Data match is True: 0 sec
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="large-table-hdu">
+<h2>Large Table HDU<a class="headerlink" href="#large-table-hdu" title="Link to this heading">#</a></h2>
+<p>In the last section we expanded our FITS file to add a colossal image extension, in this section we will do the same for a table extension. The method is similar, but with a few key differences.</p>
+<p>As with the mighty array, we start by making a small table where the specific data is not important but the data types are. In particular, the maximum string length for columns cannot be changed on the fly, so any string columns must be given the maximum number of characters needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_tbl</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="s2">&quot;Prince&quot;</span><span class="p">,</span> <span class="s2">&quot;Years since fall&quot;</span><span class="p">,</span> <span class="s2">&quot;Imports&quot;</span><span class="p">,</span> <span class="s2">&quot;Exports&quot;</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;U128&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;U128&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s2">&quot;U2048&quot;</span><span class="p">,</span> <span class="s2">&quot;U2048&quot;</span><span class="p">],</span>
+    <span class="n">rows</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Vangaveyave&quot;</span><span class="p">,</span>
+            <span class="mi">1297382</span><span class="p">,</span>
+            <span class="s2">&quot;Oriana&quot;</span><span class="p">,</span>
+            <span class="mf">34.6</span><span class="p">,</span>
+            <span class="s2">&quot;wine, cheese&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ahalo cloth, pearls, foamwork&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;Tkinele&quot;</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="s2">&quot;n/a&quot;</span><span class="p">,</span> <span class="mf">92.3</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Amboloyo&quot;</span><span class="p">,</span>
+            <span class="mi">50937253</span><span class="p">,</span>
+            <span class="s2">&quot;Rufus&quot;</span><span class="p">,</span>
+            <span class="mf">1504.2</span><span class="p">,</span>
+            <span class="s2">&quot;pears, textiles, spices&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;wine, timber&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Xiputl&quot;</span><span class="p">,</span>
+            <span class="mi">3627373</span><span class="p">,</span>
+            <span class="s2">&quot;Anastasiya&quot;</span><span class="p">,</span>
+            <span class="mf">346.8</span><span class="p">,</span>
+            <span class="s2">&quot;silk, perfumes, pigments&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;stone, cotton&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Old Damara&quot;</span><span class="p">,</span>
+            <span class="mi">437226732</span><span class="p">,</span>
+            <span class="s2">&quot;Melissa Damara&quot;</span><span class="p">,</span>
+            <span class="mf">25.3</span><span class="p">,</span>
+            <span class="s2">&quot;wool, timber&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;spices, silk&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Western Dair&quot;</span><span class="p">,</span>
+            <span class="mi">8045728302</span><span class="p">,</span>
+            <span class="s2">&quot;Belu&quot;</span><span class="p">,</span>
+            <span class="mf">876.3</span><span class="p">,</span>
+            <span class="s2">&quot;shellfish, salt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;cured meat, wool&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">table_hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">BinTableHDU</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">small_tbl</span><span class="p">)</span>
+<span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;EXTNAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;BIG_TABLE&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The header for this table HDU gives us the information to determine how many bytes we need for our mammoth table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= &#39;BINTABLE&#39;           / binary table extension                         
+BITPIX  =                    8 / array data type                                
+NAXIS   =                    2 / number of array dimensions                     
+NAXIS1  =                 4368 / length of dimension 1                          
+NAXIS2  =                    6 / length of dimension 2                          
+PCOUNT  =                    0 / number of group parameters                     
+GCOUNT  =                    1 / number of groups                               
+TFIELDS =                    6 / number of table fields                         
+TTYPE1  = &#39;Name    &#39;                                                            
+TFORM1  = &#39;128A    &#39;                                                            
+TTYPE2  = &#39;Population&#39;                                                          
+TFORM2  = &#39;K       &#39;                                                            
+TTYPE3  = &#39;Prince  &#39;                                                            
+TFORM3  = &#39;128A    &#39;                                                            
+TTYPE4  = &#39;Years since fall&#39;                                                    
+TFORM4  = &#39;D       &#39;                                                            
+TTYPE5  = &#39;Imports &#39;                                                            
+TFORM5  = &#39;2048A   &#39;                                                            
+TTYPE6  = &#39;Exports &#39;                                                            
+TFORM6  = &#39;2048A   &#39;                                                            
+EXTNAME = &#39;BIG_TABLE&#39;                                                           
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">NAXIS1</span></code> keyword gives the length of a single table row in bytes, and the <code class="docutils literal notranslate"><span class="pre">NAXIS2</span></code> keyword holds the number of rows in the table. So to get the total size of the humongous table in bytes we simply multiply <code class="docutils literal notranslate"><span class="pre">NAXIS1</span></code> by the number of rows desired (adjusting for FITS block size). Here I choose a million rows which is about 4GB, adjust as necessary for your system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_rows</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="n">tablesize_in_bytes</span> <span class="o">=</span> <span class="p">((</span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS1&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_rows</span> <span class="o">+</span> <span class="mi">2880</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2880</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2880</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we adjust the <code class="docutils literal notranslate"><span class="pre">NAXIS2</span></code> keyword to match our new table length and write just the header to the end of our towering FITS file, as we did for the oversize array extension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_rows</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we expand the file, we’ll look at the current file size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.8 Gbyte
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, just as for the vast array, we seek <code class="docutils literal notranslate"><span class="pre">tablesize_in_bytes</span></code> beyond the current end of the file and write a null byte.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filelen</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;r+b&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">filelen</span> <span class="o">+</span> <span class="n">tablesize_in_bytes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can see that the filesize has indeed increased by about 4GB.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17.2 Gbyte
+</pre></div>
+</div>
+</div>
+</div>
+<section id="adding-data-to-the-titanic-table">
+<h3>Adding data to the titanic table<a class="headerlink" href="#adding-data-to-the-titanic-table" title="Link to this heading">#</a></h3>
+<p>We can now open the prodigious FITS file in <code class="docutils literal notranslate"><span class="pre">update</span></code> mode and fill in our table. Here we’ll run a little comparison. FITS files store table data row by row, so it should be faster to fill the table by row rather than column (and doing so allows us to again advise the memory mapper with <code class="docutils literal notranslate"><span class="pre">MADV_SEQUENTIAL</span></code>), but memory handling is complex and system dependent so when it really matters it’s best to do testing for your individual setup.</p>
+<p>We’ll start by printing the file info to ensure we have the valid FITS file we expect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: ./patagotitan.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU       8   ()      
+  1  BIG_IMG       1 ImageHDU         8   (40000, 40000)   float64   
+  2  BIG_TABLE     1 BinTableHDU     21   1000000R x 6C   [128A, K, 128A, D, 2048A, 2048A]   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">&quot;BIG_TABLE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="n">tt</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">small_tbl</span><span class="o">.</span><span class="n">colnames</span><span class="p">:</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Name&quot;</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Zunidth&quot;</span><span class="p">,</span> <span class="s2">&quot;Astandalas&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Population&quot;</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_rows</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Prince&quot;</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cliopher Lord Mdang&quot;</span><span class="p">,</span> <span class="s2">&quot;His Radiancy Artorin Damara&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Years since fall&quot;</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Imports&quot;</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;roses&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Exports&quot;</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;magic&quot;</span><span class="p">,</span> <span class="s2">&quot;empire&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+    <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+<span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: 4 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Population: 5 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prince: 1 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Years since fall: 9 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imports: 11 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exports: 19 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 178 sec
+Total fill time: 3.8 min
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">&quot;BIG_TABLE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="c1"># Comment out these lines if your system does not have madvise</span>
+<span class="n">mm</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">_get_array_mmap</span><span class="p">(</span><span class="n">table_data</span><span class="p">)</span>
+<span class="n">mm</span><span class="o">.</span><span class="n">madvise</span><span class="p">(</span><span class="n">MADV_SEQUENTIAL</span><span class="p">)</span>
+
+<span class="n">block_len</span> <span class="o">=</span> <span class="mi">200_000</span>
+<span class="n">data_list</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">small_tbl</span><span class="o">.</span><span class="n">as_array</span><span class="p">())</span> <span class="o">*</span> <span class="p">(</span><span class="n">block_len</span> <span class="o">//</span> <span class="nb">len</span><span class="p">(</span><span class="n">small_tbl</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))[:</span><span class="n">block_len</span><span class="p">]</span>
+
+<span class="n">tt</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">,</span> <span class="n">block_len</span><span class="p">)):</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+    <span class="n">table_data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">block_len</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_list</span>
+
+    <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+    <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
+
+<span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+<span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 53 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 27 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: 25 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 28 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 42 sec
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 195 sec
+Total fill time: 6.2 min
+</pre></div>
+</div>
+</div>
+</div>
+<p>For my system as I write this tutorial the times are incredibly close, but your mileage may vary.</p>
+</section>
+<section id="checking-our-data">
+<h3>Checking our data<a class="headerlink" href="#checking-our-data" title="Link to this heading">#</a></h3>
+<p>Now let’s again open up our behemothic FITS file and check that the data was loaded correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;denywrite&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: ./patagotitan.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU       8   ()      
+  1  BIG_IMG       1 ImageHDU         8   (40000, 40000)   float64   
+  2  BIG_TABLE     1 BinTableHDU     21   1000000R x 6C   [128A, K, 128A, D, 2048A, 2048A]   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">&quot;BIG_TABLE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Checking the first few rows of each fill block.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">,</span> <span class="n">block_len</span><span class="p">)):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">small_tbl</span> <span class="o">==</span> <span class="n">Table</span><span class="p">(</span><span class="n">table_data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: True
+1: True
+2: True
+3: True
+4: True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Closing the file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="adding-an-extra-small-hdu">
+<h2>Adding an Extra Small HDU<a class="headerlink" href="#adding-an-extra-small-hdu" title="Link to this heading">#</a></h2>
+<p>The last thing we will do is add another small HDU to the monumental FITS file. We can do this in the usual way because the extension we are adding is of a normal size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">ImageHDU</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="n">small_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;EXTNAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;MINI_IMG&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we add the additional HDU we’ll remind ourself of the current whopping filesize.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;KB&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17168011.2 kbyte
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we don’t have to do anything funky with the file size we can just open the magnificent FITS file in <code class="docutils literal notranslate"><span class="pre">append</span></code> mode and write the whole HDU, and it is a very fast operation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu_list</span><span class="p">:</span>
+    <span class="n">hdu_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">small_hdu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can see that adding this tiny additional extension barely changes the monster file size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;KB&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17168017.0 kbyte
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now if we open the mondo FITS file we can see that additional extension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;denywrite&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu_list</span><span class="p">:</span>
+    <span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filename: ./patagotitan.fits
+No.    Name      Ver    Type      Cards   Dimensions   Format
+  0  PRIMARY       1 PrimaryHDU       8   ()      
+  1  BIG_IMG       1 ImageHDU         8   (40000, 40000)   float64   
+  2  BIG_TABLE     1 BinTableHDU     21   1000000R x 6C   [128A, K, 128A, D, 2048A, 2048A]   
+  3  MINI_IMG      1 ImageHDU         8   (10, 10)   float64   
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cleanup">
+<h2>Cleanup<a class="headerlink" href="#cleanup" title="Link to this heading">#</a></h2>
+<p>Lastly, we’ll remove the leviathan file we created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--working-with-large-FITS-files",
+            ref: "main/",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By C. E. Brasseur (@ceb8)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

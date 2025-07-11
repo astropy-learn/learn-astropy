@@ -197,8 +197,6 @@
         <ul class="nav bd-sidenav">
 
 
-
-
 </ul>
 
     </div>
@@ -348,8 +346,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#document-1_models-quick-fit">Modeling 1: Make a quick fit using astropy.modeling</a></li>
 <li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#document-2_user-defined-model">Modeling 2: Create a User Defined Model using astropy.modeling</a></li>
-<li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="index-models.html#compound-models">Compound models</a></li>
-<li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="index-models.html#custom-model">Custom model</a></li>
 </ul>
 
             </nav>
@@ -573,7 +569,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_1$&#39;)
 </pre></div>
 </div>
-<img alt="_images/29eeec4d3dad2b705ea5f7b2791844247afecb976c6f267ff16f1118872200e5.png" src="_images/29eeec4d3dad2b705ea5f7b2791844247afecb976c6f267ff16f1118872200e5.png" />
+<img alt="_images/3634bb8b4c277819f7ce4c233fc84552a8f897def45ba7df53cedd5578cf8fde.png" src="_images/3634bb8b4c277819f7ce4c233fc84552a8f897def45ba7df53cedd5578cf8fde.png" />
 </div>
 </div>
 <p>To fit this data let’s remember the three steps: model, fitter and perform fit.</p>
@@ -600,8 +596,8 @@ Model set size: 1
 Degree: 3
 Parameters:
             c0                 c1                 c2                 c3        
-    ------------------ ----------------- ------------------- ------------------
-    -9.172425941582441 12.59165151659485 -6.4125256413095135 1.0733596272176298
+    ------------------ ------------------ ------------------ ------------------
+    -8.414565124986794 11.315131284061778 -5.936420715916029 1.0350472068170264
 </pre></div>
 </div>
 </div>
@@ -634,9 +630,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-            c0                  c1                  c2                 c3        
-    ------------------ -------------------- ------------------ ------------------
-    -2.181910827369914 -0.09737921440192401 -0.641962352228048 0.3102451837171443
+             c0                  c1                  c2                 c3        
+    ------------------- -------------------- ------------------ ------------------
+    0.20564283089638824 -0.15716654941300878 -1.239243988919935 0.4355616696000767
 </pre></div>
 </div>
 </div>
@@ -671,7 +667,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.976453546686968
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.7254506507627694
 </pre></div>
 </div>
 </div>
@@ -684,7 +680,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 3.6404719596242217
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 4.580753153741815
 </pre></div>
 </div>
 </div>
@@ -703,10 +699,10 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f043d6b6c60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff08227ba10&gt;
 </pre></div>
 </div>
-<img alt="_images/5daacb87eb9a956a0a0d1bf47cf76b22fef5b552f8d494da052155270d4be995.png" src="_images/5daacb87eb9a956a0a0d1bf47cf76b22fef5b552f8d494da052155270d4be995.png" />
+<img alt="_images/b2cb6953351ca9c5f39fbc468440cdd51731a2b59186590a4e26b1d805a046f3.png" src="_images/b2cb6953351ca9c5f39fbc468440cdd51731a2b59186590a4e26b1d805a046f3.png" />
 </div>
 </div>
 <p>Results are as espected, the fit performed with the linear fitter is better than the second, non linear one.</p>
@@ -743,7 +739,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_2$&#39;)
 </pre></div>
 </div>
-<img alt="_images/a439ff8bd1722f8eb99d8ab93605e4bbd374fe7ac8a966b770601e8129461f6d.png" src="_images/a439ff8bd1722f8eb99d8ab93605e4bbd374fe7ac8a966b770601e8129461f6d.png" />
+<img alt="_images/9424b3add19b739bc9cbfc66cf567663995d37f79f0e0ac2bab63e87ff87f7d1.png" src="_images/9424b3add19b739bc9cbfc66cf567663995d37f79f0e0ac2bab63e87ff87f7d1.png" />
 </div>
 </div>
 <p>Let’s do our three steps to make the fit we want. For this fit we’re going to use a non-linear fitter, <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter</span></code>, because the model we need (<code class="docutils literal notranslate"><span class="pre">Gaussian1D</span></code>) is non-linear in the parameters.</p>
@@ -768,9 +764,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-        amplitude            mean              stddev     
-    ----------------- ------------------ -----------------
-    9.703971972909294 0.2905529841691312 10.24439667276053
+        amplitude              mean              stddev      
+    ------------------ ------------------- ------------------
+    10.161667885872756 0.16429784623682972 10.000409076033547
 </pre></div>
 </div>
 </div>
@@ -796,7 +792,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05013324 0.07443702 0.07476521]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05133544 0.06625433 0.06645726]
 </pre></div>
 </div>
 </div>
@@ -817,9 +813,9 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.703971972909294 +\- 0.22390454000753693
-Mean: 0.2905529841691312 +\- 0.27283148663688805
-Standard Deviation: 10.24439667276053 +\- 0.2734322676754956
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.161667885872756 +\- 0.2265732649327809
+Mean: 0.16429784623682972 +\- 0.2573991704994828
+Standard Deviation: 10.000409076033547 +\- 0.2577930649461142
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -828,11 +824,11 @@ Standard Deviation: 10.24439667276053 +\- 0.2734322676754956
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_3578/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3529/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Amplitude: {} +\- {}&quot;.format(best_fit_gauss.amplitude.value, np.sqrt(cov_diag[0]))
-/tmp/ipykernel_3578/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3529/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(best_fit_gauss.mean.value, np.sqrt(cov_diag[1])))
-/tmp/ipykernel_3578/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3529/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Standard Deviation: {} +\- {}&quot;.format(
 </pre></div>
 </div>
@@ -863,7 +859,7 @@ Standard Deviation: 10.24439667276053 +\- 0.2734322676754956
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.70397395  0.29055502 10.24439249]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.16166902  0.1642994  10.00040685]
 </pre></div>
 </div>
 </div>
@@ -877,9 +873,9 @@ Standard Deviation: 10.24439667276053 +\- 0.2734322676754956
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.703973951984176 +\- 0.2085755106086411
-Mean: 0.2905550176310043 +\- 0.25415064931293285
-Standard Deviation: 10.24439248784542 +\- 0.25471029589649113
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.16166901860214 +\- 0.2180138118181192
+Mean: 0.1642993992949413 +\- 0.24767662180935193
+Standard Deviation: 10.00040684622568 +\- 0.24805566376335159
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -888,11 +884,11 @@ Standard Deviation: 10.24439248784542 +\- 0.25471029589649113
 &lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_3578/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3529/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Amplitude: {} +\- {}&quot;.format(p_opt[0], np.sqrt(p_cov[0, 0])))
-/tmp/ipykernel_3578/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3529/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(p_opt[1], np.sqrt(p_cov[1, 1])))
-/tmp/ipykernel_3578/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3529/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Standard Deviation: {} +\- {}&quot;.format(p_opt[2], np.sqrt(p_cov[2, 2])))
 </pre></div>
 </div>
@@ -908,7 +904,7 @@ Standard Deviation: 10.24439248784542 +\- 0.25471029589649113
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.8677576541316718
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.9258750059366527
 </pre></div>
 </div>
 </div>
@@ -921,7 +917,7 @@ Standard Deviation: 10.24439248784542 +\- 0.25471029589649113
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.8677576541512168
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.9258750059343416
 </pre></div>
 </div>
 </div>
@@ -939,10 +935,10 @@ Standard Deviation: 10.24439248784542 +\- 0.25471029589649113
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f043df28680&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ff0821b5cd0&gt;
 </pre></div>
 </div>
-<img alt="_images/6ba5eb18131d7de1839874150236563bd66c697a852a18b44ca6d275eb605649.png" src="_images/6ba5eb18131d7de1839874150236563bd66c697a852a18b44ca6d275eb605649.png" />
+<img alt="_images/9d65948539694d6a9224f22edf286e6e920acf5805cb94eeeb84f92f19db8cf0.png" src="_images/9d65948539694d6a9224f22edf286e6e920acf5805cb94eeeb84f92f19db8cf0.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Choose the method most convenient for every case you need to fit. We recomend <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> because is easier to write the name of the function you want to fit than to remember the expression every time we want to use it. Also, <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> becomes useful with more complicated models like <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">two gaussians</a> plus a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#blackbody-radiation">black body</a>, but that is another tutorial.</p>
@@ -994,7 +990,7 @@ Standard Deviation: 10.24439248784542 +\- 0.25471029589649113
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_3$&#39;)
 </pre></div>
 </div>
-<img alt="_images/fa0bf1710de39a1ec3631f0a0a5f8d3d9eb331e2454ba3c044a3b4f74c5a81f9.png" src="_images/fa0bf1710de39a1ec3631f0a0a5f8d3d9eb331e2454ba3c044a3b4f74c5a81f9.png" />
+<img alt="_images/5224aeb98f66c2f8304a7ecdd3d93e75f3acdf064da194bc12dfc2cfbbe1e7e0.png" src="_images/5224aeb98f66c2f8304a7ecdd3d93e75f3acdf064da194bc12dfc2cfbbe1e7e0.png" />
 </div>
 </div>
 </section>
@@ -1160,9 +1156,8 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 <p>We just plotted our spectrum! Check different ranges of wavelength to see how the full spectrum looks like in comparison to the one we saw before.</p>
 </section>
 </section>
-</section>
 <section id="fit-an-emission-line-with-a-gaussian-model">
-<h2>Fit an Emission Line with a Gaussian Model<a class="headerlink" href="#fit-an-emission-line-with-a-gaussian-model" title="Link to this heading">#</a></h2>
+<h3>Fit an Emission Line with a Gaussian Model<a class="headerlink" href="#fit-an-emission-line-with-a-gaussian-model" title="Link to this heading">#</a></h3>
 <p>The blue dashed line marks the <span class="math notranslate nohighlight">\(H\alpha\)</span> emission line. We can tell this is an active star because it has a strong emission line.</p>
 <p>Now, we would like to measure the height of this line. Let’s use <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> to fit a gaussian to the <span class="math notranslate nohighlight">\(H\alpha\)</span> line. We are going to initialize a gaussian model at the position of the <span class="math notranslate nohighlight">\(H\alpha\)</span> line. The idea is that the gaussian amplitude will tell us the height of the line.</p>
 <div class="cell docutils container">
@@ -1213,7 +1208,7 @@ Parameters:
 </div>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
 <p>Go back to the previous plot and try to make the fit work. Note: <strong>Do not spend more than 10 minutes</strong> in this exercise. A couple of ideas to try:</p>
 <ul class="simple">
 <li><p>Is it not working because of the model we chose to fit? You can find more models to use <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#module-astropy.modeling.functional_models">here</a>.</p></li>
@@ -1223,8 +1218,8 @@ Parameters:
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="compound-models">
-<h1>Compound models<a class="headerlink" href="#compound-models" title="Link to this heading">#</a></h1>
+<section id="compound-models">
+<h2>Compound models<a class="headerlink" href="#compound-models" title="Link to this heading">#</a></h2>
 <p>One model is not enough to make this fit work. We need to combine a couple of models to make a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">compound model</a> in <code class="docutils literal notranslate"><span class="pre">astropy</span></code>. The idea is that we can add, divide or multiply models that already exist in <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#models-and-fitting-astropy-modeling">astropy.modeling</a> and fit the compound model to our data.</p>
 <p>For our problem we are going to combine the gaussian with a polynomial of degree 1 to account for the background spectrum close to the <span class="math notranslate nohighlight">\(H\alpha\)</span> line. Take a look at the plot we made before to convince yourself that this is the case.</p>
 <p>Now let’s make our compound model!</p>
@@ -1318,7 +1313,7 @@ c1_1 0.003239952196866877
 </div>
 <p><strong>Conclusions:</strong> What was the difference between the first simple Gaussian and the compound model? The linear model that we added up to the gaussian model allowed the base of the Gaussian fit to have a slope and a background level. Normal Gaussians go to zero at <span class="math notranslate nohighlight">\(\pm \inf\)</span>; this one doesn’t.</p>
 <section id="fixed-or-bounded-model-parameters">
-<h2>Fixed or bounded model parameters<a class="headerlink" href="#fixed-or-bounded-model-parameters" title="Link to this heading">#</a></h2>
+<h3>Fixed or bounded model parameters<a class="headerlink" href="#fixed-or-bounded-model-parameters" title="Link to this heading">#</a></h3>
 <p>The mean value of the gaussian from our previous model indicates where the <span class="math notranslate nohighlight">\(H\alpha\)</span> line is. In our fit result, we can tell that it is a little off from <span class="math notranslate nohighlight">\(6563\)</span> Angstroms. One way to fix this is to fix some of the parameters of the model. In <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> these are called <strong><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.modeling.Parameter.html#astropy.modeling.Parameter.fixed">fixed parameters</a></strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1434,7 +1429,7 @@ Parameters:
 <p>Better! By loosening the condition we added to the mean value, we got a better fit and the mean of the gaussian is closer to where we want it.</p>
 </section>
 <section id="id1">
-<h2>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Modify the value of delta to change the minimum and maximum values for the mean of the gaussian. Look for:</p>
 <ul class="simple">
 <li><p>The better delta so the mean is closer to the real value of the <span class="math notranslate nohighlight">\(H\alpha\)</span> line.</p></li>
@@ -1442,8 +1437,8 @@ Parameters:
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="custom-model">
-<h1>Custom model<a class="headerlink" href="#custom-model" title="Link to this heading">#</a></h1>
+<section id="custom-model">
+<h2>Custom model<a class="headerlink" href="#custom-model" title="Link to this heading">#</a></h2>
 <p>What should you do if you need a model that <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> doesn’t provide? To solve that problem, Astropy has another tool called <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/new.html">custom model</a>. Using this tool, we can create any model we want.</p>
 <p>We will describe two ways to create a custom model:</p>
 <ul class="simple">
@@ -1452,7 +1447,7 @@ Parameters:
 </ul>
 <p>We use the basic custom model when we need a simple function to fit and the full custom model when we need a more complex function. Let’s use an example to understand each one of the custom models.</p>
 <section id="basic-custom-model">
-<h2>Basic custom model<a class="headerlink" href="#basic-custom-model" title="Link to this heading">#</a></h2>
+<h3>Basic custom model<a class="headerlink" href="#basic-custom-model" title="Link to this heading">#</a></h3>
 <p>An <strong>Exponential Model</strong> is not provided by Astropy models. Let’s see one example of basic custom model for this case. First, let’s simulate a dataset that follows an exponential:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1476,7 +1471,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27d68f004843eb15757d9d67525c604de636447be40b65f6e0872e30d062432f.png" src="_images/27d68f004843eb15757d9d67525c604de636447be40b65f6e0872e30d062432f.png" />
+<img alt="_images/24135eafbd14b54450eed59c1ae24f404f505b30373f968e7df2d50c45cdd5e1.png" src="_images/24135eafbd14b54450eed59c1ae24f404f505b30373f968e7df2d50c45cdd5e1.png" />
 </div>
 </div>
 <p>We can define a simple custom model by specifying which parameters we want to fit.</p>
@@ -1511,7 +1506,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/25cdf326e9b74bb6f1b6d0767f265ee7060d752c429f12c34d2fda6b9fd77434.png" src="_images/25cdf326e9b74bb6f1b6d0767f265ee7060d752c429f12c34d2fda6b9fd77434.png" />
+<img alt="_images/ac1e52875373be7a4aa495eee650190f661c4e6642de0056788bc12e67cc3d38.png" src="_images/ac1e52875373be7a4aa495eee650190f661c4e6642de0056788bc12e67cc3d38.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1526,9 +1521,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-            a                  b                  c         
-    ----------------- ------------------- ------------------
-    0.876596470931027 -1.7225870090379958 1.1569813769298034
+            a                   b                  c         
+    ------------------ ------------------- ------------------
+    0.9630822728838254 -2.0772743996397858 1.1574457550030477
 </pre></div>
 </div>
 </div>
@@ -1555,7 +1550,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.8992669454993212)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.9086643008789133)
 </pre></div>
 </div>
 </div>
@@ -1564,11 +1559,11 @@ Parameters:
 <p><strong>Note:</strong> Fits of non-linear parameters (like in our example) are extremely dependent on initial conditions. Pay attention to the initial conditions you select.</p>
 </section>
 <section id="id2">
-<h2>Exercise<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Modify the initial conditions of the fit and check yourself the relation between the best fit parameters and the initial conditions for the previous example. You can check it by looking at the Reduced Chi Square value: if it gets closer to 1 the fit is better and vice versa. To compare the quality of the fits you can take note of the Reduced Chi Square value you get for each initial condition.</p>
 </section>
 <section id="full-custom-model">
-<h2>Full custom model<a class="headerlink" href="#full-custom-model" title="Link to this heading">#</a></h2>
+<h3>Full custom model<a class="headerlink" href="#full-custom-model" title="Link to this heading">#</a></h3>
 <p>What if we want to use a model from <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code>, but with a different set of parameters? One example is the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.modeling.functional_models.Sine1D.html#astropy.modeling.functional_models.Sine1D">Sine Model</a>. It has a very particular definition of the frequency and phase. Let’s define a new Sine function with a full custom model. Again, first let’s create a simulated dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1592,7 +1587,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/62e9ca09e6991dbea9a21672481c233d306723d5df221ba86c735e3fdc6fe9d8.png" src="_images/62e9ca09e6991dbea9a21672481c233d306723d5df221ba86c735e3fdc6fe9d8.png" />
+<img alt="_images/aa86d06f804511d672ff4e69ad8f237c819ee6177a90a20c6bed207a8e013b7c.png" src="_images/aa86d06f804511d672ff4e69ad8f237c819ee6177a90a20c6bed207a8e013b7c.png" />
 </div>
 </div>
 <p>For the full custom model we can easily set the <strong>derivative of the function</strong>, which is used by different <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#id21">fitters</a>, for example the <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter()</span></code>.</p>
@@ -1639,7 +1634,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/740c0be018fb461906501354e319befd3c767819fd54535c86a3f16a74a4288a.png" src="_images/740c0be018fb461906501354e319befd3c767819fd54535c86a3f16a74a4288a.png" />
+<img alt="_images/46b1bb6d1edea5e2d4d8c9d60dd07646a8debdf5975655bac0b281f852baff67.png" src="_images/46b1bb6d1edea5e2d4d8c9d60dd07646a8debdf5975655bac0b281f852baff67.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1654,9 +1649,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-            a                  b                  c                  d         
-    ------------------ ------------------ ------------------ ------------------
-    2.9761919857362824 2.0080139190088913 3.9713149048181946 0.9572869928401958
+            a                 b                  c                  d         
+    ----------------- ------------------ ------------------ ------------------
+    3.010622137988566 1.9989300570434283 3.9905960395565723 1.0039014197353062
 </pre></div>
 </div>
 </div>
@@ -1668,7 +1663,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.870023661205195)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.618555709093496)
 </pre></div>
 </div>
 </div>
@@ -1676,12 +1671,12 @@ Parameters:
 <p>The Reduced Chi Squared value is showing the same as the plot: this fit could be improved. The Reduced Chi Squared is not close to 1 and the fit is off by small phase.</p>
 </section>
 <section id="id3">
-<h2>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Play with the initial values for the last fit and improve the Reduced Chi Squared value.</p>
 <p><strong>Note:</strong> A fancy way of doing this would be to code a function which iterates over different initial conditions, optimizing the Reduced Chi Squared value. No need to do it here, but feel free to try.</p>
 </section>
 <section id="id4">
-<h2>Exercise<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Custom models are also useful when we want to fit an <strong>unusual function</strong> to our data. As an example, create a full custom model to fit the following data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1701,9 +1696,10 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b089cb7d83ec4326f3570cf3441323801c461c0ea1b510ddff6ea2f2ae786d9.png" src="_images/6b089cb7d83ec4326f3570cf3441323801c461c0ea1b510ddff6ea2f2ae786d9.png" />
+<img alt="_images/d5efcd2189269486eef4f8676216c111d7a1c6daeebf90c8e7fe0efea475bd38.png" src="_images/d5efcd2189269486eef4f8676216c111d7a1c6daeebf90c8e7fe0efea475bd38.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 </div>
@@ -1756,8 +1752,6 @@ Parameters:
     <ul class="visible nav section-nav flex-column">
 <li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#document-1_models-quick-fit">Modeling 1: Make a quick fit using astropy.modeling</a></li>
 <li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#document-2_user-defined-model">Modeling 2: Create a User Defined Model using astropy.modeling</a></li>
-<li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="index-models.html#compound-models">Compound models</a></li>
-<li class="toctree-l1 toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="index-models.html#custom-model">Custom model</a></li>
 </ul>
 
   </nav></div>

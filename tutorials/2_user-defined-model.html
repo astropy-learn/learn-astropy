@@ -196,8 +196,6 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_models-quick-fit.html">Modeling 1: Make a quick fit using astropy.modeling</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modeling 2: Create a User Defined Model using astropy.modeling</a></li>
-
-
 </ul>
 
     </div>
@@ -441,7 +439,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling 2: Create a User Defined Model using astropy.modeling</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
@@ -451,27 +448,24 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-that-we-have-the-spectrum">Now that we have the spectrum…</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-an-emission-line-with-a-gaussian-model">Fit an Emission Line with a Gaussian Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-an-emission-line-with-a-gaussian-model">Fit an Emission Line with a Gaussian Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-models">Compound models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-or-bounded-model-parameters">Fixed or bounded model parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-models">Compound models</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-or-bounded-model-parameters">Fixed or bounded model parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-model">Custom model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-custom-model">Basic custom model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-custom-model">Full custom model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-model">Custom model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-custom-model">Basic custom model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-custom-model">Full custom model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -643,9 +637,8 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 <p>We just plotted our spectrum! Check different ranges of wavelength to see how the full spectrum looks like in comparison to the one we saw before.</p>
 </section>
 </section>
-</section>
 <section id="fit-an-emission-line-with-a-gaussian-model">
-<h2>Fit an Emission Line with a Gaussian Model<a class="headerlink" href="#fit-an-emission-line-with-a-gaussian-model" title="Link to this heading">#</a></h2>
+<h3>Fit an Emission Line with a Gaussian Model<a class="headerlink" href="#fit-an-emission-line-with-a-gaussian-model" title="Link to this heading">#</a></h3>
 <p>The blue dashed line marks the <span class="math notranslate nohighlight">\(H\alpha\)</span> emission line. We can tell this is an active star because it has a strong emission line.</p>
 <p>Now, we would like to measure the height of this line. Let’s use <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> to fit a gaussian to the <span class="math notranslate nohighlight">\(H\alpha\)</span> line. We are going to initialize a gaussian model at the position of the <span class="math notranslate nohighlight">\(H\alpha\)</span> line. The idea is that the gaussian amplitude will tell us the height of the line.</p>
 <div class="cell docutils container">
@@ -696,7 +689,7 @@ Parameters:
 </div>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
 <p>Go back to the previous plot and try to make the fit work. Note: <strong>Do not spend more than 10 minutes</strong> in this exercise. A couple of ideas to try:</p>
 <ul class="simple">
 <li><p>Is it not working because of the model we chose to fit? You can find more models to use <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#module-astropy.modeling.functional_models">here</a>.</p></li>
@@ -706,8 +699,8 @@ Parameters:
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="compound-models">
-<h1>Compound models<a class="headerlink" href="#compound-models" title="Link to this heading">#</a></h1>
+<section id="compound-models">
+<h2>Compound models<a class="headerlink" href="#compound-models" title="Link to this heading">#</a></h2>
 <p>One model is not enough to make this fit work. We need to combine a couple of models to make a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">compound model</a> in <code class="docutils literal notranslate"><span class="pre">astropy</span></code>. The idea is that we can add, divide or multiply models that already exist in <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#models-and-fitting-astropy-modeling">astropy.modeling</a> and fit the compound model to our data.</p>
 <p>For our problem we are going to combine the gaussian with a polynomial of degree 1 to account for the background spectrum close to the <span class="math notranslate nohighlight">\(H\alpha\)</span> line. Take a look at the plot we made before to convince yourself that this is the case.</p>
 <p>Now let’s make our compound model!</p>
@@ -801,7 +794,7 @@ c1_1 0.003239952196866877
 </div>
 <p><strong>Conclusions:</strong> What was the difference between the first simple Gaussian and the compound model? The linear model that we added up to the gaussian model allowed the base of the Gaussian fit to have a slope and a background level. Normal Gaussians go to zero at <span class="math notranslate nohighlight">\(\pm \inf\)</span>; this one doesn’t.</p>
 <section id="fixed-or-bounded-model-parameters">
-<h2>Fixed or bounded model parameters<a class="headerlink" href="#fixed-or-bounded-model-parameters" title="Link to this heading">#</a></h2>
+<h3>Fixed or bounded model parameters<a class="headerlink" href="#fixed-or-bounded-model-parameters" title="Link to this heading">#</a></h3>
 <p>The mean value of the gaussian from our previous model indicates where the <span class="math notranslate nohighlight">\(H\alpha\)</span> line is. In our fit result, we can tell that it is a little off from <span class="math notranslate nohighlight">\(6563\)</span> Angstroms. One way to fix this is to fix some of the parameters of the model. In <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> these are called <strong><a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.modeling.Parameter.html#astropy.modeling.Parameter.fixed">fixed parameters</a></strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -917,7 +910,7 @@ Parameters:
 <p>Better! By loosening the condition we added to the mean value, we got a better fit and the mean of the gaussian is closer to where we want it.</p>
 </section>
 <section id="id1">
-<h2>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Modify the value of delta to change the minimum and maximum values for the mean of the gaussian. Look for:</p>
 <ul class="simple">
 <li><p>The better delta so the mean is closer to the real value of the <span class="math notranslate nohighlight">\(H\alpha\)</span> line.</p></li>
@@ -925,8 +918,8 @@ Parameters:
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="custom-model">
-<h1>Custom model<a class="headerlink" href="#custom-model" title="Link to this heading">#</a></h1>
+<section id="custom-model">
+<h2>Custom model<a class="headerlink" href="#custom-model" title="Link to this heading">#</a></h2>
 <p>What should you do if you need a model that <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> doesn’t provide? To solve that problem, Astropy has another tool called <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/new.html">custom model</a>. Using this tool, we can create any model we want.</p>
 <p>We will describe two ways to create a custom model:</p>
 <ul class="simple">
@@ -935,7 +928,7 @@ Parameters:
 </ul>
 <p>We use the basic custom model when we need a simple function to fit and the full custom model when we need a more complex function. Let’s use an example to understand each one of the custom models.</p>
 <section id="basic-custom-model">
-<h2>Basic custom model<a class="headerlink" href="#basic-custom-model" title="Link to this heading">#</a></h2>
+<h3>Basic custom model<a class="headerlink" href="#basic-custom-model" title="Link to this heading">#</a></h3>
 <p>An <strong>Exponential Model</strong> is not provided by Astropy models. Let’s see one example of basic custom model for this case. First, let’s simulate a dataset that follows an exponential:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,7 +952,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27d68f004843eb15757d9d67525c604de636447be40b65f6e0872e30d062432f.png" src="_images/27d68f004843eb15757d9d67525c604de636447be40b65f6e0872e30d062432f.png" />
+<img alt="_images/24135eafbd14b54450eed59c1ae24f404f505b30373f968e7df2d50c45cdd5e1.png" src="_images/24135eafbd14b54450eed59c1ae24f404f505b30373f968e7df2d50c45cdd5e1.png" />
 </div>
 </div>
 <p>We can define a simple custom model by specifying which parameters we want to fit.</p>
@@ -994,7 +987,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/25cdf326e9b74bb6f1b6d0767f265ee7060d752c429f12c34d2fda6b9fd77434.png" src="_images/25cdf326e9b74bb6f1b6d0767f265ee7060d752c429f12c34d2fda6b9fd77434.png" />
+<img alt="_images/ac1e52875373be7a4aa495eee650190f661c4e6642de0056788bc12e67cc3d38.png" src="_images/ac1e52875373be7a4aa495eee650190f661c4e6642de0056788bc12e67cc3d38.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1009,9 +1002,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-            a                  b                  c         
-    ----------------- ------------------- ------------------
-    0.876596470931027 -1.7225870090379958 1.1569813769298034
+            a                   b                  c         
+    ------------------ ------------------- ------------------
+    0.9630822728838254 -2.0772743996397858 1.1574457550030477
 </pre></div>
 </div>
 </div>
@@ -1038,7 +1031,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.8992669454993212)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.9086643008789133)
 </pre></div>
 </div>
 </div>
@@ -1047,11 +1040,11 @@ Parameters:
 <p><strong>Note:</strong> Fits of non-linear parameters (like in our example) are extremely dependent on initial conditions. Pay attention to the initial conditions you select.</p>
 </section>
 <section id="id2">
-<h2>Exercise<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Modify the initial conditions of the fit and check yourself the relation between the best fit parameters and the initial conditions for the previous example. You can check it by looking at the Reduced Chi Square value: if it gets closer to 1 the fit is better and vice versa. To compare the quality of the fits you can take note of the Reduced Chi Square value you get for each initial condition.</p>
 </section>
 <section id="full-custom-model">
-<h2>Full custom model<a class="headerlink" href="#full-custom-model" title="Link to this heading">#</a></h2>
+<h3>Full custom model<a class="headerlink" href="#full-custom-model" title="Link to this heading">#</a></h3>
 <p>What if we want to use a model from <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code>, but with a different set of parameters? One example is the <a class="reference external" href="http://docs.astropy.org/en/stable/api/astropy.modeling.functional_models.Sine1D.html#astropy.modeling.functional_models.Sine1D">Sine Model</a>. It has a very particular definition of the frequency and phase. Let’s define a new Sine function with a full custom model. Again, first let’s create a simulated dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1075,7 +1068,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/62e9ca09e6991dbea9a21672481c233d306723d5df221ba86c735e3fdc6fe9d8.png" src="_images/62e9ca09e6991dbea9a21672481c233d306723d5df221ba86c735e3fdc6fe9d8.png" />
+<img alt="_images/aa86d06f804511d672ff4e69ad8f237c819ee6177a90a20c6bed207a8e013b7c.png" src="_images/aa86d06f804511d672ff4e69ad8f237c819ee6177a90a20c6bed207a8e013b7c.png" />
 </div>
 </div>
 <p>For the full custom model we can easily set the <strong>derivative of the function</strong>, which is used by different <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#id21">fitters</a>, for example the <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter()</span></code>.</p>
@@ -1122,7 +1115,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/740c0be018fb461906501354e319befd3c767819fd54535c86a3f16a74a4288a.png" src="_images/740c0be018fb461906501354e319befd3c767819fd54535c86a3f16a74a4288a.png" />
+<img alt="_images/46b1bb6d1edea5e2d4d8c9d60dd07646a8debdf5975655bac0b281f852baff67.png" src="_images/46b1bb6d1edea5e2d4d8c9d60dd07646a8debdf5975655bac0b281f852baff67.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1137,9 +1130,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-            a                  b                  c                  d         
-    ------------------ ------------------ ------------------ ------------------
-    2.9761919857362824 2.0080139190088913 3.9713149048181946 0.9572869928401958
+            a                 b                  c                  d         
+    ----------------- ------------------ ------------------ ------------------
+    3.010622137988566 1.9989300570434283 3.9905960395565723 1.0039014197353062
 </pre></div>
 </div>
 </div>
@@ -1151,7 +1144,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.870023661205195)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.618555709093496)
 </pre></div>
 </div>
 </div>
@@ -1159,12 +1152,12 @@ Parameters:
 <p>The Reduced Chi Squared value is showing the same as the plot: this fit could be improved. The Reduced Chi Squared is not close to 1 and the fit is off by small phase.</p>
 </section>
 <section id="id3">
-<h2>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Play with the initial values for the last fit and improve the Reduced Chi Squared value.</p>
 <p><strong>Note:</strong> A fancy way of doing this would be to code a function which iterates over different initial conditions, optimizing the Reduced Chi Squared value. No need to do it here, but feel free to try.</p>
 </section>
 <section id="id4">
-<h2>Exercise<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h3>Exercise<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Custom models are also useful when we want to fit an <strong>unusual function</strong> to our data. As an example, create a full custom model to fit the following data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1184,9 +1177,10 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b089cb7d83ec4326f3570cf3441323801c461c0ea1b510ddff6ea2f2ae786d9.png" src="_images/6b089cb7d83ec4326f3570cf3441323801c461c0ea1b510ddff6ea2f2ae786d9.png" />
+<img alt="_images/d5efcd2189269486eef4f8676216c111d7a1c6daeebf90c8e7fe0efea475bd38.png" src="_images/d5efcd2189269486eef4f8676216c111d7a1c6daeebf90c8e7fe0efea475bd38.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1245,7 +1239,6 @@ Parameters:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling 2: Create a User Defined Model using astropy.modeling</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
@@ -1255,27 +1248,24 @@ Parameters:
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#now-that-we-have-the-spectrum">Now that we have the spectrum…</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-an-emission-line-with-a-gaussian-model">Fit an Emission Line with a Gaussian Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-an-emission-line-with-a-gaussian-model">Fit an Emission Line with a Gaussian Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-models">Compound models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-or-bounded-model-parameters">Fixed or bounded model parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compound-models">Compound models</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-or-bounded-model-parameters">Fixed or bounded model parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-model">Custom model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-custom-model">Basic custom model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-custom-model">Full custom model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-model">Custom model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-custom-model">Basic custom model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-custom-model">Full custom model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
