@@ -828,7 +828,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Gaia DR2 sources near NGC 188&#39;)
 </pre></div>
 </div>
-<img alt="_images/7c8fdd404491d8e6dc5f2b15fcd38ac97303624131353d6ff5182015fada98c8.png" src="_images/7c8fdd404491d8e6dc5f2b15fcd38ac97303624131353d6ff5182015fada98c8.png" />
+<img alt="_images/df9f6bb5cfbad6bdcb9d7ef23700f838f61ced2c640378ac1068491cce73f939.png" src="_images/df9f6bb5cfbad6bdcb9d7ef23700f838f61ced2c640378ac1068491cce73f939.png" />
 </div>
 </div>
 <p>Now that we have 3D position information for both the cluster center, and for the stars we queried from <em>Gaia</em>, we can compute the 3D separation (distance) between all of the <em>Gaia</em> sources and the cluster center:</p>
@@ -1153,7 +1153,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Dec [deg]&#39;)
 </pre></div>
 </div>
-<img alt="_images/4bcd91bba193587ea889c7d17402bb8c7e1cc28ff2b98c2c20813ee082f41784.png" src="_images/4bcd91bba193587ea889c7d17402bb8c7e1cc28ff2b98c2c20813ee082f41784.png" />
+<img alt="_images/1a6aae6885de3806233172dbe998850d355dd9d9d8b0b339dd2cabd7965c7b1d.png" src="_images/1a6aae6885de3806233172dbe998850d355dd9d9d8b0b339dd2cabd7965c7b1d.png" />
 </div>
 </div>
 <p>The majority of these open clusters are relatively close to the Galactic midplane, which is why they form a fairly narrow “band” on the sky in ICRS coordinates. If we transform these positions to Galactic coordinates, we would therefore expect the points to appear around the latitude <span class="math notranslate nohighlight">\(b=0\)</span> line.</p>
@@ -1231,7 +1231,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Galactic latitude, $b$ [deg]&#39;)
 </pre></div>
 </div>
-<img alt="_images/e27dec4cbe9ebbafa85d7b7db57d3ec47b337dd44a82550f2c84b18a5a676ac9.png" src="_images/e27dec4cbe9ebbafa85d7b7db57d3ec47b337dd44a82550f2c84b18a5a676ac9.png" />
+<img alt="_images/e3017f401b566983d0992124bcefd20c2e184ed9868d7ad6ad8581977f3e0b6a.png" src="_images/e3017f401b566983d0992124bcefd20c2e184ed9868d7ad6ad8581977f3e0b6a.png" />
 </div>
 </div>
 <p>As we hoped and expected, in the Galactic coordinate frame, the open clusters predominantly appear at low galactic latitudes!</p>
@@ -1698,7 +1698,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f6eef89cb870fede980f40744baed6a4130c3e86be90402cd539e30f0d902fc1.png" src="_images/f6eef89cb870fede980f40744baed6a4130c3e86be90402cd539e30f0d902fc1.png" />
+<img alt="_images/71b4779e7e1d271b7aae87f7f32bbb53bea942ca47cd093c8a2628cc4e967fca.png" src="_images/71b4779e7e1d271b7aae87f7f32bbb53bea942ca47cd093c8a2628cc4e967fca.png" />
 </div>
 </div>
 <p>Here we can see that this open cluster reaches a high altitude above the horizon from Kitt Peak, and so it looks like it would be observable from this site. The above curve only shows the altitude trajectory for the first open cluster in our catalog, but we would like to compute the equivalent for <em>all</em> of the open clusters in the catalog. To do this, we have to make use of a concept that is used heavily in Numpy: <a class="reference external" href="https://numpy.org/doc/stable/user/basics.broadcasting.html">array broadcasting</a>. We have 474 open clusters and we want to evaluate the <code class="docutils literal notranslate"><span class="pre">AltAz</span></code> coordinates of these clusters at 256 different times.</p>
@@ -1736,7 +1736,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11680e3b9c73b759121a2be2f78b2c68d42c2f7b18bb32d6fe023c809e74b73f.png" src="_images/11680e3b9c73b759121a2be2f78b2c68d42c2f7b18bb32d6fe023c809e74b73f.png" />
+<img alt="_images/54eaa1d0df7033423c0d44e1ac4a60f4618e09998d871a8f93e353e64ede9fcb.png" src="_images/54eaa1d0df7033423c0d44e1ac4a60f4618e09998d871a8f93e353e64ede9fcb.png" />
 </div>
 </div>
 <p>From this, we can see that only two of the clusters in this batch seem to be easily observable.</p>
@@ -2170,7 +2170,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=2</i>
-<table id="table140699467183216">
+<table id="table140093643059568">
 <thead><tr><th>source_id</th><th>pmra</th><th>pmdec</th></tr></thead>
 <thead><tr><th></th><th>mas / yr</th><th>mas / yr</th></tr></thead>
 <thead><tr><th>int64</th><th>float64</th><th>float64</th></tr></thead>
@@ -2253,10 +2253,10 @@ We will introduce many of the key concepts underlying how to represent and trans
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 33867.416667 from DATE-OBS&#39;. [astropy.wcs.wcs]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7ff725c361b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6a17409940&gt;
 </pre></div>
 </div>
-<img alt="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" src="_images/4e8b764d5c9775eeaa678e25cd173327fb44e4f28b5e7c56b3bbd35c3b62e001.png" />
+<img alt="_images/8e62eb521a76706d5d22f1ec7a8ae9ecb017dd8c333ccab8c630592544e43d26.png" src="_images/8e62eb521a76706d5d22f1ec7a8ae9ecb017dd8c333ccab8c630592544e43d26.png" />
 </div>
 </div>
 <p>The brighest star (as observed by DSS) in this image is our target, and the red circle is where <em>Gaia</em> observed this star. As we excpected, it has moved quite a bit since the 1950’s! We can account for this motion and predict the position of the star at around the time the DSS plate was observed. Let’s assume that this plate was observed in 1950 exactly (this is not strictly correct, but should get us close enough).</p>
@@ -2318,10 +2318,10 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7ff724e90620&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6a16f872c0&gt;
 </pre></div>
 </div>
-<img alt="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" src="_images/bd3edbe1b7a72bac407c470833023917c26ed10d498fe562d962f2df05baf64a.png" />
+<img alt="_images/296c6d363adeaaa54e30b4da7915c32900de2c273bb9abc270c79fc68ffe6642.png" src="_images/296c6d363adeaaa54e30b4da7915c32900de2c273bb9abc270c79fc68ffe6642.png" />
 </div>
 </div>
 <p>The red circle is the same as in the previous image and shows the position of the source in the <em>Gaia</em> catalog (in 2015.5). The blue circle shows our prediction for the position of the source in 1950 - this looks much closer to where the star is in the DSS image!</p>
@@ -2476,7 +2476,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>QTable length=3</i>
-<table id="table140700460752368" class="table-striped table-bordered table-condensed">
+<table id="table140337201498064" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Date</th><th>RAJ2000</th><th>DEJ2000</th><th>_2MASS</th><th>Jmag</th><th>e_Jmag</th><th>Hmag</th><th>e_Hmag</th><th>Kmag</th><th>e_Kmag</th><th>Qflg</th><th>Rflg</th><th>Bflg</th><th>Cflg</th><th>Xflg</th><th>Aflg</th></tr></thead>
 <thead><tr><th></th><th>deg</th><th>deg</th><th></th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
 <thead><tr><th>str10</th><th>float64</th><th>float64</th><th>str16</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>str3</th><th>str3</th><th>str3</th><th>str3</th><th>uint8</th><th>uint8</th></tr></thead>
@@ -2551,7 +2551,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/424ddcbb790c4eff564ffd8f16725ebbe2ce09e173e9249cb550c69728d37b9e.png" src="_images/424ddcbb790c4eff564ffd8f16725ebbe2ce09e173e9249cb550c69728d37b9e.png" />
+<img alt="_images/1dc4cfadb4ed905048b14755de93b7d6bfd6783cd5ce2e0f093df339174266c7.png" src="_images/1dc4cfadb4ed905048b14755de93b7d6bfd6783cd5ce2e0f093df339174266c7.png" />
 </div>
 </div>
 <p>From this, it looks like all of sources in our <em>Gaia</em> NGC 188 member list cross-match to another sources within a few arcseconds, so these all seem like they are correctly matches to a 2MASS source!</p>
@@ -2600,7 +2600,7 @@ We will introduce many of the key concepts underlying how to represent and trans
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7352de31abd9f5d96ec43b8cfc67e0fb609103c50703b4bb13d8e144e81b111.png" src="_images/d7352de31abd9f5d96ec43b8cfc67e0fb609103c50703b4bb13d8e144e81b111.png" />
+<img alt="_images/76d6238c088f47ff82ef1f68e15ef9c088963aa7f06cef36187d4aa68f091ab7.png" src="_images/76d6238c088f47ff82ef1f68e15ef9c088963aa7f06cef36187d4aa68f091ab7.png" />
 </div>
 </div>
 <p>Those both look like color-magnitude diagrams of a main sequence + red giant branch of an intermediate-age stellar cluster, so it looks like our selection and cross-matching has worked!</p>
