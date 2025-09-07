@@ -569,7 +569,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_1$&#39;)
 </pre></div>
 </div>
-<img alt="_images/fc65bf70cf7332b18f9369c1d06cc6457a20ea4c3c4e238aa9b89f1353b21528.png" src="_images/fc65bf70cf7332b18f9369c1d06cc6457a20ea4c3c4e238aa9b89f1353b21528.png" />
+<img alt="_images/1c819f935a50c0df30deaa654d1aba42898f5649592dcc9a3961e370f832451f.png" src="_images/1c819f935a50c0df30deaa654d1aba42898f5649592dcc9a3961e370f832451f.png" />
 </div>
 </div>
 <p>To fit this data let’s remember the three steps: model, fitter and perform fit.</p>
@@ -595,9 +595,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-            c0                c1                 c2                 c3        
-    ----------------- ------------------ ------------------ ------------------
-    -9.96371385787999 15.972932768553562 -8.403760371613247 1.3767910770892628
+             c0                 c1                 c2                c3        
+    ------------------- ------------------ ----------------- ------------------
+    -10.042389169605643 14.293289010427067 -7.42880901180016 1.2331808368608976
 </pre></div>
 </div>
 </div>
@@ -630,9 +630,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-             c0                 c1                 c2                 c3        
-    ------------------- ------------------ ----------------- -------------------
-    -3.0750477414797093 0.8817572740422289 1.153399437737089 -0.2721837684314848
+             c0                   c1                  c2                 c3        
+    ------------------- --------------------- ------------------ ------------------
+    -0.5665400950519713 -0.020729023914217902 -1.414230011016266 0.4755591281909608
 </pre></div>
 </div>
 </div>
@@ -667,7 +667,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 2.345743743186616
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 2.007212730639591
 </pre></div>
 </div>
 </div>
@@ -680,7 +680,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 5.43869304828479
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 5.136582908064403
 </pre></div>
 </div>
 </div>
@@ -699,10 +699,10 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3ad381a3c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcd78e679e0&gt;
 </pre></div>
 </div>
-<img alt="_images/87cdda93c5b2478866cf691d816e88e4e1033ed23e928d7d2acb854fb50f770e.png" src="_images/87cdda93c5b2478866cf691d816e88e4e1033ed23e928d7d2acb854fb50f770e.png" />
+<img alt="_images/dd4d40d4d05b87f06da13d6f80ad5723f902012bd24632543f859659da33bbf8.png" src="_images/dd4d40d4d05b87f06da13d6f80ad5723f902012bd24632543f859659da33bbf8.png" />
 </div>
 </div>
 <p>Results are as espected, the fit performed with the linear fitter is better than the second, non linear one.</p>
@@ -739,7 +739,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_2$&#39;)
 </pre></div>
 </div>
-<img alt="_images/743d72f151521854195d7b9238b4ee81966c07db4cf87a0f07a120a132d7ae37.png" src="_images/743d72f151521854195d7b9238b4ee81966c07db4cf87a0f07a120a132d7ae37.png" />
+<img alt="_images/bd350c97c9ea7ee68aebf749a659a37a87cd6a6a42e154197134d0788be6c038.png" src="_images/bd350c97c9ea7ee68aebf749a659a37a87cd6a6a42e154197134d0788be6c038.png" />
 </div>
 </div>
 <p>Let’s do our three steps to make the fit we want. For this fit we’re going to use a non-linear fitter, <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter</span></code>, because the model we need (<code class="docutils literal notranslate"><span class="pre">Gaussian1D</span></code>) is non-linear in the parameters.</p>
@@ -766,7 +766,7 @@ Model set size: 1
 Parameters:
         amplitude            mean              stddev      
     ----------------- ------------------ ------------------
-    9.864665831654444 0.1130519739834145 10.226023095942425
+    9.887353540946894 0.1965175558987305 10.275551529176106
 </pre></div>
 </div>
 </div>
@@ -792,7 +792,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.050221   0.07190142 0.07220807]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.04998207 0.07192656 0.07225647]
 </pre></div>
 </div>
 </div>
@@ -813,9 +813,9 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.864665831654444 +\- 0.2241004161138456
-Mean: 0.1130519739834145 +\- 0.2681444105272314
-Standard Deviation: 10.226023095942425 +\- 0.26871558986680766
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.887353540946894 +\- 0.22356669288980205
+Mean: 0.1965175558987305 +\- 0.2681912660519016
+Standard Deviation: 10.275551529176106 +\- 0.26880564516060423
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -824,11 +824,11 @@ Standard Deviation: 10.226023095942425 +\- 0.26871558986680766
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_3588/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3630/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Amplitude: {} +\- {}&quot;.format(best_fit_gauss.amplitude.value, np.sqrt(cov_diag[0]))
-/tmp/ipykernel_3588/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3630/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(best_fit_gauss.mean.value, np.sqrt(cov_diag[1])))
-/tmp/ipykernel_3588/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3630/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Standard Deviation: {} +\- {}&quot;.format(
 </pre></div>
 </div>
@@ -859,7 +859,7 @@ Standard Deviation: 10.226023095942425 +\- 0.26871558986680766
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.86466337  0.11305193 10.22602821]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.88735407  0.19651811 10.27555043]
 </pre></div>
 </div>
 </div>
@@ -873,9 +873,9 @@ Standard Deviation: 10.226023095942425 +\- 0.26871558986680766
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.86466336756186 +\- 0.21433485604146024
-Mean: 0.11305193023404582 +\- 0.2564628722757
-Standard Deviation: 10.226028210095379 +\- 0.2570092580763003
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.887354071632286 +\- 0.2290983635096461
+Mean: 0.19651810803330957 +\- 0.27482867663207605
+Standard Deviation: 10.275550425405628 +\- 0.2754582870041918
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -884,11 +884,11 @@ Standard Deviation: 10.226028210095379 +\- 0.2570092580763003
 &lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_3588/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3630/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Amplitude: {} +\- {}&quot;.format(p_opt[0], np.sqrt(p_cov[0, 0])))
-/tmp/ipykernel_3588/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3630/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(p_opt[1], np.sqrt(p_cov[1, 1])))
-/tmp/ipykernel_3588/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_3630/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Standard Deviation: {} +\- {}&quot;.format(p_opt[2], np.sqrt(p_cov[2, 2])))
 </pre></div>
 </div>
@@ -904,7 +904,7 @@ Standard Deviation: 10.226028210095379 +\- 0.2570092580763003
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.9147533253662398
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 1.0501018130862294
 </pre></div>
 </div>
 </div>
@@ -917,7 +917,7 @@ Standard Deviation: 10.226028210095379 +\- 0.2570092580763003
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.9147533253597211
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 1.0501018130888355
 </pre></div>
 </div>
 </div>
@@ -935,10 +935,10 @@ Standard Deviation: 10.226028210095379 +\- 0.2570092580763003
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3ad39326c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fcd78e94950&gt;
 </pre></div>
 </div>
-<img alt="_images/6d34103d56b8028b8f764350859916f500dc6ab7390cb606dbed8952d59bee59.png" src="_images/6d34103d56b8028b8f764350859916f500dc6ab7390cb606dbed8952d59bee59.png" />
+<img alt="_images/d2b7458badbe5ab3f223f1f3980ebdf61d7495260b1dd9b2780eafdd97f1294a.png" src="_images/d2b7458badbe5ab3f223f1f3980ebdf61d7495260b1dd9b2780eafdd97f1294a.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Choose the method most convenient for every case you need to fit. We recomend <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> because is easier to write the name of the function you want to fit than to remember the expression every time we want to use it. Also, <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> becomes useful with more complicated models like <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">two gaussians</a> plus a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#blackbody-radiation">black body</a>, but that is another tutorial.</p>
@@ -990,7 +990,7 @@ Standard Deviation: 10.226028210095379 +\- 0.2570092580763003
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_3$&#39;)
 </pre></div>
 </div>
-<img alt="_images/421ec7ad2dce70270e89406aef11ebf5d5f0d00f13ca3c26a340eb3eb62c80f1.png" src="_images/421ec7ad2dce70270e89406aef11ebf5d5f0d00f13ca3c26a340eb3eb62c80f1.png" />
+<img alt="_images/68328079c98619557dbe6f28413d21f3ebf9b916c828c4333a5a31a688e5a9f3.png" src="_images/68328079c98619557dbe6f28413d21f3ebf9b916c828c4333a5a31a688e5a9f3.png" />
 </div>
 </div>
 </section>
@@ -1471,7 +1471,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/051bd7b64f40ccc4b75635785d725a12c8635ee6de1caad764bf49f56c685710.png" src="_images/051bd7b64f40ccc4b75635785d725a12c8635ee6de1caad764bf49f56c685710.png" />
+<img alt="_images/ec1a79c14b96b0fb3c331591aa66677b7953a3ae7e5378e0a447c020ba78bed5.png" src="_images/ec1a79c14b96b0fb3c331591aa66677b7953a3ae7e5378e0a447c020ba78bed5.png" />
 </div>
 </div>
 <p>We can define a simple custom model by specifying which parameters we want to fit.</p>
@@ -1506,7 +1506,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/31997a845393d5224188bd72f15df9de1ba9545be55c3e3bb1a1861110500597.png" src="_images/31997a845393d5224188bd72f15df9de1ba9545be55c3e3bb1a1861110500597.png" />
+<img alt="_images/03fd48562a4437e113f9bfe1c6b4f25569a098b0c5101bbf21e1441a71259bfd.png" src="_images/03fd48562a4437e113f9bfe1c6b4f25569a098b0c5101bbf21e1441a71259bfd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1521,9 +1521,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-            a                  b                  c         
-    ----------------- ------------------- ------------------
-    1.169127828154785 -1.9180130798132242 0.8879272861804522
+            a                 b                  c         
+    ----------------- ------------------ ------------------
+    2.512629006699994 -2.219484345846606 0.2007422614267366
 </pre></div>
 </div>
 </div>
@@ -1550,7 +1550,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.1454142323395258)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.203263173113137)
 </pre></div>
 </div>
 </div>
@@ -1587,7 +1587,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e03d2ce5415d6e6e8e1f9bbd6163c78b1e208b93015caeb5b705501f856d5b91.png" src="_images/e03d2ce5415d6e6e8e1f9bbd6163c78b1e208b93015caeb5b705501f856d5b91.png" />
+<img alt="_images/4411f21d1a3b140372da9eceb9e1f737d708ab3b828d4bdaf94dc1b98430aff2.png" src="_images/4411f21d1a3b140372da9eceb9e1f737d708ab3b828d4bdaf94dc1b98430aff2.png" />
 </div>
 </div>
 <p>For the full custom model we can easily set the <strong>derivative of the function</strong>, which is used by different <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#id21">fitters</a>, for example the <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter()</span></code>.</p>
@@ -1634,7 +1634,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/66ec44ba9455ed8227c2327a82e1c8bb0b5789e098cf4cba9102265adeebf133.png" src="_images/66ec44ba9455ed8227c2327a82e1c8bb0b5789e098cf4cba9102265adeebf133.png" />
+<img alt="_images/b62e2f78d7987ed5a79b80d8e3304c0f4511b0652ce6d701826cd98118446f14.png" src="_images/b62e2f78d7987ed5a79b80d8e3304c0f4511b0652ce6d701826cd98118446f14.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1649,9 +1649,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-            a                 b                  c                  d         
-    ----------------- ------------------ ------------------ ------------------
-    2.959986371594155 2.0149778622785797 3.9320968797562785 1.0109702375327232
+            a                  b                  c                  d         
+    ------------------ ------------------ ------------------ ------------------
+    2.9371945245696383 1.9898803489585761 4.0469377564667806 1.0040537919369175
 </pre></div>
 </div>
 </div>
@@ -1663,7 +1663,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.361399197660879)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(3.445131457920505)
 </pre></div>
 </div>
 </div>
@@ -1696,7 +1696,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8a0325f4c33d5abca01ae828df79ac23ee63a97675439c0865188bdc8a3e0782.png" src="_images/8a0325f4c33d5abca01ae828df79ac23ee63a97675439c0865188bdc8a3e0782.png" />
+<img alt="_images/7a3e55c2c7ed121c182933313f53ba8d5848ad42eaa787c5ec6d1953a32d713e.png" src="_images/7a3e55c2c7ed121c182933313f53ba8d5848ad42eaa787c5ec6d1953a32d713e.png" />
 </div>
 </div>
 </section>
