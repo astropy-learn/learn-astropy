@@ -454,7 +454,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>QTable length=4</i>
-<table id="table140545278384736" class="table-striped table-bordered table-condensed">
+<table id="table139740192513952" class="table-striped table-bordered table-condensed">
 <thead><tr><th>ra</th><th>dec</th><th>parallax</th><th>pmra</th><th>pmdec</th><th>radial_velocity</th><th>phot_g_mean_mag</th><th>phot_bp_mean_mag</th><th>phot_rp_mean_mag</th></tr></thead>
 <thead><tr><th>deg</th><th>deg</th><th>mas</th><th>mas / yr</th><th>mas / yr</th><th>km / s</th><th>mag</th><th>mag</th><th>mag</th></tr></thead>
 <thead><tr><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float64</th><th>float32</th><th>float32</th><th>float32</th></tr></thead>
@@ -599,7 +599,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5e034254b34517c53c0be2ac09e7f571644a5d5e85d5a76ec0ec39a1918fdca3.png" src="_images/5e034254b34517c53c0be2ac09e7f571644a5d5e85d5a76ec0ec39a1918fdca3.png" />
+<img alt="_images/bf3b51ce65c462b99753316517545823b4f3fe952dc36bb194ab8931ebab5c86.png" src="_images/bf3b51ce65c462b99753316517545823b4f3fe952dc36bb194ab8931ebab5c86.png" />
 </div>
 </div>
 <p>Similarly, for the velocity components, we can use <code class="docutils literal notranslate"><span class="pre">.v_x</span></code>, <code class="docutils literal notranslate"><span class="pre">.v_y</span></code>, and <code class="docutils literal notranslate"><span class="pre">.v_z</span></code>. For example, to create a classic “UV” plane velocity plot:</p>
@@ -621,7 +621,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$v_y$ [$\\mathrm{km\\,s^{-1}}$]&#39;)
 </pre></div>
 </div>
-<img alt="_images/0e1da3a67022f7c69c0d99e14c6d76106ea90d40f80b5952d16a0975c82c2750.png" src="_images/0e1da3a67022f7c69c0d99e14c6d76106ea90d40f80b5952d16a0975c82c2750.png" />
+<img alt="_images/a146195c5d47222c864e4be036f544577f015f0e254d5f276303cc48ef61afa4.png" src="_images/a146195c5d47222c864e4be036f544577f015f0e254d5f276303cc48ef61afa4.png" />
 </div>
 </div>
 <p>Along with astrometric and radial velocity data, <code class="docutils literal notranslate"><span class="pre">Gaia</span></code> also provides photometric data for three photometric bandpasses: the broad-band <code class="docutils literal notranslate"><span class="pre">G</span></code>, the blue <code class="docutils literal notranslate"><span class="pre">BP</span></code>, and the red <code class="docutils literal notranslate"><span class="pre">RP</span></code> magnitudes. Let’s make a Gaia color-magnitude diagram using the <span class="math notranslate nohighlight">\(G_{\rm BP}-G_{\rm RP}\)</span> color and the absolute <span class="math notranslate nohighlight">\(G\)</span>-band magnitude <span class="math notranslate nohighlight">\(M_G\)</span>. We’ll compute the absolute magnitude using the distances we computed earlier — Astropy <code class="docutils literal notranslate"><span class="pre">Distance</span></code> objects have a convenient <code class="docutils literal notranslate"><span class="pre">.distmod</span></code> attribute that provides the distance modulus:</p>
@@ -651,7 +651,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$M_G$&#39;)
 </pre></div>
 </div>
-<img alt="_images/87dac2b9fb3170a7f8670c19e33cc5fd7960c6c5be4950d66669c97f5871c40f.png" src="_images/87dac2b9fb3170a7f8670c19e33cc5fd7960c6c5be4950d66669c97f5871c40f.png" />
+<img alt="_images/32233e1ee67f6df392ece064b564958593c951e56500bd6043a653b0f2c825d8.png" src="_images/32233e1ee67f6df392ece064b564958593c951e56500bd6043a653b0f2c825d8.png" />
 </div>
 </div>
 <p>In the above, there is a wide range of main sequence star masses which have a range of lifetimes. The most massive stars were likely born in the thin disk and their orbits therefore likely have smaller vertical amplitudes than the typical old main sequence star. To compare, we’ll create two sub-selections of the Gaia CMD to select massive and low-mass main sequence stars from the CMD for comparison. You may see two <code class="docutils literal notranslate"><span class="pre">RuntimeWarning</span></code>(s) from running the next cell — these are expected and it’s safe to ignore them.</p>
@@ -715,7 +715,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$M_G$&#39;)
 </pre></div>
 </div>
-<img alt="_images/2f11a375e194cefb9814a5a2c9813a41370f3e31061dc825835f48fa1c4de7a2.png" src="_images/2f11a375e194cefb9814a5a2c9813a41370f3e31061dc825835f48fa1c4de7a2.png" />
+<img alt="_images/683abc9ba57135adfe6b266d156a3d96bfbfe6ac5182e3d33a8ef7b1da74ccbf.png" src="_images/683abc9ba57135adfe6b266d156a3d96bfbfe6ac5182e3d33a8ef7b1da74ccbf.png" />
 </div>
 </div>
 <p>Thus far, we’ve used the color-magnitude diagram (using parallaxes and photometry from Gaia to compute absolute magnitudes) to select samples of high- and low-mass stars based on their colors.</p>
@@ -847,7 +847,7 @@ Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits.
 </pre></div>
 </div>
-<img alt="_images/f9f941b18e36af58966a94dd012786f48b26c3866b56f23ce40717909325f046.png" src="_images/f9f941b18e36af58966a94dd012786f48b26c3866b56f23ce40717909325f046.png" />
+<img alt="_images/4a9accd20cde6e54c8adf7a618f8eb81c85d91535d922ba4939b7d6f77d5cbce.png" src="_images/4a9accd20cde6e54c8adf7a618f8eb81c85d91535d922ba4939b7d6f77d5cbce.png" />
 </div>
 </div>
 <p>Note in the above figure that the orbits are almost constrained to the x-y plane: the excursions are much larger in the x and y directions as compared to the z direction.</p>
@@ -859,7 +859,7 @@ Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dc575928b05e14ec016ce7e0889c979897e71b51e8f43f697dde921bee39a4ac.png" src="_images/dc575928b05e14ec016ce7e0889c979897e71b51e8f43f697dde921bee39a4ac.png" />
+<img alt="_images/a9d787ff2448c154d883d9e95102047748bf6fb8fa28fc0552081d10446fd657.png" src="_images/a9d787ff2448c154d883d9e95102047748bf6fb8fa28fc0552081d10446fd657.png" />
 </div>
 </div>
 <p>The representation can also be changed, for example, to a cylindrical representation:</p>
@@ -881,7 +881,7 @@ Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.3, 0.3)
 </pre></div>
 </div>
-<img alt="_images/68635acf806b49ad82bc08613e77a4b1d72b087aa1711029e37416fc5af282e2.png" src="_images/68635acf806b49ad82bc08613e77a4b1d72b087aa1711029e37416fc5af282e2.png" />
+<img alt="_images/b5f0700a9f24145d32b82d5084026cdf587a1b789df4cf737a5f65f5fe69488f.png" src="_images/b5f0700a9f24145d32b82d5084026cdf587a1b789df4cf737a5f65f5fe69488f.png" />
 </div>
 </div>
 <p>Already in the above plot we can see that the high-mass star has an orbit with smaller eccentricity (smaller radial variations) and smaller vertical oscillations as compared to the low-mass star. Below, we’ll quantify this and look at the vertical excursions of all of the high- and low-mass stars, respectively.</p>
@@ -927,7 +927,7 @@ Ignoring fixed y limits to fulfill fixed data aspect with adjustable data limits
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;$z_{\\rm max}$ [$\\mathrm{kpc}$]&#39;)
 </pre></div>
 </div>
-<img alt="_images/7d4bf03b526c0341fddaf4f353bff0b6213990f5f6d266cfa610635fc15993fd.png" src="_images/7d4bf03b526c0341fddaf4f353bff0b6213990f5f6d266cfa610635fc15993fd.png" />
+<img alt="_images/fb4693d2ffb1c080b384af34009f2654935013a5649c8493510771f4840c10dd.png" src="_images/fb4693d2ffb1c080b384af34009f2654935013a5649c8493510771f4840c10dd.png" />
 </div>
 </div>
 <p>The distribution of <span class="math notranslate nohighlight">\(z\)</span>-heights for the low-mass (i.e. typically older) stars is more extended, as we predicted!</p>

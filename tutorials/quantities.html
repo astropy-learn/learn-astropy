@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quantities</title>
+    <title>Using Astropy Quantities and Units for astrophysical calculations &#8212; Quantities</title>
   
   
   
@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -168,8 +168,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="None - Home"/>
-    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="None - Home"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Quantities - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Quantities - Home"/>`);</script>
   
   
 </a></div>
@@ -239,6 +239,37 @@
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -264,6 +295,23 @@
       
       
       
+      <li><a href="https://github.com/astropy-learn/tutorial--quantities/edit/main//quantities.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
       <li><a href="https://github.com/astropy-learn/tutorial--quantities/issues/new?title=Issue%20on%20page%20%2Fquantities.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
@@ -276,6 +324,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/quantities.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -335,6 +431,30 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#companion-content">Companion Content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxy-mass">1. Galaxy mass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-cloud-mass">2. Molecular cloud mass</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-data-cube">Setting up the data cube</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-the-column-density-of-co">Measuring The Column Density of CO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#co-to-total-mass">CO to Total Mass</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-quantities-with-functions">3. Using Quantities with Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -525,7 +645,7 @@ unit: pc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7fc67e228d70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7ff33cc2ecc0&gt;
 </pre></div>
 </div>
 </div>
@@ -543,7 +663,7 @@ unit: pc
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;N&#39;)
 </pre></div>
 </div>
-<img alt="_images/cbebf9376004261d3e2e7ee4ddca71289006d5a71330160dfb877b76d8db52d2.png" src="_images/cbebf9376004261d3e2e7ee4ddca71289006d5a71330160dfb877b76d8db52d2.png" />
+<img alt="_images/6ebd1928a673baf46e259efe553a5d8c57cf12c847b4fe9ec16a7a85068f3071.png" src="_images/6ebd1928a673baf46e259efe553a5d8c57cf12c847b4fe9ec16a7a85068f3071.png" />
 </div>
 </div>
 <p>Now we can calculate the velocity dispersion of the galaxy. This demonstrates how you can perform basic operations like subtraction and division with <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> objects, and also use them in standard numpy functions such as <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">size()</span></code>. They retain their units through these operations just as you would expect them to.</p>
@@ -638,12 +758,12 @@ CGS units: 1.02e+39 g
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnitConversionError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:165,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:165,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
 <span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">165</span>     <span class="k">return</span> <span class="p">([</span><span class="n">get_converter</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">dimensionless_unscaled</span><span class="p">)],</span> <span class="n">dimensionless_unscaled</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="n">UnitsError</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:43,</span> in <span class="ni">get_converter</span><span class="nt">(from_unit, to_unit)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:43,</span> in <span class="ni">get_converter</span><span class="nt">(from_unit, to_unit)</span>
 <span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">---&gt; </span><span class="mi">43</span>     <span class="n">converter</span> <span class="o">=</span> <span class="n">from_unit</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">to_unit</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
@@ -652,23 +772,23 @@ CGS units: 1.02e+39 g
 <span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="c1"># already short-circuited; here, we cover just the case where, e.g., the</span>
 <span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="c1"># user has done u.add_enabled_equivalencies(u.dimensionless_angles()).</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1137,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1135</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="ne">-&gt; </span><span class="mi">1137</span> <span class="k">raise</span> <span class="n">exc</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:581,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">579</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">581</span> <span class="k">raise</span> <span class="n">exc</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1120,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1119</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1120</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1121</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1122</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1123</span> <span class="k">except</span> <span class="n">UnitsError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1124</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1125</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1126</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:564,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">563</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">564</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">except</span> <span class="n">UnitsError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1071,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1071</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:515,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">515</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
 
 <span class="ne">UnitConversionError</span>: &#39;km2 kg pc / m3&#39; (mass) and &#39;&#39; (dimensionless) are not convertible
 
@@ -678,22 +798,22 @@ CGS units: 1.02e+39 g
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:684,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
-<span class="g g-Whitespace">    </span><span class="mi">683</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">684</span>     <span class="k">raise</span> <span class="n">e</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:678,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">678</span>     <span class="k">raise</span> <span class="n">e</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:629,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">624</span> <span class="c1"># Determine required conversion functions -- to bring the unit of the</span>
-<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="c1"># input to that expected (e.g., radian for np.sin), or to get</span>
-<span class="g g-Whitespace">    </span><span class="mi">626</span> <span class="c1"># consistent units between two inputs (e.g., in np.add) --</span>
-<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="c1"># and the unit of the result (or tuple of units for nout &gt; 1).</span>
-<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">629</span>     <span class="n">converters</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">converters_and_unit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">631</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;out&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">632</span>     <span class="c1"># Avoid loop back by turning any Quantity output into array views.</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:623,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="c1"># Determine required conversion functions -- to bring the unit of the</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># input to that expected (e.g., radian for np.sin), or to get</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="c1"># consistent units between two inputs (e.g., in np.add) --</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span> <span class="c1"># and the unit of the result (or tuple of units for nout &gt; 1).</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">623</span>     <span class="n">converters</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">converters_and_unit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;out&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span>     <span class="c1"># Avoid loop back by turning any Quantity output into array views.</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:177,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:177,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
 <span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="n">units</span> <span class="o">=</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
 <span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="c1"># Determine possible conversion functions, and the result unit.</span>
 <span class="ne">--&gt; </span><span class="mi">177</span> <span class="n">converters</span><span class="p">,</span> <span class="n">result_unit</span> <span class="o">=</span> <span class="n">ufunc_helper</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">units</span><span class="p">)</span>
@@ -706,7 +826,7 @@ CGS units: 1.02e+39 g
 <span class="g g-Whitespace">    </span><span class="mi">187</span>         <span class="c1"># Don&#39;t fold this loop in the test above: this rare case</span>
 <span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="c1"># should not make the common case slower.</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:167,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:167,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
 <span class="g g-Whitespace">    </span><span class="mi">165</span>     <span class="k">return</span> <span class="p">([</span><span class="n">get_converter</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">dimensionless_unscaled</span><span class="p">)],</span> <span class="n">dimensionless_unscaled</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="k">except</span> <span class="n">UnitsError</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">167</span>     <span class="k">raise</span> <span class="n">UnitTypeError</span><span class="p">(</span>
@@ -837,7 +957,7 @@ dv = 0.1 km / s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2122bdc746b00620c78af4a085654c0382724cd8765fd9a6a5fcb0722b3871f6.png" src="_images/2122bdc746b00620c78af4a085654c0382724cd8765fd9a6a5fcb0722b3871f6.png" />
+<img alt="_images/7413c9c308a10643dded90d91ecb604af17984df4c209796a38defede716b0ad.png" src="_images/7413c9c308a10643dded90d91ecb604af17984df4c209796a38defede716b0ad.png" />
 </div>
 </div>
 </section>
@@ -874,56 +994,56 @@ dv = 0.1 km / s
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nu13</span> <span class="o">=</span> <span class="n">lambda13</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Hz</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">nu18</span> <span class="o">=</span> <span class="n">lambda18</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Hz</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:931,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">927</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">928</span> <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">929</span>     <span class="c1"># Avoid using to_value to ensure that we make a copy. We also</span>
-<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="c1"># don&#39;t want to slow down this method (esp. the scalar case).</span>
-<span class="ne">--&gt; </span><span class="mi">931</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">933</span>     <span class="c1"># to_value only copies if necessary</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:925,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">922</span> <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span>     <span class="c1"># Avoid using to_value to ensure that we make a copy. We also</span>
+<span class="g g-Whitespace">    </span><span class="mi">924</span>     <span class="c1"># don&#39;t want to slow down this method (esp. the scalar case).</span>
+<span class="ne">--&gt; </span><span class="mi">925</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">926</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span>     <span class="c1"># to_value only copies if necessary</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:884,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">881</span>     <span class="n">equivalencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equivalencies</span>
-<span class="g g-Whitespace">    </span><span class="mi">882</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">StructuredUnit</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">883</span>     <span class="c1"># Standard path, let unit to do work.</span>
-<span class="ne">--&gt; </span><span class="mi">884</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">885</span>         <span class="n">unit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">equivalencies</span>
-<span class="g g-Whitespace">    </span><span class="mi">886</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">888</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">889</span>     <span class="c1"># The .to() method of a simple unit cannot convert a structured</span>
-<span class="g g-Whitespace">    </span><span class="mi">890</span>     <span class="c1"># dtype, so we work around it, by recursing.</span>
-<span class="g g-Whitespace">    </span><span class="mi">891</span>     <span class="c1"># TODO: deprecate this?</span>
-<span class="g g-Whitespace">    </span><span class="mi">892</span>     <span class="c1"># Convert simple to Structured on initialization?</span>
-<span class="g g-Whitespace">    </span><span class="mi">893</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:878,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>     <span class="n">equivalencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equivalencies</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">StructuredUnit</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>     <span class="c1"># Standard path, let unit to do work.</span>
+<span class="ne">--&gt; </span><span class="mi">878</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="n">unit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">equivalencies</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">883</span>     <span class="c1"># The .to() method of a simple unit cannot convert a structured</span>
+<span class="g g-Whitespace">    </span><span class="mi">884</span>     <span class="c1"># dtype, so we work around it, by recursing.</span>
+<span class="g g-Whitespace">    </span><span class="mi">885</span>     <span class="c1"># TODO: deprecate this?</span>
+<span class="g g-Whitespace">    </span><span class="mi">886</span>     <span class="c1"># Convert simple to Structured on initialization?</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1208,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1206</span>     <span class="k">return</span> <span class="n">UNITY</span>
-<span class="g g-Whitespace">   </span><span class="mi">1207</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1208</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">Unit</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">equivalencies</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:652,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>     <span class="k">return</span> <span class="n">UNITY</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">652</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">Unit</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">equivalencies</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1137,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1134</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1135</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="ne">-&gt; </span><span class="mi">1137</span> <span class="k">raise</span> <span class="n">exc</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:581,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">579</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">581</span> <span class="k">raise</span> <span class="n">exc</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1120,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1118</span> <span class="c1"># if that doesn&#39;t work, maybe we can do it with equivalencies?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1119</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1120</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1121</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1122</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1123</span> <span class="k">except</span> <span class="n">UnitsError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1124</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1125</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1126</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1127</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;equivalencies&quot;</span><span class="p">):</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:564,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span> <span class="c1"># if that doesn&#39;t work, maybe we can do it with equivalencies?</span>
+<span class="g g-Whitespace">    </span><span class="mi">563</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">564</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">except</span> <span class="n">UnitsError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;equivalencies&quot;</span><span class="p">):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1071,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1068</span> <span class="n">unit_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1071</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:515,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span> <span class="n">unit_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">515</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
 
 <span class="ne">UnitConversionError</span>: &#39;mm&#39; (length) and &#39;Hz&#39; (frequency) are not convertible
 </pre></div>
@@ -1080,56 +1200,56 @@ dv = 0.1 km / s
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">da</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:931,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
-<span class="g g-Whitespace">    </span><span class="mi">927</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">928</span> <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">929</span>     <span class="c1"># Avoid using to_value to ensure that we make a copy. We also</span>
-<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="c1"># don&#39;t want to slow down this method (esp. the scalar case).</span>
-<span class="ne">--&gt; </span><span class="mi">931</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">933</span>     <span class="c1"># to_value only copies if necessary</span>
-<span class="g g-Whitespace">    </span><span class="mi">934</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:925,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">922</span> <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span>     <span class="c1"># Avoid using to_value to ensure that we make a copy. We also</span>
+<span class="g g-Whitespace">    </span><span class="mi">924</span>     <span class="c1"># don&#39;t want to slow down this method (esp. the scalar case).</span>
+<span class="ne">--&gt; </span><span class="mi">925</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">926</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span>     <span class="c1"># to_value only copies if necessary</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:884,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">881</span>     <span class="n">equivalencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equivalencies</span>
-<span class="g g-Whitespace">    </span><span class="mi">882</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">StructuredUnit</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">883</span>     <span class="c1"># Standard path, let unit to do work.</span>
-<span class="ne">--&gt; </span><span class="mi">884</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">885</span>         <span class="n">unit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">equivalencies</span>
-<span class="g g-Whitespace">    </span><span class="mi">886</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">888</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">889</span>     <span class="c1"># The .to() method of a simple unit cannot convert a structured</span>
-<span class="g g-Whitespace">    </span><span class="mi">890</span>     <span class="c1"># dtype, so we work around it, by recursing.</span>
-<span class="g g-Whitespace">    </span><span class="mi">891</span>     <span class="c1"># TODO: deprecate this?</span>
-<span class="g g-Whitespace">    </span><span class="mi">892</span>     <span class="c1"># Convert simple to Structured on initialization?</span>
-<span class="g g-Whitespace">    </span><span class="mi">893</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:878,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>     <span class="n">equivalencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equivalencies</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">StructuredUnit</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>     <span class="c1"># Standard path, let unit to do work.</span>
+<span class="ne">--&gt; </span><span class="mi">878</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">to</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="n">unit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">equivalencies</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">883</span>     <span class="c1"># The .to() method of a simple unit cannot convert a structured</span>
+<span class="g g-Whitespace">    </span><span class="mi">884</span>     <span class="c1"># dtype, so we work around it, by recursing.</span>
+<span class="g g-Whitespace">    </span><span class="mi">885</span>     <span class="c1"># TODO: deprecate this?</span>
+<span class="g g-Whitespace">    </span><span class="mi">886</span>     <span class="c1"># Convert simple to Structured on initialization?</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1208,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1206</span>     <span class="k">return</span> <span class="n">UNITY</span>
-<span class="g g-Whitespace">   </span><span class="mi">1207</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1208</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">Unit</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">equivalencies</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:652,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>     <span class="k">return</span> <span class="n">UNITY</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">652</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">Unit</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">equivalencies</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1137,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1134</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1135</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="ne">-&gt; </span><span class="mi">1137</span> <span class="k">raise</span> <span class="n">exc</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:581,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">579</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">581</span> <span class="k">raise</span> <span class="n">exc</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1120,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1118</span> <span class="c1"># if that doesn&#39;t work, maybe we can do it with equivalencies?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1119</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1120</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1121</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1122</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1123</span> <span class="k">except</span> <span class="n">UnitsError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1124</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1125</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1126</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
-<span class="g g-Whitespace">   </span><span class="mi">1127</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;equivalencies&quot;</span><span class="p">):</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:564,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span> <span class="c1"># if that doesn&#39;t work, maybe we can do it with equivalencies?</span>
+<span class="g g-Whitespace">    </span><span class="mi">563</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">564</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">565</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">except</span> <span class="n">UnitsError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
+<span class="g g-Whitespace">    </span><span class="mi">570</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;equivalencies&quot;</span><span class="p">):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/core.py:1071,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1068</span> <span class="n">unit_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1071</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/core.py:515,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span> <span class="n">unit_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">515</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
 
 <span class="ne">UnitConversionError</span>: &#39;deg2 pc2&#39; and &#39;cm2&#39; (area) are not convertible
 </pre></div>
@@ -1244,22 +1364,22 @@ dv = 0.1 km / s
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">yfactor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="n">yscale</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">return</span> <span class="n">xfactor</span> <span class="o">*</span> <span class="n">yfactor</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:684,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">682</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
-<span class="g g-Whitespace">    </span><span class="mi">683</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">684</span>     <span class="k">raise</span> <span class="n">e</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:678,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">678</span>     <span class="k">raise</span> <span class="n">e</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity.py:629,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">624</span> <span class="c1"># Determine required conversion functions -- to bring the unit of the</span>
-<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="c1"># input to that expected (e.g., radian for np.sin), or to get</span>
-<span class="g g-Whitespace">    </span><span class="mi">626</span> <span class="c1"># consistent units between two inputs (e.g., in np.add) --</span>
-<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="c1"># and the unit of the result (or tuple of units for nout &gt; 1).</span>
-<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">629</span>     <span class="n">converters</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">converters_and_unit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">631</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;out&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">632</span>     <span class="c1"># Avoid loop back by turning any Quantity output into array views.</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity.py:623,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="c1"># Determine required conversion functions -- to bring the unit of the</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># input to that expected (e.g., radian for np.sin), or to get</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="c1"># consistent units between two inputs (e.g., in np.add) --</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span> <span class="c1"># and the unit of the result (or tuple of units for nout &gt; 1).</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">623</span>     <span class="n">converters</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">converters_and_unit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;out&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span>     <span class="c1"># Avoid loop back by turning any Quantity output into array views.</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.11/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:195,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:195,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
 <span class="g g-Whitespace">    </span><span class="mi">193</span>             <span class="n">converters</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="g g-Whitespace">    </span><span class="mi">194</span>         <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">195</span>             <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span>
@@ -1338,6 +1458,37 @@ dv = 0.1 km / s
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#companion-content">Companion Content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#galaxy-mass">1. Galaxy mass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-cloud-mass">2. Molecular cloud mass</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-data-cube">Setting up the data cube</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-the-column-density-of-co">Measuring The Column Density of CO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#co-to-total-mass">CO to Total Mass</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-quantities-with-functions">3. Using Quantities with Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
