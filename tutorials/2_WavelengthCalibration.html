@@ -513,7 +513,6 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.polynomial</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polynomial1D</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian1D</span><span class="p">,</span> <span class="n">Linear1D</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.modeling.fitting</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearLSQFitter</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 
 <span class="c1"># astroquery provides an interface to the NIST atomic line database</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.nist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Nist</span>
@@ -693,43 +692,47 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Mercury_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Mercury_spectrum.jpg&quot;</span><span class="p">)</span>
+<span class="n">im</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3c2330f950d8fd725f04803fb8bb44a1466b607bf8c9ef43862a176b559e28a5.jpg" src="_images/3c2330f950d8fd725f04803fb8bb44a1466b607bf8c9ef43862a176b559e28a5.jpg" />
+<img alt="_images/d2258f88298616dfdff0db7b7298918a287c4ed8850cb8e699b851859a999b7f.png" src="_images/d2258f88298616dfdff0db7b7298918a287c4ed8850cb8e699b851859a999b7f.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Neon_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Neon_spectrum.jpg&quot;</span><span class="p">)</span>
+<span class="n">im</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fe942d4f208c49bf860d6b2d506d6c03e4e1c238869cb7770aa216ec8c357ec2.jpg" src="_images/fe942d4f208c49bf860d6b2d506d6c03e4e1c238869cb7770aa216ec8c357ec2.jpg" />
+<img alt="_images/a69796fb018ad513ce427c2fb730256c1882db977276199cecf397c6606df638.png" src="_images/a69796fb018ad513ce427c2fb730256c1882db977276199cecf397c6606df638.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Krypton_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Krypton_spectrum.jpg&quot;</span><span class="p">)</span>
+<span class="n">im</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a69b70fdf526fa1043590d33a47c097ca28a48bdb97f96deec71c7b626b7b437.jpg" src="_images/a69b70fdf526fa1043590d33a47c097ca28a48bdb97f96deec71c7b626b7b437.jpg" />
+<img alt="_images/28a874831c9b41be1d5f12a635ee70205d8e86ad45a79a2909038a43b6ee5af0.png" src="_images/28a874831c9b41be1d5f12a635ee70205d8e86ad45a79a2909038a43b6ee5af0.png" />
 </div>
 </div>
 <p>Start with mercury.  We use a different wikipedia spectrum that looks a little more like ours to guide the eye (note that the line ratios vary from lamp to lamp at least partly because each lamp contains gas at a different pressure).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;HG_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;HG_spectrum.jpg&quot;</span><span class="p">)</span>
+<span class="n">im</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1be03a859500730b8a712d189e61c72dbb8f6fdacb242d7031bb0dab280ef727.jpg" src="_images/1be03a859500730b8a712d189e61c72dbb8f6fdacb242d7031bb0dab280ef727.jpg" />
+<img alt="_images/1c89a35c92cbb2463224f43cf5b8093da30799499c647e311292046be8317bf2.png" src="_images/1c89a35c92cbb2463224f43cf5b8093da30799499c647e311292046be8317bf2.png" />
 </div>
 </div>
 <p>The optical lines of Mercury are, from Wikipedia, in Angstroms:</p>
@@ -856,7 +859,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2712/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2672/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.ylabel(&quot;$\lambda(x)$&quot;)
 </pre></div>
 </div>
@@ -924,7 +927,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2712/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2672/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;);
 </pre></div>
 </div>
@@ -968,7 +971,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2712/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2672/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
@@ -988,7 +991,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2712/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2672/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
