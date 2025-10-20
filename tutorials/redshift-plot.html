@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Redshift Plot</title>
+    <title>Make a plot with both redshift and universe age axes using astropy.cosmology &#8212; Redshift Plot</title>
   
   
   
@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=720ed60b" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -168,8 +168,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="None - Home"/>
-    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="None - Home"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Redshift Plot - Home"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Redshift Plot - Home"/>`);</script>
   
   
 </a></div>
@@ -239,6 +239,37 @@
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -264,6 +295,23 @@
       
       
       
+      <li><a href="https://github.com/astropy-learn/tutorial--redshift-plot/edit/main//redshift-plot.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
       <li><a href="https://github.com/astropy-learn/tutorial--redshift-plot/issues/new?title=Issue%20on%20page%20%2Fredshift-plot.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
@@ -276,6 +324,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/redshift-plot.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -335,6 +431,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -384,7 +492,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/a7042edf4e210846995ce98fa5ed570f832517a0a8e2a1b7721b1da0890e47df.png"><img alt="_images/a7042edf4e210846995ce98fa5ed570f832517a0a8e2a1b7721b1da0890e47df.png" src="_images/a7042edf4e210846995ce98fa5ed570f832517a0a8e2a1b7721b1da0890e47df.png" style="width: 500px;" />
+<a class="reference internal image-reference" href="_images/d26bf6aa308dfeccc3f4c6cd1e7934c0092ac1e0da4af4604a470968a4029785.png"><img alt="_images/d26bf6aa308dfeccc3f4c6cd1e7934c0092ac1e0da4af4604a470968a4029785.png" src="_images/d26bf6aa308dfeccc3f4c6cd1e7934c0092ac1e0da4af4604a470968a4029785.png" style="width: 500px;" />
 </a>
 </div>
 </div>
@@ -427,7 +535,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6e4e291760&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f539a7bb770&gt;]
 </pre></div>
 </div>
 <img alt="_images/d4b4d7025ce209247220b389095879e917d498fc180343fc38a7995799b998c2.png" src="_images/d4b4d7025ce209247220b389095879e917d498fc180343fc38a7995799b998c2.png" />
@@ -475,17 +583,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.axis.XTick at 0x7f6e4e433aa0&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e292210&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e345310&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e345ca0&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e346660&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e309d30&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e3462a0&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e347980&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e1a03b0&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e1a0da0&gt;,
- &lt;matplotlib.axis.XTick at 0x7f6e4e1a1790&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.axis.XTick at 0x7f539a6734d0&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a7bbb90&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a696840&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a697260&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a697c20&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a6b8650&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a6b8fe0&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a696540&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a6b99a0&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a6ba360&gt;,
+ &lt;matplotlib.axis.XTick at 0x7f539a6bad20&gt;]
 </pre></div>
 </div>
 <img alt="_images/fe3c499c858404f322ee07ad1b93cb3d8f63dd48ff53e41de5c89aeeb67f9a94.png" src="_images/fe3c499c858404f322ee07ad1b93cb3d8f63dd48ff53e41de5c89aeeb67f9a94.png" />
@@ -596,7 +704,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\ &#39;
 &lt;&gt;:8: SyntaxWarning: invalid escape sequence &#39;\ &#39;
-/tmp/ipykernel_3580/1680874098.py:8: SyntaxWarning: invalid escape sequence &#39;\ &#39;
+/tmp/ipykernel_2583/1680874098.py:8: SyntaxWarning: invalid escape sequence &#39;\ &#39;
   ax.plot(zvals, dist, label=&quot;$h=0.7,\ \Omega_M=0.3,\ \Omega_\Lambda=0.7$&quot;)
 </pre></div>
 </div>
@@ -648,6 +756,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
