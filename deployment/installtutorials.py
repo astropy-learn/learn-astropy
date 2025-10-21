@@ -70,14 +70,14 @@ def process_repo(repo, destination_directory):
                 f"{destination_directory}/_static",
                 dirs_exist_ok=True,
             )
-        if len(tutorials) > 1:
-            index_files = glob.glob(f"{repo}/index-*.html")
-            if index_files:
-                index = index_files[0]
-                print(f"More than 1 tutorial found; also copying index file {index}")
-                shutil.copy(index, destination_directory)
-            else:
-                raise FileNotFoundError(f"No index-*.html file found for {repo_name}.")
+        # if len(tutorials) > 1:
+        #     index_files = glob.glob(f"{repo}/index-*.html")
+        #     if index_files:
+        #         index = index_files[0]
+        #         print(f"More than 1 tutorial found; also copying index file {index}")
+        #         shutil.copy(index, destination_directory)
+        #     else:
+        #         raise FileNotFoundError(f"No index-*.html file found for {repo_name}.")
 
         # copy images (plots) in notebook for faster page loading
         images = glob.glob(f"{repo}/_images/*.png")
