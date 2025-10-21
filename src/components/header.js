@@ -65,9 +65,9 @@ const NavItem = styled.div`
     color: var(--astropy-primary-color);
   }
 
-  .astropy-link {
-    margin-left: auto;
-  }
+  // .astropy-link {
+  //   margin-left: auto;
+  // }
 
   @media screen and (max-width: 600px) {
     width: 100vw;
@@ -97,10 +97,20 @@ export default function NavHeader() {
           <NavItem>
             <Link to="/contributing">Contribute</Link>
           </NavItem>
+          <NavItem>
+            <a href="https://github.com/astropy-learn">
+              Learn Astropy on GitHub
+            </a>
+          </NavItem>
+          <NavItem>
+            <a href="https://astropy.org">The Astropy Project</a>
+          </NavItem>
+          <NavItem>
+            <a href="https://github.com/astropy">
+              The Astropy Project on GitHub
+            </a>
+          </NavItem>
         </nav>
-        <NavItem className="astropy-link">
-          <a href="https://astropy.org">Astropy Project</a>
-        </NavItem>
       </HeaderContainer>
     </>
   );

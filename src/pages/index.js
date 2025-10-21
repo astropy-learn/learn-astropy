@@ -24,9 +24,8 @@ export default function IndexPage({ location }) {
       <PageCover>
         <h1>Learn Astropy</h1>
         <p>
-          Learn how to use Python for astronomy through tutorials and guides
-          that cover Astropy and other packages in the astronomy Python
-          ecosystem.
+          Learn how to use Python for research in astronomy with tutorials and
+          guides covering Astropy and the broader astronomy Python ecosystem.
         </p>
       </PageCover>
 
@@ -49,7 +48,7 @@ export default function IndexPage({ location }) {
               <h2>Astropy packages</h2>
               <RefinementList
                 attribute="astropy_package_keywords"
-                limit={10}
+                limit={15}
                 showMore
                 showMoreLimit={30}
                 searchable
@@ -59,7 +58,7 @@ export default function IndexPage({ location }) {
               <h2>Python packages</h2>
               <RefinementList
                 attribute="python_package_keywords"
-                limit={10}
+                limit={15}
                 showMore
                 showMoreLimit={30}
                 searchable
@@ -69,7 +68,7 @@ export default function IndexPage({ location }) {
               <h2>Tasks</h2>
               <RefinementList
                 attribute="task_keywords"
-                limit={10}
+                limit={15}
                 showMore
                 showMoreLimit={30}
                 searchable
@@ -79,7 +78,7 @@ export default function IndexPage({ location }) {
               <h2>Science domains</h2>
               <RefinementList
                 attribute="science_keywords"
-                limit={10}
+                limit={15}
                 showMore
                 showMoreLimit={30}
                 searchable
