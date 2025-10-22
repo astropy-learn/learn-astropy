@@ -89,7 +89,7 @@ jobs:
           ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
           ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
         run: |
-          astropylibrarian clear_index \
+          astropylibrarian clear-index \
             --algolia-id "$ALGOLIA_ID" \
             --algolia-key "$ALGOLIA_KEY" \
             --index-name "$ALGOLIA_INDEX"
