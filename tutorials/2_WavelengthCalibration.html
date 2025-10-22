@@ -859,7 +859,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2613/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2617/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.ylabel(&quot;$\lambda(x)$&quot;)
 </pre></div>
 </div>
@@ -927,7 +927,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2613/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2617/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;);
 </pre></div>
 </div>
@@ -971,7 +971,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2613/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2617/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
@@ -991,7 +991,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2613/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
+/tmp/ipykernel_2617/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
   plt.xlabel(&quot;$\lambda$ [nm]&quot;)
 </pre></div>
 </div>
@@ -1408,8 +1408,9 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <img alt="_images/80ba608585e396d6a0a031c27dbc7be6c692e06f625894c92a6b75d5273b3427.png" src="_images/80ba608585e396d6a0a031c27dbc7be6c692e06f625894c92a6b75d5273b3427.png" />
 </div>
 </div>
-<p>The moment-1 estimate of the peak location is, for a spectrum <span class="math notranslate nohighlight">\(f(x)\)</span> and pixel location <span class="math notranslate nohighlight">\(x\)</span>
-$<span class="math notranslate nohighlight">\( m_1 = \frac{\Sigma x f(x)}{\Sigma f(x)} \)</span>$</p>
+<p>The moment-1 estimate of the peak location is, for a spectrum <span class="math notranslate nohighlight">\(f(x)\)</span> and pixel location <span class="math notranslate nohighlight">\(x\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ m_1 = \frac{\Sigma x f(x)}{\Sigma f(x)} \]</div>
 <p>which, through propagation of error, gives us variance of moment 1:</p>
 <div class="math notranslate nohighlight">
 \[\sigma_{m_1}^2 =  \left(\frac{\Sigma \left[ (x-m_1)^2   \sigma_{f(x)}^2 \right]}{\left(\Sigma f(x)\right)^2}  +
