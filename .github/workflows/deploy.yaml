@@ -92,7 +92,7 @@ jobs:
           astropylibrarian clear-index \
             --algolia-id "$ALGOLIA_ID" \
             --algolia-key "$ALGOLIA_KEY" \
-            --index-name "$ALGOLIA_INDEX"
+            --index "$ALGOLIA_INDEX"
 
       - name: Index tutorials
         env:
