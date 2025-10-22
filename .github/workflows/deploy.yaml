@@ -91,7 +91,7 @@ jobs:
           ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
         run: |
           astropylibrarian index guide \
-            https://www.astropy.org/ccd-reduction-and-photometry-guide/index.html \
+            http://www.astropy.org/ccd-reduction-and-photometry-guide/ \
             --algolia-id "$ALGOLIA_ID" \
             --algolia-key "$ALGOLIA_KEY" \
             --index "$ALGOLIA_INDEX"
