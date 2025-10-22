@@ -83,28 +83,32 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 
-      # - name: Pre-index tutorials
-      #   env:
-      #     ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
-      #     ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
-      #     ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
-      #   run: |
-      #     astropylibrarian index tutorial-site \
-      #       public/tutorials \
-      #       https://learn.astropy.org/tutorials
+      - name: Pre-index tutorials
+        id: preindex
+        env:
+          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
+          ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+          ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
+        run: |
+          astropylibrarian index tutorial-site \
+            public/tutorials \
+            https://learn.astropy.org/tutorials
 
-      # - name: Clear Algolia index
-      #   env:
-      #     ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
-      #     ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
-      #     ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
-      #   run: |
-      #     astropylibrarian clear-index \
-      #       --algolia-id "$ALGOLIA_ID" \
-      #       --algolia-key "$ALGOLIA_KEY" \
-      #       --index "$ALGOLIA_INDEX"
+      - name: Clear Algolia index
+        id: clearindex
+        if: steps.preindex.outcome == 'success'
+        env:
+          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
+          ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+          ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
+        run: |
+          astropylibrarian clear-index \
+            --algolia-id "$ALGOLIA_ID" \
+            --algolia-key "$ALGOLIA_KEY" \
+            --index "$ALGOLIA_INDEX"
 
       - name: Index tutorials
+        if: steps.clearindex.outcome == 'success'
         env:
           ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
           ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
