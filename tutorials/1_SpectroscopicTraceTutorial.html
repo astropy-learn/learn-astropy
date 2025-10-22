@@ -678,9 +678,9 @@ document.write(`
 <p>We can use <a class="reference external" href="https://en.wikipedia.org/wiki/Moment_(mathematics)">moments</a> to provide a different, possibly better, estimate of where the trace’s center is.
 The advantage of moment analysis is that we’re using all of the data to estimate the vertical position, not just the single brightest value, which is what we used above.</p>
 <p>Note that we need to subtract off the background to avoid a bias toward the center, so we use the median of the whole image as our background estimate.</p>
-<p>(The first-order moment is the intensity-weighted mean position,</p>
-<p>$<span class="math notranslate nohighlight">\(m_1 = \frac{\Sigma_i x_i f(x_i)}{\Sigma_i f(x_i)}\)</span>$,</p>
-<p>where <span class="math notranslate nohighlight">\(x_i\)</span> is the position and <span class="math notranslate nohighlight">\(f({x_i})\)</span> is the intensity at that position.  <span class="math notranslate nohighlight">\(f(x_i)\)</span> must be zero in the signal-free region for <span class="math notranslate nohighlight">\(m_1\)</span> to return an accurate estimate of the location of the peak.)</p>
+<p>(The first-order moment is the intensity-weighted mean position,
+<span class="math notranslate nohighlight">\(m_1 = \frac{\Sigma_i x_i f(x_i)}{\Sigma_i f(x_i)}\)</span>,
+where <span class="math notranslate nohighlight">\(x_i\)</span> is the position and <span class="math notranslate nohighlight">\(f({x_i})\)</span> is the intensity at that position.  <span class="math notranslate nohighlight">\(f(x_i)\)</span> must be zero in the signal-free region for <span class="math notranslate nohighlight">\(m_1\)</span> to return an accurate estimate of the location of the peak.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we use a cutout around the traced line, so the Y-values are from that cutout</span>
