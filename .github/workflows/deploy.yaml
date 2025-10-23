@@ -119,6 +119,7 @@ jobs:
             https://learn.astropy.org/tutorials
 
       - name: Index guides
+        continue-on-error: true
         env:
           ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
           ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
