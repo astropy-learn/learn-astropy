@@ -115,8 +115,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -154,10 +154,10 @@
         <div class="sidebar-primary-item">
 
   
-    
+     
   
 
-<a class="navbar-brand logo" href="index-models.html">
+<a class="navbar-brand logo" href="https://learn.astropy.org">
   
   
   
@@ -168,8 +168,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="Astropy Modeling - Home"/>
-    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Astropy Modeling - Home"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Learn Astropy"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Learn Astropy"/>`);</script>
   
   
 </a></div>
@@ -186,14 +186,6 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index-models.html">
-                    Tutorial Series on astropy.modeling
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modeling 1: Make a quick fit using astropy.modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_user-defined-model.html">Modeling 2: Create a User Defined Model using astropy.modeling</a></li>
@@ -299,7 +291,7 @@
       
       
       
-      <li><a href="https://github.com/astropy-learn/tutorial--astropy-modeling/edit/main//1_models-quick-fit.ipynb" target="_blank"
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-modeling/edit/main/1_models-quick-fit.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -623,7 +615,7 @@ Model set size: 1
 Parameters:
            slope            intercept     
     ------------------- ------------------
-    -1.8388029755798254 13.517530405305104
+    -1.8388029289716923 13.517530403687502
 </pre></div>
 </div>
 </div>
@@ -643,7 +635,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Ks&#39;)
 </pre></div>
 </div>
-<img alt="_images/bcf979b91adcbd5ead79fe2cd48cb0193fc91ad6e2694c72075aa9432cc02e0e.png" src="_images/bcf979b91adcbd5ead79fe2cd48cb0193fc91ad6e2694c72075aa9432cc02e0e.png" />
+<img alt="_images/128039e0305ff8ae02356e1e01dca50e324760945429deeb50cbc89b264ce01f.png" src="_images/128039e0305ff8ae02356e1e01dca50e324760945429deeb50cbc89b264ce01f.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Remember, you can fit data with three lines of code:</p>
@@ -688,7 +680,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_1$&#39;)
 </pre></div>
 </div>
-<img alt="_images/84c7bf1f05aac229615a3e0315098b82ebae56a7488d933395c44d0e9aa4690d.png" src="_images/84c7bf1f05aac229615a3e0315098b82ebae56a7488d933395c44d0e9aa4690d.png" />
+<img alt="_images/178c24fec2a0f74cd9c86a867ce4bae90991e5f6ba0d4594f2238fbeefc55af6.png" src="_images/178c24fec2a0f74cd9c86a867ce4bae90991e5f6ba0d4594f2238fbeefc55af6.png" />
 </div>
 </div>
 <p>To fit this data let’s remember the three steps: model, fitter and perform fit.</p>
@@ -714,9 +706,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-            c0                 c1                 c2                 c3        
-    ------------------ ------------------ ------------------ ------------------
-    -8.669912280661027 10.862438027593988 -5.333193602079999 0.8755152991757714
+            c0                 c1                c2                c3        
+    ------------------ ----------------- ----------------- ------------------
+    -8.037014311428047 9.599431485457412 -4.87172240297823 0.8428759235569803
 </pre></div>
 </div>
 </div>
@@ -749,9 +741,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-            c0                 c1                 c2                 c3        
-    ------------------ ----------------- ------------------- ------------------
-    -2.332368257863715 1.953826925224189 -2.1172696420819754 0.5407477912349912
+            c0                 c1                 c2                 c3       
+    ------------------ ------------------ ------------------ -----------------
+    -4.384272468764991 3.6480419769121952 -2.601013714957464 0.600919579001358
 </pre></div>
 </div>
 </div>
@@ -786,7 +778,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 2.282760690385998
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.1368422614631197
 </pre></div>
 </div>
 </div>
@@ -799,7 +791,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 3.9075560910474167
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 1.7220743096926863
 </pre></div>
 </div>
 </div>
@@ -818,10 +810,10 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd874f0bd70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f603b705c10&gt;
 </pre></div>
 </div>
-<img alt="_images/e9e3efd521f3df7f009412da7771e108fc9ae109459c56b83d0083f9213bd850.png" src="_images/e9e3efd521f3df7f009412da7771e108fc9ae109459c56b83d0083f9213bd850.png" />
+<img alt="_images/c7dada7440bd4cce229f791835354ea4b9d44ee475d0d187380513651355bf1e.png" src="_images/c7dada7440bd4cce229f791835354ea4b9d44ee475d0d187380513651355bf1e.png" />
 </div>
 </div>
 <p>Results are as espected, the fit performed with the linear fitter is better than the second, non linear one.</p>
@@ -858,7 +850,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_2$&#39;)
 </pre></div>
 </div>
-<img alt="_images/d984760c1fc679a5e58e76047da6138798a5fd100b5935f411f2fc0fd1f16bda.png" src="_images/d984760c1fc679a5e58e76047da6138798a5fd100b5935f411f2fc0fd1f16bda.png" />
+<img alt="_images/0dca59406479244bfd0c90ac58c5e697f0621b98b925a642a8237cecef9e68a0.png" src="_images/0dca59406479244bfd0c90ac58c5e697f0621b98b925a642a8237cecef9e68a0.png" />
 </div>
 </div>
 <p>Let’s do our three steps to make the fit we want. For this fit we’re going to use a non-linear fitter, <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter</span></code>, because the model we need (<code class="docutils literal notranslate"><span class="pre">Gaussian1D</span></code>) is non-linear in the parameters.</p>
@@ -883,9 +875,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-        amplitude             mean              stddev      
-    ----------------- ------------------- ------------------
-    9.927782518926401 -0.4076450103508752 10.284281022659105
+        amplitude              mean              stddev     
+    ------------------ ------------------- -----------------
+    10.317610667249609 0.14755849182540398 9.636948571950942
 </pre></div>
 </div>
 </div>
@@ -911,7 +903,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.04994291 0.0713992  0.07173476]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05324989 0.06191958 0.0620244 ]
 </pre></div>
 </div>
 </div>
@@ -932,9 +924,9 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.927782518926401 +\- 0.22347910177696972
-Mean: -0.4076450103508752 +\- 0.2672062841369033
-Standard Deviation: 10.284281022659105 +\- 0.2678334616942712
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.317610667249609 +\- 0.23075937565266258
+Mean: 0.14755849182540398 +\- 0.2488364469670073
+Standard Deviation: 9.636948571950942 +\- 0.24904699067389216
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -943,11 +935,11 @@ Standard Deviation: 10.284281022659105 +\- 0.2678334616942712
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_2599/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2940/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Amplitude: {} +\- {}&quot;.format(best_fit_gauss.amplitude.value, np.sqrt(cov_diag[0]))
-/tmp/ipykernel_2599/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2940/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(best_fit_gauss.mean.value, np.sqrt(cov_diag[1])))
-/tmp/ipykernel_2599/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2940/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Standard Deviation: {} +\- {}&quot;.format(
 </pre></div>
 </div>
@@ -978,7 +970,7 @@ Standard Deviation: 10.284281022659105 +\- 0.2678334616942712
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.92778531 -0.40764238 10.28427525]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.31760757  0.14756196  9.63695436]
 </pre></div>
 </div>
 </div>
@@ -992,9 +984,9 @@ Standard Deviation: 10.284281022659105 +\- 0.2678334616942712
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.927785305236258 +\- 0.21117821955476904
-Mean: -0.40764237558947164 +\- 0.2524996058082451
-Standard Deviation: 10.284275248424095 +\- 0.25309232517374847
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.31760756892784 +\- 0.22478050058049084
+Mean: 0.1475619554143651 +\- 0.2423862559078001
+Standard Deviation: 9.63695435954086 +\- 0.24259135933488457
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -1003,11 +995,11 @@ Standard Deviation: 10.284275248424095 +\- 0.25309232517374847
 &lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_2599/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2940/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Amplitude: {} +\- {}&quot;.format(p_opt[0], np.sqrt(p_cov[0, 0])))
-/tmp/ipykernel_2599/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2940/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(p_opt[1], np.sqrt(p_cov[1, 1])))
-/tmp/ipykernel_2599/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2940/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Standard Deviation: {} +\- {}&quot;.format(p_opt[2], np.sqrt(p_cov[2, 2])))
 </pre></div>
 </div>
@@ -1023,7 +1015,7 @@ Standard Deviation: 10.284275248424095 +\- 0.25309232517374847
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.8929469485137421
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.9488446386251689
 </pre></div>
 </div>
 </div>
@@ -1036,7 +1028,7 @@ Standard Deviation: 10.284275248424095 +\- 0.25309232517374847
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.8929469484925516
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.9488446386469266
 </pre></div>
 </div>
 </div>
@@ -1054,10 +1046,10 @@ Standard Deviation: 10.284275248424095 +\- 0.25309232517374847
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd87491f530&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f603cb6bdd0&gt;
 </pre></div>
 </div>
-<img alt="_images/56a22927b5797c399fc98589595b77ade4bc94810f0a98b2906572c5fbc7a2c9.png" src="_images/56a22927b5797c399fc98589595b77ade4bc94810f0a98b2906572c5fbc7a2c9.png" />
+<img alt="_images/a39bdbcbff53e3dc9eb1da46c646a18f515e3bb6fc2afa1477a4177fa0713f33.png" src="_images/a39bdbcbff53e3dc9eb1da46c646a18f515e3bb6fc2afa1477a4177fa0713f33.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Choose the method most convenient for every case you need to fit. We recomend <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> because is easier to write the name of the function you want to fit than to remember the expression every time we want to use it. Also, <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> becomes useful with more complicated models like <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">two gaussians</a> plus a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#blackbody-radiation">black body</a>, but that is another tutorial.</p>
@@ -1109,7 +1101,7 @@ Standard Deviation: 10.284275248424095 +\- 0.25309232517374847
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_3$&#39;)
 </pre></div>
 </div>
-<img alt="_images/fdba47f9a8ca5ce5ff257caae572ec984df1e5b9dd45f8eea47f45245c3bdb12.png" src="_images/fdba47f9a8ca5ce5ff257caae572ec984df1e5b9dd45f8eea47f45245c3bdb12.png" />
+<img alt="_images/4b7750ebb36e9ad6eb5675a066dff35c17240100639b7806f3808e86975df2d6.png" src="_images/4b7750ebb36e9ad6eb5675a066dff35c17240100639b7806f3808e86975df2d6.png" />
 </div>
 </div>
 </section>
@@ -1120,7 +1112,7 @@ Standard Deviation: 10.284275248424095 +\- 0.25309232517374847
         requestKernel: true,
         binderOptions: {
             repo: "astropy-learn/tutorial--astropy-modeling",
-            ref: "main/",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",

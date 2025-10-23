@@ -114,8 +114,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -153,10 +153,10 @@
         <div class="sidebar-primary-item">
 
   
-    
+     
   
 
-<a class="navbar-brand logo" href="index-models.html">
+<a class="navbar-brand logo" href="https://learn.astropy.org">
   
   
   
@@ -167,8 +167,8 @@
       
     
     
-    <img src="_static/logo.svg" class="logo__image only-light" alt="Astropy Modeling - Home"/>
-    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Astropy Modeling - Home"/>`);</script>
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Learn Astropy"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Learn Astropy"/>`);</script>
   
   
 </a></div>
@@ -185,14 +185,6 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="index-models.html">
-                    Tutorial Series on astropy.modeling
-                </a>
-            </li>
-        </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_models-quick-fit.html">Modeling 1: Make a quick fit using astropy.modeling</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modeling 2: Create a User Defined Model using astropy.modeling</a></li>
@@ -298,7 +290,7 @@
       
       
       
-      <li><a href="https://github.com/astropy-learn/tutorial--astropy-modeling/edit/main//2_user-defined-model.ipynb" target="_blank"
+      <li><a href="https://github.com/astropy-learn/tutorial--astropy-modeling/edit/main/2_user-defined-model.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -631,7 +623,7 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c5a0d80ec0d17d122e08bd9c5aae558bb00f3ba95e3151c4ebd7f655adc848bf.png" src="_images/c5a0d80ec0d17d122e08bd9c5aae558bb00f3ba95e3151c4ebd7f655adc848bf.png" />
+<img alt="_images/457b3905062accb4b666213686926d760a428b765cc32f8b9042a98cb843ef16.png" src="_images/457b3905062accb4b666213686926d760a428b765cc32f8b9042a98cb843ef16.png" />
 </div>
 </div>
 <p>We just plotted our spectrum! Check different ranges of wavelength to see how the full spectrum looks like in comparison to the one we saw before.</p>
@@ -664,7 +656,7 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8da1a8b84b782c8aea438a09bece4a9eb4ef198efc67ee22eed17b9079f16bd0.png" src="_images/8da1a8b84b782c8aea438a09bece4a9eb4ef198efc67ee22eed17b9079f16bd0.png" />
+<img alt="_images/430955c16e39c5d519c294ec8cb2f713e66e66d434c1601d7d94a30cd6c342a8.png" src="_images/430955c16e39c5d519c294ec8cb2f713e66e66d434c1601d7d94a30cd6c342a8.png" />
 </div>
 </div>
 <p>We can see the fit is not doing a good job. Let’s print the parameters of this fit:</p>
@@ -680,9 +672,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-        amplitude             mean             stddev     
-    ------------------ ----------------- -----------------
-    16.750706286489784 9456.749529382625 2368.395705667002
+        amplitude            mean             stddev      
+    ----------------- ----------------- ------------------
+    16.75070718935458 9456.749861702714 2368.3958661229153
 </pre></div>
 </div>
 </div>
@@ -733,7 +725,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2f3fa3d5d11d471eaa47cf8f556cc374fa09ac4bb43827b2c957ac46e5f08b03.png" src="_images/2f3fa3d5d11d471eaa47cf8f556cc374fa09ac4bb43827b2c957ac46e5f08b03.png" />
+<img alt="_images/fb67d451422620324bd4dfea2fcee485e4ffadb3436d5eae08924706b107485c.png" src="_images/fb67d451422620324bd4dfea2fcee485e4ffadb3436d5eae08924706b107485c.png" />
 </div>
 </div>
 <p>It works! Let’s take a look to the fit we just made.</p>
@@ -750,13 +742,13 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Expression: [0] + [1]
 Components: 
-    [0]: &lt;Gaussian1D(amplitude=7.02171248, mean=6564.13272082, stddev=1.97715531)&gt;
+    [0]: &lt;Gaussian1D(amplitude=7.02171244, mean=6564.13272082, stddev=1.97715527)&gt;
 
-    [1]: &lt;Polynomial1D(1, c0=-12.79335637, c1=0.00323995)&gt;
+    [1]: &lt;Polynomial1D(1, c0=-12.79335623, c1=0.00323995)&gt;
 Parameters:
        amplitude_0          mean_0      ...         c0_1                c1_1        
     ----------------- ----------------- ... ------------------- --------------------
-    7.021712482355418 6564.132720819791 ... -12.793356369422343 0.003239952196866877
+    7.021712440981339 6564.132720817428 ... -12.793356229458148 0.003239952187481084
 </pre></div>
 </div>
 </div>
@@ -770,11 +762,11 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>amplitude_0 7.021712482355418
-mean_0 6564.132720819791
-stddev_0 1.977155311367857
-c0_1 -12.793356369422343
-c1_1 0.003239952196866877
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>amplitude_0 7.021712440981339
+mean_0 6564.132720817428
+stddev_0 1.977155272262222
+c0_1 -12.793356229458148
+c1_1 0.003239952187481084
 </pre></div>
 </div>
 </div>
@@ -787,7 +779,7 @@ c1_1 0.003239952196866877
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter(&#39;amplitude&#39;, value=7.021712482355418)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter(&#39;amplitude&#39;, value=7.021712440981339)
 </pre></div>
 </div>
 </div>
@@ -826,7 +818,7 @@ c1_1 0.003239952196866877
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2ac96849c08ef62d2b7db062f3a1a6ce7bc6f1d5ad2e2b48074192284f115511.png" src="_images/2ac96849c08ef62d2b7db062f3a1a6ce7bc6f1d5ad2e2b48074192284f115511.png" />
+<img alt="_images/9ab0f93e30156305f05d6e881751c50a87b026269643531c561cba32037db624.png" src="_images/9ab0f93e30156305f05d6e881751c50a87b026269643531c561cba32037db624.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -842,13 +834,13 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Expression: [0] + [1]
 Components: 
-    [0]: &lt;Gaussian1D(amplitude=1.53255901, mean=6563., stddev=28.57906909)&gt;
+    [0]: &lt;Gaussian1D(amplitude=1.53255734, mean=6563., stddev=28.57908199)&gt;
 
-    [1]: &lt;Polynomial1D(1, c0=-12.79102997, c1=0.00323745)&gt;
+    [1]: &lt;Polynomial1D(1, c0=-12.79102983, c1=0.00323745)&gt;
 Parameters:
        amplitude_0     mean_0 ...         c0_1                c1_1        
     ------------------ ------ ... ------------------- --------------------
-    1.5325590144558827 6563.0 ... -12.791029967444068 0.003237448589619317
+    1.5325573364111431 6563.0 ... -12.791029826818042 0.003237448580321015
 </pre></div>
 </div>
 </div>
@@ -880,7 +872,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/374465f0c7c1afca41b38b6a7701eb45f5518e2a57c703c4fff02f75d3827e79.png" src="_images/374465f0c7c1afca41b38b6a7701eb45f5518e2a57c703c4fff02f75d3827e79.png" />
+<img alt="_images/652bfb04266eaa5fa06047ea1e19d085cfa39e5cdd607694cafaf9f16132faac.png" src="_images/652bfb04266eaa5fa06047ea1e19d085cfa39e5cdd607694cafaf9f16132faac.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -896,13 +888,13 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Expression: [0] + [1]
 Components: 
-    [0]: &lt;Gaussian1D(amplitude=6.86741863, mean=6563.5, stddev=2.12272132)&gt;
+    [0]: &lt;Gaussian1D(amplitude=6.86743463, mean=6563.5, stddev=2.12271428)&gt;
 
-    [1]: &lt;Polynomial1D(1, c0=-12.79313621, c1=0.00323986)&gt;
+    [1]: &lt;Polynomial1D(1, c0=-12.79313607, c1=0.00323986)&gt;
 Parameters:
-      amplitude_0   mean_0 ...         c0_1                c1_1        
-    --------------- ------ ... ------------------- --------------------
-    6.8674186332946 6563.5 ... -12.793136209085365 0.003239857612426906
+       amplitude_0    mean_0 ...         c0_1                 c1_1        
+    ----------------- ------ ... ------------------- ---------------------
+    6.867434625141458 6563.5 ... -12.793136069679736 0.0032398576043895823
 </pre></div>
 </div>
 </div>
@@ -952,7 +944,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5b4745d6737604b4c053fe199042122f3f06d17cfa2b2e66f65629b7be849ca9.png" src="_images/5b4745d6737604b4c053fe199042122f3f06d17cfa2b2e66f65629b7be849ca9.png" />
+<img alt="_images/156c5d2db24584ad1f0f204f3d4fa40f2d84647eb738951271f9cdc4259c4c0b.png" src="_images/156c5d2db24584ad1f0f204f3d4fa40f2d84647eb738951271f9cdc4259c4c0b.png" />
 </div>
 </div>
 <p>We can define a simple custom model by specifying which parameters we want to fit.</p>
@@ -987,7 +979,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1f2feee9ec1a9eebbc5bfb88dd6f62dc1fc8a27ee1ea4d982960b00b03fc4fab.png" src="_images/1f2feee9ec1a9eebbc5bfb88dd6f62dc1fc8a27ee1ea4d982960b00b03fc4fab.png" />
+<img alt="_images/fda7e036384b0c8d9575ed955e93de0a6db6a75332d148c78f3c75bf393ac178.png" src="_images/fda7e036384b0c8d9575ed955e93de0a6db6a75332d148c78f3c75bf393ac178.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1004,7 +996,7 @@ Model set size: 1
 Parameters:
             a                   b                  c         
     ------------------ ------------------- ------------------
-    2.0780842797817294 -1.8605583190764439 0.3235830633095121
+    0.9867960607244542 -2.2976968484498754 1.1534546877555907
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1023,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.2302917973739185)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.9862401436545178)
 </pre></div>
 </div>
 </div>
@@ -1068,7 +1060,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6d7f3b495647286e17b1b412a4cb0dba6c9cc2869bd554f06720864a79351a6e.png" src="_images/6d7f3b495647286e17b1b412a4cb0dba6c9cc2869bd554f06720864a79351a6e.png" />
+<img alt="_images/655767c6bb11804d1c9c4e96e94b06b5eb4d6539393e1127688a07256a40578b.png" src="_images/655767c6bb11804d1c9c4e96e94b06b5eb4d6539393e1127688a07256a40578b.png" />
 </div>
 </div>
 <p>For the full custom model we can easily set the <strong>derivative of the function</strong>, which is used by different <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#id21">fitters</a>, for example the <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter()</span></code>.</p>
@@ -1115,7 +1107,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f3369c7be25185f6bdb7e8efe7d52df0a92f2047c872536e8fb7f092c00f75f.png" src="_images/7f3369c7be25185f6bdb7e8efe7d52df0a92f2047c872536e8fb7f092c00f75f.png" />
+<img alt="_images/007cb8c51153e21906a3848ed1e8ff52e00d2b35e7893a38f6ad8b208e41762f.png" src="_images/007cb8c51153e21906a3848ed1e8ff52e00d2b35e7893a38f6ad8b208e41762f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1130,9 +1122,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-            a                 b                  c                 d         
-    ----------------- ------------------ ----------------- ------------------
-    3.010191290925753 2.0131679247738767 3.931444971058271 0.9831339416638708
+            a                 b                 c                 d         
+    ----------------- ----------------- ----------------- ------------------
+    3.049376827716134 2.002993699136521 4.012176369219591 0.9692904550229431
 </pre></div>
 </div>
 </div>
@@ -1144,7 +1136,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.979568053376635)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.7470894347754933)
 </pre></div>
 </div>
 </div>
@@ -1177,7 +1169,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7c4464d9ae18c0ce62a671537e2f80ef8e563ebe4210e2c85f3fd8f470f51a49.png" src="_images/7c4464d9ae18c0ce62a671537e2f80ef8e563ebe4210e2c85f3fd8f470f51a49.png" />
+<img alt="_images/57ab7352adeb0e1fd37ca70aa0f1b743b32a5ba88743622cd154e54ee49fc1f1.png" src="_images/57ab7352adeb0e1fd37ca70aa0f1b743b32a5ba88743622cd154e54ee49fc1f1.png" />
 </div>
 </div>
 </section>
@@ -1189,7 +1181,7 @@ Parameters:
         requestKernel: true,
         binderOptions: {
             repo: "astropy-learn/tutorial--astropy-modeling",
-            ref: "main/",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
