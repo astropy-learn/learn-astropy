@@ -83,22 +83,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 
-      - name: Index guides
-        id: indexguides
-        env:
-          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
-          ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
-          ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
-        run: |
-          astropylibrarian index guide \
-            http://www.astropy.org/ccd-reduction-and-photometry-guide/ \
-            --algolia-id "$ALGOLIA_ID" \
-            --algolia-key "$ALGOLIA_KEY" \
-            --index "$ALGOLIA_INDEX"
-
       - name: Pre-index tutorials
         id: preindex
-        if: steps.indexguides.outcome == 'success'
         env:
           ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
           ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
@@ -131,3 +117,16 @@ jobs:
           astropylibrarian index tutorial-site \
             public/tutorials \
             https://learn.astropy.org/tutorials
+
+      - name: Index guides
+        env:
+          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
+          ALGOLIA_KEY: ${{ secrets.ALGOLIA_KEY }}
+          ALGOLIA_INDEX: ${{ secrets.ALGOLIA_INDEX }}
+        run: |
+          astropylibrarian index guide \
+            http://www.astropy.org/ccd-reduction-and-photometry-guide/ \
+            --algolia-id "$ALGOLIA_ID" \
+            --algolia-key "$ALGOLIA_KEY" \
+            --index "$ALGOLIA_INDEX" \
+            --priority 2
