@@ -65,11 +65,6 @@ def process_repo(repo, destination_directory):
                 f"{repo}/{tname}.html",
                 destination_directory,
             )
-            shutil.copytree(
-                f"{repo}/_static",
-                f"{destination_directory}/_static",
-                dirs_exist_ok=True,
-            )
         # if len(tutorials) > 1:
         #     index_files = glob.glob(f"{repo}/index-*.html")
         #     if index_files:
@@ -78,6 +73,23 @@ def process_repo(repo, destination_directory):
         #         shutil.copy(index, destination_directory)
         #     else:
         #         raise FileNotFoundError(f"No index-*.html file found for {repo_name}.")
+
+        # copy files for in-notebook search bar
+        shutil.copy(
+            f"{repo}/search.html",
+            destination_directory,
+        )            
+        shutil.copy(
+            f"{repo}/searchindex.js",
+            destination_directory,
+        )             
+                   
+        # copy _static files (CSS, JS) for page rendering
+        shutil.copytree(
+            f"{repo}/_static",
+            f"{destination_directory}/_static",
+            dirs_exist_ok=True,
+        )
 
         # copy images (plots) in notebook for faster page loading
         images = glob.glob(f"{repo}/_images/*.png")
