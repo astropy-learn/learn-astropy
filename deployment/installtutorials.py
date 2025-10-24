@@ -78,12 +78,12 @@ def process_repo(repo, destination_directory):
         shutil.copy(
             f"{repo}/search.html",
             destination_directory,
-        )            
+        )
         shutil.copy(
             f"{repo}/searchindex.js",
             destination_directory,
-        )             
-                   
+        )
+
         # copy _static files (CSS, JS) for page rendering
         shutil.copytree(
             f"{repo}/_static",
