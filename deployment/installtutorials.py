@@ -75,14 +75,14 @@ def process_repo(repo, destination_directory):
         #         raise FileNotFoundError(f"No index-*.html file found for {repo_name}.")
 
         # copy files for in-notebook search bar
-        shutil.copy(
-            f"{repo}/search.html",
-            destination_directory,
-        )
-        shutil.copy(
-            f"{repo}/searchindex.js",
-            destination_directory,
-        )
+        # shutil.copy(
+        #     f"{repo}/search.html",
+        #     destination_directory,
+        # )
+        # shutil.copy(
+        #     f"{repo}/searchindex.js",
+        #     destination_directory,
+        # )
 
         # copy _static files (CSS, JS) for page rendering
         shutil.copytree(
