@@ -84,7 +84,7 @@ Please draw keywords from [this list](https://github.com/astropy-learn/astropy-t
 
 To contribute tutorial content, open an issue in the [astropy-tutorials repository](https://github.com/astropy-learn/astropy-tutorials/issues). When you click 'New issue', select the 'Tutorial submission' option, completing all fields of that form. You have the option to have your tutorial made citable via an upload (by the Astropy Learn maintainers) to Zenodo. If you have any data files needed by the notebook to run, see the 'Data files' section below.
 
-Maintainers will review your notebook and may ask questions and/or suggest edits (e.g., to conform to the above content guidelines). When the review is complete and the tutorial is ready to be incorporated, maintainers will create a new repository for the tutorial, add the notebook(s), and upload your tutorial(s) to the [learn website](https://learn.astropy.org/tutorials/).
+Maintainers will review your notebook and may ask questions and/or suggest edits (e.g., to conform to the above content guidelines). When the review is complete and the tutorial is ready to be incorporated, maintainers will create a new repository for the tutorial, add the notebook(s), and upload your tutorial(s) to this website.
 
 ### Data files
 
