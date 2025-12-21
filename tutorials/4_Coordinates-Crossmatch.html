@@ -592,7 +592,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>QTable length=3</i>
-<table id="table140392284075312" class="table-striped table-bordered table-condensed">
+<table id="table140043251604688" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Date</th><th>RAJ2000</th><th>DEJ2000</th><th>_2MASS</th><th>Jmag</th><th>e_Jmag</th><th>Hmag</th><th>e_Hmag</th><th>Kmag</th><th>e_Kmag</th><th>Qflg</th><th>Rflg</th><th>Bflg</th><th>Cflg</th><th>Xflg</th><th>Aflg</th></tr></thead>
 <thead><tr><th></th><th>deg</th><th>deg</th><th></th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
 <thead><tr><th>str10</th><th>float64</th><th>float64</th><th>str16</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>str3</th><th>str3</th><th>str3</th><th>str3</th><th>uint8</th><th>uint8</th></tr></thead>
@@ -623,10 +623,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">&lt;Column name=&apos;Date&apos; dtype=&apos;str10&apos; description=&apos;(date) Observation date&apos; length=1&gt;
-<table>
-<tr><td>1999-10-19</td></tr>
-</table></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;1999-10-19&#39;], dtype=&#39;&lt;U10&#39;)
+</pre></div>
+</div>
+</div>
 </div>
 <p>It looks like all of the sources in our 2MASS table have the same epoch, so let’s create an <code class="docutils literal notranslate"><span class="pre">astropy.time.Time</span></code> object to represent this date:</p>
 <div class="cell docutils container">
