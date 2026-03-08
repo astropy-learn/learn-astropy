@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Retrieving MAST images and overlaying Gaia/Vizier sources on them &#8212; Retrieving MAST images and overlaying Gaia/Vizier sources on them</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZBXC3EFGGJ');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'catalog-overlay-on-fits';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+     
+  
+
+<a class="navbar-brand logo" href="https://learn.astropy.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.svg" class="logo__image only-light" alt="Learn Astropy"/>
+    <script>document.write(`<img src="_static/logo.svg" class="logo__image only-dark" alt="Learn Astropy"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--catalog-overlay-on-fits" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--catalog-overlay-on-fits/edit/main/catalog-overlay-on-fits.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/astropy-learn/tutorial--catalog-overlay-on-fits/issues/new?title=Issue%20on%20page%20%2Fcatalog-overlay-on-fits.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/catalog-overlay-on-fits.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Retrieving MAST images and overlaying Gaia/Vizier sources on them</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-and-downloading-mast-data">Querying and downloading MAST Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-celestial-coordinates">Working with Celestial Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important-general-keywords">Important general keywords:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wcs-keywords">WCS keywords:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-catalogs-according-to-the-fits-file-coordinate-span">Querying catalogs according to the FITS file coordinate span</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overplotting-sources-onto-the-image">Overplotting sources onto the image</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="retrieving-mast-images-and-overlaying-gaia-vizier-sources-on-them">
+<h1>Retrieving MAST images and overlaying Gaia/Vizier sources on them<a class="headerlink" href="#retrieving-mast-images-and-overlaying-gaia-vizier-sources-on-them" title="Link to this heading">#</a></h1>
+<section id="authors">
+<h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
+<p>Y. Güray Hatipoğlu</p>
+</section>
+<section id="learning-goals">
+<h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Downloading astronomical images via the MAST API by querying with criteria and region</p></li>
+<li><p>Querying Gaia and Vizier catalogs around the image regions</p></li>
+<li><p>Plotting the image and overlaying catalog object locations in the same figure</p></li>
+</ul>
+</section>
+<section id="keywords">
+<h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
+<p>astroquery, coordinates, wcs, Vizier, matplotlib</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This tutorial utilizes the MAST API to filter and query different parts of the sky and download the related image products. Then, it retrieves World Coordinate System (WCS) information from the downloaded products and provides these as inputs for catalog queries. After this step, Gaia (or any Vizier catalog) is queried according to a rectangle specified to either focus on a part of the image, span the image, or put the image in a wider context of cataloged objects. Finally, both the image and catalog sources will be plotted on the same figure.</p>
+</section>
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h2>
+<p>In this tutorial we will use both image raster products as backgrounds, and point vector products to overlay cataloged celestial objects over these images. Both data will be retrieved using the <code class="docutils literal notranslate"><span class="pre">astroquery</span></code> library.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">astroquery.mast</span></code> will let us access the Mikulski Archive for Space Telescopes (MAST) database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">astroquery.gaia</span></code> will be used to retrieve information and data from <em>Gaia</em> data releases.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">astroquery.vizier</span></code> will permit access to the catalogs from VizieR.</p></li>
+</ul>
+<p>For the image/raster downloading part <code class="docutils literal notranslate"><span class="pre">astroquery.mast.Observations</span></code> will enable us to download images from MAST.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.mast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Observations</span> <span class="c1"># Downloading observations/images from MAST via astroquery</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.gaia</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaia</span> <span class="c1"># To Query Gaia data releases</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astroquery.vizier</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vizier</span> <span class="c1"># To query catalogs in VizieR</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.wcs</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCS</span> <span class="c1"># World Coordinate System wrapper and manipulator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span> <span class="c1"># FITS file opener, knowledge extractor and manipulator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.coordinates</span><span class="w"> </span><span class="kn">import</span> <span class="n">SkyCoord</span> <span class="c1"># Celestial coordinate repr. interface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.coordinates</span><span class="w"> </span><span class="kn">import</span> <span class="n">ICRS</span> <span class="c1"># A common choice of coordinate ref. system</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span> <span class="c1"># ensuring standard unit to represent custom lengths</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> <span class="c1"># plotting</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some IP addresses of users launching heavy query showers have temporarily been disabled. Please contact the Gaia helpdesk (https://www.cosmos.esa.int/web/gaia/gaia-helpdesk) for advice. Workaround solutions for the Gaia Archive issues following the infrastructure upgrade: https://www.cosmos.esa.int/web/gaia/news#WorkaroundArchive
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="querying-and-downloading-mast-data">
+<h2>Querying and downloading MAST Data<a class="headerlink" href="#querying-and-downloading-mast-data" title="Link to this heading">#</a></h2>
+<p>This command gives the full list of available missions in the MAST API.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Observations</span><span class="o">.</span><span class="n">list_missions</span><span class="p">())</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;BEFS&#39;, &#39;EUVE&#39;, &#39;FIMS-SPEAR&#39;, &#39;FUSE&#39;, &#39;GALEX&#39;, &#39;HLA&#39;, &#39;HLSP&#39;, &#39;HST&#39;, &#39;HUT&#39;, &#39;IUE&#39;, &#39;JWST&#39;, &#39;K2&#39;, &#39;K2FFI&#39;, &#39;Kepler&#39;, &#39;KeplerFFI&#39;, &#39;OPO&#39;, &#39;PS1&#39;, &#39;SDSS&#39;, &#39;SPITZER_SHA&#39;, &#39;SWIFT&#39;, &#39;TESS&#39;, &#39;TUES&#39;, &#39;WUPPE&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Observation.query_criteria()</span></code> allows querying both by a variety of criteria, and also with lists of coordinates via <code class="docutils literal notranslate"><span class="pre">s_dec</span></code> and <code class="docutils literal notranslate"><span class="pre">s_ra</span></code>.</p>
+<p>See <a class="reference external" href="https://mast.stsci.edu/api/v0/_c_a_o_mfields.html">this page</a> for the full list of filtering parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs_table</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">query_criteria</span><span class="p">(</span><span class="n">dataproduct_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
+                                        <span class="n">obs_collection</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;JWST&quot;</span><span class="p">],</span>
+                                        <span class="n">s_dec</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">45.55</span><span class="p">,</span><span class="o">-</span><span class="mf">40.45</span><span class="p">],</span>
+                                        <span class="n">s_ra</span><span class="o">=</span><span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After querying the MAST database and obtaining an observation table, there are several things that can be done. The first one is listing the available products <code class="docutils literal notranslate"><span class="pre">get_product_list()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">products_by_obs</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">get_product_list</span><span class="p">(</span><span class="n">obs_table</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">products_by_obs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obsID   obs_collection dataproduct_type ... calib_level   filters   
+--------- -------------- ---------------- ... ----------- ------------
+228645278           JWST            image ...           1 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+228645278           JWST            image ...           1 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+228645278           JWST            image ...           2 OPAQUE;G235M
+      ...            ...              ... ...         ...          ...
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           2       F150W2
+228686637           JWST            image ...           1       F150W2
+Length = 784 rows
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since this is a demo, a specific obsID is given below to increase reproducibility, but general filtering can be done without it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prods</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">filter_products</span><span class="p">(</span><span class="n">products_by_obs</span><span class="p">,</span>
+                                     <span class="n">calib_level</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+                                     <span class="n">productType</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SCIENCE&#39;</span><span class="p">],</span>
+                                     <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;fits&quot;</span><span class="p">,</span>
+                                     <span class="n">obsID</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;228645392&quot;</span><span class="p">]</span>
+                                     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prods</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  obsID   obs_collection dataproduct_type ... dataRights calib_level filters
+--------- -------------- ---------------- ... ---------- ----------- -------
+228645392           JWST            image ...     PUBLIC           3  F322W2
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Dowloading the data products</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manifest</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">download_products</span><span class="p">(</span><span class="n">prods</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading URL https://mast.stsci.edu/api/v0.1/Download/file?uri=mast:JWST/product/jw05594-o145_t147_nircam_clear-f322w2_i2d.fits to ./mastDownload/JWST/jw05594-o145_t147_nircam_clear-f322w2/jw05594-o145_t147_nircam_clear-f322w2_i2d.fits ...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [Done]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                               Local Path                                                ...
+-------------------------------------------------------------------------------------------------------- ...
+./mastDownload/JWST/jw05594-o145_t147_nircam_clear-f322w2/jw05594-o145_t147_nircam_clear-f322w2_i2d.fits ...
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Opening the FITS file</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits_file</span> <span class="o">=</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">&quot;Local Path&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fits_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./mastDownload/JWST/jw05594-o145_t147_nircam_clear-f322w2/jw05594-o145_t147_nircam_clear-f322w2_i2d.fits
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data of interest is usually in <code class="docutils literal notranslate"><span class="pre">hdu['SCI'].data</span></code>. For example, in JWST and HST files,
+<code class="docutils literal notranslate"><span class="pre">hdu[1].header</span></code> will have WCS information, which can be retrieved via <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS(hdu[1].header).</span></code></p>
+<p>We open the FITS file via “with” to ensure its closure after extracting the data and info.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fits_file</span><span class="p">,</span> <span class="n">ignore_missing_simple</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu</span><span class="p">:</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">hdu</span><span class="p">[</span><span class="s1">&#39;SCI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="c1"># this is a numpy nd array</span>
+    <span class="n">wcs_helix</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">hdu</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">)</span> <span class="c1"># WCS object from FITS</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set DATE-BEG to &#39;2024-08-19T21:42:49.503&#39; from MJD-BEG.
+Set DATE-AVG to &#39;2024-08-19T22:01:42.243&#39; from MJD-AVG.
+Set DATE-END to &#39;2024-08-19T22:20:35.004&#39; from MJD-END&#39;. [astropy.wcs.wcs]
+WARNING: FITSFixedWarning: &#39;obsfix&#39; made the change &#39;Set OBSGEO-L to   -60.450781 from OBSGEO-[XYZ].
+Set OBSGEO-B to   -21.231906 from OBSGEO-[XYZ].
+Set OBSGEO-H to 1501193284.090 from OBSGEO-[XYZ]&#39;. [astropy.wcs.wcs]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we have the image on which we will overplot sources, and the WCS information we need to for our catalog query.</p>
+</section>
+<section id="working-with-celestial-coordinates">
+<h2>Working with Celestial Coordinates<a class="headerlink" href="#working-with-celestial-coordinates" title="Link to this heading">#</a></h2>
+<section id="important-general-keywords">
+<h3>Important general keywords:<a class="headerlink" href="#important-general-keywords" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pixel: part of a detector corresponding to a real 2D area
+
+voxel: A 3D counterpart of pixel, indicating &quot;volume&quot;
+
+spaxel: spatial or spectral pixel
+</pre></div>
+</div>
+</section>
+<section id="wcs-keywords">
+<h3>WCS keywords:<a class="headerlink" href="#wcs-keywords" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CRVALn: Actual coordinate of the information present in the pixel/voxel
+
+CRPIXn: Location in terms of pixel order, CRPIX1=1 and CRPIX2=1 represents the reference in a 2D image
+
+CDELTn: Delta (coordinate difference) of distance from one pixel to its neighbor
+
+CTYPEn: Eight-char string for axis type, e.g., &#39;RA---TAN&#39; &#39;DEC--TAN&#39;
+
+CUNITn: String for unit, default is degree
+
+NAXISn: Number of pixels in each axes
+</pre></div>
+</div>
+<p><strong>Tip:</strong> crval[0] and crval[1] give the reference coordinates of the FITS file.</p>
+</section>
+</section>
+<section id="querying-catalogs-according-to-the-fits-file-coordinate-span">
+<h2>Querying catalogs according to the FITS file coordinate span<a class="headerlink" href="#querying-catalogs-according-to-the-fits-file-coordinate-span" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>From the WCS object retrieved from the FITS file, a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object will be constructed with the central values of the image.</p></li>
+<li><p>Then, a rectangular shape will be formed around this coordinate with a set width and height using <code class="docutils literal notranslate"><span class="pre">u.Quantity</span></code> and <code class="docutils literal notranslate"><span class="pre">u.deg</span></code></p></li>
+<li><p>The query will be realized for this rectangle.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coord</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="n">wcs_helix</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">wcs_helix</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;deg&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+<span class="n">exp_coeff</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="c1"># A multiplier of width and height for querying, either focusing on the image&#39;s specific part or putting the image on the big picture</span>
+<span class="n">width</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="n">exp_coeff</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="n">exp_coeff</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Gaia vs. Vizier queries</strong></p>
+<ul class="simple">
+<li><p>Gaia can be queried directly with the <code class="docutils literal notranslate"><span class="pre">astroquery.gaia.Gaia</span> <span class="pre">class</span></code>.</p></li>
+<li><p>Vizier catalogs are queried using <code class="docutils literal notranslate"><span class="pre">astroquery.vizier.Vizier</span></code> and specifying the <code class="docutils literal notranslate"><span class="pre">catalog</span></code> parameter (the list of valid catalog IDs can be found <a class="reference external" href="https://cdsarc.cds.unistra.fr/cgi-bin/cat">here</a>).</p></li>
+</ul>
+<p>Here we first query Gaia, and then use Vizier to query the 2MASS All-Sky Catalog.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|||| ---- |||| Querying GAIA Data Release III |||| ---- ||||&quot;</span><span class="p">)</span>
+
+<span class="c1"># Default GAIA data source, Gaia.MAIN_GAIA_TABLE, is Gaia DR III.</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">Gaia</span><span class="o">.</span><span class="n">query_object_async</span><span class="p">(</span><span class="n">coordinate</span><span class="o">=</span><span class="n">coord</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">max_lines</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|||| ---- |||| Querying GAIA Data Release III |||| ---- ||||
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO: Query finished. [astroquery.utils.tap.core]
+        dist             solution_id             designation          ... ebpminrp_gspphot_upper libname_gspphot
+                                                                      ...          mag                          
+-------------------- ------------------- ---------------------------- ... ---------------------- ---------------
+0.007694523153688629 1636148068921376768 Gaia DR3 4999122236377601536 ...                  0.003         PHOENIX
+ 0.01084974892955652 1636148068921376768 Gaia DR3 4999122240672495616 ...                     --                
+ 0.01202767015891055 1636148068921376768 Gaia DR3 4999122068873902208 ...                 0.0026           MARCS
+0.023762121306161395 1636148068921376768 Gaia DR3 4999122339456817792 ...                     --                
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|||| ---- |||| Querying VizieR Catalogs |||| ---- ||||&quot;</span><span class="p">)</span>
+
+<span class="n">catalog_2mass</span> <span class="o">=</span> <span class="s1">&#39;II/246/out&#39;</span>
+<span class="n">Vizier</span><span class="o">.</span><span class="n">ROW_LIMIT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># alters the 50 rows default limit</span>
+
+<span class="n">r2</span> <span class="o">=</span> <span class="n">Vizier</span><span class="o">.</span><span class="n">query_region</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">catalog</span><span class="o">=</span> <span class="n">catalog_2mass</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="c1"># printing column names to later use it in the following cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|||| ---- |||| Querying VizieR Catalogs |||| ---- ||||
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TableList with 1 tables:
+	&#39;0:II/246/out&#39; with 15 column(s) and 4 row(s) 
+&lt;TableColumns names=(&#39;RAJ2000&#39;,&#39;DEJ2000&#39;,&#39;2MASS&#39;,&#39;Jmag&#39;,&#39;e_Jmag&#39;,&#39;Hmag&#39;,&#39;e_Hmag&#39;,&#39;Kmag&#39;,&#39;e_Kmag&#39;,&#39;Qflg&#39;,&#39;Rflg&#39;,&#39;Bflg&#39;,&#39;Cflg&#39;,&#39;Xflg&#39;,&#39;Aflg&#39;)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we pull the catalog data columns we need to overlay them onto our image, using our 2MASS catalog result.</p>
+<ul class="simple">
+<li><p>RAJ2000 is Right Ascension for J2000 in equatorial coordinates, <code class="docutils literal notranslate"><span class="pre">degree.decimal</span></code></p></li>
+<li><p>DEJ2000 is Declination for J2000 in equatorial coordinates, <code class="docutils literal notranslate"><span class="pre">degree.decimal</span></code></p></li>
+</ul>
+<p><strong>Note:</strong> Column names can differ from catalog to catalog.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ralist</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s1">&#39;RAJ2000&#39;</span><span class="p">]</span>
+<span class="n">declist</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s1">&#39;DEJ2000&#39;</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s1">&#39;2MASS&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="overplotting-sources-onto-the-image">
+<h2>Overplotting sources onto the image<a class="headerlink" href="#overplotting-sources-onto-the-image" title="Link to this heading">#</a></h2>
+<p>Below is the last part where the image is plotted, two different coordinate systems are overlayed, and catalog object coordinates with their IDs are scattered on top of the image.</p>
+<p>We can take advantage of different axis objects on a single figure using <code class="docutils literal notranslate"><span class="pre">matplotlib.plt.subplot(projection=&quot;&quot;)</span></code> which permits the use of multiple coordinate frames on the same plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_helix</span><span class="p">)</span> <span class="c1"># subplot with specific projection</span>
+
+<span class="c1"># Showing the image</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;afmhot&#39;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Right Ascension D.M.S.(J2000)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Declination D.M.S. (J2000)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">)</span>
+
+<span class="c1"># Overlaying galactic coordinates on counter axes</span>
+<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s1">&#39;galactic&#39;</span><span class="p">)</span> 
+<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axislabel</span><span class="p">(</span><span class="s1">&#39;Galactic Longitude&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axislabel</span><span class="p">(</span><span class="s1">&#39;Galactic Latitude&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticklabel</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticklabel</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># The following line puts objects in the selected catalogs on image</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ralist</span><span class="p">,</span><span class="n">declist</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;icrs&#39;</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># The following line put name labels on catalog objects drawn on the figure zipping three lists, RA, DEC coordinates, and IDs, </span>
+<span class="c1"># then pulling them one by one with a for loop allows scattering them on the plot directly. </span>
+<span class="c1"># va is vertical alignment of the label, and ha is horizontal </span>
+<span class="c1"># ax.get_transform(&#39;icrs&#39;) permits coinciding the coordinate systems of the Figure and scatter plots</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">ni</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ralist</span><span class="p">,</span> <span class="n">declist</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">ni</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;icrs&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a58e46de3e8e40fde0846ef698312b8c8d89c4e69d880dcba965ab9f81b17e6d.png" src="_images/a58e46de3e8e40fde0846ef698312b8c8d89c4e69d880dcba965ab9f81b17e6d.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "astropy-learn/tutorial--catalog-overlay-on-fits",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-and-downloading-mast-data">Querying and downloading MAST Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-celestial-coordinates">Working with Celestial Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#important-general-keywords">Important general keywords:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wcs-keywords">WCS keywords:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-catalogs-according-to-the-fits-file-coordinate-span">Querying catalogs according to the FITS file coordinate span</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overplotting-sources-onto-the-image">Overplotting sources onto the image</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By AUTHOR1 (@torna4o, 0000-0002-7538-6265)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
