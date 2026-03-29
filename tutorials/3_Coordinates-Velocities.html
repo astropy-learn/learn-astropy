@@ -53,7 +53,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
@@ -652,13 +652,10 @@
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ConvertError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># This cell will NOT work (you will receive an ConvertError warning) - this is expected!</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">test_coord_1</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">ra</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">dec</span><span class="o">=</span><span class="mi">20</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">pm_ra_cosdec</span><span class="o">=</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">pm_dec</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">,</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
 <span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">test_coord_1</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:551,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
@@ -777,7 +774,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=2</i>
-<table id="table140446223304368">
+<table id="table140217014385840">
 <thead><tr><th>source_id</th><th>pmra</th><th>pmdec</th></tr></thead>
 <thead><tr><th></th><th>mas / yr</th><th>mas / yr</th></tr></thead>
 <thead><tr><th>int64</th><th>float64</th><th>float64</th></tr></thead>
@@ -860,7 +857,7 @@
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 33867.416667 from DATE-OBS&#39;. [astropy.wcs.wcs]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fbc312f1c70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f86d1446180&gt;
 </pre></div>
 </div>
 <img alt="_images/9312ea7db8dbefc48b47483fb725e11f3b9587fac95eba8eae6a3fbe092b8a24.png" src="_images/9312ea7db8dbefc48b47483fb725e11f3b9587fac95eba8eae6a3fbe092b8a24.png" />
@@ -925,7 +922,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fbc2e698320&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f86d0fceab0&gt;
 </pre></div>
 </div>
 <img alt="_images/7d44711580e8318f712ee6d0542ec6c3dd009da982382d734bc3eb535bc7acf1.png" src="_images/7d44711580e8318f712ee6d0542ec6c3dd009da982382d734bc3eb535bc7acf1.png" />

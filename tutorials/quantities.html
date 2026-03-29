@@ -53,7 +53,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script src="_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-ZBXC3EFGGJ"></script>
@@ -623,7 +623,7 @@ unit: pc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7fc390b117c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverter at 0x7ff2f8a29af0&gt;
 </pre></div>
 </div>
 </div>
@@ -1336,11 +1336,13 @@ dv = 0.1 km / s
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">response_func</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
 
 <span class="nn">Cell In[44], line 4,</span> in <span class="ni">response_func</span><span class="nt">(x, y)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">xscale</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">yscale</span> <span class="o">=</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">xfactor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">/</span> <span class="n">xscale</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">yfactor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="n">yscale</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">return</span> <span class="n">xfactor</span> <span class="o">*</span> <span class="n">yfactor</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span><span class="w"> </span><span class="nf">response_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">xscale</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">yscale</span> <span class="o">=</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsec</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">xfactor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span> <span class="o">/</span> <span class="n">xscale</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">yfactor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="n">yscale</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="k">return</span> <span class="n">xfactor</span> <span class="o">*</span> <span class="n">yfactor</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:673,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">671</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
