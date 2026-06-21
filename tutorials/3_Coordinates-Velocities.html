@@ -658,14 +658,14 @@
 <span class="g g-Whitespace">      </span><span class="mi">9</span> 
 <span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">test_coord_1</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:551,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
-<span class="g g-Whitespace">    </span><span class="mi">547</span> <span class="n">generic_frame</span> <span class="o">=</span> <span class="n">GenericFrame</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="c1"># Do the transformation, returning a coordinate frame of the desired</span>
-<span class="g g-Whitespace">    </span><span class="mi">550</span> <span class="c1"># final type (not generic).</span>
-<span class="ne">--&gt; </span><span class="mi">551</span> <span class="n">new_coord</span> <span class="o">=</span> <span class="n">trans</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">generic_frame</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">553</span> <span class="c1"># Finally make the new SkyCoord object from the `new_coord` and</span>
-<span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="c1"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
-<span class="g g-Whitespace">    </span><span class="mi">555</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">new_coord</span><span class="o">.</span><span class="n">frame_attributes</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:550,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
+<span class="g g-Whitespace">    </span><span class="mi">546</span> <span class="n">generic_frame</span> <span class="o">=</span> <span class="n">GenericFrame</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">548</span> <span class="c1"># Do the transformation, returning a coordinate frame of the desired</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="c1"># final type (not generic).</span>
+<span class="ne">--&gt; </span><span class="mi">550</span> <span class="n">new_coord</span> <span class="o">=</span> <span class="n">trans</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">generic_frame</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span> <span class="c1"># Finally make the new SkyCoord object from the `new_coord` and</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span> <span class="c1"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">new_coord</span><span class="o">.</span><span class="n">frame_attributes</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="n">frattrs</span><span class="p">[</span><span class="n">inter_frame_attr_nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
@@ -774,7 +774,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=2</i>
-<table id="table140472739067952">
+<table id="table140482535234048">
 <thead><tr><th>source_id</th><th>pmra</th><th>pmdec</th></tr></thead>
 <thead><tr><th></th><th>mas / yr</th><th>mas / yr</th></tr></thead>
 <thead><tr><th>int64</th><th>float64</th><th>float64</th></tr></thead>
@@ -857,7 +857,7 @@
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 33867.416667 from DATE-OBS&#39;. [astropy.wcs.wcs]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc25bbf5250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc4a3851880&gt;
 </pre></div>
 </div>
 <img alt="_images/cbaf3b702840565867029ef95a05acc05b6c348e074fb9fcf20a986ad84dfb27.png" src="_images/cbaf3b702840565867029ef95a05acc05b6c348e074fb9fcf20a986ad84dfb27.png" />
@@ -922,7 +922,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc25bacbc20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc4a381b500&gt;
 </pre></div>
 </div>
 <img alt="_images/2ffbb34bfcde4a551bb1b799b323712c8391ea0fb1ae21ea54fab19e53b42e41.png" src="_images/2ffbb34bfcde4a551bb1b799b323712c8391ea0fb1ae21ea54fab19e53b42e41.png" />
