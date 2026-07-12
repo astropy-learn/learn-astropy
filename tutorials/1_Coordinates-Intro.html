@@ -491,11 +491,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maintenance with possible short-time disconnections: 29 June 2026 18:00–20:00 CEST
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="representing-on-sky-positions-with-astropy-coordinates">
@@ -572,7 +567,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
-    (11.79791667, 85.24388889)&gt;
+    (11.81166667, 85.245)&gt;
 </pre></div>
 </div>
 </div>
@@ -585,7 +580,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 11.79791667 deg&gt;, &lt;Latitude 85.24388889 deg&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 11.81166667 deg&gt;, &lt;Latitude 85.245 deg&gt;)
 </pre></div>
 </div>
 </div>
@@ -599,7 +594,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[11^\circ47{}^\prime52.500012{}^{\prime\prime}\]</div>
+\[11^\circ48{}^\prime42.000012{}^{\prime\prime}\]</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -610,7 +605,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[85^\circ14{}^\prime38.000004{}^{\prime\prime}\]</div>
+\[85^\circ14{}^\prime42{}^{\prime\prime}\]</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -638,9 +633,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 0.78652778 hourangle&gt;,
- &lt;Longitude 0.20591249 rad&gt;,
- &lt;Longitude 11.79791667 deg&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Longitude 0.78744444 hourangle&gt;,
+ &lt;Longitude 0.20615247 rad&gt;,
+ &lt;Longitude 11.81166667 deg&gt;)
 </pre></div>
 </div>
 </div>
@@ -653,9 +648,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.7865277780000001),
- np.float64(0.2059124907674253),
- np.float64(11.79791667))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.7874444446666667),
+ np.float64(0.20615247353957453),
+ np.float64(11.81166667))
 </pre></div>
 </div>
 </div>
@@ -668,7 +663,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.str_(&#39;00:47:11.5000008&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.str_(&#39;00:47:14.8000008&#39;)
 </pre></div>
 </div>
 </div>
@@ -729,7 +724,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4876
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4870
 </pre></div>
 </div>
 </div>
@@ -743,7 +738,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[[11.775831,~11.830258,~11.78143,~\dots,~14.538431,~14.415227,~14.906005]\mathrm{{}^{\circ}}\]</div>
+\[[11.830258,~11.78143,~11.775831,~\dots,~13.380355,~6.1428143,~15.883725]\mathrm{{}^{\circ}}\]</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -754,7 +749,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[[85.241932,~85.243627,~85.247148,~\dots,~84.820229,~85.683155,~84.839268]\mathrm{{}^{\circ}}\]</div>
+\[[85.243627,~85.247148,~85.241932,~\dots,~85.71469,~85.142685,~85.606562]\mathrm{{}^{\circ}}\]</div>
 </div>
 </div>
 <p>Note that, because the <em>Gaia</em> archive provides data tables with associated units, and we read this table using the <code class="docutils literal notranslate"><span class="pre">QTable</span></code> object (<a class="reference external" href="http://docs.astropy.org/en/latest/table/mixin_columns.html#quantity-and-qtable">docs</a>), the above table columns are represented as <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> objects with units of degrees. Note also that these columns contain many (&gt;5000!) coordinate values. We can pass these directly in to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> to get a single <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent all of these coordinates:</p>
@@ -767,9 +762,9 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec) in deg
-    [(11.77583082, 85.24193164), (11.83025781, 85.24362655),
-     (11.78143038, 85.24714775), ..., (14.5384314 , 84.82022851),
-     (14.41522696, 85.68315506), (14.90600519, 84.83926755)]&gt;
+    [(11.83025781, 85.24362655), (11.78143038, 85.24714775),
+     (11.77583082, 85.24193164), ..., (13.38035513, 85.71468997),
+     ( 6.14281433, 85.14268532), (15.88372451, 85.60656188)]&gt;
 </pre></div>
 </div>
 </div>
@@ -793,7 +788,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00:47:11.5 +85:14:38.0&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00:47:14.8 +85:14:42.0&#39;
 </pre></div>
 </div>
 </div>
@@ -808,12 +803,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[[$0^\circ00{}^\prime09.65017051{}^{\prime\prime}$
- $0^\circ00{}^\prime09.69993089{}^{\prime\prime}$
- $0^\circ00{}^\prime12.72154345{}^{\prime\prime}$ ...
- $0^\circ29{}^\prime07.75462218{}^{\prime\prime}$
- $0^\circ29{}^\prime07.76759092{}^{\prime\prime}$
- $0^\circ29{}^\prime07.94341624{}^{\prime\prime}$]\]</div>
+\[[$0^\circ00{}^\prime07.43213933{}^{\prime\prime}$
+ $0^\circ00{}^\prime11.88123721{}^{\prime\prime}$
+ $0^\circ00{}^\prime15.37713706{}^{\prime\prime}$ ...
+ $0^\circ29{}^\prime08.3196363{}^{\prime\prime}$
+ $0^\circ29{}^\prime08.32295546{}^{\prime\prime}$
+ $0^\circ29{}^\prime08.79985491{}^{\prime\prime}$]\]</div>
 </div>
 </div>
 </section>
@@ -876,12 +871,12 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
-    [(11.77583082, 85.24193164, 1819.25788676),
-     (11.83025781, 85.24362655, 2113.23414411),
+    [(11.83025781, 85.24362655, 2113.23414411),
+     (11.77583082, 85.24193164, 1819.25788676),
      (11.79608811, 85.24947769, 1878.68206887), ...,
-     (14.5384314 , 84.82022851, 3339.63434769),
-     (14.41522696, 85.68315506, 1167.55221538),
-     (14.90600519, 84.83926755, 1297.85616009)]&gt;
+     (13.38035513, 85.71468997,  820.05330166),
+     ( 6.14281433, 85.14268532, 1950.38491004),
+     (15.88372451, 85.60656188,  356.47807826)]&gt;
 </pre></div>
 </div>
 </div>
@@ -913,7 +908,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Gaia DR2 sources near NGC 188&#39;)
 </pre></div>
 </div>
-<img alt="_images/b07b96949d0729a675032254fb0364a804441566657289718c2ea257d0e2b3f0.png" src="_images/b07b96949d0729a675032254fb0364a804441566657289718c2ea257d0e2b3f0.png" />
+<img alt="_images/ae12077fd833d8d8322c28522bd8ca64226017b09891ac8dec3138ad5b010aaf.png" src="_images/ae12077fd833d8d8322c28522bd8ca64226017b09891ac8dec3138ad5b010aaf.png" />
 </div>
 </div>
 <p>Now that we have 3D position information for both the cluster center, and for the stars we queried from <em>Gaia</em>, we can compute the 3D separation (distance) between all of the <em>Gaia</em> sources and the cluster center:</p>
@@ -926,7 +921,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[[140.74633,~153.23746,~81.323346,~\dots,~1379.8059,~792.54107,~662.2814] \; \mathrm{pc}\]</div>
+\[[153.23746,~140.74633,~81.323346,~\dots,~1139.9932,~19.958413,~1603.5359] \; \mathrm{pc}\]</div>
 </div>
 </div>
 <section id="id1">
