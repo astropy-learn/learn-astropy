@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -60,6 +60,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-ZBXC3EFGGJ');
             </script>
@@ -69,6 +75,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-ZBXC3EFGGJ');
             </script>
@@ -76,25 +88,32 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'color-excess';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -120,7 +139,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -413,8 +476,8 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analyzing interstellar reddening and calculating synthetic photometry</a><ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analyzing interstellar reddening and calculating synthetic photometry</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
@@ -425,7 +488,7 @@
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-investigate-extinction-models">Example 1: Investigate Extinction Models</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-deredden-a-spectrum">Example 2: Deredden a Spectrum</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-calculate-color-excess-with-synphot">Example 3: Calculate Color Excess with <code class="docutils literal notranslate"><span class="pre">synphot</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-calculate-color-excess-with-synphot">Example 3: Calculate Color Excess with <code class="docutils literal notranslate"><span class="pre">synphot</span></code></a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
 </li>
@@ -582,7 +645,7 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=132</i>
-<table id="table140005155381632" class="table-striped table-bordered table-condensed">
+<table id="table140214346867312" class="table-striped table-bordered table-condensed">
 <thead><tr><th>intentType</th><th>obs_collection</th><th>provenance_name</th><th>instrument_name</th><th>project</th><th>filters</th><th>wave_region</th><th>target_name</th><th>target_classification</th><th>obs_id</th><th>s_ra</th><th>s_dec</th><th>dataproduct_type</th><th>proposal_pi</th><th>calib_level</th><th>t_min</th><th>t_max</th><th>t_exptime</th><th>wavelength_region</th><th>em_min</th><th>em_max</th><th>obs_title</th><th>t_obs_release</th><th>proposal_id</th><th>proposal_type</th><th>sequence_number</th><th>s_region</th><th>jpegURL</th><th>dataURL</th><th>dataRights</th><th>mtFlag</th><th>srcDen</th><th>obsid</th><th>wave_min</th><th>wave_max</th><th>distance</th></tr></thead>
 <thead><tr><th>str7</th><th>str5</th><th>str7</th><th>str13</th><th>str6</th><th>str17</th><th>str16</th><th>str21</th><th>str87</th><th>str53</th><th>float64</th><th>float64</th><th>str10</th><th>str22</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>str16</th><th>float64</th><th>float64</th><th>str117</th><th>float64</th><th>str6</th><th>str6</th><th>int64</th><th>str23309</th><th>str137</th><th>str137</th><th>str6</th><th>bool</th><th>float64</th><th>str9</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F770W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx101_00001_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>16.65</td><td>INFRARED</td><td>6600.0</td><td>8800.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>1</td><td>POLYGON 246.39628332931 -23.44647682166 246.39724452752 -23.44660740232 246.39707945891 -23.44762998653 246.39611825342 -23.44749937708</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358393</td><td>6600.0</td><td>8800.0</td><td>0.0</td></tr>
@@ -982,10 +1045,10 @@ $A_V$ =  2.0 mag
 4368.9 Angstrom , 0.63 mag
 5463.8 Angstrom , 0.0 mag
 6810.6 Angstrom , -0.48 mag
+8619.6 Angstrom , -0.97 mag
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8619.6 Angstrom , -0.97 mag
-12266.5 Angstrom , -1.43 mag
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12266.5 Angstrom , -1.43 mag
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16351.9 Angstrom , -1.65 mag
@@ -1049,8 +1112,8 @@ $A_V$ =  2.0 mag
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analyzing interstellar reddening and calculating synthetic photometry</a><ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analyzing interstellar reddening and calculating synthetic photometry</a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
@@ -1061,7 +1124,7 @@ $A_V$ =  2.0 mag
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-investigate-extinction-models">Example 1: Investigate Extinction Models</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-deredden-a-spectrum">Example 2: Deredden a Spectrum</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-calculate-color-excess-with-synphot">Example 3: Calculate Color Excess with <code class="docutils literal notranslate"><span class="pre">synphot</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-calculate-color-excess-with-synphot">Example 3: Calculate Color Excess with <code class="docutils literal notranslate"><span class="pre">synphot</span></code></a><ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
 </li>
@@ -1107,8 +1170,8 @@ By Kristen Larson, Lia Corrales, Stephanie T. Douglas, Kelle Cruz
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

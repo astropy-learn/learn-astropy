@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -60,6 +60,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-ZBXC3EFGGJ');
             </script>
@@ -69,6 +75,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-ZBXC3EFGGJ');
             </script>
@@ -76,6 +88,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '1_models-quick-fit';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Modeling 2: Create a User Defined Model using astropy.modeling" href="2_user-defined-model.html" />
@@ -83,20 +96,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -122,7 +141,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -417,7 +480,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
@@ -601,7 +664,7 @@ Model set size: 1
 Parameters:
           slope            intercept     
     ------------------ ------------------
-    -1.838802975579822 13.517530405305099
+    -1.838802928971695 13.517530403687502
 </pre></div>
 </div>
 </div>
@@ -621,7 +684,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Ks&#39;)
 </pre></div>
 </div>
-<img alt="_images/6e7faebc77342340b8b81d9ba60e5368978c2a6d8ae8e7996ad7b13d164482c2.png" src="_images/6e7faebc77342340b8b81d9ba60e5368978c2a6d8ae8e7996ad7b13d164482c2.png" />
+<img alt="_images/ef6b53c195f026844c8d9d8debe13387671ae9f343e1b0be35723c69be59439b.png" src="_images/ef6b53c195f026844c8d9d8debe13387671ae9f343e1b0be35723c69be59439b.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Remember, you can fit data with three lines of code:</p>
@@ -666,7 +729,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_1$&#39;)
 </pre></div>
 </div>
-<img alt="_images/aeb19fd9c7638caf84a1b10e57c2a35b3284fd066cc4af8f7ea38a7eda9a5d21.png" src="_images/aeb19fd9c7638caf84a1b10e57c2a35b3284fd066cc4af8f7ea38a7eda9a5d21.png" />
+<img alt="_images/f8b148b274149a4ea304279de0f53bfae5200f4e0dcdba5600926a1ce1758d94.png" src="_images/f8b148b274149a4ea304279de0f53bfae5200f4e0dcdba5600926a1ce1758d94.png" />
 </div>
 </div>
 <p>To fit this data let’s remember the three steps: model, fitter and perform fit.</p>
@@ -692,9 +755,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-            c0                 c1                 c2                 c3        
-    ------------------ ------------------ ------------------ ------------------
-    -9.253925997105098 11.382991810944798 -5.484818701547445 0.9165787959127487
+            c0                 c1                 c2                 c3       
+    ------------------ ----------------- ------------------- -----------------
+    -9.760114736684216 14.23189339288603 -7.5165799845075325 1.272878484260135
 </pre></div>
 </div>
 </div>
@@ -727,9 +790,9 @@ Outputs: (&#39;y&#39;,)
 Model set size: 1
 Degree: 3
 Parameters:
-             c0                  c1                   c2                 c3        
-    ------------------- -------------------- ------------------- ------------------
-    0.31273790154691683 -0.04500787708209608 -1.0457850263984865 0.3628481356098031
+            c0                  c1                   c2                  c3        
+    ------------------ -------------------- ------------------- -------------------
+    0.3923098504084066 -0.04193440193238099 -1.2385148369058208 0.41597192379309045
 </pre></div>
 </div>
 </div>
@@ -764,7 +827,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.9813932221074002
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.636508381683731
 </pre></div>
 </div>
 </div>
@@ -777,7 +840,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 5.93772181590785
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 5.464710598054989
 </pre></div>
 </div>
 </div>
@@ -796,10 +859,10 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f2aed3a25d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7949fa9580&gt;
 </pre></div>
 </div>
-<img alt="_images/c3b06a71a105778c3758306ce3c5394ca2f742ab3c206aae3a3007279fbe5cc1.png" src="_images/c3b06a71a105778c3758306ce3c5394ca2f742ab3c206aae3a3007279fbe5cc1.png" />
+<img alt="_images/31051ebbc352ab6327184c4efe081610d12149a37e1abd829a3dc07c202ee542.png" src="_images/31051ebbc352ab6327184c4efe081610d12149a37e1abd829a3dc07c202ee542.png" />
 </div>
 </div>
 <p>Results are as espected, the fit performed with the linear fitter is better than the second, non linear one.</p>
@@ -836,7 +899,7 @@ Parameters:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_2$&#39;)
 </pre></div>
 </div>
-<img alt="_images/bacb091238aee1fdfb5a846797e5e769b649ada05e120d0713a8b656980ca01f.png" src="_images/bacb091238aee1fdfb5a846797e5e769b649ada05e120d0713a8b656980ca01f.png" />
+<img alt="_images/c562379cd39e0f36ccabcd85ae4e82f0cda76a58371fe11ff6e39379256a5bb3.png" src="_images/c562379cd39e0f36ccabcd85ae4e82f0cda76a58371fe11ff6e39379256a5bb3.png" />
 </div>
 </div>
 <p>Let’s do our three steps to make the fit we want. For this fit we’re going to use a non-linear fitter, <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter</span></code>, because the model we need (<code class="docutils literal notranslate"><span class="pre">Gaussian1D</span></code>) is non-linear in the parameters.</p>
@@ -861,9 +924,9 @@ Inputs: (&#39;x&#39;,)
 Outputs: (&#39;y&#39;,)
 Model set size: 1
 Parameters:
-       amplitude             mean               stddev     
-    ---------------- -------------------- -----------------
-    9.64967765250462 -0.22462093039217804 10.67829436216293
+        amplitude            mean              stddev     
+    ----------------- ------------------ -----------------
+    10.12126420607066 0.2749655831818646 9.618640646147796
 </pre></div>
 </div>
 </div>
@@ -889,7 +952,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.04814251 0.07850983 0.07912026]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05334893 0.06422678 0.06433296]
 </pre></div>
 </div>
 </div>
@@ -910,9 +973,9 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.64967765250462 +\- 0.21941400859255586
-Mean: -0.22462093039217804 +\- 0.2801960521902524
-Standard Deviation: 10.67829436216293 +\- 0.28128323973317515
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.12126420607066 +\- 0.23097387357148128
+Mean: 0.2749655831818646 +\- 0.25343002650121654
+Standard Deviation: 9.618640646147796 +\- 0.2536394197260561
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -921,11 +984,11 @@ Standard Deviation: 10.67829436216293 +\- 0.28128323973317515
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_2733/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2467/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Amplitude: {} +\- {}&quot;.format(best_fit_gauss.amplitude.value, np.sqrt(cov_diag[0]))
-/tmp/ipykernel_2733/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2467/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(best_fit_gauss.mean.value, np.sqrt(cov_diag[1])))
-/tmp/ipykernel_2733/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2467/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   &quot;Standard Deviation: {} +\- {}&quot;.format(
 </pre></div>
 </div>
@@ -956,7 +1019,7 @@ Standard Deviation: 10.67829436216293 +\- 0.28128323973317515
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.64967717 -0.22462335 10.67829543]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.12124931  0.27497706  9.61866897]
 </pre></div>
 </div>
 </div>
@@ -970,9 +1033,9 @@ Standard Deviation: 10.67829436216293 +\- 0.28128323973317515
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.64967717104335 +\- 0.23120479297219945
-Mean: -0.22462335117660948 +\- 0.29525601491460374
-Standard Deviation: 10.678295428007278 +\- 0.2964017541795084
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 10.121249309690901 +\- 0.24073125511709198
+Mean: 0.27497706224484125 +\- 0.26412256074652374
+Standard Deviation: 9.61866896863175 +\- 0.26434066268127254
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
@@ -981,11 +1044,11 @@ Standard Deviation: 10.678295428007278 +\- 0.2964017541795084
 &lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
 &lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_2733/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2467/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Amplitude: {} +\- {}&quot;.format(p_opt[0], np.sqrt(p_cov[0, 0])))
-/tmp/ipykernel_2733/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2467/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Mean: {} +\- {}&quot;.format(p_opt[1], np.sqrt(p_cov[1, 1])))
-/tmp/ipykernel_2733/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
+/tmp/ipykernel_2467/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
   print(&quot;Standard Deviation: {} +\- {}&quot;.format(p_opt[2], np.sqrt(p_cov[2, 2])))
 </pre></div>
 </div>
@@ -1001,7 +1064,7 @@ Standard Deviation: 10.678295428007278 +\- 0.2964017541795084
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 1.1103700661279632
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 1.0862369275753527
 </pre></div>
 </div>
 </div>
@@ -1014,7 +1077,7 @@ Standard Deviation: 10.678295428007278 +\- 0.2964017541795084
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 1.110370066130324
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 1.0862369275258035
 </pre></div>
 </div>
 </div>
@@ -1032,10 +1095,10 @@ Standard Deviation: 10.678295428007278 +\- 0.2964017541795084
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f2aed21e1e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7949fed220&gt;
 </pre></div>
 </div>
-<img alt="_images/3566c257df25a00b02d1466badfbb433fa2c49bb54a7e9366214852ff341a107.png" src="_images/3566c257df25a00b02d1466badfbb433fa2c49bb54a7e9366214852ff341a107.png" />
+<img alt="_images/2360fd156436c3ddddc87ac1b50dcc51f9a170e2dd5f0cd5af9201df1c90702f.png" src="_images/2360fd156436c3ddddc87ac1b50dcc51f9a170e2dd5f0cd5af9201df1c90702f.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Choose the method most convenient for every case you need to fit. We recomend <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> because is easier to write the name of the function you want to fit than to remember the expression every time we want to use it. Also, <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> becomes useful with more complicated models like <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">two gaussians</a> plus a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#blackbody-radiation">black body</a>, but that is another tutorial.</p>
@@ -1087,7 +1150,7 @@ Standard Deviation: 10.678295428007278 +\- 0.2964017541795084
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_3$&#39;)
 </pre></div>
 </div>
-<img alt="_images/4dc0293fa9be76974a350d04de923a4a156dab5f341f3162fbc826d9873e1711.png" src="_images/4dc0293fa9be76974a350d04de923a4a156dab5f341f3162fbc826d9873e1711.png" />
+<img alt="_images/bb81b6f469fafcac6d5542fc98011cb942dd79c33318a99f612430e8dcf370d4.png" src="_images/bb81b6f469fafcac6d5542fc98011cb942dd79c33318a99f612430e8dcf370d4.png" />
 </div>
 </div>
 </section>
@@ -1158,7 +1221,7 @@ Standard Deviation: 10.678295428007278 +\- 0.2964017541795084
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
@@ -1228,8 +1291,8 @@ By Rocio Kiman, Lia Corrales, Zé Vinícius, Kelle Cruz, Stephanie T. Douglas
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
