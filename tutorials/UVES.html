@@ -566,15 +566,15 @@ again.</p>
 <p>Download the tar file and extract the files by executing the python code below. Executing this block will download and extract a tar file with data necessary for this tutorial. By default it will run in whatever directory you have placed this notebook. If that’s some place you don’t want to fill with data files, change the <code class="docutils literal notranslate"><span class="pre">working_dir_path</span></code> variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://data.astropy.org/tutorials/UVES/data_UVES.tar.gz&quot;</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r|*&quot;</span><span class="p">)</span>
-<span class="n">working_dir_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/.astropy/cache/download&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://data.astropy.org/tutorials/UVES/data_UVES.tar.gz"</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"r|*"</span><span class="p">)</span>
+<span class="n">working_dir_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">"~/.astropy/cache/download"</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
 <span class="n">f</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">working_dir_path</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2592/4173974583.py:4: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2663/4173974583.py:4: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
   f.extractall(path=working_dir_path)
 </pre></div>
 </div>
@@ -612,12 +612,12 @@ or the other two tutorials for more details:</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
 
 <span class="c1"># os.path.join is a platform-independent way to join two directories</span>
-<span class="n">globpath</span> <span class="o">=</span> <span class="n">working_dir_path</span> <span class="o">/</span> <span class="s2">&quot;UVES&quot;</span>
+<span class="n">globpath</span> <span class="o">=</span> <span class="n">working_dir_path</span> <span class="o">/</span> <span class="s2">"UVES"</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">globpath</span><span class="p">)</span>
 
 <span class="c1"># glob searches through directories similar to the Unix shell</span>
-<span class="n">filelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">globpath</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.fits&quot;</span><span class="p">))</span>
+<span class="n">filelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">globpath</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">"*.fits"</span><span class="p">))</span>
 
 <span class="c1"># sort alphabetically - given the way the filenames are</span>
 <span class="c1"># this also sorts in time</span>
@@ -659,7 +659,7 @@ fully conform to the WCS standard.</p>
 
 <span class="n">wcs</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
 <span class="c1"># make index array</span>
-<span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS1&quot;</span><span class="p">])</span>
+<span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">"NAXIS1"</span><span class="p">])</span>
 
 <span class="n">wavelength</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">wcs_pix2world</span><span class="p">(</span><span class="n">index</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">wavelength</span><span class="o">.</span><span class="n">shape</span>
@@ -717,7 +717,7 @@ than two lines.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_spec</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a UVES spectrum from the ESO pipeline</span>
+<span class="w">    </span><span class="sd">"""Read a UVES spectrum from the ESO pipeline</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -732,19 +732,19 @@ than two lines.</p>
 <span class="sd">    flux (in erg/s/cm**2)</span>
 <span class="sd">    date_obs : string</span>
 <span class="sd">    time of observation</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">sp</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="n">header</span> <span class="o">=</span> <span class="n">sp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
 
     <span class="n">wcs</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
     <span class="c1"># make index array</span>
-    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS1&quot;</span><span class="p">])</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">"NAXIS1"</span><span class="p">])</span>
 
     <span class="n">wavelength</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">wcs_pix2world</span><span class="p">(</span><span class="n">index</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">wavelength</span> <span class="o">=</span> <span class="n">wavelength</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">flux</span> <span class="o">=</span> <span class="n">sp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 
-    <span class="n">date_obs</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;Date-OBS&quot;</span><span class="p">]</span>
+    <span class="n">date_obs</span> <span class="o">=</span> <span class="n">header</span><span class="p">[</span><span class="s2">"Date-OBS"</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">wavelength</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">date_obs</span>
 </pre></div>
 </div>
@@ -798,7 +798,7 @@ setup.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_setup</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get setup for UVES spectrum from the ESO pipeline</span>
+<span class="w">    </span><span class="sd">"""Get setup for UVES spectrum from the ESO pipeline</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -810,46 +810,46 @@ setup.</p>
 <span class="sd">    exposure_time : float</span>
 <span class="sd">    wavelength_zero_point : float</span>
 <span class="sd">    optical_arm : string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">sp</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="n">header</span> <span class="o">=</span> <span class="n">sp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
 
-    <span class="k">return</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;EXPTIME&quot;</span><span class="p">],</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;CRVAL1&quot;</span><span class="p">],</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;HIERARCH ESO INS PATH&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">header</span><span class="p">[</span><span class="s2">"EXPTIME"</span><span class="p">],</span> <span class="n">header</span><span class="p">[</span><span class="s2">"CRVAL1"</span><span class="p">],</span> <span class="n">header</span><span class="p">[</span><span class="s2">"HIERARCH ESO INS PATH"</span><span class="p">]</span>
 
 
-<span class="c1"># Let&#39;s just print the setup on the screen</span>
-<span class="c1"># We&#39;ll see if it&#39;s all the same.</span>
+<span class="c1"># Let's just print the setup on the screen</span>
+<span class="c1"># We'll see if it's all the same.</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">read_setup</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1200.0013, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0013, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0011, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0013, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0013, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.001, 3732.05623191818, &#39;BLUE&#39;)
-(1200.001, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0011, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0011, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0011, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0012, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0011, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0013, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0013, 3732.05623191818, &#39;BLUE&#39;)
-(1200.0013, 3732.05623191818, &#39;BLUE&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1200.0013, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0013, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0011, 3732.05623191818, 'BLUE')
+(1200.0013, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0013, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.001, 3732.05623191818, 'BLUE')
+(1200.001, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0011, 3732.05623191818, 'BLUE')
+(1200.0011, 3732.05623191818, 'BLUE')
+(1200.0011, 3732.05623191818, 'BLUE')
+(1200.0012, 3732.05623191818, 'BLUE')
+(1200.0011, 3732.05623191818, 'BLUE')
+(1200.0013, 3732.05623191818, 'BLUE')
+(1200.0013, 3732.05623191818, 'BLUE')
+(1200.0013, 3732.05623191818, 'BLUE')
 </pre></div>
 </div>
 </div>
@@ -863,8 +863,8 @@ with data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">filelist</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">wavelength</span><span class="p">)))</span>
-<span class="c1"># date comes as string with 23 characters (dtype = &#39;S23&#39;)</span>
-<span class="n">date</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">filelist</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;U23&quot;</span><span class="p">)</span>
+<span class="c1"># date comes as string with 23 characters (dtype = 'S23')</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">filelist</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">"U23"</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">fname</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">filelist</span><span class="p">):</span>
     <span class="n">w</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">date_obs</span> <span class="o">=</span> <span class="n">read_spec</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
@@ -896,7 +896,7 @@ The easiest way to attach a unit to a number is by multiplication.</p>
 
 <span class="n">wavelength</span> <span class="o">=</span> <span class="n">wavelength</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">AA</span>
 
-<span class="c1"># Let&#39;s define some constants we need for the exercises further down</span>
+<span class="c1"># Let's define some constants we need for the exercises further down</span>
 <span class="c1"># Again, we multiply the value with a unit here</span>
 <span class="n">heliocentric</span> <span class="o">=</span> <span class="o">-</span><span class="mf">23.0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
 <span class="n">v_rad</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.77</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>  <span class="c1"># Strassmeier et al. (2005)</span>
@@ -1131,8 +1131,8 @@ Below are several examples, initialized from different header keywords.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">Time</span>
 
-<span class="n">t1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;MJD-Obs&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mjd&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;utc&quot;</span><span class="p">)</span>
-<span class="n">t2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;Date-Obs&quot;</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;utc&quot;</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">"MJD-Obs"</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"mjd"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">"utc"</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s2">"Date-Obs"</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="s2">"utc"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1147,7 @@ Below are several examples, initialized from different header keywords.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Time object: scale=&#39;utc&#39; format=&#39;isot&#39; value=2011-08-11T23:23:52.266&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Time object: scale='utc' format='isot' value=2011-08-11T23:23:52.266&gt;
 </pre></div>
 </div>
 </div>
@@ -1160,7 +1160,7 @@ Below are several examples, initialized from different header keywords.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Time object: scale=&#39;tt&#39; format=&#39;mjd&#39; value=55784.97567650852&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Time object: scale='tt' format='mjd' value=55784.97567650852&gt;
 </pre></div>
 </div>
 </div>
@@ -1168,8 +1168,8 @@ Below are several examples, initialized from different header keywords.</p>
 <p>Times can also be initialized from arrays and we can calculate time differences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs_times</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;utc&quot;</span><span class="p">)</span>
-<span class="n">delta_t</span> <span class="o">=</span> <span class="n">obs_times</span> <span class="o">-</span> <span class="n">Time</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;utc&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs_times</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">"utc"</span><span class="p">)</span>
+<span class="n">delta_t</span> <span class="o">=</span> <span class="n">obs_times</span> <span class="o">-</span> <span class="n">Time</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="s2">"utc"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1201,7 +1201,7 @@ this polynomial.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">region_around_line</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">cont</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;cut out and normalize flux around a line</span>
+<span class="w">    </span><span class="sd">"""cut out and normalize flux around a line</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1212,7 +1212,7 @@ this polynomial.</p>
 <span class="sd">    cont : list of lists</span>
 <span class="sd">    wavelengths for continuum normalization [[low1,up1],[low2, up2]]</span>
 <span class="sd">    that described two areas on both sides of the line</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># index is true in the region where we fit the polynomial</span>
     <span class="n">indcont</span> <span class="o">=</span> <span class="p">((</span><span class="n">w</span> <span class="o">&gt;</span> <span class="n">cont</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">w</span> <span class="o">&lt;</span> <span class="n">cont</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span> <span class="o">|</span> <span class="p">(</span>
         <span class="p">(</span><span class="n">w</span> <span class="o">&gt;</span> <span class="n">cont</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">w</span> <span class="o">&lt;</span> <span class="n">cont</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
@@ -1254,7 +1254,7 @@ for the first spectrum.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.212382146031384
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.212382145339244
 </pre></div>
 </div>
 </div>
@@ -1279,14 +1279,14 @@ details on <code class="docutils literal notranslate"><span class="pre">Table</s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Table</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">ascii</span>
 
-<span class="n">datecol</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Obs Date&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">date</span><span class="p">)</span>
-<span class="n">pcol</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;phase&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">delta_p</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">ewcol</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;EW&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ew</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">AA&quot;</span><span class="p">)</span>
+<span class="n">datecol</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"Obs Date"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">date</span><span class="p">)</span>
+<span class="n">pcol</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"phase"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">delta_p</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">{:.1f}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">ewcol</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"EW"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ew</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">"</span><span class="si">{:.1f}</span><span class="s2">"</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">"</span><span class="se">\\</span><span class="s2">AA"</span><span class="p">)</span>
 <span class="n">tab</span> <span class="o">=</span> <span class="n">Table</span><span class="p">((</span><span class="n">datecol</span><span class="p">,</span> <span class="n">pcol</span><span class="p">,</span> <span class="n">ewcol</span><span class="p">))</span>
-<span class="c1"># latexdicts[&#39;AA&#39;] contains the style specifics for A&amp;A (\hline etc.)</span>
+<span class="c1"># latexdicts['AA'] contains the style specifics for A&amp;A (\hline etc.)</span>
 <span class="n">tab</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_dir_path</span><span class="p">,</span> <span class="s2">&quot;EWtab.tex&quot;</span><span class="p">),</span>
-    <span class="n">latexdict</span><span class="o">=</span><span class="n">ascii</span><span class="o">.</span><span class="n">latexdicts</span><span class="p">[</span><span class="s2">&quot;AA&quot;</span><span class="p">],</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">working_dir_path</span><span class="p">,</span> <span class="s2">"EWtab.tex"</span><span class="p">),</span>
+    <span class="n">latexdict</span><span class="o">=</span><span class="n">ascii</span><span class="o">.</span><span class="n">latexdicts</span><span class="p">[</span><span class="s2">"AA"</span><span class="p">],</span>
     <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
@@ -1321,11 +1321,11 @@ modulated will stick out between -1 and +1.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set reasonable figsize for 1-column figures</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fcaII</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-mid&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fcaII</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">"steps-mid"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">+</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;line shift [v sin(i)]&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;flux&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Ca II H line in MN Lup&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"line shift [v sin(i)]"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"flux"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Ca II H line in MN Lup"</span><span class="p">)</span>
 <span class="c1"># when using this interface, we need to explicitly call the draw routine</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
@@ -1354,14 +1354,14 @@ way:</p>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fcaII</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">yshift</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fcaII</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">yshift</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">"k"</span><span class="p">)</span>
 
 <span class="c1"># separately show the mean line profile in a different color</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fcaII</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="o">+</span><span class="mf">2.5</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;line shift [$v </span><span class="se">\\</span><span class="s2">sin i$]&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;flux&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Ca II H line in MN Lup&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"line shift [$v </span><span class="se">\\</span><span class="s2">sin i$]"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"flux"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Ca II H line in MN Lup"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
@@ -1388,7 +1388,7 @@ and there is no proper labeling.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fdiff</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fdiff</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1411,8 +1411,8 @@ of the axis.</p>
     <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
         <span class="n">fdiff</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="p">:],</span>
         <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">delta_p</span><span class="p">[</span><span class="n">ind</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">delta_p</span><span class="p">[</span><span class="n">ind</span><span class="p">])),</span>
-        <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-        <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+        <span class="n">aspect</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
+        <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span>
     <span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">delta_p</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">delta_p</span><span class="p">)])</span>
@@ -1460,20 +1460,20 @@ improved:</p>
             <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pplot</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span> <span class="o">-</span> <span class="n">delta_t</span><span class="p">,</span>
             <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pplot</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span> <span class="o">+</span> <span class="n">delta_t</span><span class="p">,</span>
         <span class="p">),</span>
-        <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-        <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+        <span class="n">aspect</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
+        <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span>
         <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys_r</span><span class="p">,</span>
     <span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pplot</span><span class="p">)</span> <span class="o">-</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pplot</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta_t</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">1.9</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;vel in $v</span><span class="se">\\</span><span class="s2">sin i$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"vel in $v</span><span class="se">\\</span><span class="s2">sin i$"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">MaxNLocator</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">pplot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
-    <span class="s2">&quot;The two args are the value and tick position&quot;</span>
-    <span class="s2">&quot;Function to make tick labels look good.&quot;</span>
+    <span class="s2">"The two args are the value and tick position"</span>
+    <span class="s2">"Function to make tick labels look good."</span>
     <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
         <span class="n">yreal</span> <span class="o">=</span> <span class="n">y</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1483,7 +1483,7 @@ improved:</p>
 
 <span class="n">formatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">pplot</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;period&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"period"</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.99</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </pre></div>

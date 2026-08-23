@@ -553,15 +553,15 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;lower&quot;</span>
-<span class="c1"># plt.style.use(&quot;dark_background&quot;)  # Optional!</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"image.origin"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"lower"</span>
+<span class="c1"># plt.style.use("dark_background")  # Optional!</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum_filename</span> <span class="o">=</span> <span class="s2">&quot;aldebaran_3s_1.bmp&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spectrum_filename</span> <span class="o">=</span> <span class="s2">"aldebaran_3s_1.bmp"</span>
 </pre></div>
 </div>
 </div>
@@ -609,8 +609,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># but we&#39;d like to see it with axes labeled</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># but we'd like to see it with axes labeled</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>  <span class="c1"># the semicolon at the end of the last line prevents ipython from printing out the object</span>
 </pre></div>
 </div>
@@ -636,9 +636,9 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Argmax trace data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"X position"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -657,10 +657,10 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;rx&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">yvals</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">"rx"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Argmax trace data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"X position"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -670,9 +670,9 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Argmax trace data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"X position"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -690,9 +690,9 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Argmax trace data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X position&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Argmax trace data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"X position"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -726,7 +726,7 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we use a cutout around the traced line, so the Y-values are from that cutout</span>
 <span class="c1"># the `repeat` command here is used to extend our Y-axis position values, which are 425, 426, ... 475</span>
-<span class="c1"># along the X-direction.  The indexing with [:, None] adds a &quot;dummy&quot; axis along the second (x) dimension,</span>
+<span class="c1"># along the X-direction.  The indexing with [:, None] adds a "dummy" axis along the second (x) dimension,</span>
 <span class="c1"># then `repeat` copies our Y-axis values.  The resulting array has the same shape as our weight array,</span>
 <span class="c1"># which is image_array[425:475, :] minus the median</span>
 <span class="n">yaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -741,9 +741,9 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X Coordinate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Moment-1 estimated Y-value trace&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"X Coordinate"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Moment-1 estimated Y-value trace"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -754,10 +754,10 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <p>Overplot the “weighted”, centroid locations on the data to verify they look reasonable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we need to use the &#39;extent&#39; keyword to have the axes correctly labeled</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we need to use the 'extent' keyword to have the axes correctly labeled</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># we stretch the image out by 10x in the y-direction</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">&quot;wx&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">"wx"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -769,9 +769,9 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <p>We can also compare the argmax and weighted approaches.  They agree well at x&lt;1200, but there are simply more points from the weighted approach at x&gt;1200.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Weighted&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Argmax&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Weighted"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">"+"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Argmax"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -792,12 +792,12 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
     <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
-    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Weighted&quot;</span><span class="p">,</span>
+    <span class="s2">"x"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Weighted"</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Argmax&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="n">yvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_pixels</span><span class="p">],</span> <span class="s2">"+"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Argmax"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -843,8 +843,8 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -858,9 +858,9 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
     <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]</span> <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]),</span>
-    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="s2">"x"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residual (data-model)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Residual (data-model)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -887,8 +887,8 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -901,9 +901,9 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span>
     <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]</span> <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">]),</span>
-    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="s2">"x"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residual (data-model)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Residual (data-model)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -928,7 +928,7 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="s2">"w"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -961,7 +961,7 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="s2">"w"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -972,8 +972,8 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -987,17 +987,17 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
     <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)],</span>
     <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)]</span>
     <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">)]),</span>
-    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="s2">"x"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">)],</span>
     <span class="n">weighted_yaxis_values</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">)]</span>
     <span class="o">-</span> <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">[</span><span class="o">~</span><span class="n">bad_moments</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xvals</span> <span class="o">&gt;</span> <span class="mi">1200</span><span class="p">)]),</span>
-    <span class="s2">&quot;r+&quot;</span><span class="p">,</span>
+    <span class="s2">"r+"</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residual (data-model)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Residual (data-model)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1018,7 +1018,7 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
     <span class="n">xvals</span><span class="p">,</span>
     <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span>
     <span class="n">fitted_polymodel</span><span class="p">(</span><span class="n">xvals</span><span class="p">)</span> <span class="o">+</span> <span class="mi">15</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"orange"</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">));</span>
@@ -1067,10 +1067,10 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array</span><span class="p">[</span><span class="mi">425</span><span class="p">:</span><span class="mi">475</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">image_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">425</span><span class="p">,</span> <span class="mi">475</span><span class="p">])</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;We go from this...&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"We go from this..."</span><span class="p">)</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cutouts</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;...to this&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"...to this"</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1085,8 +1085,8 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_trace_profile</span> <span class="o">=</span> <span class="p">(</span><span class="n">cutouts</span> <span class="o">-</span> <span class="n">background</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">trace_profile_xaxis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">npixels_to_cut</span><span class="p">,</span> <span class="n">npixels_to_cut</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">mean_trace_profile</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance from center&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average source profile&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Distance from center"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Average source profile"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1118,11 +1118,11 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">mean_trace_profile</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">model_trace_profile</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Distance from center&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average source profile&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">mean_trace_profile</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"data"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_profile_xaxis</span><span class="p">,</span> <span class="n">model_trace_profile</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"model"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Distance from center"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Average source profile"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1182,16 +1182,16 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">average_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Direct Average&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_avg_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Trace-weighted average&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">average_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Direct Average"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trace_avg_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Trace-weighted average"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">gaussian_trace_avg_spectrum</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian-model-Trace-weighted average&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Gaussian-model-Trace-weighted average"</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1207,8 +1207,8 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <p>In this last step, we go through all the above steps again for another star (Deneb), but with less explanation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_array_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;deneb_3s_13.63g_1.bmp&quot;</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_array_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"deneb_3s_13.63g_1.bmp"</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -1243,8 +1243,8 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">trace_center2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">trace_center2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1255,8 +1255,8 @@ where <span class="math notranslate nohighlight">\(x_i\)</span> is the position 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_array_2</span><span class="p">[</span><span class="mi">470</span><span class="p">:</span><span class="mi">520</span><span class="p">,</span> <span class="p">:],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">470</span><span class="p">,</span> <span class="mi">520</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">,</span> <span class="s2">&quot;w+&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">trace_center2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">weighted_yaxis_values2</span><span class="p">,</span> <span class="s2">"w+"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals</span><span class="p">,</span> <span class="n">trace_center2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>

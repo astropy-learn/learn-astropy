@@ -529,7 +529,7 @@ data from a FITS file, but with the <code class="docutils literal notranslate"><
 also read the header.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">&quot;input_file.fits&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -539,7 +539,7 @@ header:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_number</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># HDU means header data unit</span>
-<span class="n">fits</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="s2">&quot;input_file.fits&quot;</span><span class="p">,</span> <span class="n">hdu_number</span><span class="p">)</span>
+<span class="n">fits</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">hdu_number</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -550,8 +550,8 @@ NAXIS   =                    2 / number of array dimensions
 NAXIS1  =                  100                                                  
 NAXIS2  =                  100                                                  
 EXTEND  =                    T                                                  
-OBJECT  = &#39;KITTEN  &#39;                                                            
-MYHDRKW = &#39;My Header Keyword&#39;                                                   
+OBJECT  = 'KITTEN  '                                                            
+MYHDRKW = 'My Header Keyword'                                                   
 </pre></div>
 </div>
 </div>
@@ -563,7 +563,7 @@ object that acts like a standard Python dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># But hdu_number = 0 is the PRIMARY HDU.How many HDUs are in this file?</span>
-<span class="n">fits_inf</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;input_file.fits&quot;</span><span class="p">)</span>
+<span class="n">fits_inf</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">)</span>
 <span class="n">fits_inf</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 <span class="n">fits_inf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
 </pre></div>
@@ -582,8 +582,8 @@ NAXIS   =                    2 / number of array dimensions
 NAXIS1  =                  100                                                  
 NAXIS2  =                  100                                                  
 EXTEND  =                    T                                                  
-OBJECT  = &#39;KITTEN  &#39;                                                            
-MYHDRKW = &#39;My Header Keyword&#39;                                                   
+OBJECT  = 'KITTEN  '                                                            
+MYHDRKW = 'My Header Keyword'                                                   
 </pre></div>
 </div>
 </div>
@@ -592,7 +592,7 @@ MYHDRKW = &#39;My Header Keyword&#39;
 <p>Now let’s change the header to give it the correct object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;OBJECT&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;M31&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span><span class="p">[</span><span class="s2">"OBJECT"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"M31"</span>
 </pre></div>
 </div>
 </div>
@@ -601,7 +601,7 @@ MYHDRKW = &#39;My Header Keyword&#39;
 function for this is the most useful command to remember:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s2">&quot;output_file.fits&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s2">"output_file.fits"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -614,7 +614,7 @@ editing might have multiple HDU’s (extensions), in which case you can
 specify the extension like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="p">,</span> <span class="n">header1</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">&quot;input_file.fits&quot;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="p">,</span> <span class="n">header1</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -627,7 +627,7 @@ file. By default, <code class="docutils literal notranslate"><span class="pre">w
 explicitly give it permission using the <code class="docutils literal notranslate"><span class="pre">clobber</span></code> keyword argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s2">&quot;output_file.fits&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s2">"output_file.fits"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -635,8 +635,8 @@ explicitly give it permission using the <code class="docutils literal notranslat
 <p>A final example is if you want to make a small change to a FITS file, like updating a header keyword, but you don’t want to read in and write out the whole file, which can take a while.  Instead you can use the <code class="docutils literal notranslate"><span class="pre">mode='update'</span></code> read mode to do this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;input_file.fits&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
-    <span class="n">filehandle</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;MYHDRKW&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;My Header Keyword&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"update"</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+    <span class="n">filehandle</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">"MYHDRKW"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"My Header Keyword"</span>
 </pre></div>
 </div>
 </div>

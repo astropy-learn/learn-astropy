@@ -612,12 +612,12 @@ R_V \equiv \frac{A_V}{E_{B-V}}
     <span class="k">for</span> <span class="n">R</span> <span class="ow">in</span> <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">):</span>
         <span class="c1"># Initialize the extinction model</span>
         <span class="n">ext</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">Rv</span><span class="o">=</span><span class="n">R</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">wav</span><span class="p">,</span> <span class="n">ext</span><span class="p">(</span><span class="n">wav</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; R=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">R</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">wav</span><span class="p">,</span> <span class="n">ext</span><span class="p">(</span><span class="n">wav</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">" R="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">R</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda^{-1}$ ($\mu$m$^{-1}$)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;A($\lambda$) / A(V)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Some Extinction Laws&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\lambda^{-1}$ ($\mu$m$^{-1}$)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"A($\lambda$) / A(V)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Some Extinction Laws"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -634,18 +634,18 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 <p>First, we will use astroquery to fetch the archival <a class="reference external" href="https://archive.stsci.edu/iue/">IUE spectrum from MAST</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;~/.astropy/cache/astroquery/Mast&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">"~/.astropy/cache/astroquery/Mast"</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
 <span class="n">download_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">obsTable</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="s2">&quot;HD 147933&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="s2">&quot;1 arcsec&quot;</span><span class="p">)</span>
-<span class="n">obsTable_spec</span> <span class="o">=</span> <span class="n">obsTable</span><span class="p">[</span><span class="n">obsTable</span><span class="p">[</span><span class="s2">&quot;dataproduct_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;spectrum&quot;</span><span class="p">]</span>
+<span class="n">obsTable</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="s2">"HD 147933"</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="s2">"1 arcsec"</span><span class="p">)</span>
+<span class="n">obsTable_spec</span> <span class="o">=</span> <span class="n">obsTable</span><span class="p">[</span><span class="n">obsTable</span><span class="p">[</span><span class="s2">"dataproduct_type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"spectrum"</span><span class="p">]</span>
 <span class="n">obsTable_spec</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table masked=True length=132</i>
-<table id="table140121609198176" class="table-striped table-bordered table-condensed">
+<table id="table140539075398544" class="table-striped table-bordered table-condensed">
 <thead><tr><th>intentType</th><th>obs_collection</th><th>provenance_name</th><th>instrument_name</th><th>project</th><th>filters</th><th>wave_region</th><th>target_name</th><th>target_classification</th><th>obs_id</th><th>s_ra</th><th>s_dec</th><th>dataproduct_type</th><th>proposal_pi</th><th>calib_level</th><th>t_min</th><th>t_max</th><th>t_exptime</th><th>wavelength_region</th><th>em_min</th><th>em_max</th><th>obs_title</th><th>t_obs_release</th><th>proposal_id</th><th>proposal_type</th><th>sequence_number</th><th>s_region</th><th>jpegURL</th><th>dataURL</th><th>dataRights</th><th>mtFlag</th><th>srcDen</th><th>obsid</th><th>wave_min</th><th>wave_max</th><th>distance</th></tr></thead>
 <thead><tr><th>str7</th><th>str5</th><th>str7</th><th>str13</th><th>str6</th><th>str17</th><th>str16</th><th>str21</th><th>str87</th><th>str53</th><th>float64</th><th>float64</th><th>str10</th><th>str22</th><th>int64</th><th>float64</th><th>float64</th><th>float64</th><th>str16</th><th>float64</th><th>float64</th><th>str117</th><th>float64</th><th>str6</th><th>str6</th><th>int64</th><th>str23309</th><th>str137</th><th>str137</th><th>str6</th><th>bool</th><th>float64</th><th>str9</th><th>float64</th><th>float64</th><th>float64</th></tr></thead>
 <tr><td>science</td><td>JWST</td><td>APT</td><td>MIRI/IFU</td><td>JWST</td><td>F770W</td><td>INFRARED</td><td>HD147933</td><td>--</td><td>jw07715021001_xx101_00001_miri</td><td>246.39632750000004</td><td>-23.447175000000016</td><td>spectrum</td><td>Decleir, Marjorie</td><td>-1</td><td>nan</td><td>nan</td><td>16.65</td><td>INFRARED</td><td>6600.0</td><td>8800.0</td><td>Unique insights into the chemical composition of interstellar silicate dust grains in the Milky Way</td><td>nan</td><td>7715</td><td>GO</td><td>1</td><td>POLYGON 246.39628332931 -23.44647682166 246.39724452752 -23.44660740232 246.39707945891 -23.44762998653 246.39611825342 -23.44749937708</td><td>--</td><td>--</td><td>PUBLIC</td><td>False</td><td>nan</td><td>250358393</td><td>6600.0</td><td>8800.0</td><td>0.0</td></tr>
@@ -672,9 +672,9 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve a specific &#39;obs_id&#39; corresponding to the IUE spectrum</span>
-<span class="n">obsTable_spec</span><span class="o">.</span><span class="n">add_index</span><span class="p">(</span><span class="s2">&quot;obs_id&quot;</span><span class="p">)</span>
-<span class="n">obsids</span> <span class="o">=</span> <span class="n">obsTable_spec</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;lwr05639&quot;</span><span class="p">][</span><span class="s2">&quot;obsid&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve a specific 'obs_id' corresponding to the IUE spectrum</span>
+<span class="n">obsTable_spec</span><span class="o">.</span><span class="n">add_index</span><span class="p">(</span><span class="s2">"obs_id"</span><span class="p">)</span>
+<span class="n">obsids</span> <span class="o">=</span> <span class="n">obsTable_spec</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">"lwr05639"</span><span class="p">][</span><span class="s2">"obsid"</span><span class="p">]</span>
 
 <span class="n">dataProductsByID</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">get_product_list</span><span class="p">(</span><span class="n">obsids</span><span class="p">)</span>
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">download_products</span><span class="p">(</span>
@@ -746,7 +746,7 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 <p>We read the downloaded files into an astropy table:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_lwr</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">download_dir</span> <span class="o">/</span> <span class="s2">&quot;mastDownload/IUE/lwr05639/lwr05639mxlo_vo.fits&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_lwr</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">download_dir</span> <span class="o">/</span> <span class="s2">"mastDownload/IUE/lwr05639/lwr05639mxlo_vo.fits"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">t_lwr</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -763,8 +763,8 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 <p>The <code class="docutils literal notranslate"><span class="pre">.quantity</span></code> extension in the next lines will read the Table columns into Quantity vectors.  Quantities keep the units of the Table column attached to the numpy array values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wav_UV</span> <span class="o">=</span> <span class="n">t_lwr</span><span class="p">[</span><span class="s2">&quot;WAVE&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,]</span><span class="o">.</span><span class="n">quantity</span>
-<span class="n">UVflux</span> <span class="o">=</span> <span class="n">t_lwr</span><span class="p">[</span><span class="s2">&quot;FLUX&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">,]</span><span class="o">.</span><span class="n">quantity</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wav_UV</span> <span class="o">=</span> <span class="n">t_lwr</span><span class="p">[</span><span class="s2">"WAVE"</span><span class="p">][</span><span class="mi">0</span><span class="p">,]</span><span class="o">.</span><span class="n">quantity</span>
+<span class="n">UVflux</span> <span class="o">=</span> <span class="n">t_lwr</span><span class="p">[</span><span class="s2">"FLUX"</span><span class="p">][</span><span class="mi">0</span><span class="p">,]</span><span class="o">.</span><span class="n">quantity</span>
 </pre></div>
 </div>
 </div>
@@ -773,11 +773,11 @@ R_V \equiv \frac{A_V}{E_{B-V}}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">custom_query</span> <span class="o">=</span> <span class="n">Simbad</span><span class="p">()</span>
-<span class="n">custom_query</span><span class="o">.</span><span class="n">add_votable_fields</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>
-<span class="n">phot_table</span> <span class="o">=</span> <span class="n">custom_query</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="s2">&quot;HD 147933&quot;</span><span class="p">)</span>
-<span class="n">Umag</span> <span class="o">=</span> <span class="n">phot_table</span><span class="p">[</span><span class="s2">&quot;U&quot;</span><span class="p">]</span>
-<span class="n">Bmag</span> <span class="o">=</span> <span class="n">phot_table</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span>
-<span class="n">Vmag</span> <span class="o">=</span> <span class="n">phot_table</span><span class="p">[</span><span class="s2">&quot;V&quot;</span><span class="p">]</span>
+<span class="n">custom_query</span><span class="o">.</span><span class="n">add_votable_fields</span><span class="p">(</span><span class="s2">"U"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">)</span>
+<span class="n">phot_table</span> <span class="o">=</span> <span class="n">custom_query</span><span class="o">.</span><span class="n">query_object</span><span class="p">(</span><span class="s2">"HD 147933"</span><span class="p">)</span>
+<span class="n">Umag</span> <span class="o">=</span> <span class="n">phot_table</span><span class="p">[</span><span class="s2">"U"</span><span class="p">]</span>
+<span class="n">Bmag</span> <span class="o">=</span> <span class="n">phot_table</span><span class="p">[</span><span class="s2">"B"</span><span class="p">]</span>
+<span class="n">Vmag</span> <span class="o">=</span> <span class="n">phot_table</span><span class="p">[</span><span class="s2">"V"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -829,13 +829,13 @@ F=F_0\ 10^{-0.4\, m}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">astropy</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">quantity_support</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_UV</span><span class="p">,</span> <span class="n">UVflux</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;UV&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_V</span><span class="p">,</span> <span class="n">Vflux</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U, B, V&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Bflux</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Uflux</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_UV</span><span class="p">,</span> <span class="n">UVflux</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"UV"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_V</span><span class="p">,</span> <span class="n">Vflux</span><span class="p">,</span> <span class="s2">"ko"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"U, B, V"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Bflux</span><span class="p">,</span> <span class="s2">"ko"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Uflux</span><span class="p">,</span> <span class="s2">"ko"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3e-10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;rho Oph&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"rho Oph"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -857,28 +857,28 @@ F=F_0\ 10^{-0.4\, m}
 <p>To extinguish (redden) a spectrum, multiply by the <code class="docutils literal notranslate"><span class="pre">ext.extinguish</span></code> function.  To unextinguish (deredden), divide by the same <code class="docutils literal notranslate"><span class="pre">ext.extinguish</span></code>, as we do here:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_UV</span><span class="p">,</span> <span class="n">UVflux</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;UV&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_V</span><span class="p">,</span> <span class="n">Vflux</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U, B, V&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Bflux</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Uflux</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_UV</span><span class="p">,</span> <span class="n">UVflux</span><span class="p">,</span> <span class="s2">"m"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"UV"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_V</span><span class="p">,</span> <span class="n">Vflux</span><span class="p">,</span> <span class="s2">"ko"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"U, B, V"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Bflux</span><span class="p">,</span> <span class="s2">"ko"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Uflux</span><span class="p">,</span> <span class="s2">"ko"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span>
     <span class="n">wav_UV</span><span class="p">,</span>
     <span class="n">UVflux</span> <span class="o">/</span> <span class="n">ext</span><span class="o">.</span><span class="n">extinguish</span><span class="p">(</span><span class="n">wav_UV</span><span class="p">,</span> <span class="n">Ebv</span><span class="o">=</span><span class="n">Ebv</span><span class="p">),</span>
-    <span class="s2">&quot;b&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dereddened: EBV=0.5, RV=5&quot;</span><span class="p">,</span>
+    <span class="s2">"b"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"dereddened: EBV=0.5, RV=5"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span>
     <span class="n">wav_V</span><span class="p">,</span>
     <span class="n">Vflux</span> <span class="o">/</span> <span class="n">ext</span><span class="o">.</span><span class="n">extinguish</span><span class="p">(</span><span class="n">wav_V</span><span class="p">,</span> <span class="n">Ebv</span><span class="o">=</span><span class="n">Ebv</span><span class="p">),</span>
-    <span class="s2">&quot;ro&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;dereddened: EBV=0.5, RV=5&quot;</span><span class="p">,</span>
+    <span class="s2">"ro"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"dereddened: EBV=0.5, RV=5"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Bflux</span> <span class="o">/</span> <span class="n">ext</span><span class="o">.</span><span class="n">extinguish</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Ebv</span><span class="o">=</span><span class="n">Ebv</span><span class="p">),</span> <span class="s2">&quot;ro&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Uflux</span> <span class="o">/</span> <span class="n">ext</span><span class="o">.</span><span class="n">extinguish</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Ebv</span><span class="o">=</span><span class="n">Ebv</span><span class="p">),</span> <span class="s2">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Bflux</span> <span class="o">/</span> <span class="n">ext</span><span class="o">.</span><span class="n">extinguish</span><span class="p">(</span><span class="n">wav_B</span><span class="p">,</span> <span class="n">Ebv</span><span class="o">=</span><span class="n">Ebv</span><span class="p">),</span> <span class="s2">"ro"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Uflux</span> <span class="o">/</span> <span class="n">ext</span><span class="o">.</span><span class="n">extinguish</span><span class="p">(</span><span class="n">wav_U</span><span class="p">,</span> <span class="n">Ebv</span><span class="o">=</span><span class="n">Ebv</span><span class="p">),</span> <span class="s2">"ro"</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;rho Oph&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"rho Oph"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -905,25 +905,25 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Optional, for when the STScI ftp server is not answering:</span>
-<span class="n">root_url</span> <span class="o">=</span> <span class="s2">&quot;http://ssb.stsci.edu/trds/&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">vega_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;calspec/alpha_lyr_stis_010.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_u_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/johnson_u_004_syn.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_b_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/johnson_b_004_syn.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_v_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/johnson_v_004_syn.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_r_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/johnson_r_003_syn.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_i_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/johnson_i_003_syn.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">bessel_j_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/bessell_j_003_syn.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">bessel_h_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/bessell_h_004_syn.fits&quot;</span>
-<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">bessel_k_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">&quot;comp/nonhst/bessell_k_003_syn.fits&quot;</span>
+<span class="n">root_url</span> <span class="o">=</span> <span class="s2">"http://ssb.stsci.edu/trds/"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">vega_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"calspec/alpha_lyr_stis_010.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_u_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/johnson_u_004_syn.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_b_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/johnson_b_004_syn.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_v_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/johnson_v_004_syn.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_r_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/johnson_r_003_syn.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">johnson_i_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/johnson_i_003_syn.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">bessel_j_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/bessell_j_003_syn.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">bessel_h_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/bessell_h_004_syn.fits"</span>
+<span class="n">config</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">bessel_k_file</span> <span class="o">=</span> <span class="n">root_url</span> <span class="o">+</span> <span class="s2">"comp/nonhst/bessell_k_003_syn.fits"</span>
 
-<span class="n">u_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;johnson_u&quot;</span><span class="p">)</span>
-<span class="n">b_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;johnson_b&quot;</span><span class="p">)</span>
-<span class="n">v_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;johnson_v&quot;</span><span class="p">)</span>
-<span class="n">r_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;johnson_r&quot;</span><span class="p">)</span>
-<span class="n">i_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;johnson_i&quot;</span><span class="p">)</span>
-<span class="n">j_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;bessel_j&quot;</span><span class="p">)</span>
-<span class="n">h_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;bessel_h&quot;</span><span class="p">)</span>
-<span class="n">k_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;bessel_k&quot;</span><span class="p">)</span>
+<span class="n">u_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"johnson_u"</span><span class="p">)</span>
+<span class="n">b_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"johnson_b"</span><span class="p">)</span>
+<span class="n">v_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"johnson_v"</span><span class="p">)</span>
+<span class="n">r_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"johnson_r"</span><span class="p">)</span>
+<span class="n">i_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"johnson_i"</span><span class="p">)</span>
+<span class="n">j_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"bessel_j"</span><span class="p">)</span>
+<span class="n">h_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"bessel_h"</span><span class="p">)</span>
+<span class="n">k_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"bessel_k"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -934,7 +934,7 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, create a blackbody at some temperature.</span>
 <span class="n">sp</span> <span class="o">=</span> <span class="n">SourceSpectrum</span><span class="p">(</span><span class="n">BlackBodyNorm1D</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-<span class="c1"># sp.plot(left=1, right=15000, flux_unit=&#39;flam&#39;, title=&#39;Blackbody&#39;)</span>
+<span class="c1"># sp.plot(left=1, right=15000, flux_unit='flam', title='Blackbody')</span>
 
 <span class="c1"># Get the Vega spectrum as the zero point flux.</span>
 <span class="n">vega</span> <span class="o">=</span> <span class="n">SourceSpectrum</span><span class="o">.</span><span class="n">from_vega</span><span class="p">()</span>
@@ -942,9 +942,9 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 
 <span class="c1"># Normalize the blackbody to some chosen magnitude, say V = 10.</span>
 <span class="n">vmag</span> <span class="o">=</span> <span class="mf">10.0</span>
-<span class="n">v_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">&quot;johnson_v&quot;</span><span class="p">)</span>
+<span class="n">v_band</span> <span class="o">=</span> <span class="n">SpectralElement</span><span class="o">.</span><span class="n">from_filter</span><span class="p">(</span><span class="s2">"johnson_v"</span><span class="p">)</span>
 <span class="n">sp_norm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">vmag</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">VEGAMAG</span><span class="p">,</span> <span class="n">v_band</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
-<span class="n">sp_norm</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">flux_unit</span><span class="o">=</span><span class="s2">&quot;flam&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Normed Blackbody&quot;</span><span class="p">)</span>
+<span class="n">sp_norm</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">flux_unit</span><span class="o">=</span><span class="s2">"flam"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Normed Blackbody"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -966,7 +966,7 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <span class="n">ex</span> <span class="o">=</span> <span class="n">ReddeningLaw</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span><span class="o">.</span><span class="n">extinction_curve</span><span class="p">(</span><span class="n">Av</span> <span class="o">/</span> <span class="n">ext</span><span class="o">.</span><span class="n">Rv</span><span class="p">,</span> <span class="n">wavelengths</span><span class="o">=</span><span class="n">wav</span><span class="p">)</span>
 <span class="n">sp_ext</span> <span class="o">=</span> <span class="n">sp_norm</span> <span class="o">*</span> <span class="n">ex</span>
 <span class="n">sp_ext</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">left</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">flux_unit</span><span class="o">=</span><span class="s2">&quot;flam&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Normed Blackbody with Extinction&quot;</span>
+    <span class="n">left</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">15000</span><span class="p">,</span> <span class="n">flux_unit</span><span class="o">=</span><span class="s2">"flam"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Normed Blackbody with Extinction"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -978,11 +978,11 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <p>Synthetic photometry refers to modeling an observation of a star by multiplying the theoretical model for the astronomical flux through a certain filter response function, then integrating.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;Observe&quot; the star through the filter and integrate to get photometric mag.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># "Observe" the star through the filter and integrate to get photometric mag.</span>
 <span class="n">sp_obs</span> <span class="o">=</span> <span class="n">Observation</span><span class="p">(</span><span class="n">sp_ext</span><span class="p">,</span> <span class="n">v_band</span><span class="p">)</span>
 <span class="n">sp_obs_before</span> <span class="o">=</span> <span class="n">Observation</span><span class="p">(</span><span class="n">sp_norm</span><span class="p">,</span> <span class="n">v_band</span><span class="p">)</span>
-<span class="c1"># sp_obs.plot(left=1, right=15000, flux_unit=&#39;flam&#39;,</span>
-<span class="c1">#             title=&#39;Normed Blackbody with Extinction through V Filter&#39;)</span>
+<span class="c1"># sp_obs.plot(left=1, right=15000, flux_unit='flam',</span>
+<span class="c1">#             title='Normed Blackbody with Extinction through V Filter')</span>
 </pre></div>
 </div>
 </div>
@@ -990,14 +990,14 @@ for an excellent review of the issues and common misunderstandings in synthetic 
 <p>Next, <code class="docutils literal notranslate"><span class="pre">synphot</span></code> performs the integration and computes magnitudes in the Vega system.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp_stim_before</span> <span class="o">=</span> <span class="n">sp_obs_before</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">&quot;vegamag&quot;</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
-<span class="n">sp_stim</span> <span class="o">=</span> <span class="n">sp_obs</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">&quot;vegamag&quot;</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;before dust, V =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sp_stim_before</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;after dust, V =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sp_stim</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp_stim_before</span> <span class="o">=</span> <span class="n">sp_obs_before</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">"vegamag"</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
+<span class="n">sp_stim</span> <span class="o">=</span> <span class="n">sp_obs</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">"vegamag"</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"before dust, V ="</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sp_stim_before</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"after dust, V ="</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sp_stim</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="c1"># Calculate extinction and compare to our chosen value.</span>
 <span class="n">Av_calc</span> <span class="o">=</span> <span class="n">sp_stim</span> <span class="o">-</span> <span class="n">sp_stim_before</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;$A_V$ = &quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Av_calc</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"$A_V$ = "</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Av_calc</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1018,24 +1018,24 @@ $A_V$ =  2.0 mag
 
 <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
     <span class="c1"># Calculate photometry with dust:</span>
-    <span class="n">sp_obs</span> <span class="o">=</span> <span class="n">Observation</span><span class="p">(</span><span class="n">sp_ext</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s2">&quot;extrap&quot;</span><span class="p">)</span>
-    <span class="n">obs_effstim</span> <span class="o">=</span> <span class="n">sp_obs</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">&quot;vegamag&quot;</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
+    <span class="n">sp_obs</span> <span class="o">=</span> <span class="n">Observation</span><span class="p">(</span><span class="n">sp_ext</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s2">"extrap"</span><span class="p">)</span>
+    <span class="n">obs_effstim</span> <span class="o">=</span> <span class="n">sp_obs</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">"vegamag"</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
     <span class="c1"># Calculate photometry without dust:</span>
-    <span class="n">sp_obs_i</span> <span class="o">=</span> <span class="n">Observation</span><span class="p">(</span><span class="n">sp_norm</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s2">&quot;extrap&quot;</span><span class="p">)</span>
-    <span class="n">obs_i_effstim</span> <span class="o">=</span> <span class="n">sp_obs_i</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">&quot;vegamag&quot;</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
+    <span class="n">sp_obs_i</span> <span class="o">=</span> <span class="n">Observation</span><span class="p">(</span><span class="n">sp_norm</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="s2">"extrap"</span><span class="p">)</span>
+    <span class="n">obs_i_effstim</span> <span class="o">=</span> <span class="n">sp_obs_i</span><span class="o">.</span><span class="n">effstim</span><span class="p">(</span><span class="n">flux_unit</span><span class="o">=</span><span class="s2">"vegamag"</span><span class="p">,</span> <span class="n">vegaspec</span><span class="o">=</span><span class="n">vega</span><span class="p">)</span>
 
     <span class="c1"># Extinction = mag with dust - mag without dust</span>
     <span class="c1"># Color excess = extinction at lambda - extinction at V</span>
     <span class="n">color_excess</span> <span class="o">=</span> <span class="n">obs_effstim</span> <span class="o">-</span> <span class="n">obs_i_effstim</span> <span class="o">-</span> <span class="n">Av_calc</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp_obs_i</span><span class="o">.</span><span class="n">effective_wavelength</span><span class="p">(),</span> <span class="n">color_excess</span><span class="p">,</span> <span class="s2">&quot;or&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sp_obs_i</span><span class="o">.</span><span class="n">effective_wavelength</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">color_excess</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sp_obs_i</span><span class="o">.</span><span class="n">effective_wavelength</span><span class="p">(),</span> <span class="n">color_excess</span><span class="p">,</span> <span class="s2">"or"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sp_obs_i</span><span class="o">.</span><span class="n">effective_wavelength</span><span class="p">(),</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">","</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">color_excess</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="c1"># Plot the model extinction curve for comparison</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav</span><span class="p">,</span> <span class="n">Av</span> <span class="o">*</span> <span class="n">ext</span><span class="p">(</span><span class="n">wav</span><span class="p">)</span> <span class="o">-</span> <span class="n">Av</span><span class="p">,</span> <span class="s2">&quot;--k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wav</span><span class="p">,</span> <span class="n">Av</span> <span class="o">*</span> <span class="n">ext</span><span class="p">(</span><span class="n">wav</span><span class="p">)</span> <span class="o">-</span> <span class="n">Av</span><span class="p">,</span> <span class="s2">"--k"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\lambda$ (Angstrom)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;E($\lambda$-V)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Reddening of T=10,000K Background Source with Av=2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\lambda$ (Angstrom)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"E($\lambda$-V)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Reddening of T=10,000K Background Source with Av=2"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1046,13 +1046,13 @@ $A_V$ =  2.0 mag
 5463.8 Angstrom , 0.0 mag
 6810.6 Angstrom , -0.48 mag
 8619.6 Angstrom , -0.97 mag
-12266.5 Angstrom , -1.43 mag
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12266.5 Angstrom , -1.43 mag
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16351.9 Angstrom , -1.65 mag
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21956.7 Angstrom , -1.79 mag
+21956.7 Angstrom , -1.79 mag
 </pre></div>
 </div>
 <img alt="_images/f90212c024a29e4d96495dcca073e0156061fb9e4830360c83707dc64d702efa.png" src="_images/f90212c024a29e4d96495dcca073e0156061fb9e4830360c83707dc64d702efa.png" />

@@ -538,11 +538,11 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;image.origin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s2">&quot;lower&quot;</span>  <span class="c1"># we want to show images, not matrices, so we set the origin to the lower-left</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"image.origin"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">"lower"</span>  <span class="c1"># we want to show images, not matrices, so we set the origin to the lower-left</span>
 <span class="p">)</span>
 <span class="c1"># plt.style.use(</span>
-<span class="c1">#     &quot;dark_background&quot;</span>
+<span class="c1">#     "dark_background"</span>
 <span class="c1"># )  # Optional configuration: if run, this will look nice on dark background notebooks</span>
 </pre></div>
 </div>
@@ -564,9 +564,9 @@
 <p>We have three calibration lamp spectra: Mercury, Krypton, and Neon.  These are saved as .bmp (bitmap) files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hg_filename</span> <span class="o">=</span> <span class="s2">&quot;hg_lamp_1-sixteenth_s.bmp&quot;</span>
-<span class="n">kr_filename</span> <span class="o">=</span> <span class="s2">&quot;kr_lamp_p6.bmp&quot;</span>
-<span class="n">ne_filename</span> <span class="o">=</span> <span class="s2">&quot;ne_lamp_1s.bmp&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hg_filename</span> <span class="o">=</span> <span class="s2">"hg_lamp_1-sixteenth_s.bmp"</span>
+<span class="n">kr_filename</span> <span class="o">=</span> <span class="s2">"kr_lamp_p6.bmp"</span>
+<span class="n">ne_filename</span> <span class="o">=</span> <span class="s2">"ne_lamp_1s.bmp"</span>
 </pre></div>
 </div>
 </div>
@@ -714,10 +714,10 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Neon&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Mercury"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Neon"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Krypton"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -733,7 +733,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Mercury_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"Mercury_spectrum.jpg"</span><span class="p">)</span>
 <span class="n">im</span>
 </pre></div>
 </div>
@@ -744,7 +744,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Neon_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"Neon_spectrum.jpg"</span><span class="p">)</span>
 <span class="n">im</span>
 </pre></div>
 </div>
@@ -755,7 +755,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;Krypton_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"Krypton_spectrum.jpg"</span><span class="p">)</span>
 <span class="n">im</span>
 </pre></div>
 </div>
@@ -767,7 +767,7 @@
 <p>Start with mercury.  We use a different wikipedia spectrum that looks a little more like ours to guide the eye (note that the line ratios vary from lamp to lamp at least partly because each lamp contains gas at a different pressure).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;HG_spectrum.jpg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"HG_spectrum.jpg"</span><span class="p">)</span>
 <span class="n">im</span>
 </pre></div>
 </div>
@@ -840,8 +840,8 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">guessed_xvals</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">guessed_xvals</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"+"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -879,7 +879,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -890,21 +890,21 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <p>We show our model <span class="math notranslate nohighlight">\(\lambda(x)\)</span> vs the input “guesses”:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\lambda(x)$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x (pixels)&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"$\lambda(x)$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"x (pixels)"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2686/1543648565.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-  plt.ylabel(&quot;$\lambda(x)$&quot;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\l'
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\l'
+/tmp/ipykernel_2655/1543648565.py:3: SyntaxWarning: invalid escape sequence '\l'
+  plt.ylabel("$\lambda(x)$")
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;x (pixels)&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, 'x (pixels)')
 </pre></div>
 </div>
 <img alt="_images/8564ff8abb31d0f02afe934d3a29d0c173be3f3313475a7f400b655b86834838.png" src="_images/8564ff8abb31d0f02afe934d3a29d0c173be3f3313475a7f400b655b86834838.png" />
@@ -920,9 +920,9 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <span class="n">maxwave</span> <span class="o">=</span> <span class="n">wavelengths</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="c1"># then we search for atomic lines</span>
 <span class="c1"># We are only interested in neutral lines, assuming the lamps are not hot enough to ionize the atoms</span>
-<span class="n">mercury_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">&quot;Hg I&quot;</span><span class="p">)</span>
-<span class="n">krypton_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">&quot;Kr I&quot;</span><span class="p">)</span>
-<span class="n">neon_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">&quot;Ne I&quot;</span><span class="p">)</span>
+<span class="n">mercury_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">"Hg I"</span><span class="p">)</span>
+<span class="n">krypton_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">"Kr I"</span><span class="p">)</span>
+<span class="n">neon_lines</span> <span class="o">=</span> <span class="n">Nist</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minwav</span><span class="o">=</span><span class="n">minwave</span><span class="p">,</span> <span class="n">maxwav</span><span class="o">=</span><span class="n">maxwave</span><span class="p">,</span> <span class="n">linename</span><span class="o">=</span><span class="s2">"Ne I"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -932,7 +932,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">"Observed"</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -945,12 +945,12 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <p>We can select that column, if we clean it up a little (there are some “blank” entries)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># these lines downselect from the table to keep only those that have usable &quot;Relative Intensity&quot; measurements</span>
-<span class="c1"># first, we get rid of those whose &#39;Rel.&#39; column is masked out or is an asterisk</span>
-<span class="n">hg_keep</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;*&quot;</span><span class="p">)</span>
-<span class="n">hg_wl_tbl</span> <span class="o">=</span> <span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">][</span><span class="n">hg_keep</span><span class="p">]</span>
-<span class="c1"># then, we collect the &#39;Rel.&#39; values and convert them from strings to floats</span>
-<span class="n">hg_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mercury_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">][</span><span class="n">hg_keep</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># these lines downselect from the table to keep only those that have usable "Relative Intensity" measurements</span>
+<span class="c1"># first, we get rid of those whose 'Rel.' column is masked out or is an asterisk</span>
+<span class="n">hg_keep</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">"Rel."</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mercury_lines</span><span class="p">[</span><span class="s2">"Rel."</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"*"</span><span class="p">)</span>
+<span class="n">hg_wl_tbl</span> <span class="o">=</span> <span class="n">mercury_lines</span><span class="p">[</span><span class="s2">"Observed"</span><span class="p">][</span><span class="n">hg_keep</span><span class="p">]</span>
+<span class="c1"># then, we collect the 'Rel.' values and convert them from strings to floats</span>
+<span class="n">hg_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mercury_lines</span><span class="p">[</span><span class="s2">"Rel."</span><span class="p">][</span><span class="n">hg_keep</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -959,17 +959,17 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
 <span class="c1"># we normalize the relative intensities to match the intensity of the spectrum so we can see both on the same plot</span>
-<span class="c1"># since they&#39;re just relative intensities, their amplitudes are arbitrary anyway</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hg_wl_tbl</span><span class="p">,</span> <span class="n">hg_rel_tbl</span> <span class="o">/</span> <span class="n">hg_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">hg_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\lambda$ [nm]&quot;</span><span class="p">);</span>
+<span class="c1"># since they're just relative intensities, their amplitudes are arbitrary anyway</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hg_wl_tbl</span><span class="p">,</span> <span class="n">hg_rel_tbl</span> <span class="o">/</span> <span class="n">hg_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">hg_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$\lambda$ [nm]"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2686/3761740803.py:5: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-  plt.xlabel(&quot;$\lambda$ [nm]&quot;);
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence '\l'
+&lt;&gt;:5: SyntaxWarning: invalid escape sequence '\l'
+/tmp/ipykernel_2655/3761740803.py:5: SyntaxWarning: invalid escape sequence '\l'
+  plt.xlabel("$\lambda$ [nm]");
 </pre></div>
 </div>
 <img alt="_images/3b0120756a9172c86086368d9240598b33c123c3946c4e4e73c989697eb015a2.png" src="_images/3b0120756a9172c86086368d9240598b33c123c3946c4e4e73c989697eb015a2.png" />
@@ -979,9 +979,9 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <p>Let’s try the same for the other lines (note that the hackery changes - this is because the NIST tables are not formatted to be machine-readable!)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;*&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]])</span>
-<span class="n">ne_wl_tbl</span> <span class="o">=</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">][</span><span class="n">ne_keep</span><span class="p">]</span>
-<span class="n">ne_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">][</span><span class="n">ne_keep</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">"*"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">"Rel."</span><span class="p">]])</span>
+<span class="n">ne_wl_tbl</span> <span class="o">=</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">"Observed"</span><span class="p">][</span><span class="n">ne_keep</span><span class="p">]</span>
+<span class="n">ne_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">neon_lines</span><span class="p">[</span><span class="s2">"Rel."</span><span class="p">][</span><span class="n">ne_keep</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -990,12 +990,12 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kr_keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
     <span class="p">[</span>
-        <span class="p">(</span><span class="s2">&quot;*&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;h&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">]</span>
+        <span class="p">(</span><span class="s2">"*"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">"h"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">"-"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">"Rel."</span><span class="p">]</span>
     <span class="p">]</span>
 <span class="p">)</span>
-<span class="n">kr_wl_tbl</span> <span class="o">=</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">&quot;Observed&quot;</span><span class="p">][</span><span class="n">kr_keep</span><span class="p">]</span>
-<span class="n">kr_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">&quot;Rel.&quot;</span><span class="p">][</span><span class="n">kr_keep</span><span class="p">]])</span>
+<span class="n">kr_wl_tbl</span> <span class="o">=</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">"Observed"</span><span class="p">][</span><span class="n">kr_keep</span><span class="p">]</span>
+<span class="n">kr_rel_tbl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">krypton_lines</span><span class="p">[</span><span class="s2">"Rel."</span><span class="p">][</span><span class="n">kr_keep</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -1003,17 +1003,17 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">,</span> <span class="n">ne_rel_tbl</span> <span class="o">/</span> <span class="n">ne_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">ne_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\lambda$ [nm]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neon&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">,</span> <span class="n">ne_rel_tbl</span> <span class="o">/</span> <span class="n">ne_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">ne_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$\lambda$ [nm]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Neon"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2686/2204884587.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-  plt.xlabel(&quot;$\lambda$ [nm]&quot;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\l'
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\l'
+/tmp/ipykernel_2655/2204884587.py:3: SyntaxWarning: invalid escape sequence '\l'
+  plt.xlabel("$\lambda$ [nm]")
 </pre></div>
 </div>
 <img alt="_images/9e125ae4a0d717e78e38b1ed2fc7b4144b342663e7b5c384dcd93549a842814a.png" src="_images/9e125ae4a0d717e78e38b1ed2fc7b4144b342663e7b5c384dcd93549a842814a.png" />
@@ -1023,17 +1023,17 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_wl_tbl</span><span class="p">,</span> <span class="n">kr_rel_tbl</span> <span class="o">/</span> <span class="n">kr_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">kr_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\lambda$ [nm]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Krypton&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_wl_tbl</span><span class="p">,</span> <span class="n">kr_rel_tbl</span> <span class="o">/</span> <span class="n">kr_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">kr_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$\lambda$ [nm]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Krypton"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2686/12811141.py:3: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-  plt.xlabel(&quot;$\lambda$ [nm]&quot;)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\l'
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\l'
+/tmp/ipykernel_2655/12811141.py:3: SyntaxWarning: invalid escape sequence '\l'
+  plt.xlabel("$\lambda$ [nm]")
 </pre></div>
 </div>
 <img alt="_images/31bb9abbf3c8f244a54e44f3a5e5991b2ad09ae0f4fb7a37b1100b3ee92a112a.png" src="_images/31bb9abbf3c8f244a54e44f3a5e5991b2ad09ae0f4fb7a37b1100b3ee92a112a.png" />
@@ -1061,7 +1061,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1075,7 +1075,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine the pixel range, +/-15 pix, to see if it results in line overlaps</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">kr_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">kr_pixel_vals</span><span class="p">,</span> <span class="n">kr_rel_intens</span><span class="p">[</span><span class="n">kr_keep_final</span><span class="p">]):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="p">[</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">xx</span> <span class="o">+</span> <span class="mi">15</span><span class="p">],</span>
@@ -1121,12 +1121,12 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <p>Now we can plot these best-fit pixel numbers against the “true” wavelengths and overplot our previous best-fit model from mercury:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Krypton"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">"+"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Mercury"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Coordinate"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Wavelength (nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1154,13 +1154,13 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># re-plot the data with the fit overlaid</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Krypton"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">"+"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Mercury"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">linfit_wlmodel_hgkr</span><span class="p">(</span><span class="n">xaxis</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Coordinate"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Wavelength (nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1173,8 +1173,8 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">residuals_hgonlymodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">waves_hg_plus_kr</span><span class="p">)</span> <span class="o">-</span> <span class="n">linfit_wlmodel</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">)</span>
 <span class="n">residuals_hgkrmodel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">waves_hg_plus_kr</span><span class="p">)</span> <span class="o">-</span> <span class="n">linfit_wlmodel_hgkr</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgonlymodel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hg-only fit&quot;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;stepfilled&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgkrmodel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hg-only fit&quot;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgonlymodel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Hg-only fit"</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">"stepfilled"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgkrmodel</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Hg-only fit"</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">"step"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1186,9 +1186,9 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <p>Is there any shape to the residuals?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">,</span> <span class="n">residuals_hgonlymodel</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength residual (data minus model; nm)&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">,</span> <span class="n">residuals_hgonlymodel</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Coordinate"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Wavelength residual (data minus model; nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1198,9 +1198,9 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">,</span> <span class="n">residuals_hgkrmodel</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength residual (data minus model; nm)&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr</span><span class="p">,</span> <span class="n">residuals_hgkrmodel</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Coordinate"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Wavelength residual (data minus model; nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1219,7 +1219,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.8290377437522201), np.float64(0.7755414146718849))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.8290377437520283), np.float64(0.7755414146718753))
 </pre></div>
 </div>
 </div>
@@ -1233,8 +1233,8 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_rel_intens</span> <span class="o">=</span> <span class="n">ne_rel_tbl</span> <span class="o">/</span> <span class="n">ne_rel_tbl</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">ne_spectrum</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Wavelength (nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1247,8 +1247,8 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne_keep_final</span> <span class="o">=</span> <span class="n">ne_rel_intens</span> <span class="o">&gt;</span> <span class="mi">100</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelengths</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_wl_tbl</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Wavelength (nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1269,14 +1269,14 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check for overlaps again (in the densest part of the spectrum)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">ne_spectrum</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_pixel_vals</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ne_pixel_vals</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">],</span> <span class="s2">"x"</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ne_pixel_vals</span><span class="p">,</span> <span class="n">ne_rel_intens</span><span class="p">[</span><span class="n">ne_keep_final</span><span class="p">]):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="p">[</span><span class="n">xx</span> <span class="o">-</span> <span class="mi">15</span><span class="p">,</span> <span class="n">xx</span> <span class="o">+</span> <span class="mi">15</span><span class="p">],</span>
         <span class="p">[</span><span class="n">yy</span><span class="p">,</span> <span class="n">yy</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">850</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Wavelength (nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1307,9 +1307,9 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
  np.float64(892.9232835842486),
  np.float64(892.082009702997),
  np.float64(890.6754750779604),
- np.float64(814.5085554585149),
+ np.float64(814.508555458515),
  np.float64(776.6287593955387),
- np.float64(720.1158679501369),
+ np.float64(720.1158679501366),
  np.float64(651.4261979644568),
  np.float64(275.48231610553455),
  np.float64(216.88320524067413)]
@@ -1319,14 +1319,14 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Krypton&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_ne</span><span class="p">,</span> <span class="n">ne_wl_final</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Neon&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mercury&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_kr</span><span class="p">,</span> <span class="n">kr_wl_final</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Krypton"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses_ne</span><span class="p">,</span> <span class="n">ne_wl_final</span><span class="p">,</span> <span class="s2">"^"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Neon"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">improved_xval_guesses</span><span class="p">,</span> <span class="n">guessed_wavelengths</span><span class="p">,</span> <span class="s2">"+"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Mercury"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">wavelengths</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">linfit_wlmodel_hgkr</span><span class="p">(</span><span class="n">xaxis</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength (nm)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Coordinate"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Wavelength (nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1386,18 +1386,18 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.2974074905652833),
- np.float64(1.5361847762884715),
- np.float64(1.2470762011964271))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.2974074905654271),
+ np.float64(1.5361847762884682),
+ np.float64(1.2470762011963141))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr_plus_ne</span><span class="p">,</span> <span class="n">residuals_hgkrnemodel_nedata</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Wavelength residual (data minus model; nm)&quot;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvals_hg_plus_kr_plus_ne</span><span class="p">,</span> <span class="n">residuals_hgkrnemodel_nedata</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Coordinate"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Wavelength residual (data minus model; nm)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1409,12 +1409,12 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stddev = </span><span class="si">{</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Stddev = </span><span class="si">{</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/20510fbaaad986b302fc221f8ebb6829681a52abf49e3e7d24c83ef4110a37eb.png" src="_images/20510fbaaad986b302fc221f8ebb6829681a52abf49e3e7d24c83ef4110a37eb.png" />
+<img alt="_images/81abbe4c6ae32936b5e5f251e5c7d4ad0a96c4f2e26f5120987aeea6bc066d30.png" src="_images/81abbe4c6ae32936b5e5f251e5c7d4ad0a96c4f2e26f5120987aeea6bc066d30.png" />
 </div>
 </div>
 <p>This histogram is perhaps a little skewed.</p>
@@ -1428,7 +1428,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span> <span class="n">hg_spectrum</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Index Number&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Index Number"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1441,7 +1441,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">],</span> <span class="n">hg_spectrum</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">])</span>
 <span class="n">noise_estimate</span> <span class="o">=</span> <span class="n">hg_spectrum</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stddev = </span><span class="si">{</span><span class="n">noise_estimate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"stddev = </span><span class="si">{</span><span class="n">noise_estimate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1488,14 +1488,14 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.0012527166750909403)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.0012527166750909426)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moment analysis yields m1 = </span><span class="si">{</span><span class="n">m1</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">sigma_m1</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> pixels&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Moment analysis yields m1 = </span><span class="si">{</span><span class="n">m1</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">sigma_m1</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> pixels"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1526,7 +1526,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.0704108932039562)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.070410893203956)
 </pre></div>
 </div>
 </div>
@@ -1534,8 +1534,8 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xcutoutne</span><span class="p">,</span> <span class="n">cutoutne</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m1ne</span><span class="p">,</span> <span class="n">cutoutne</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pixel Coordinate&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m1ne</span><span class="p">,</span> <span class="n">cutoutne</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="s2">"x"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Pixel Coordinate"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1560,7 +1560,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.03746963744056958)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.03746963744056956)
 </pre></div>
 </div>
 </div>
@@ -1568,7 +1568,7 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Moment analysis for the faint Neon line yields m1 = </span><span class="si">{</span><span class="n">m1ne</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">sigma_m1_ne</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> pixels&quot;</span>
+    <span class="sa">f</span><span class="s2">"Moment analysis for the faint Neon line yields m1 = </span><span class="si">{</span><span class="n">m1ne</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">sigma_m1_ne</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> pixels"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1584,14 +1584,14 @@ We can assume it’s either H-alpha or H-beta, since they are both in the optica
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Standard Deviation of the residuals = </span><span class="si">{</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">}</span><span class="s2"> nm, &quot;</span>
-    <span class="sa">f</span><span class="s2">&quot;Faint Line uncertainty = </span><span class="si">{</span><span class="n">sigma_m1_ne</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">linfit_wlmodel_hgkrne</span><span class="o">.</span><span class="n">slope</span><span class="si">}</span><span class="s2"> nm&quot;</span>
+    <span class="sa">f</span><span class="s2">"Standard Deviation of the residuals = </span><span class="si">{</span><span class="n">residuals_hgkrnemodel_nedata</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">}</span><span class="s2"> nm, "</span>
+    <span class="sa">f</span><span class="s2">"Faint Line uncertainty = </span><span class="si">{</span><span class="n">sigma_m1_ne</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">linfit_wlmodel_hgkrne</span><span class="o">.</span><span class="n">slope</span><span class="si">}</span><span class="s2"> nm"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard Deviation of the residuals = 0.23808671082730523 nm, Faint Line uncertainty = -0.0038270225951451678 nm
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard Deviation of the residuals = 0.23808671082729443 nm, Faint Line uncertainty = -0.003827022595145168 nm
 </pre></div>
 </div>
 </div>

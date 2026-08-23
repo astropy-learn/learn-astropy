@@ -554,14 +554,14 @@ BLG103,17:56:20.2,-30:06:22
 <p><code class="docutils literal notranslate"><span class="pre">ascii.read()</span></code> will return a <code class="docutils literal notranslate"><span class="pre">Table</span></code> object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;simple_table.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"simple_table.csv"</span><span class="p">)</span>
 <span class="n">tbl</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>Table length=4</i>
-<table id="table140159651838960" class="table-striped table-bordered table-condensed">
+<table id="table140242967563968" class="table-striped table-bordered table-condensed">
 <thead><tr><th>name</th><th>ra</th><th>dec</th></tr></thead>
 <thead><tr><th>str6</th><th>str10</th><th>str9</th></tr></thead>
 <tr><td>BLG100</td><td>17:51:00.0</td><td>-29:59:48</td></tr>
@@ -576,7 +576,7 @@ We can access the columns directly from their names as ‘keys’ of the
 table object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span><span class="p">[</span><span class="s2">"ra"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -598,7 +598,7 @@ the column and use the <code class="docutils literal notranslate"><span class="p
 <span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
 
 <span class="n">first_row</span> <span class="o">=</span> <span class="n">tbl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># get the first (0th) row</span>
-<span class="n">ra</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">first_row</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>  <span class="c1"># create an Angle object</span>
+<span class="n">ra</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">first_row</span><span class="p">[</span><span class="s2">"ra"</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span>  <span class="c1"># create an Angle object</span>
 <span class="n">ra</span><span class="o">.</span><span class="n">degree</span>  <span class="c1"># convert to degrees</span>
 </pre></div>
 </div>
@@ -622,46 +622,46 @@ PC 0025+04,00 27 41.97 +05 03 41.7,6.92489,5.06,16.19,0.09,15.29,0.10,14.96,0.12
 <p>If we try to just use <code class="docutils literal notranslate"><span class="pre">ascii.read()</span></code> on this data, it fails to parse the names out and the column names become <code class="docutils literal notranslate"><span class="pre">col</span></code> followed by the number of the column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"Young-Objects-Compilation.csv"</span><span class="p">)</span>
 <span class="n">tbl</span><span class="o">.</span><span class="n">colnames</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;col1&#39;,
- &#39;col2&#39;,
- &#39;col3&#39;,
- &#39;col4&#39;,
- &#39;col5&#39;,
- &#39;col6&#39;,
- &#39;col7&#39;,
- &#39;col8&#39;,
- &#39;col9&#39;,
- &#39;col10&#39;,
- &#39;col11&#39;,
- &#39;col12&#39;,
- &#39;col13&#39;,
- &#39;col14&#39;,
- &#39;col15&#39;,
- &#39;col16&#39;,
- &#39;col17&#39;,
- &#39;col18&#39;,
- &#39;col19&#39;,
- &#39;col20&#39;,
- &#39;col21&#39;,
- &#39;col22&#39;,
- &#39;col23&#39;,
- &#39;col24&#39;,
- &#39;col25&#39;,
- &#39;col26&#39;,
- &#39;col27&#39;,
- &#39;col28&#39;,
- &#39;col29&#39;,
- &#39;col30&#39;,
- &#39;col31&#39;,
- &#39;col32&#39;,
- &#39;col33&#39;,
- &#39;col34&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['col1',
+ 'col2',
+ 'col3',
+ 'col4',
+ 'col5',
+ 'col6',
+ 'col7',
+ 'col8',
+ 'col9',
+ 'col10',
+ 'col11',
+ 'col12',
+ 'col13',
+ 'col14',
+ 'col15',
+ 'col16',
+ 'col17',
+ 'col18',
+ 'col19',
+ 'col20',
+ 'col21',
+ 'col22',
+ 'col23',
+ 'col24',
+ 'col25',
+ 'col26',
+ 'col27',
+ 'col28',
+ 'col29',
+ 'col30',
+ 'col31',
+ 'col32',
+ 'col33',
+ 'col34']
 </pre></div>
 </div>
 </div>
@@ -678,7 +678,7 @@ that the first row of data are strings – something else went wrong!</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><i>Row index=0</i>
-<table id="table140159650337264">
+<table id="table140242965237584">
 <thead><tr><th>col1</th><th>col2</th><th>col3</th><th>col4</th><th>col5</th><th>col6</th><th>col7</th><th>col8</th><th>col9</th><th>col10</th><th>col11</th><th>col12</th><th>col13</th><th>col14</th><th>col15</th><th>col16</th><th>col17</th><th>col18</th><th>col19</th><th>col20</th><th>col21</th><th>col22</th><th>col23</th><th>col24</th><th>col25</th><th>col26</th><th>col27</th><th>col28</th><th>col29</th><th>col30</th><th>col31</th><th>col32</th><th>col33</th><th>col34</th></tr></thead>
 <thead><tr><th>str24</th><th>str25</th><th>str9</th><th>str6</th><th>str16</th><th>str5</th><th>str5</th><th>str5</th><th>str5</th><th>str5</th><th>str15</th><th>str6</th><th>str5</th><th>str6</th><th>str5</th><th>str6</th><th>str4</th><th>str6</th><th>str13</th><th>str14</th><th>str26</th><th>str23</th><th>str11</th><th>str9</th><th>str12</th><th>str10</th><th>str8</th><th>str6</th><th>str22</th><th>str6</th><th>str19</th><th>str23</th><th>str9</th><th>str38</th></tr></thead>
 <tr><td>--</td><td>--</td><td>--</td><td>--</td><td>2MASS Photometry</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>WISE Photometry</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>Spectra</td><td>--</td><td>--</td><td>--</td><td>Astrometry</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
@@ -693,46 +693,46 @@ This keyword argument specifies the index of the row in the text file
 to read the column names from:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"Young-Objects-Compilation.csv"</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">tbl</span><span class="o">.</span><span class="n">colnames</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Name&#39;,
- &#39;Designation&#39;,
- &#39;RA&#39;,
- &#39;Dec&#39;,
- &#39;Jmag&#39;,
- &#39;J_unc&#39;,
- &#39;Hmag&#39;,
- &#39;H_unc&#39;,
- &#39;Kmag&#39;,
- &#39;K_unc&#39;,
- &#39;W1&#39;,
- &#39;W1_unc&#39;,
- &#39;W2&#39;,
- &#39;W2_unc&#39;,
- &#39;W3&#39;,
- &#39;W3_unc&#39;,
- &#39;W4&#39;,
- &#39;W4_unc&#39;,
- &#39;Spectral Type&#39;,
- &#39;Spectra (FITS)&#39;,
- &#39;Opt Spec Refs&#39;,
- &#39;NIR Spec Refs&#39;,
- &#39;pm_ra (mas)&#39;,
- &#39;pm_ra_unc&#39;,
- &#39;pm_dec (mas)&#39;,
- &#39;pm_dec_unc&#39;,
- &#39;pi (mas)&#39;,
- &#39;pi_unc&#39;,
- &#39;radial velocity (km/s)&#39;,
- &#39;rv_unc&#39;,
- &#39;Astrometry Refs&#39;,
- &#39;Discovery Refs&#39;,
- &#39;Group/Age&#39;,
- &#39;Note&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['Name',
+ 'Designation',
+ 'RA',
+ 'Dec',
+ 'Jmag',
+ 'J_unc',
+ 'Hmag',
+ 'H_unc',
+ 'Kmag',
+ 'K_unc',
+ 'W1',
+ 'W1_unc',
+ 'W2',
+ 'W2_unc',
+ 'W3',
+ 'W3_unc',
+ 'W4',
+ 'W4_unc',
+ 'Spectral Type',
+ 'Spectra (FITS)',
+ 'Opt Spec Refs',
+ 'NIR Spec Refs',
+ 'pm_ra (mas)',
+ 'pm_ra_unc',
+ 'pm_dec (mas)',
+ 'pm_dec_unc',
+ 'pi (mas)',
+ 'pi_unc',
+ 'radial velocity (km/s)',
+ 'rv_unc',
+ 'Astrometry Refs',
+ 'Discovery Refs',
+ 'Group/Age',
+ 'Note']
 </pre></div>
 </div>
 </div>
@@ -745,7 +745,7 @@ We can specify <code class="docutils literal notranslate"><span class="pre">data
 this file actually start on the 3rd (index=2) row:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"Young-Objects-Compilation.csv"</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -753,7 +753,7 @@ this file actually start on the 3rd (index=2) row:</p>
 <p>Some of the columns have missing data, for example, some of the <code class="docutils literal notranslate"><span class="pre">RA</span></code> values are missing (denoted by – when printed):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;RA&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tbl</span><span class="p">[</span><span class="s2">"RA"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -793,7 +793,7 @@ with the <code class="docutils literal notranslate"><span class="pre">.filled()<
 values with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>’s:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;RA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span><span class="p">[</span><span class="s2">"RA"</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -834,7 +834,7 @@ that the data starts on line 2 using the <code class="docutils literal notransla
 keyword. Finally, we note some columns have missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Young-Objects-Compilation.csv&quot;</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">ascii</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"Young-Objects-Compilation.csv"</span><span class="p">,</span> <span class="n">header_start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data_start</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -851,15 +851,15 @@ making quick plots and interactive use, but is not great if you need
 more control over your figures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Jmag&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Kmag&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Jmag&quot;</span><span class="p">])</span>  <span class="c1"># plot J-K vs. J</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"Jmag"</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">"Kmag"</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">"Jmag"</span><span class="p">])</span>  <span class="c1"># plot J-K vs. J</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()))</span>  <span class="c1"># flip the y-axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$J-K_s$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$J$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$J-K_s$"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"$J$"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$J$&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, '$J$')
 </pre></div>
 </div>
 <img alt="_images/c204950eb9ac85cd3658c44abaf70f686d548c137c8bd2798fb931a9cb8f42a8.png" src="_images/c204950eb9ac85cd3658c44abaf70f686d548c137c8bd2798fb931a9cb8f42a8.png" />
@@ -883,9 +883,9 @@ We can convert our column of RA values to radians, and wrap the
 angle bounds using this class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ra</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;RA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ra</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"RA"</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
 <span class="n">ra</span> <span class="o">=</span> <span class="n">ra</span><span class="o">.</span><span class="n">wrap_at</span><span class="p">(</span><span class="mi">180</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
-<span class="n">dec</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Dec&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
+<span class="n">dec</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"Dec"</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degree</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -893,13 +893,13 @@ angle bounds using this class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;mollweide&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">"mollweide"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ra</span><span class="o">.</span><span class="n">radian</span><span class="p">,</span> <span class="n">dec</span><span class="o">.</span><span class="n">radian</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f7975ffe900&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f8cdc114470&gt;
 </pre></div>
 </div>
 <img alt="_images/e7fedbce8c36a68dcc802b8c52cd74fb4b5239d6f3d47d7ffe201213fddb567e.png" src="_images/e7fedbce8c36a68dcc802b8c52cd74fb4b5239d6f3d47d7ffe201213fddb567e.png" />
@@ -910,10 +910,10 @@ horizontal (x) tick labels to be in units of hours, and display a grid:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;mollweide&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">"mollweide"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ra</span><span class="o">.</span><span class="n">radian</span><span class="p">,</span> <span class="n">dec</span><span class="o">.</span><span class="n">radian</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;14h&quot;</span><span class="p">,</span> <span class="s2">&quot;16h&quot;</span><span class="p">,</span> <span class="s2">&quot;18h&quot;</span><span class="p">,</span> <span class="s2">&quot;20h&quot;</span><span class="p">,</span> <span class="s2">&quot;22h&quot;</span><span class="p">,</span> <span class="s2">&quot;0h&quot;</span><span class="p">,</span> <span class="s2">&quot;2h&quot;</span><span class="p">,</span> <span class="s2">&quot;4h&quot;</span><span class="p">,</span> <span class="s2">&quot;6h&quot;</span><span class="p">,</span> <span class="s2">&quot;8h&quot;</span><span class="p">,</span> <span class="s2">&quot;10h&quot;</span><span class="p">]</span>
+    <span class="p">[</span><span class="s2">"14h"</span><span class="p">,</span> <span class="s2">"16h"</span><span class="p">,</span> <span class="s2">"18h"</span><span class="p">,</span> <span class="s2">"20h"</span><span class="p">,</span> <span class="s2">"22h"</span><span class="p">,</span> <span class="s2">"0h"</span><span class="p">,</span> <span class="s2">"2h"</span><span class="p">,</span> <span class="s2">"4h"</span><span class="p">,</span> <span class="s2">"6h"</span><span class="p">,</span> <span class="s2">"8h"</span><span class="p">,</span> <span class="s2">"10h"</span><span class="p">]</span>
 <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -926,7 +926,7 @@ horizontal (x) tick labels to be in units of hours, and display a grid:</p>
 <p>We can save this figure as a PDF using the <code class="docutils literal notranslate"><span class="pre">savefig</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;map.pdf&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"map.pdf"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

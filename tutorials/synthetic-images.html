@@ -559,13 +559,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_i</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-    <span class="s2">&quot;http://data.astropy.org/tutorials/synthetic-images/synchrotron_i_lobe_0700_150MHz_sm.fits&quot;</span><span class="p">,</span>
+    <span class="s2">"http://data.astropy.org/tutorials/synthetic-images/synchrotron_i_lobe_0700_150MHz_sm.fits"</span><span class="p">,</span>
     <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">hdulist</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_i</span><span class="p">)</span>
 <span class="n">hdulist</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 
-<span class="n">hdu</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="s2">&quot;NN_EMISSIVITY_I_LOBE_150.0MHZ&quot;</span><span class="p">]</span>
+<span class="n">hdu</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="s2">"NN_EMISSIVITY_I_LOBE_150.0MHZ"</span><span class="p">]</span>
 <span class="n">hdu</span><span class="o">.</span><span class="n">header</span>
 </pre></div>
 </div>
@@ -577,29 +577,29 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
   1  NN_EMISSIVITY_I_LOBE_150.0MHZ    1 ImageHDU        23   (1024, 1452)   float64   
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= &#39;IMAGE   &#39;           / Image extension                                
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= 'IMAGE   '           / Image extension                                
 BITPIX  =                  -64 / array data type                                
 NAXIS   =                    2 / number of array dimensions                     
 NAXIS1  =                 1024                                                  
 NAXIS2  =                 1452                                                  
 PCOUNT  =                    0 / number of parameters                           
 GCOUNT  =                    1 / number of groups                               
-EXTNAME = &#39;NN_EMISSIVITY_I_LOBE_150.0MHZ&#39; / extension name                      
-BTYPE   = &#39;nn_emissivity_i_lobe_150.0MHz&#39;                                       
-BUNIT   = &#39;Jy/arcsec**2&#39;                                                        
+EXTNAME = 'NN_EMISSIVITY_I_LOBE_150.0MHZ' / extension name                      
+BTYPE   = 'nn_emissivity_i_lobe_150.0MHz'                                       
+BUNIT   = 'Jy/arcsec**2'                                                        
 WCSAXES =                    2                                                  
 CRPIX1  =                512.0                                                  
 CRPIX2  =                726.0                                                  
 CDELT1  = 9.42382812499999E+19                                                  
 CDELT2  = 9.42382812499999E+19                                                  
-CUNIT1  = &#39;cm      &#39;                                                            
-CUNIT2  = &#39;cm      &#39;                                                            
-CTYPE1  = &#39;LINEAR  &#39;                                                            
-CTYPE2  = &#39;LINEAR  &#39;                                                            
+CUNIT1  = 'cm      '                                                            
+CUNIT2  = 'cm      '                                                            
+CTYPE1  = 'LINEAR  '                                                            
+CTYPE2  = 'LINEAR  '                                                            
 CRVAL1  =                  0.0                                                  
 CRVAL2  =                  0.0                                                  
 LATPOLE =                 90.0                                                  
-WCSNAME = &#39;yt      &#39;                                                            
+WCSNAME = 'yt      '                                                            
 </pre></div>
 </div>
 </div>
@@ -610,7 +610,7 @@ WCSNAME = &#39;yt      &#39;
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
 <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span>
-    <span class="n">divide</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span>
+    <span class="n">divide</span><span class="o">=</span><span class="s2">"ignore"</span>
 <span class="p">)</span>  <span class="c1"># suppress the warnings raised by taking log10 of data with zeros</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">()),</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
 </pre></div>
@@ -631,12 +631,12 @@ WCSNAME = &#39;yt      &#39;
 <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
 <span class="c1"># We plot it in log-scale and add a small number to avoid nan values.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fc2c4190350&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f56ffa5cef0&gt;
 </pre></div>
 </div>
 <img alt="_images/5167cc62a974f55030bdad9f4e3abc77f207782e3061a464759cad7b214da6b9.png" src="_images/5167cc62a974f55030bdad9f4e3abc77f207782e3061a464759cad7b214da6b9.png" />
@@ -653,8 +653,8 @@ WCSNAME = &#39;yt      &#39;
 
 <span class="c1"># We have the RA in hh:mm:ss and DEC in dd:mm:ss format.</span>
 <span class="c1"># We will use Skycoord to convert them into degrees later.</span>
-<span class="n">ra_obj</span> <span class="o">=</span> <span class="s2">&quot;19h59m28.3566s&quot;</span>
-<span class="n">dec_obj</span> <span class="o">=</span> <span class="s2">&quot;+40d44m02.096s&quot;</span>
+<span class="n">ra_obj</span> <span class="o">=</span> <span class="s2">"19h59m28.3566s"</span>
+<span class="n">dec_obj</span> <span class="o">=</span> <span class="s2">"+40d44m02.096s"</span>
 </pre></div>
 </div>
 </div>
@@ -662,8 +662,8 @@ WCSNAME = &#39;yt      &#39;
 <p>Here we convert the pixel scale from cm to degree by dividing the distance to the object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdelt1</span> <span class="o">=</span> <span class="p">((</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;CDELT1&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span> <span class="o">/</span> <span class="n">dist_obj</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cm&quot;</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;deg&quot;</span><span class="p">)</span>
-<span class="n">cdelt2</span> <span class="o">=</span> <span class="p">((</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;CDELT2&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span> <span class="o">/</span> <span class="n">dist_obj</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cm&quot;</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;deg&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdelt1</span> <span class="o">=</span> <span class="p">((</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">"CDELT1"</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span> <span class="o">/</span> <span class="n">dist_obj</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cm"</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"deg"</span><span class="p">)</span>
+<span class="n">cdelt2</span> <span class="o">=</span> <span class="p">((</span><span class="n">hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">"CDELT2"</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span> <span class="o">/</span> <span class="n">dist_obj</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cm"</span><span class="p">))</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">rad</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"deg"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cdelt1</span><span class="p">,</span> <span class="n">cdelt2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -690,7 +690,7 @@ WCSNAME = &#39;yt      &#39;
 <span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">deg</span><span class="p">]</span>
 
 <span class="c1"># the units of the axes are in degrees</span>
-<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cunit</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;deg&quot;</span><span class="p">,</span> <span class="s2">&quot;deg&quot;</span><span class="p">]</span>
+<span class="n">w</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cunit</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"deg"</span><span class="p">,</span> <span class="s2">"deg"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -712,29 +712,29 @@ WCSNAME = &#39;yt      &#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= &#39;IMAGE   &#39;           / Image extension                                
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= 'IMAGE   '           / Image extension                                
 BITPIX  =                  -64 / array data type                                
 NAXIS   =                    2 / number of array dimensions                     
 NAXIS1  =                 1024                                                  
 NAXIS2  =                 1452                                                  
 PCOUNT  =                    0 / number of parameters                           
 GCOUNT  =                    1 / number of groups                               
-EXTNAME = &#39;NN_EMISSIVITY_I_LOBE_150.0MHZ&#39; / extension name                      
-BTYPE   = &#39;nn_emissivity_i_lobe_150.0MHz&#39;                                       
-BUNIT   = &#39;Jy/arcsec**2&#39;                                                        
+EXTNAME = 'NN_EMISSIVITY_I_LOBE_150.0MHZ' / extension name                      
+BTYPE   = 'nn_emissivity_i_lobe_150.0MHz'                                       
+BUNIT   = 'Jy/arcsec**2'                                                        
 WCSAXES =                    2 / Number of coordinate axes                      
 CRPIX1  =                726.0 / Pixel coordinate of reference point            
 CRPIX2  =                512.0 / Pixel coordinate of reference point            
 CDELT1  = -8.7492222398397E-06 / [deg] Coordinate increment at reference point  
 CDELT2  =  8.7492222398397E-06 / [deg] Coordinate increment at reference point  
-CUNIT1  = &#39;deg     &#39;           / Units of coordinate increment and value        
-CUNIT2  = &#39;deg     &#39;           / Units of coordinate increment and value        
-CTYPE1  = &#39;LINEAR  &#39;                                                            
-CTYPE2  = &#39;LINEAR  &#39;                                                            
+CUNIT1  = 'deg     '           / Units of coordinate increment and value        
+CUNIT2  = 'deg     '           / Units of coordinate increment and value        
+CTYPE1  = 'LINEAR  '                                                            
+CTYPE2  = 'LINEAR  '                                                            
 CRVAL1  =          299.8681525 / [deg] Coordinate value at reference point      
 CRVAL2  =      40.733915555556 / [deg] Coordinate value at reference point      
 LATPOLE =                 90.0 / [deg] Native latitude of celestial pole        
-WCSNAME = &#39;yt      &#39;                                                            
+WCSNAME = 'yt      '                                                            
 MJDREF  =                  0.0 / [d] MJD of fiducial time                       
 </pre></div>
 </div>
@@ -746,9 +746,9 @@ MJDREF  =                  0.0 / [d] MJD of fiducial time
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"RA"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Dec"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -768,8 +768,8 @@ First we need to set the telescope resolution. For a 2D Gaussian, we can calcula
 <span class="n">telescope_resolution</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsecond</span>
 
 <span class="c1"># calculate the sigma in pixels.</span>
-<span class="c1"># since cdelt is in degrees, we use _.to(&#39;deg&#39;)</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="n">telescope_resolution</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;deg&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">cdelt2</span>
+<span class="c1"># since cdelt is in degrees, we use _.to('deg')</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">telescope_resolution</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"deg"</span><span class="p">)</span> <span class="o">/</span> <span class="n">cdelt2</span>
 </pre></div>
 </div>
 </div>
@@ -780,13 +780,13 @@ First we need to set the telescope resolution. For a 2D Gaussian, we can calcula
 <span class="c1"># in each direction</span>
 <span class="n">psf</span> <span class="o">=</span> <span class="n">Gaussian2DKernel</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
 
-<span class="c1"># let&#39;s take a look:</span>
+<span class="c1"># let's take a look:</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">psf</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fc2a4bbe990&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f56ffa72930&gt;
 </pre></div>
 </div>
 <img alt="_images/136a575947aa8ef82ea1d54043d2bd8ba8f7bd32142ee982bb0f206ab2878fc6.png" src="_images/136a575947aa8ef82ea1d54043d2bd8ba8f7bd32142ee982bb0f206ab2878fc6.png" />
@@ -800,7 +800,7 @@ First we need to set the telescope resolution. For a 2D Gaussian, we can calcula
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set FWHM and psf grid</span>
 <span class="n">telescope_resolution</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcsecond</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="n">telescope_resolution</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;deg&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">cdelt2</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">telescope_resolution</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"deg"</span><span class="p">)</span> <span class="o">/</span> <span class="n">cdelt2</span>
 <span class="n">x_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span>
     <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">gamma</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">gamma</span><span class="p">))</span>
 <span class="p">)</span>
@@ -813,13 +813,13 @@ First we need to set the telescope resolution. For a 2D Gaussian, we can calcula
 <span class="c1"># normalization</span>
 <span class="n">lorentzian_psf</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lorentzian_psf</span><span class="p">)</span>
 
-<span class="c1"># let&#39;s take a look again:</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lorentzian_psf</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">)</span>
+<span class="c1"># let's take a look again:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lorentzian_psf</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">"none"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fc2a4a08560&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f56fccd4d70&gt;
 </pre></div>
 </div>
 <img alt="_images/73fd0a48844099e3d0028a06a54cc785e1d6844fa21e3cedc1544451e8f3fd40.png" src="_images/73fd0a48844099e3d0028a06a54cc785e1d6844fa21e3cedc1544451e8f3fd40.png" />
@@ -831,7 +831,7 @@ First we need to set the telescope resolution. For a 2D Gaussian, we can calcula
 <p>Here we use <code class="docutils literal notranslate"><span class="pre">astropy.convolution.convolve_fft</span></code> to convolve image. This routine uses fourier transform for faster calculation. Especially since our data is <span class="math notranslate nohighlight">\(2^n\)</span> sized, which makes it particually fast. Using a fft, however, causes boundary effects. We’ll need to specify how we want to handle the boundary. Here we choose to “wrap” the data, which means making the data periodic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">convolved_image</span> <span class="o">=</span> <span class="n">convolve_fft</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s2">&quot;wrap&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">convolved_image</span> <span class="o">=</span> <span class="n">convolve_fft</span><span class="p">(</span><span class="n">hdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s2">"wrap"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -854,16 +854,16 @@ First we need to set the telescope resolution. For a 2D Gaussian, we can calcula
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">i_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">convolved_image</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">convolved_image</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span>
 <span class="p">)</span>  <span class="c1"># , cmap=plt.cm.viridis)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"RA"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Dec"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fc2a4ab3f20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f56fcb98cb0&gt;
 </pre></div>
 </div>
 <img alt="_images/84ad21702a15053b7cd52197b77dc717c4e7354a8e3a13bce6c2637b55a4392a.png" src="_images/84ad21702a15053b7cd52197b77dc717c4e7354a8e3a13bce6c2637b55a4392a.png" />
@@ -890,26 +890,26 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_q</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-    <span class="s2">&quot;http://data.astropy.org/tutorials/synthetic-images/synchrotron_q_lobe_0700_150MHz_sm.fits&quot;</span><span class="p">,</span>
+    <span class="s2">"http://data.astropy.org/tutorials/synthetic-images/synchrotron_q_lobe_0700_150MHz_sm.fits"</span><span class="p">,</span>
     <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">hdulist</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_q</span><span class="p">)</span>
-<span class="n">hdu_q</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="s2">&quot;NN_EMISSIVITY_Q_LOBE_150.0MHZ&quot;</span><span class="p">]</span>
+<span class="n">hdu_q</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="s2">"NN_EMISSIVITY_Q_LOBE_150.0MHZ"</span><span class="p">]</span>
 
 <span class="n">file_u</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-    <span class="s2">&quot;http://data.astropy.org/tutorials/synthetic-images/synchrotron_u_lobe_0700_150MHz_sm.fits&quot;</span><span class="p">,</span>
+    <span class="s2">"http://data.astropy.org/tutorials/synthetic-images/synchrotron_u_lobe_0700_150MHz_sm.fits"</span><span class="p">,</span>
     <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">hdulist</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file_u</span><span class="p">)</span>
-<span class="n">hdu_u</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="s2">&quot;NN_EMISSIVITY_U_LOBE_150.0MHZ&quot;</span><span class="p">]</span>
+<span class="n">hdu_u</span> <span class="o">=</span> <span class="n">hdulist</span><span class="p">[</span><span class="s2">"NN_EMISSIVITY_U_LOBE_150.0MHZ"</span><span class="p">]</span>
 
 <span class="c1"># Update the header with the wcs_header we created earlier</span>
 <span class="n">hdu_q</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">wcs_header</span><span class="p">)</span>
 <span class="n">hdu_u</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">wcs_header</span><span class="p">)</span>
 
 <span class="c1"># Convolve the images with the the psf</span>
-<span class="n">convolved_image_q</span> <span class="o">=</span> <span class="n">convolve_fft</span><span class="p">(</span><span class="n">hdu_q</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s2">&quot;wrap&quot;</span><span class="p">)</span>
-<span class="n">convolved_image_u</span> <span class="o">=</span> <span class="n">convolve_fft</span><span class="p">(</span><span class="n">hdu_u</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s2">&quot;wrap&quot;</span><span class="p">)</span>
+<span class="n">convolved_image_q</span> <span class="o">=</span> <span class="n">convolve_fft</span><span class="p">(</span><span class="n">hdu_q</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s2">"wrap"</span><span class="p">)</span>
+<span class="n">convolved_image_u</span> <span class="o">=</span> <span class="n">convolve_fft</span><span class="p">(</span><span class="n">hdu_u</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s2">"wrap"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -921,25 +921,25 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
-    <span class="n">convolved_image_q</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;seismic&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span>
+    <span class="n">convolved_image_q</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"seismic"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span>
 <span class="p">)</span>  <span class="c1"># , cmap=plt.cm.viridis)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"RA"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Dec"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
-    <span class="n">convolved_image_u</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;seismic&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span>
+    <span class="n">convolved_image_u</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"seismic"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span>
 <span class="p">)</span>  <span class="c1"># , cmap=plt.cm.viridis)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"RA"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Dec"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fc2a493a360&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f56fc902000&gt;
 </pre></div>
 </div>
 <img alt="_images/b68805d79ac4dc4cb1455b9e5955147634ba0f6e789c80b204f2f50fe4400fb0.png" src="_images/b68805d79ac4dc4cb1455b9e5955147634ba0f6e789c80b204f2f50fe4400fb0.png" />
@@ -954,7 +954,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, we plot the background image</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 <span class="n">i_plot</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">wcs</span><span class="p">)</span>
-<span class="n">i_plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">convolved_image</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+<span class="n">i_plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">convolved_image</span> <span class="o">+</span> <span class="mf">1e-3</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">)</span>
 
 <span class="c1"># ranges of the axis</span>
 <span class="n">xx0</span><span class="p">,</span> <span class="n">xx1</span> <span class="o">=</span> <span class="n">i_plot</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
@@ -994,13 +994,13 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <span class="n">pixY</span> <span class="o">=</span> <span class="n">frac</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>  <span class="c1"># Y-vector</span>
 
 <span class="c1"># keyword arguments for quiverplots</span>
-<span class="n">quiveropts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">headlength</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pivot</span><span class="o">=</span><span class="s2">&quot;middle&quot;</span><span class="p">)</span>
+<span class="n">quiveropts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">headlength</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pivot</span><span class="o">=</span><span class="s2">"middle"</span><span class="p">)</span>
 <span class="n">i_plot</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">pixX</span><span class="p">,</span> <span class="n">pixY</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="o">**</span><span class="n">quiveropts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Quiver at 0x7fc2a6d3d640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.quiver.Quiver at 0x7f56fc98de20&gt;
 </pre></div>
 </div>
 <img alt="_images/fb1279e7c14b4a69f6c29e6764ddfff6bdfed0225b40a2cfbea452a35303ac1c.png" src="_images/fb1279e7c14b4a69f6c29e6764ddfff6bdfed0225b40a2cfbea452a35303ac1c.png" />

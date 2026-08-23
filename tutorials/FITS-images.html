@@ -553,7 +553,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_file</span>
 
 <span class="n">image_file</span> <span class="o">=</span> <span class="n">download_file</span><span class="p">(</span>
-    <span class="s2">&quot;http://data.astropy.org/tutorials/FITS-images/HorseHead.fits&quot;</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span>
+    <span class="s2">"http://data.astropy.org/tutorials/FITS-images/HorseHead.fits"</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -597,7 +597,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class 'numpy.ndarray'&gt;
 (893, 891)
 </pre></div>
 </div>
@@ -630,7 +630,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class 'numpy.ndarray'&gt;
 (893, 891)
 </pre></div>
 </div>
@@ -642,7 +642,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <h2>Viewing the image data and getting basic statistics<a class="headerlink" href="#viewing-the-image-data-and-getting-basic-statistics" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 
 <span class="c1"># To see more color maps</span>
@@ -651,7 +651,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f0d01ef2030&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fbf46c40230&gt;
 </pre></div>
 </div>
 <img alt="_images/3dd86180311d10f1b3df52c10e8e277ac9f500a842bad05ce2be9acc2d4e5185.png" src="_images/3dd86180311d10f1b3df52c10e8e277ac9f500a842bad05ce2be9acc2d4e5185.png" />
@@ -660,10 +660,10 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <p>Let’s get some basic statistics about our image:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Min:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stdev:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Min:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Max:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Stdev:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">image_data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -688,7 +688,7 @@ Stdev: 3032.3927542049046
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class 'numpy.ndarray'&gt;
 (795663,)
 </pre></div>
 </div>
@@ -697,7 +697,7 @@ Stdev: 3032.3927542049046
 <p>Now make the plot using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.hist</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">histogram</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">image_data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">histogram</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">image_data</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -718,21 +718,21 @@ Stdev: 3032.3927542049046
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">())</span>
 
 <span class="c1"># I chose the tick marks based on the histogram above</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mf">5.0e3</span><span class="p">,</span> <span class="mf">1.0e4</span><span class="p">,</span> <span class="mf">2.0e4</span><span class="p">])</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;5,000&quot;</span><span class="p">,</span> <span class="s2">&quot;10,000&quot;</span><span class="p">,</span> <span class="s2">&quot;20,000&quot;</span><span class="p">])</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">"5,000"</span><span class="p">,</span> <span class="s2">"10,000"</span><span class="p">,</span> <span class="s2">"20,000"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(1, 5000.0, &#39;5,000&#39;),
- Text(1, 10000.0, &#39;10,000&#39;),
- Text(1, 20000.0, &#39;20,000&#39;)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(1, 5000.0, '5,000'),
+ Text(1, 10000.0, '10,000'),
+ Text(1, 20000.0, '20,000')]
 </pre></div>
 </div>
-<img alt="_images/3c4bd2a10c8a0e916be16389b3d09b4abfd5f762306d54d18907846272f02b41.png" src="_images/3c4bd2a10c8a0e916be16389b3d09b4abfd5f762306d54d18907846272f02b41.png" />
+<img alt="_images/bf84fbfe33a965055c04960cc964888e05939724d2c48a636dd92588c2c5d4ce.png" src="_images/bf84fbfe33a965055c04960cc964888e05939724d2c48a636dd92588c2c5d4ce.png" />
 </div>
 </div>
 </section>
@@ -743,7 +743,7 @@ Stdev: 3032.3927542049046
 <p>Let’s start by opening a series of FITS files and store the data in a list, which we’ve named <code class="docutils literal notranslate"><span class="pre">image_concat</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;http://data.astropy.org/tutorials/FITS-images/M13_blue_</span><span class="si">{0:04d}</span><span class="s2">.fits&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">"http://data.astropy.org/tutorials/FITS-images/M13_blue_</span><span class="si">{0:04d}</span><span class="s2">.fits"</span>
 
 <span class="n">image_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">download_file</span><span class="p">(</span><span class="n">base_url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
 <span class="n">image_concat</span> <span class="o">=</span> <span class="p">[</span><span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">image_list</span><span class="p">]</span>
@@ -769,7 +769,7 @@ Stdev: 3032.3927542049046
 <p>We’re going to show the image, but need to decide on the best stretch. To do so let’s plot a histogram of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">final_image</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">final_image</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -780,13 +780,13 @@ Stdev: 3032.3927542049046
 <p>We’ll use the keywords <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> to set limits on the color scaling for <code class="docutils literal notranslate"><span class="pre">imshow</span></code>. By setting limits according to the histogram above, we are able to generate image with more distinct color distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">final_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">2e3</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">3e3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">final_image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">2e3</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">3e3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7f0d009123c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fbf3d6993d0&gt;
 </pre></div>
 </div>
 <img alt="_images/3e113025dada9770bc6d67d2c978e8dacd8e6bfc4d714c1a4212ba117ca9db19.png" src="_images/3e113025dada9770bc6d67d2c978e8dacd8e6bfc4d714c1a4212ba117ca9db19.png" />
@@ -799,7 +799,7 @@ Stdev: 3032.3927542049046
 <p>Warning: you’ll receive an error if the file you are trying to write already exists.  That’s why we’ve set <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outfile</span> <span class="o">=</span> <span class="s2">&quot;stacked_M13_blue.fits&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outfile</span> <span class="o">=</span> <span class="s2">"stacked_M13_blue.fits"</span>
 
 <span class="n">hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">(</span><span class="n">final_image</span><span class="p">)</span>
 <span class="n">hdu</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

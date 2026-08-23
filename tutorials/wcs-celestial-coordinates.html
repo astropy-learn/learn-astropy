@@ -575,18 +575,18 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_input_dict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;CTYPE1&quot;</span><span class="p">:</span> <span class="s2">&quot;RA---TAN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CUNIT1&quot;</span><span class="p">:</span> <span class="s2">&quot;deg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CDELT1&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0002777777778</span><span class="p">,</span>
-    <span class="s2">&quot;CRPIX1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;CRVAL1&quot;</span><span class="p">:</span> <span class="mf">337.5202808</span><span class="p">,</span>
-    <span class="s2">&quot;NAXIS1&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
-    <span class="s2">&quot;CTYPE2&quot;</span><span class="p">:</span> <span class="s2">&quot;DEC--TAN&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CUNIT2&quot;</span><span class="p">:</span> <span class="s2">&quot;deg&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CDELT2&quot;</span><span class="p">:</span> <span class="mf">0.0002777777778</span><span class="p">,</span>
-    <span class="s2">&quot;CRPIX2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s2">&quot;CRVAL2&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">20.833333059999998</span><span class="p">,</span>
-    <span class="s2">&quot;NAXIS2&quot;</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+    <span class="s2">"CTYPE1"</span><span class="p">:</span> <span class="s2">"RA---TAN"</span><span class="p">,</span>
+    <span class="s2">"CUNIT1"</span><span class="p">:</span> <span class="s2">"deg"</span><span class="p">,</span>
+    <span class="s2">"CDELT1"</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0002777777778</span><span class="p">,</span>
+    <span class="s2">"CRPIX1"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"CRVAL1"</span><span class="p">:</span> <span class="mf">337.5202808</span><span class="p">,</span>
+    <span class="s2">"NAXIS1"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
+    <span class="s2">"CTYPE2"</span><span class="p">:</span> <span class="s2">"DEC--TAN"</span><span class="p">,</span>
+    <span class="s2">"CUNIT2"</span><span class="p">:</span> <span class="s2">"deg"</span><span class="p">,</span>
+    <span class="s2">"CDELT2"</span><span class="p">:</span> <span class="mf">0.0002777777778</span><span class="p">,</span>
+    <span class="s2">"CRPIX2"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"CRVAL2"</span><span class="p">:</span> <span class="o">-</span><span class="mf">20.833333059999998</span><span class="p">,</span>
+    <span class="s2">"NAXIS2"</span><span class="p">:</span> <span class="mi">1024</span><span class="p">,</span>
 <span class="p">}</span>
 <span class="n">wcs_helix_dict</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">wcs_input_dict</span><span class="p">)</span>
 </pre></div>
@@ -604,8 +604,8 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
 
 Number of WCS axes: 2
-CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39;
-CUNIT : &#39;deg&#39; &#39;deg&#39;
+CTYPE : 'RA---TAN' 'DEC--TAN'
+CUNIT : 'deg' 'deg'
 CRVAL : 337.5202808 -20.833333059999998
 CRPIX : 1.0 1.0
 PC1_1 PC1_2  : 1.0 0.0
@@ -626,8 +626,8 @@ NAXIS : 1024  1024
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wcs_helix_list</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">naxis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crpix</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span> <span class="o">=</span> <span class="p">[</span><span class="mf">337.5202808</span><span class="p">,</span> <span class="o">-</span><span class="mf">20.833333059999998</span><span class="p">]</span>
-<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cunit</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;deg&quot;</span><span class="p">,</span> <span class="s2">&quot;deg&quot;</span><span class="p">]</span>
-<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">ctype</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;RA---TAN&quot;</span><span class="p">,</span> <span class="s2">&quot;DEC--TAN&quot;</span><span class="p">]</span>
+<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cunit</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"deg"</span><span class="p">,</span> <span class="s2">"deg"</span><span class="p">]</span>
+<span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">ctype</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"RA---TAN"</span><span class="p">,</span> <span class="s2">"DEC--TAN"</span><span class="p">]</span>
 <span class="n">wcs_helix_list</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">cdelt</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.0002777777778</span><span class="p">,</span> <span class="mf">0.0002777777778</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -644,8 +644,8 @@ NAXIS : 1024  1024
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
 
 Number of WCS axes: 2
-CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39;
-CUNIT : &#39;deg&#39; &#39;deg&#39;
+CTYPE : 'RA---TAN' 'DEC--TAN'
+CUNIT : 'deg' 'deg'
 CRVAL : 337.5202808 -20.833333059999998
 CRPIX : 1.0 1.0
 PC1_1 PC1_2  : 1.0 0.0
@@ -675,8 +675,8 @@ NAXIS : 0  0
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
 
 Number of WCS axes: 2
-CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39;
-CUNIT : &#39;deg&#39; &#39;deg&#39;
+CTYPE : 'RA---TAN' 'DEC--TAN'
+CUNIT : 'deg' 'deg'
 CRVAL : 337.5202808 -20.833333059999998
 CRPIX : 1.0 1.0
 PC1_1 PC1_2  : 1.0 0.0
@@ -698,7 +698,7 @@ NAXIS : 1024  1024
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header_data_unit_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/astropy/astropy-data/raw/6d92878d18e970ce6497b70a9253f65c925978bf/tutorials/celestial-coords1/tailored_dss.22.29.38.50-20.50.13_60arcmin.fits&quot;</span>
+    <span class="s2">"https://github.com/astropy/astropy-data/raw/6d92878d18e970ce6497b70a9253f65c925978bf/tutorials/celestial-coords1/tailored_dss.22.29.38.50-20.50.13_60arcmin.fits"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -741,18 +741,18 @@ BITPIX  =                   16 / array data type
 NAXIS   =                    2 / number of array dimensions                     
 NAXIS1  =                 2119                                                  
 NAXIS2  =                 2119                                                  
-DATE    = &#39;03/09/19          &#39; /Date of FITS file creation                      
-ORIGIN  = &#39;CASB -- STScI     &#39; /Origin of FITS image                            
-PLTLABEL= &#39;J 10265           &#39; /Observatory plate label                         
-PLATEID = &#39;04I5              &#39; /GSSS Plate ID                                   
-REGION  = &#39;S602              &#39; /GSSS Region Name                                
-DATE-OBS= &#39;1985-06-15&#39;         / UT date of Observation                         
-UT      = &#39;18:30:00.00       &#39; /UT time of observation                          
+DATE    = '03/09/19          ' /Date of FITS file creation                      
+ORIGIN  = 'CASB -- STScI     ' /Origin of FITS image                            
+PLTLABEL= 'J 10265           ' /Observatory plate label                         
+PLATEID = '04I5              ' /GSSS Plate ID                                   
+REGION  = 'S602              ' /GSSS Region Name                                
+DATE-OBS= '1985-06-15'         / UT date of Observation                         
+UT      = '18:30:00.00       ' /UT time of observation                          
 EPOCH   =  1.9854542236328E+03 /Epoch of plate                                  
 PLTRAH  =                   22 /Plate center RA                                 
 PLTRAM  =                   26 /                                                
 PLTRAS  =  4.3474570000000E+01 /                                                
-PLTDECSN= &#39;-                 &#39; /Plate center Dec                                
+PLTDECSN= '-                 ' /Plate center Dec                                
 PLTDECD =                   19 /                                                
 PLTDECM =                   44 /                                                
 PLTDECS =  4.2059660000000E+01 /                                                
@@ -761,13 +761,13 @@ EXPOSURE=  7.0000000000000E+01 /Exposure time minutes
 BANDPASS=                    0 /GSSS Bandpass code                              
 PLTGRADE=                    1 /Plate grade                                     
 PLTSCALE=  6.7200000000000E+01 /Plate Scale arcsec per mm                       
-SITELAT = &#39;-31:16:24.00      &#39; /Latitude of Observatory                         
-SITELONG= &#39;+149:03:42.00     &#39; /Longitude of Observatory                        
-TELESCOP= &#39;UK Schmidt (new optics)&#39; /Telescope where plate taken                
+SITELAT = '-31:16:24.00      ' /Latitude of Observatory                         
+SITELONG= '+149:03:42.00     ' /Longitude of Observatory                        
+TELESCOP= 'UK Schmidt (new optics)' /Telescope where plate taken                
 CNPIX1  =                 4541 /X corner  (pixels)                              
 CNPIX2  =                 3647 /Y corner                                        
-DATATYPE= &#39;INTEGER*2         &#39; /Type of Data                                    
-SCANIMG = &#39;S602_04I5_00_00.PIM&#39; /Name of original scan                          
+DATATYPE= 'INTEGER*2         ' /Type of Data                                    
+SCANIMG = 'S602_04I5_00_00.PIM' /Name of original scan                          
 SCANNUM =                    0 /Identifies scan of the plate                    
 DCHOPPED=                    F /Image repaired for chopping effects             
 DSHEARED=                    F /Image repaired for shearing effects             
@@ -837,13 +837,13 @@ AMDY20  =  0.0000000000000E+00 /
         Astronomy, Inc.  All rights reserved.                                   
 DATAMAX =                21635 /Maximum data value                              
 DATAMIN =                  607 /Minimum data value                              
-OBJECT  = &#39;dss67608          &#39; /Object ID                                       
-OBJCTRA = &#39;22 29 38.500      &#39; /Object Right Ascension (J2000)                  
-OBJCTDEC= &#39;-20 50 13.00      &#39; /Object Declination (J2000)                      
+OBJECT  = 'dss67608          ' /Object ID                                       
+OBJCTRA = '22 29 38.500      ' /Object Right Ascension (J2000)                  
+OBJCTDEC= '-20 50 13.00      ' /Object Declination (J2000)                      
 OBJCTX  =              5600.52 /Object X on plate (pixels)                      
 OBJCTY  =              4706.97 /Object Y on plate (pixels)                      
-CTYPE1  = &#39;RA---TAN&#39;           /R.A. in tangent plane projection                
-CTYPE2  = &#39;DEC--TAN&#39;           /DEC. in tangent plane projection                
+CTYPE1  = 'RA---TAN'           /R.A. in tangent plane projection                
+CTYPE2  = 'DEC--TAN'           /DEC. in tangent plane projection                
 CRPIX1  =               1059.5 /Refpix of first axis                            
 CRPIX2  =               1059.5 /Refpix of second axis                           
 CRVAL1  =  3.3741068406866E+02 /RA at Ref pix in decimal degrees                
@@ -873,7 +873,7 @@ CD2_2   =  4.7224016024271E-04 /CD matrix
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set MJD-OBS to 46231.000000 from DATE-OBS&#39;. [astropy.wcs.wcs]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: 'datfix' made the change 'Set MJD-OBS to 46231.000000 from DATE-OBS'. [astropy.wcs.wcs]
 </pre></div>
 </div>
 </div>
@@ -889,8 +889,8 @@ CD2_2   =  4.7224016024271E-04 /CD matrix
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WCS Keywords
 
 Number of WCS axes: 2
-CTYPE : &#39;RA---TAN&#39; &#39;DEC--TAN&#39;
-CUNIT : &#39;deg&#39; &#39;deg&#39;
+CTYPE : 'RA---TAN' 'DEC--TAN'
+CUNIT : 'deg' 'deg'
 CRVAL : 336.6811440416667 -19.745016572222223
 CRPIX : 2499.6447489941065 3378.9002584168584
 PC1_1 PC1_2  : 0.025282857855146917 4.4684674035885186e-05
@@ -908,12 +908,12 @@ NAXIS : 2119  2119
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"cividis"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fe9b493b350&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f010a5b1d00&gt;
 </pre></div>
 </div>
 <img alt="_images/28c16dfa2f8308428fc7f829c6cb4141b709fa85e7286673f84ef70c6a79a9d3.png" src="_images/28c16dfa2f8308428fc7f829c6cb4141b709fa85e7286673f84ef70c6a79a9d3.png" />
@@ -924,12 +924,12 @@ NAXIS : 2119  2119
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_helix</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"cividis"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"RA"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Dec"</span><span class="p">)</span>
 
-<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">"icrs"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"dotted"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -946,12 +946,12 @@ NAXIS : 2119  2119
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_helix</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"cividis"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"RA"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Dec"</span><span class="p">)</span>
 
-<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">&quot;galactic&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
+<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">"galactic"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"dotted"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -977,22 +977,22 @@ NAXIS : 2119  2119
     <span class="mf">0.1</span><span class="p">,</span>
     <span class="n">head_width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="n">head_length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
-    <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="n">fc</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
+    <span class="n">ec</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mf">0.003</span><span class="p">,</span>
-    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">),</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">"icrs"</span><span class="p">),</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
     <span class="mf">337.05</span><span class="p">,</span>
     <span class="o">-</span><span class="mf">21.18</span><span class="p">,</span>
-    <span class="s2">&quot;0.1 deg&quot;</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="s2">"0.1 deg"</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
     <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
-    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">),</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">"icrs"</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cividis&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;RA&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Dec&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"cividis"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"RA"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Dec"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

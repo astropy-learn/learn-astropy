@@ -548,8 +548,8 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># You shouldn&#39;t use the `seed` function in real science code, but we use it here for example purposes.</span>
-<span class="c1"># It makes the &quot;random&quot; number generator always give the same numbers wherever you run it.</span>
+<span class="c1"># You shouldn't use the `seed` function in real science code, but we use it here for example purposes.</span>
+<span class="c1"># It makes the "random" number generator always give the same numbers wherever you run it.</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
 
 <span class="c1"># Set up matplotlib</span>
@@ -600,9 +600,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Half light radius</span>
+<span class="w">    </span><span class="sd">"""Half light radius</span>
 <span class="sd">value: {0}</span>
-<span class="sd">unit: {1}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Reff</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">Reff</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
+<span class="sd">unit: {1}"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Reff</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">Reff</span><span class="o">.</span><span class="n">unit</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -619,9 +619,9 @@ unit: pc
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Half light radius</span>
+<span class="w">    </span><span class="sd">"""Half light radius</span>
 <span class="sd">value: {0.value}</span>
-<span class="sd">unit: {0.unit}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Reff</span><span class="p">)</span>
+<span class="sd">unit: {0.unit}"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Reff</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -637,7 +637,7 @@ unit: pc
 <p>Furthermore, we can convert the radius in parsecs to any other unit of length using the <code class="docutils literal notranslate"><span class="pre">to()</span></code> method. Here, we convert it to meters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:.3g}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Reff</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0:.3g}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Reff</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -660,9 +660,9 @@ unit: pc
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;First 10 radial velocity measurements: </span>
+<span class="w">    </span><span class="sd">"""First 10 radial velocity measurements: </span>
 <span class="sd">{0}</span>
-<span class="sd">{1}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">v</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="sd">{1}"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">v</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">v</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)[:</span><span class="mi">10</span><span class="p">])</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -686,7 +686,7 @@ unit: pc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverterFormatted at 0x7fcbe16fcd10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.visualization.units.quantity_support.&lt;locals&gt;.MplQuantityConverterFormatted at 0x7f14eca3d940&gt;
 </pre></div>
 </div>
 </div>
@@ -695,13 +695,13 @@ unit: pc
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">"step"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"N"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;N&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'N')
 </pre></div>
 </div>
 <img alt="_images/090a13aae4c3a922c5ff6a91a327eb260f16bffc8afd4e697dc76b922ee69f5d.png" src="_images/090a13aae4c3a922c5ff6a91a327eb260f16bffc8afd4e697dc76b922ee69f5d.png" />
@@ -711,7 +711,7 @@ unit: pc
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">v</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Velocity dispersion: </span><span class="si">{0:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Velocity dispersion: </span><span class="si">{0:.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -759,10 +759,10 @@ unit: pc
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Galaxy mass</span>
+<span class="w">    </span><span class="sd">"""Galaxy mass</span>
 <span class="sd">in solar units: {0:.3g}</span>
 <span class="sd">SI units: {1:.3g}</span>
-<span class="sd">CGS units: {2:.3g}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Msun</span><span class="p">),</span> <span class="n">M</span><span class="o">.</span><span class="n">si</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="n">cgs</span><span class="p">)</span>
+<span class="sd">CGS units: {2:.3g}"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Msun</span><span class="p">),</span> <span class="n">M</span><span class="o">.</span><span class="n">si</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="n">cgs</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -799,12 +799,12 @@ CGS units: 1.02e+39 g
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">UnitConversionError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:161,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:161,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
 <span class="g g-Whitespace">    </span><span class="mi">160</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">161</span>     <span class="k">return</span> <span class="p">([</span><span class="n">get_converter</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">dimensionless_unscaled</span><span class="p">)],</span> <span class="n">dimensionless_unscaled</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="k">except</span> <span class="n">UnitsError</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:39,</span> in <span class="ni">get_converter</span><span class="nt">(from_unit, to_unit)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:39,</span> in <span class="ni">get_converter</span><span class="nt">(from_unit, to_unit)</span>
 <span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">---&gt; </span><span class="mi">39</span>     <span class="n">converter</span> <span class="o">=</span> <span class="n">from_unit</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">to_unit</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
@@ -813,11 +813,11 @@ CGS units: 1.02e+39 g
 <span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="c1"># already short-circuited; here, we cover just the case where, e.g., the</span>
 <span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="c1"># user has done u.add_enabled_equivalencies(u.dimensionless_angles()).</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:588,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:588,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">586</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 <span class="ne">--&gt; </span><span class="mi">588</span> <span class="k">raise</span> <span class="n">exc</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:571,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:571,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">570</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">571</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">572</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
@@ -827,11 +827,11 @@ CGS units: 1.02e+39 g
 <span class="g g-Whitespace">    </span><span class="mi">576</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
 <span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:522,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:522,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">520</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">522</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">522</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible"</span><span class="p">)</span>
 
-<span class="ne">UnitConversionError</span>: &#39;km2 kg pc / m3&#39; (mass) and &#39;&#39; (dimensionless) are not convertible
+<span class="ne">UnitConversionError</span>: 'km2 kg pc / m3' (mass) and '' (dimensionless) are not convertible
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
@@ -839,23 +839,23 @@ CGS units: 1.02e+39 g
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:701,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:701,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
 <span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">701</span>     <span class="k">raise</span> <span class="n">e</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:646,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:646,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">641</span> <span class="c1"># Determine required conversion functions -- to bring the unit of the</span>
 <span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="c1"># input to that expected (e.g., radian for np.sin), or to get</span>
 <span class="g g-Whitespace">    </span><span class="mi">643</span> <span class="c1"># consistent units between two inputs (e.g., in np.add) --</span>
 <span class="g g-Whitespace">    </span><span class="mi">644</span> <span class="c1"># and the unit of the result (or tuple of units for nout &gt; 1).</span>
 <span class="g g-Whitespace">    </span><span class="mi">645</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">646</span>     <span class="n">converters</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">converters_and_unit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;out&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"out"</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">649</span>     <span class="c1"># Avoid loop back by turning any Quantity output into array views.</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:177,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="n">units</span> <span class="o">=</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s2">&quot;unit&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:177,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="n">units</span> <span class="o">=</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="s2">"unit"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
 <span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="c1"># Determine possible conversion functions, and the result unit.</span>
 <span class="ne">--&gt; </span><span class="mi">177</span> <span class="n">converters</span><span class="p">,</span> <span class="n">result_unit</span> <span class="o">=</span> <span class="n">ufunc_helper</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">units</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">179</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">converter</span> <span class="ow">is</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">converter</span> <span class="ow">in</span> <span class="n">converters</span><span class="p">):</span>
@@ -864,17 +864,17 @@ CGS units: 1.02e+39 g
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">184</span>     <span class="c1"># can just have the unit of the quantity</span>
 <span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># (this allows, e.g., `q &gt; 0.` independent of unit)</span>
 <span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">187</span>         <span class="c1"># Don&#39;t fold this loop in the test above: this rare case</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span>         <span class="c1"># Don't fold this loop in the test above: this rare case</span>
 <span class="g g-Whitespace">    </span><span class="mi">188</span>         <span class="c1"># should not make the common case slower.</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:163,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/helpers.py:163,</span> in <span class="ni">helper_dimensionless_to_dimensionless</span><span class="nt">(f, unit)</span>
 <span class="g g-Whitespace">    </span><span class="mi">161</span>     <span class="k">return</span> <span class="p">([</span><span class="n">get_converter</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">dimensionless_unscaled</span><span class="p">)],</span> <span class="n">dimensionless_unscaled</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="k">except</span> <span class="n">UnitsError</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">163</span>     <span class="k">raise</span> <span class="n">UnitTypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">164</span>         <span class="sa">f</span><span class="s2">&quot;Can only apply &#39;</span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39; function to dimensionless quantities&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span>         <span class="sa">f</span><span class="s2">"Can only apply '</span><span class="si">{</span><span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">' function to dimensionless quantities"</span>
 <span class="g g-Whitespace">    </span><span class="mi">165</span>     <span class="p">)</span>
 
-<span class="ne">UnitTypeError</span>: Can only apply &#39;log10&#39; function to dimensionless quantities
+<span class="ne">UnitTypeError</span>: Can only apply 'log10' function to dimensionless quantities
 </pre></div>
 </div>
 </div>
@@ -905,12 +905,12 @@ CGS units: 1.02e+39 g
 <p>We’ll generate a synthetic dataset, assuming the cloud follows a Gaussian distribution in each of RA, Dec and velocity. We start by creating a 100x100x300 numpy array, such that the first coordinate is right ascension, the second is declination, and the third is velocity.  We use the <code class="docutils literal notranslate"><span class="pre">numpy.meshgrid</span></code> function to create data cubes for each of the three coordinates, and then use them in the formula for a Gaussian to generate an array with the synthetic data cube. In this cube, the cloud is positioned at the center of the cube, with <span class="math notranslate nohighlight">\(\sigma\)</span> and the center in each dimension shown below.  Note in particular that the <span class="math notranslate nohighlight">\(\sigma\)</span> for RA and Dec have different units from the center, but <code class="docutils literal notranslate"><span class="pre">astropy</span></code> automatically does the relevant conversions before computing the exponential.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cloud&#39;s center</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cloud's center</span>
 <span class="n">cen_ra</span> <span class="o">=</span> <span class="mf">52.25</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span>
 <span class="n">cen_dec</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span>
 <span class="n">cen_v</span> <span class="o">=</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
 
-<span class="c1"># Cloud&#39;s size</span>
+<span class="c1"># Cloud's size</span>
 <span class="n">sig_ra</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcmin</span>
 <span class="n">sig_dec</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">arcmin</span>
 <span class="n">sig_v</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">km</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
@@ -951,9 +951,9 @@ CGS units: 1.02e+39 g
 <span class="c1"># Average velocity bin width</span>
 <span class="n">dv</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">v</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;dra = {0}</span>
+<span class="w">    </span><span class="sd">"""dra = {0}</span>
 <span class="sd">ddec = {1}</span>
-<span class="sd">dv = {2}&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dra</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">),</span> <span class="n">ddec</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">),</span> <span class="n">dv</span><span class="p">)</span>
+<span class="sd">dv = {2}"""</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dra</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">),</span> <span class="n">ddec</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">arcsec</span><span class="p">),</span> <span class="n">dv</span><span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -985,15 +985,15 @@ dv = 0.1 km / s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note that we display RA in the convential way by going from max to min</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">intcloud</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-    <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span>
     <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">ra</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">ra</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">dec</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">dec</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;hot&quot;</span><span class="p">,</span>
-    <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
-    <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">"hot"</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="o">=</span><span class="s2">"nearest"</span><span class="p">,</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="s2">"equal"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Intensity (</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">intcloud</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;RA (deg)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dec (deg)&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">"Intensity (</span><span class="si">{}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">intcloud</span><span class="o">.</span><span class="n">unit</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"RA (deg)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Dec (deg)"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1035,17 +1035,17 @@ dv = 0.1 km / s
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nu13</span> <span class="o">=</span> <span class="n">lambda13</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Hz</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">nu18</span> <span class="o">=</span> <span class="n">lambda18</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Hz</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:948,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:948,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
 <span class="g g-Whitespace">    </span><span class="mi">944</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">946</span>     <span class="c1"># Avoid using to_value to ensure that we make a copy. We also</span>
-<span class="g g-Whitespace">    </span><span class="mi">947</span>     <span class="c1"># don&#39;t want to slow down this method (esp. the scalar case).</span>
+<span class="g g-Whitespace">    </span><span class="mi">947</span>     <span class="c1"># don't want to slow down this method (esp. the scalar case).</span>
 <span class="ne">--&gt; </span><span class="mi">948</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">949</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">950</span>     <span class="c1"># to_value only copies if necessary</span>
 <span class="g g-Whitespace">    </span><span class="mi">951</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:901,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:901,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">898</span>     <span class="n">equivalencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equivalencies</span>
 <span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">StructuredUnit</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="c1"># Standard path, let unit to do work.</span>
@@ -1059,18 +1059,18 @@ dv = 0.1 km / s
 <span class="g g-Whitespace">    </span><span class="mi">909</span>     <span class="c1"># Convert simple to Structured on initialization?</span>
 <span class="g g-Whitespace">    </span><span class="mi">910</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:659,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:659,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">657</span>     <span class="k">return</span> <span class="n">UNITY</span>
 <span class="g g-Whitespace">    </span><span class="mi">658</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">659</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">Unit</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">equivalencies</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:588,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:588,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">585</span>             <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">586</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 <span class="ne">--&gt; </span><span class="mi">588</span> <span class="k">raise</span> <span class="n">exc</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:571,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="c1"># if that doesn&#39;t work, maybe we can do it with equivalencies?</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:571,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="c1"># if that doesn't work, maybe we can do it with equivalencies?</span>
 <span class="g g-Whitespace">    </span><span class="mi">570</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">571</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">572</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
@@ -1079,14 +1079,14 @@ dv = 0.1 km / s
 <span class="g g-Whitespace">    </span><span class="mi">575</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
 <span class="g g-Whitespace">    </span><span class="mi">576</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
 <span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;equivalencies&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">"equivalencies"</span><span class="p">):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:522,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:522,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">519</span> <span class="n">unit_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">520</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">522</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">522</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible"</span><span class="p">)</span>
 
-<span class="ne">UnitConversionError</span>: &#39;mm&#39; (length) and &#39;Hz&#39; (frequency) are not convertible
+<span class="ne">UnitConversionError</span>: 'mm' (length) and 'Hz' (frequency) are not convertible
 </pre></div>
 </div>
 </div>
@@ -1130,7 +1130,7 @@ dv = 0.1 km / s
 <p>The units of <span class="math notranslate nohighlight">\(B\)</span> are Hz sec, which can be decomposed to a dimensionless unit if you actually care about its value.  Usually this is not necessary, though. Quantities are at their best if you use them without worrying about intermediate units, and only convert at the very end when you want a final answer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">decompose</span><span class="p">()))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">decompose</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
@@ -1145,7 +1145,7 @@ dv = 0.1 km / s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NCO</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">data</span> <span class="o">*</span> <span class="n">dv</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">B</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Peak CO column density: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Peak CO column density: "</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">NCO</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1166,7 +1166,7 @@ dv = 0.1 km / s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H2_CO_ratio</span> <span class="o">=</span> <span class="mf">5.9e6</span>
 <span class="n">NH2</span> <span class="o">=</span> <span class="n">NCO</span> <span class="o">*</span> <span class="n">H2_CO_ratio</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Peak H2 column density: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Peak H2 column density: "</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">NH2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1206,7 +1206,7 @@ dv = 0.1 km / s
 <p>Now comes an important subtlety: in the small angle approximation, multiplying the pixel area with the square of distance yields the cross-sectional area of the cloud that the pixel covers, in <em>physical</em> units, rather than angular units.  So it’s tempting to just multiply the area and the square of the distance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da</span> <span class="o">=</span> <span class="n">dap</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># don&#39;t actually do it this way - use the version below instead!</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">da</span> <span class="o">=</span> <span class="n">dap</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># don't actually do it this way - use the version below instead!</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">da</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1241,17 +1241,17 @@ dv = 0.1 km / s
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">da</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:948,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:948,</span> in <span class="ni">Quantity.to</span><span class="nt">(self, unit, equivalencies, copy)</span>
 <span class="g g-Whitespace">    </span><span class="mi">944</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">Unit</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">946</span>     <span class="c1"># Avoid using to_value to ensure that we make a copy. We also</span>
-<span class="g g-Whitespace">    </span><span class="mi">947</span>     <span class="c1"># don&#39;t want to slow down this method (esp. the scalar case).</span>
+<span class="g g-Whitespace">    </span><span class="mi">947</span>     <span class="c1"># don't want to slow down this method (esp. the scalar case).</span>
 <span class="ne">--&gt; </span><span class="mi">948</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">949</span> <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">950</span>     <span class="c1"># to_value only copies if necessary</span>
 <span class="g g-Whitespace">    </span><span class="mi">951</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_value</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">equivalencies</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:901,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:901,</span> in <span class="ni">Quantity._to_value</span><span class="nt">(self, unit, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">898</span>     <span class="n">equivalencies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_equivalencies</span>
 <span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="p">,</span> <span class="n">StructuredUnit</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="c1"># Standard path, let unit to do work.</span>
@@ -1265,18 +1265,18 @@ dv = 0.1 km / s
 <span class="g g-Whitespace">    </span><span class="mi">909</span>     <span class="c1"># Convert simple to Structured on initialization?</span>
 <span class="g g-Whitespace">    </span><span class="mi">910</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:659,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:659,</span> in <span class="ni">UnitBase.to</span><span class="nt">(self, other, value, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">657</span>     <span class="k">return</span> <span class="n">UNITY</span>
 <span class="g g-Whitespace">    </span><span class="mi">658</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">659</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_converter</span><span class="p">(</span><span class="n">Unit</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">equivalencies</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:588,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:588,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">585</span>             <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">586</span>                 <span class="k">return</span> <span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">b</span><span class="p">(</span><span class="n">converter</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 <span class="ne">--&gt; </span><span class="mi">588</span> <span class="k">raise</span> <span class="n">exc</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:571,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="c1"># if that doesn&#39;t work, maybe we can do it with equivalencies?</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:571,</span> in <span class="ni">UnitBase.get_converter</span><span class="nt">(self, other, equivalencies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="c1"># if that doesn't work, maybe we can do it with equivalencies?</span>
 <span class="g g-Whitespace">    </span><span class="mi">570</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">571</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_equivalencies</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">572</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_equivalencies</span><span class="p">(</span><span class="n">equivalencies</span><span class="p">)</span>
@@ -1285,14 +1285,14 @@ dv = 0.1 km / s
 <span class="g g-Whitespace">    </span><span class="mi">575</span>     <span class="c1"># Last hope: maybe other knows how to do it?</span>
 <span class="g g-Whitespace">    </span><span class="mi">576</span>     <span class="c1"># We assume the equivalencies have the unit itself as first item.</span>
 <span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="c1"># TODO: maybe better for other to have a `_back_converter` method?</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">&quot;equivalencies&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="s2">"equivalencies"</span><span class="p">):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/core.py:522,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/core.py:522,</span> in <span class="ni">UnitBase._apply_equivalencies</span><span class="nt">(self, unit, other, equivalencies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">519</span> <span class="n">unit_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">unit</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">520</span> <span class="n">other_str</span> <span class="o">=</span> <span class="n">get_err_str</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">522</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">522</span> <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">unit_str</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">other_str</span><span class="si">}</span><span class="s2"> are not convertible"</span><span class="p">)</span>
 
-<span class="ne">UnitConversionError</span>: &#39;deg2 pc2&#39; and &#39;cm2&#39; (area) are not convertible
+<span class="ne">UnitConversionError</span>: 'deg2 pc2' and 'cm2' (area) are not convertible
 </pre></div>
 </div>
 </div>
@@ -1407,40 +1407,40 @@ dv = 0.1 km / s
 <span class="g g-Whitespace">      </span><span class="mi">6</span> 
 <span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="k">return</span> <span class="n">xfactor</span> <span class="o">*</span> <span class="n">yfactor</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:701,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:701,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="k">return</span> <span class="bp">NotImplemented</span>
 <span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">701</span>     <span class="k">raise</span> <span class="n">e</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity.py:646,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity.py:646,</span> in <span class="ni">Quantity.__array_ufunc__</span><span class="nt">(self, function, method, *inputs, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">641</span> <span class="c1"># Determine required conversion functions -- to bring the unit of the</span>
 <span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="c1"># input to that expected (e.g., radian for np.sin), or to get</span>
 <span class="g g-Whitespace">    </span><span class="mi">643</span> <span class="c1"># consistent units between two inputs (e.g., in np.add) --</span>
 <span class="g g-Whitespace">    </span><span class="mi">644</span> <span class="c1"># and the unit of the result (or tuple of units for nout &gt; 1).</span>
 <span class="g g-Whitespace">    </span><span class="mi">645</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">646</span>     <span class="n">converters</span><span class="p">,</span> <span class="n">unit</span> <span class="o">=</span> <span class="n">converters_and_unit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;out&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"out"</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">649</span>     <span class="c1"># Avoid loop back by turning any Quantity output into array views.</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:195,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/units/quantity_helper/converters.py:195,</span> in <span class="ni">converters_and_unit</span><span class="nt">(function, method, *args)</span>
 <span class="g g-Whitespace">    </span><span class="mi">193</span>             <span class="n">converters</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="g g-Whitespace">    </span><span class="mi">194</span>         <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">195</span>             <span class="k">raise</span> <span class="n">UnitConversionError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>                 <span class="sa">f</span><span class="s2">&quot;Can only apply &#39;</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39; function to &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span>                 <span class="s2">&quot;dimensionless quantities when other argument is not &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span>                 <span class="s2">&quot;a quantity (unless the latter is all zero/infinity/nan).&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>                 <span class="sa">f</span><span class="s2">"Can only apply '</span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">' function to "</span>
+<span class="g g-Whitespace">    </span><span class="mi">197</span>                 <span class="s2">"dimensionless quantities when other argument is not "</span>
+<span class="g g-Whitespace">    </span><span class="mi">198</span>                 <span class="s2">"a quantity (unless the latter is all zero/infinity/nan)."</span>
 <span class="g g-Whitespace">    </span><span class="mi">199</span>             <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">200</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">201</span>     <span class="c1"># _can_have_arbitrary_unit failed: arg could not be compared</span>
 <span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="c1"># with zero or checked to be finite. Then, ufunc will fail too.</span>
 <span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="s2">&quot;Unsupported operand type(s) for ufunc </span><span class="si">{}</span><span class="s2">: &#39;</span><span class="si">{}</span><span class="s2">&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="s2">"Unsupported operand type(s) for ufunc </span><span class="si">{}</span><span class="s2">: '</span><span class="si">{}</span><span class="s2">'"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">205</span>             <span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">206</span>             <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">arg</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]),</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>             <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">arg</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]),</span>
 <span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="p">)</span>
 
-<span class="ne">UnitConversionError</span>: Can only apply &#39;add&#39; function to dimensionless quantities when other argument is not a quantity (unless the latter is all zero/infinity/nan).
+<span class="ne">UnitConversionError</span>: Can only apply 'add' function to dimensionless quantities when other argument is not a quantity (unless the latter is all zero/infinity/nan).
 </pre></div>
 </div>
 </div>

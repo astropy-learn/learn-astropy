@@ -594,19 +594,19 @@
 <p>Because this tutorial is all about building a huge file, we’ll write a little function to print the file size in a a variety of units.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_file_size</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_file_size</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">"B"</span><span class="p">):</span>
     <span class="n">size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">byte</span>
 
-    <span class="k">if</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;KB&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">kB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;MB&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">MB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;GB&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">GB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">&quot;FITS&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2880</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> FITS block&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">"KB"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">kB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">"MB"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">MB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">"GB"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">GB</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s2">"FITS"</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">size</span><span class="o">.</span><span class="n">value</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2880</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> FITS block"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">size</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">size</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -620,10 +620,10 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make some header entries for important information</span>
 <span class="n">primary_header_cards</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;ORIGIN&quot;</span><span class="p">,</span> <span class="s2">&quot;Fancy Archive&quot;</span><span class="p">,</span> <span class="s2">&quot;Where the data came from&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;DATE&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-03-05&quot;</span><span class="p">,</span> <span class="s2">&quot;Creation date&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;MJD&quot;</span><span class="p">,</span> <span class="mi">60374</span><span class="p">,</span> <span class="s2">&quot;Creation date in MJD&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;CREATOR&quot;</span><span class="p">,</span> <span class="s2">&quot;Me&quot;</span><span class="p">,</span> <span class="s2">&quot;Who created this file&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"ORIGIN"</span><span class="p">,</span> <span class="s2">"Fancy Archive"</span><span class="p">,</span> <span class="s2">"Where the data came from"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"DATE"</span><span class="p">,</span> <span class="s2">"2024-03-05"</span><span class="p">,</span> <span class="s2">"Creation date"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"MJD"</span><span class="p">,</span> <span class="mi">60374</span><span class="p">,</span> <span class="s2">"Creation date in MJD"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"CREATOR"</span><span class="p">,</span> <span class="s2">"Me"</span><span class="p">,</span> <span class="s2">"Who created this file"</span><span class="p">),</span>
 <span class="p">]</span>
 
 <span class="c1"># Build the Primary HDU object and put it in an HDU list</span>
@@ -631,7 +631,7 @@
 <span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">HDUList</span><span class="p">([</span><span class="n">primary_hdu</span><span class="p">])</span>
 
 <span class="c1"># Write the HDU list to file</span>
-<span class="n">big_fits_fle</span> <span class="o">=</span> <span class="s2">&quot;./patagotitan.fits&quot;</span>
+<span class="n">big_fits_fle</span> <span class="o">=</span> <span class="s2">"./patagotitan.fits"</span>
 <span class="n">hdu_list</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -657,7 +657,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
-<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;FITS&quot;</span><span class="p">)</span>
+<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"FITS"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -693,11 +693,11 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <p>We also set a name for the extension which is optional, but helpful, because it allows us to refer to that extension by name as well as index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;BIG_IMG&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">"BIG_IMG"</span>
 <span class="n">header</span> <span class="o">=</span> <span class="n">hdu</span><span class="o">.</span><span class="n">header</span>
 
-<span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">header</span><span class="p">[</span><span class="s2">"NAXIS2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">header</span><span class="p">[</span><span class="s2">"NAXIS1"</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -706,8 +706,8 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <p><em>Note:</em> At the end of this step our file is temporarily NOT a valid FITS file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>  <span class="c1"># &#39;ab&#39; means open to append bytes</span>
-    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"ab"</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>  <span class="c1"># 'ab' means open to append bytes</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -715,7 +715,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
-<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;FITS&quot;</span><span class="p">)</span>
+<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"FITS"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -744,9 +744,9 @@ throw an overflow error.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filelen</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;r+b&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"r+b"</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
     <span class="n">FITSFLE</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">filelen</span> <span class="o">+</span> <span class="n">arraysize_in_bytes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"</span><span class="se">\0</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -754,8 +754,8 @@ throw an overflow error.</p>
 <p>Now lets see how big our FITS file has become.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">)</span>
-<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;FITS&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"GB"</span><span class="p">)</span>
+<span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"FITS"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -780,7 +780,7 @@ throw an overflow error.</p>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">update</span></code> mode to fill our immense array in place.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"update"</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -833,16 +833,16 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
     <span class="n">data_array</span><span class="p">[</span><span class="n">j</span> <span class="p">:</span> <span class="n">j</span> <span class="o">+</span> <span class="n">block_size</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">sub_arr</span>
 
     <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec"</span><span class="p">)</span>
     <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
 
 <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec"</span><span class="p">)</span>
 <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -877,7 +877,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9: 3 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 6 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 5 sec
 Total fill time: 0.5 min
 </pre></div>
 </div>
@@ -889,7 +889,7 @@ Total fill time: 0.5 min
 <p>We’ve filled our outsize array, but we want to make sure that it is correct. So we’ll open the elephantine file in <code class="docutils literal notranslate"><span class="pre">denywrite</span></code> mode and check.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;denywrite&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"denywrite"</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">data_array</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
@@ -900,7 +900,7 @@ Total fill time: 0.5 min
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">array_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">block_size</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: Data match is </span><span class="si">{</span><span class="p">(</span><span class="n">data_array</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">block_size</span><span class="p">,</span><span class="w"> </span><span class="p">:]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">it</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span>
+        <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: Data match is </span><span class="si">{</span><span class="p">(</span><span class="n">data_array</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">block_size</span><span class="p">,</span><span class="w"> </span><span class="p">:]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">it</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec"</span>
     <span class="p">)</span>
     <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 
@@ -910,25 +910,23 @@ Total fill time: 0.5 min
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: Data match is True: 3 sec
+1: Data match is True: 0 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: Data match is True: 1 sec
-2: Data match is True: 0 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: Data match is True: 0 sec
+3: Data match is True: 0 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: Data match is True: 0 sec
-4: Data match is True: 0 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: Data match is True: 0 sec
+5: Data match is True: 0 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5: Data match is True: 0 sec
-6: Data match is True: 0 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6: Data match is True: 0 sec
+7: Data match is True: 0 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7: Data match is True: 0 sec
-8: Data match is True: 0 sec
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9: Data match is True: 0 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8: Data match is True: 0 sec
+9: Data match is True: 0 sec
 </pre></div>
 </div>
 </div>
@@ -942,55 +940,55 @@ Total fill time: 0.5 min
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_tbl</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
-    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Population&quot;</span><span class="p">,</span> <span class="s2">&quot;Prince&quot;</span><span class="p">,</span> <span class="s2">&quot;Years since fall&quot;</span><span class="p">,</span> <span class="s2">&quot;Imports&quot;</span><span class="p">,</span> <span class="s2">&quot;Exports&quot;</span><span class="p">],</span>
-    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;U128&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;U128&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s2">&quot;U2048&quot;</span><span class="p">,</span> <span class="s2">&quot;U2048&quot;</span><span class="p">],</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"Population"</span><span class="p">,</span> <span class="s2">"Prince"</span><span class="p">,</span> <span class="s2">"Years since fall"</span><span class="p">,</span> <span class="s2">"Imports"</span><span class="p">,</span> <span class="s2">"Exports"</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="p">[</span><span class="s2">"U128"</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="s2">"U128"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="s2">"U2048"</span><span class="p">,</span> <span class="s2">"U2048"</span><span class="p">],</span>
     <span class="n">rows</span><span class="o">=</span><span class="p">[</span>
         <span class="p">[</span>
-            <span class="s2">&quot;Vangaveyave&quot;</span><span class="p">,</span>
+            <span class="s2">"Vangaveyave"</span><span class="p">,</span>
             <span class="mi">1297382</span><span class="p">,</span>
-            <span class="s2">&quot;Oriana&quot;</span><span class="p">,</span>
+            <span class="s2">"Oriana"</span><span class="p">,</span>
             <span class="mf">34.6</span><span class="p">,</span>
-            <span class="s2">&quot;wine, cheese&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;ahalo cloth, pearls, foamwork&quot;</span><span class="p">,</span>
+            <span class="s2">"wine, cheese"</span><span class="p">,</span>
+            <span class="s2">"ahalo cloth, pearls, foamwork"</span><span class="p">,</span>
         <span class="p">],</span>
-        <span class="p">[</span><span class="s2">&quot;Tkinele&quot;</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="s2">&quot;n/a&quot;</span><span class="p">,</span> <span class="mf">92.3</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">"Tkinele"</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="s2">"n/a"</span><span class="p">,</span> <span class="mf">92.3</span><span class="p">,</span> <span class="s2">"none"</span><span class="p">,</span> <span class="s2">"none"</span><span class="p">],</span>
         <span class="p">[</span>
-            <span class="s2">&quot;Amboloyo&quot;</span><span class="p">,</span>
+            <span class="s2">"Amboloyo"</span><span class="p">,</span>
             <span class="mi">50937253</span><span class="p">,</span>
-            <span class="s2">&quot;Rufus&quot;</span><span class="p">,</span>
+            <span class="s2">"Rufus"</span><span class="p">,</span>
             <span class="mf">1504.2</span><span class="p">,</span>
-            <span class="s2">&quot;pears, textiles, spices&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;wine, timber&quot;</span><span class="p">,</span>
+            <span class="s2">"pears, textiles, spices"</span><span class="p">,</span>
+            <span class="s2">"wine, timber"</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s2">&quot;Xiputl&quot;</span><span class="p">,</span>
+            <span class="s2">"Xiputl"</span><span class="p">,</span>
             <span class="mi">3627373</span><span class="p">,</span>
-            <span class="s2">&quot;Anastasiya&quot;</span><span class="p">,</span>
+            <span class="s2">"Anastasiya"</span><span class="p">,</span>
             <span class="mf">346.8</span><span class="p">,</span>
-            <span class="s2">&quot;silk, perfumes, pigments&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;stone, cotton&quot;</span><span class="p">,</span>
+            <span class="s2">"silk, perfumes, pigments"</span><span class="p">,</span>
+            <span class="s2">"stone, cotton"</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s2">&quot;Old Damara&quot;</span><span class="p">,</span>
+            <span class="s2">"Old Damara"</span><span class="p">,</span>
             <span class="mi">437226732</span><span class="p">,</span>
-            <span class="s2">&quot;Melissa Damara&quot;</span><span class="p">,</span>
+            <span class="s2">"Melissa Damara"</span><span class="p">,</span>
             <span class="mf">25.3</span><span class="p">,</span>
-            <span class="s2">&quot;wool, timber&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;spices, silk&quot;</span><span class="p">,</span>
+            <span class="s2">"wool, timber"</span><span class="p">,</span>
+            <span class="s2">"spices, silk"</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="p">[</span>
-            <span class="s2">&quot;Western Dair&quot;</span><span class="p">,</span>
+            <span class="s2">"Western Dair"</span><span class="p">,</span>
             <span class="mi">8045728302</span><span class="p">,</span>
-            <span class="s2">&quot;Belu&quot;</span><span class="p">,</span>
+            <span class="s2">"Belu"</span><span class="p">,</span>
             <span class="mf">876.3</span><span class="p">,</span>
-            <span class="s2">&quot;shellfish, salt&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;cured meat, wool&quot;</span><span class="p">,</span>
+            <span class="s2">"shellfish, salt"</span><span class="p">,</span>
+            <span class="s2">"cured meat, wool"</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">],</span>
 <span class="p">)</span>
 
 <span class="n">table_hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">BinTableHDU</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">small_tbl</span><span class="p">)</span>
-<span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;EXTNAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;BIG_TABLE&quot;</span>
+<span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">"EXTNAME"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"BIG_TABLE"</span>
 </pre></div>
 </div>
 </div>
@@ -1003,7 +1001,7 @@ Total fill time: 0.5 min
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= &#39;BINTABLE&#39;           / binary table extension                         
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>XTENSION= 'BINTABLE'           / binary table extension                         
 BITPIX  =                    8 / array data type                                
 NAXIS   =                    2 / number of array dimensions                     
 NAXIS1  =                 4368 / length of dimension 1                          
@@ -1011,19 +1009,19 @@ NAXIS2  =                    6 / length of dimension 2
 PCOUNT  =                    0 / number of group parameters                     
 GCOUNT  =                    1 / number of groups                               
 TFIELDS =                    6 / number of table fields                         
-TTYPE1  = &#39;Name    &#39;                                                            
-TFORM1  = &#39;128A    &#39;                                                            
-TTYPE2  = &#39;Population&#39;                                                          
-TFORM2  = &#39;K       &#39;                                                            
-TTYPE3  = &#39;Prince  &#39;                                                            
-TFORM3  = &#39;128A    &#39;                                                            
-TTYPE4  = &#39;Years since fall&#39;                                                    
-TFORM4  = &#39;D       &#39;                                                            
-TTYPE5  = &#39;Imports &#39;                                                            
-TFORM5  = &#39;2048A   &#39;                                                            
-TTYPE6  = &#39;Exports &#39;                                                            
-TFORM6  = &#39;2048A   &#39;                                                            
-EXTNAME = &#39;BIG_TABLE&#39;                                                           
+TTYPE1  = 'Name    '                                                            
+TFORM1  = '128A    '                                                            
+TTYPE2  = 'Population'                                                          
+TFORM2  = 'K       '                                                            
+TTYPE3  = 'Prince  '                                                            
+TFORM3  = '128A    '                                                            
+TTYPE4  = 'Years since fall'                                                    
+TFORM4  = 'D       '                                                            
+TTYPE5  = 'Imports '                                                            
+TFORM5  = '2048A   '                                                            
+TTYPE6  = 'Exports '                                                            
+TFORM6  = '2048A   '                                                            
+EXTNAME = 'BIG_TABLE'                                                           
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1030,7 @@ EXTNAME = &#39;BIG_TABLE&#39;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_rows</span> <span class="o">=</span> <span class="mi">1_000_000</span>
-<span class="n">tablesize_in_bytes</span> <span class="o">=</span> <span class="p">((</span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS1&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_rows</span> <span class="o">+</span> <span class="mi">2880</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2880</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2880</span>
+<span class="n">tablesize_in_bytes</span> <span class="o">=</span> <span class="p">((</span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">"NAXIS1"</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_rows</span> <span class="o">+</span> <span class="mi">2880</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2880</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2880</span>
 </pre></div>
 </div>
 </div>
@@ -1040,10 +1038,10 @@ EXTNAME = &#39;BIG_TABLE&#39;
 <p>Now we adjust the <code class="docutils literal notranslate"><span class="pre">NAXIS2</span></code> keyword to match our new table length and write just the header to the end of our towering FITS file, as we did for the oversize array extension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;NAXIS2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_rows</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">"NAXIS2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">num_rows</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
-    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"ab"</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">(</span><span class="n">table_hdu</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1051,7 +1049,7 @@ EXTNAME = &#39;BIG_TABLE&#39;
 <p>Before we expand the file, we’ll look at the current file size.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"GB"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1066,9 +1064,9 @@ EXTNAME = &#39;BIG_TABLE&#39;
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filelen</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;r+b&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"r+b"</span><span class="p">)</span> <span class="k">as</span> <span class="n">FITSFLE</span><span class="p">:</span>
     <span class="n">FITSFLE</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">filelen</span> <span class="o">+</span> <span class="n">tablesize_in_bytes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">FITSFLE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">"</span><span class="se">\0</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1076,7 +1074,7 @@ EXTNAME = &#39;BIG_TABLE&#39;
 <p>And we can see that the filesize has indeed increased by about 4GB.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;GB&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"GB"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1092,7 +1090,7 @@ EXTNAME = &#39;BIG_TABLE&#39;
 <p>We’ll start by printing the file info to ensure we have the valid FITS file we expect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"update"</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1109,71 +1107,71 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">&quot;BIG_TABLE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">"BIG_TABLE"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 
 <span class="n">tt</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">small_tbl</span><span class="o">.</span><span class="n">colnames</span><span class="p">:</span>
     <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Name&quot;</span><span class="p">:</span>
-        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Zunidth&quot;</span><span class="p">,</span> <span class="s2">&quot;Astandalas&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Population&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">"Name"</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Zunidth"</span><span class="p">,</span> <span class="s2">"Astandalas"</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">"Population"</span><span class="p">:</span>
         <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_rows</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Prince&quot;</span><span class="p">:</span>
-        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cliopher Lord Mdang&quot;</span><span class="p">,</span> <span class="s2">&quot;His Radiancy Artorin Damara&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">"Prince"</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Cliopher Lord Mdang"</span><span class="p">,</span> <span class="s2">"His Radiancy Artorin Damara"</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
             <span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="p">)</span>
-    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Years since fall&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">"Years since fall"</span><span class="p">:</span>
         <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Imports&quot;</span><span class="p">:</span>
-        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tea&quot;</span><span class="p">,</span> <span class="s2">&quot;roses&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">&quot;Exports&quot;</span><span class="p">:</span>
-        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;magic&quot;</span><span class="p">,</span> <span class="s2">&quot;empire&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">"Imports"</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"tea"</span><span class="p">,</span> <span class="s2">"roses"</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">col</span> <span class="o">==</span> <span class="s2">"Exports"</span><span class="p">:</span>
+        <span class="n">table_data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"magic"</span><span class="p">,</span> <span class="s2">"empire"</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_rows</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
 
     <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec"</span><span class="p">)</span>
     <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
 
 <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec"</span><span class="p">)</span>
 <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: 5 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: 4 sec
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Population: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prince: 1 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prince: 2 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Years since fall: 10 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Years since fall: 9 sec
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imports: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exports: 19 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exports: 20 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 146 sec
-Total fill time: 3.2 min
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 167 sec
+Total fill time: 3.6 min
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">&quot;BIG_TABLE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"update"</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">"BIG_TABLE"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 
 <span class="c1"># Comment out these lines if your system does not have madvise</span>
 <span class="n">mm</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">_get_array_mmap</span><span class="p">(</span><span class="n">table_data</span><span class="p">)</span>
@@ -1189,37 +1187,37 @@ Total fill time: 3.2 min
     <span class="n">table_data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">block_len</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_list</span>
 
     <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec"</span><span class="p">)</span>
     <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
 
 <span class="n">it</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">hdu_list</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">tm</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">it</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Closing: </span><span class="si">{</span><span class="n">tm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> sec"</span><span class="p">)</span>
 <span class="n">tt</span> <span class="o">+=</span> <span class="n">tm</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total fill time: </span><span class="si">{</span><span class="n">tt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 85 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 93 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 59 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 80 sec
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: 68 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 51 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 43 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 45 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 41 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 174 sec
-Total fill time: 8.0 min
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 216 sec
+Total fill time: 9.0 min
 </pre></div>
 </div>
 </div>
@@ -1231,7 +1229,7 @@ Total fill time: 8.0 min
 <p>Now let’s again open up our behemothic FITS file and check that the data was loaded correctly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;denywrite&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"denywrite"</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1248,7 +1246,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">&quot;BIG_TABLE&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_data</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="s2">"BIG_TABLE"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -1258,7 +1256,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">,</span> <span class="n">block_len</span><span class="p">)):</span>
     <span class="n">val</span> <span class="o">=</span> <span class="p">(</span><span class="n">small_tbl</span> <span class="o">==</span> <span class="n">Table</span><span class="p">(</span><span class="n">table_data</span><span class="p">[</span><span class="n">i</span> <span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1286,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">ImageHDU</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
-<span class="n">small_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">&quot;EXTNAME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;MINI_IMG&quot;</span>
+<span class="n">small_hdu</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s2">"EXTNAME"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"MINI_IMG"</span>
 </pre></div>
 </div>
 </div>
@@ -1296,7 +1294,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <p>Before we add the additional HDU we’ll remind ourself of the current whopping filesize.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;KB&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"KB"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1309,7 +1307,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <p>Because we don’t have to do anything funky with the file size we can just open the magnificent FITS file in <code class="docutils literal notranslate"><span class="pre">append</span></code> mode and write the whole HDU, and it is a very fast operation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu_list</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"append"</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu_list</span><span class="p">:</span>
     <span class="n">hdu_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">small_hdu</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1318,7 +1316,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <p>And we can see that adding this tiny additional extension barely changes the monster file size.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">&quot;KB&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">print_file_size</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="s2">"KB"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1331,7 +1329,7 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <p>And now if we open the mondo FITS file we can see that additional extension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;denywrite&quot;</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu_list</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">big_fits_fle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"denywrite"</span><span class="p">,</span> <span class="n">memmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu_list</span><span class="p">:</span>
     <span class="n">hdu_list</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
