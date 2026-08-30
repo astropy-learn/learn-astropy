@@ -560,7 +560,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;BEFS&#39;, &#39;EUVE&#39;, &#39;FIMS-SPEAR&#39;, &#39;FUSE&#39;, &#39;GALEX&#39;, &#39;HLA&#39;, &#39;HLSP&#39;, &#39;HST&#39;, &#39;HUT&#39;, &#39;IUE&#39;, &#39;JWST&#39;, &#39;K2&#39;, &#39;K2FFI&#39;, &#39;Kepler&#39;, &#39;KeplerFFI&#39;, &#39;OPO&#39;, &#39;PS1&#39;, &#39;SDSS&#39;, &#39;SPITZER_SHA&#39;, &#39;SWIFT&#39;, &#39;TESS&#39;, &#39;TUES&#39;, &#39;WUPPE&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['BEFS', 'EUVE', 'FIMS-SPEAR', 'FUSE', 'GALEX', 'HLA', 'HLSP', 'HST', 'HUT', 'IUE', 'JWST', 'K2', 'K2FFI', 'Kepler', 'KeplerFFI', 'OPO', 'PS1', 'SDSS', 'SPITZER_SHA', 'SWIFT', 'TESS', 'TUES', 'WUPPE']
 </pre></div>
 </div>
 </div>
@@ -570,8 +570,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obs_table</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">query_criteria</span><span class="p">(</span>
-    <span class="n">dataproduct_type</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">],</span>
-    <span class="n">obs_collection</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;JWST&quot;</span><span class="p">],</span>
+    <span class="n">dataproduct_type</span><span class="o">=</span><span class="p">[</span><span class="s2">"image"</span><span class="p">],</span>
+    <span class="n">obs_collection</span><span class="o">=</span><span class="p">[</span><span class="s2">"JWST"</span><span class="p">],</span>
     <span class="n">s_dec</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">45.55</span><span class="p">,</span> <span class="o">-</span><span class="mf">40.45</span><span class="p">],</span>
     <span class="n">s_ra</span><span class="o">=</span><span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">],</span>
 <span class="p">)</span>
@@ -622,9 +622,9 @@ Length = 784 rows
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prods</span> <span class="o">=</span> <span class="n">Observations</span><span class="o">.</span><span class="n">filter_products</span><span class="p">(</span>
     <span class="n">products_by_obs</span><span class="p">,</span>
     <span class="n">calib_level</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-    <span class="n">productType</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SCIENCE&quot;</span><span class="p">],</span>
-    <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;fits&quot;</span><span class="p">,</span>
-    <span class="n">obsID</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;228645392&quot;</span><span class="p">],</span>
+    <span class="n">productType</span><span class="o">=</span><span class="p">[</span><span class="s2">"SCIENCE"</span><span class="p">],</span>
+    <span class="n">extension</span><span class="o">=</span><span class="s2">"fits"</span><span class="p">,</span>
+    <span class="n">obsID</span><span class="o">=</span><span class="p">[</span><span class="s2">"228645392"</span><span class="p">],</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -670,7 +670,7 @@ Length = 784 rows
 <p><strong>Opening the FITS file</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits_file</span> <span class="o">=</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">&quot;Local Path&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits_file</span> <span class="o">=</span> <span class="n">manifest</span><span class="p">[</span><span class="s2">"Local Path"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fits_file</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -687,18 +687,18 @@ Length = 784 rows
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fits_file</span><span class="p">,</span> <span class="n">ignore_missing_simple</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">hdu</span><span class="p">:</span>
-    <span class="n">image_data</span> <span class="o">=</span> <span class="n">hdu</span><span class="p">[</span><span class="s2">&quot;SCI&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># this is a numpy nd array</span>
+    <span class="n">image_data</span> <span class="o">=</span> <span class="n">hdu</span><span class="p">[</span><span class="s2">"SCI"</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>  <span class="c1"># this is a numpy nd array</span>
     <span class="n">wcs_helix</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">hdu</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">)</span>  <span class="c1"># WCS object from FITS</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: &#39;datfix&#39; made the change &#39;Set DATE-BEG to &#39;2024-08-19T21:42:49.503&#39; from MJD-BEG.
-Set DATE-AVG to &#39;2024-08-19T22:01:42.243&#39; from MJD-AVG.
-Set DATE-END to &#39;2024-08-19T22:20:35.004&#39; from MJD-END&#39;. [astropy.wcs.wcs]
-WARNING: FITSFixedWarning: &#39;obsfix&#39; made the change &#39;Set OBSGEO-L to   -60.450781 from OBSGEO-[XYZ].
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: FITSFixedWarning: 'datfix' made the change 'Set DATE-BEG to '2024-08-19T21:42:49.503' from MJD-BEG.
+Set DATE-AVG to '2024-08-19T22:01:42.243' from MJD-AVG.
+Set DATE-END to '2024-08-19T22:20:35.004' from MJD-END'. [astropy.wcs.wcs]
+WARNING: FITSFixedWarning: 'obsfix' made the change 'Set OBSGEO-L to   -60.450781 from OBSGEO-[XYZ].
 Set OBSGEO-B to   -21.231906 from OBSGEO-[XYZ].
-Set OBSGEO-H to 1501193284.090 from OBSGEO-[XYZ]&#39;. [astropy.wcs.wcs]
+Set OBSGEO-H to 1501193284.090 from OBSGEO-[XYZ]'. [astropy.wcs.wcs]
 </pre></div>
 </div>
 </div>
@@ -711,7 +711,7 @@ Set OBSGEO-H to 1501193284.090 from OBSGEO-[XYZ]&#39;. [astropy.wcs.wcs]
 <h3>Important general keywords:<a class="headerlink" href="#important-general-keywords" title="Link to this heading">#</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pixel: part of a detector corresponding to a real 2D area
 
-voxel: A 3D counterpart of pixel, indicating &quot;volume&quot;
+voxel: A 3D counterpart of pixel, indicating "volume"
 
 spaxel: spatial or spectral pixel
 </pre></div>
@@ -725,7 +725,7 @@ CRPIXn: Location in terms of pixel order, CRPIX1=1 and CRPIX2=1 represents the r
 
 CDELTn: Delta (coordinate difference) of distance from one pixel to its neighbor
 
-CTYPEn: Eight-char string for axis type, e.g., &#39;RA---TAN&#39; &#39;DEC--TAN&#39;
+CTYPEn: Eight-char string for axis type, e.g., 'RA---TAN' 'DEC--TAN'
 
 CUNITn: String for unit, default is degree
 
@@ -745,9 +745,9 @@ NAXISn: Number of pixels in each axes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coord</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="n">wcs_helix</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">wcs_helix</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;deg&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span>
+    <span class="n">ra</span><span class="o">=</span><span class="n">wcs_helix</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">wcs_helix</span><span class="o">.</span><span class="n">wcs</span><span class="o">.</span><span class="n">crval</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">"deg"</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"icrs"</span>
 <span class="p">)</span>
-<span class="n">exp_coeff</span> <span class="o">=</span> <span class="mf">0.4</span>  <span class="c1"># A multiplier of width and height for querying, either focusing on the image&#39;s specific part or putting the image on the big picture</span>
+<span class="n">exp_coeff</span> <span class="o">=</span> <span class="mf">0.4</span>  <span class="c1"># A multiplier of width and height for querying, either focusing on the image's specific part or putting the image on the big picture</span>
 <span class="n">width</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">exp_coeff</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
 <span class="n">height</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">exp_coeff</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
 </pre></div>
@@ -762,7 +762,7 @@ NAXISn: Number of pixels in each axes
 <p>Here we first query Gaia, and then use Vizier to query the 2MASS All-Sky Catalog.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|||| ---- |||| Querying GAIA Data Release III |||| ---- ||||&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"|||| ---- |||| Querying GAIA Data Release III |||| ---- ||||"</span><span class="p">)</span>
 
 <span class="c1"># Default GAIA data source, Gaia.MAIN_GAIA_TABLE, is Gaia DR III.</span>
 
@@ -789,9 +789,9 @@ NAXISn: Number of pixels in each axes
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;|||| ---- |||| Querying VizieR Catalogs |||| ---- ||||&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"|||| ---- |||| Querying VizieR Catalogs |||| ---- ||||"</span><span class="p">)</span>
 
-<span class="n">catalog_2mass</span> <span class="o">=</span> <span class="s2">&quot;II/246/out&quot;</span>
+<span class="n">catalog_2mass</span> <span class="o">=</span> <span class="s2">"II/246/out"</span>
 <span class="n">Vizier</span><span class="o">.</span><span class="n">ROW_LIMIT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># alters the 50 rows default limit</span>
 
 <span class="n">r2</span> <span class="o">=</span> <span class="n">Vizier</span><span class="o">.</span><span class="n">query_region</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">catalog</span><span class="o">=</span><span class="n">catalog_2mass</span><span class="p">)</span>
@@ -807,8 +807,8 @@ NAXISn: Number of pixels in each axes
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TableList with 1 tables:
-	&#39;0:II/246/out&#39; with 15 column(s) and 4 row(s) 
-&lt;TableColumns names=(&#39;RAJ2000&#39;,&#39;DEJ2000&#39;,&#39;2MASS&#39;,&#39;Jmag&#39;,&#39;e_Jmag&#39;,&#39;Hmag&#39;,&#39;e_Hmag&#39;,&#39;Kmag&#39;,&#39;e_Kmag&#39;,&#39;Qflg&#39;,&#39;Rflg&#39;,&#39;Bflg&#39;,&#39;Cflg&#39;,&#39;Xflg&#39;,&#39;Aflg&#39;)&gt;
+	'0:II/246/out' with 15 column(s) and 4 row(s) 
+&lt;TableColumns names=('RAJ2000','DEJ2000','2MASS','Jmag','e_Jmag','Hmag','e_Hmag','Kmag','e_Kmag','Qflg','Rflg','Bflg','Cflg','Xflg','Aflg')&gt;
 </pre></div>
 </div>
 </div>
@@ -821,9 +821,9 @@ NAXISn: Number of pixels in each axes
 <p><strong>Note:</strong> Column names can differ from catalog to catalog.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ralist</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s2">&quot;RAJ2000&quot;</span><span class="p">]</span>
-<span class="n">declist</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s2">&quot;DEJ2000&quot;</span><span class="p">]</span>
-<span class="n">names</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s2">&quot;2MASS&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ralist</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s2">"RAJ2000"</span><span class="p">]</span>
+<span class="n">declist</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s2">"DEJ2000"</span><span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">r2</span><span class="p">[</span><span class="n">catalog_2mass</span><span class="p">][</span><span class="s2">"2MASS"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -839,40 +839,40 @@ NAXISn: Number of pixels in each axes
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_helix</span><span class="p">)</span>  <span class="c1"># subplot with specific projection</span>
 
 <span class="c1"># Showing the image</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;afmhot&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Right Ascension D.M.S.(J2000)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Declination D.M.S. (J2000)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"afmhot"</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Right Ascension D.M.S.(J2000)"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"cyan"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Declination D.M.S. (J2000)"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"cyan"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"cyan"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"dashed"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"cyan"</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s2">"cyan"</span><span class="p">)</span>
 
 <span class="c1"># Overlaying galactic coordinates on counter axes</span>
-<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">&quot;galactic&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axislabel</span><span class="p">(</span><span class="s2">&quot;Galactic Longitude&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axislabel</span><span class="p">(</span><span class="s2">&quot;Galactic Latitude&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticklabel</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
-<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticklabel</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">overlay</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_coords_overlay</span><span class="p">(</span><span class="s2">"galactic"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"dotted"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axislabel</span><span class="p">(</span><span class="s2">"Galactic Longitude"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axislabel</span><span class="p">(</span><span class="s2">"Galactic Latitude"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticklabel</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ticklabel</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
 
 <span class="c1"># The following line puts objects in the selected catalogs on image</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ralist</span><span class="p">,</span> <span class="n">declist</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ralist</span><span class="p">,</span> <span class="n">declist</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">"icrs"</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">"red"</span><span class="p">)</span>
 
 
 <span class="c1"># The following line put name labels on catalog objects drawn on the figure zipping three lists, RA, DEC coordinates, and IDs,</span>
 <span class="c1"># then pulling them one by one with a for loop allows scattering them on the plot directly.</span>
 <span class="c1"># va is vertical alignment of the label, and ha is horizontal</span>
-<span class="c1"># ax.get_transform(&#39;icrs&#39;) permits coinciding the coordinate systems of the Figure and scatter plots</span>
+<span class="c1"># ax.get_transform('icrs') permits coinciding the coordinate systems of the Figure and scatter plots</span>
 <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">ni</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ralist</span><span class="p">,</span> <span class="n">declist</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
         <span class="n">xi</span><span class="p">,</span>
         <span class="n">yi</span><span class="p">,</span>
         <span class="n">ni</span><span class="p">,</span>
-        <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
-        <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+        <span class="n">va</span><span class="o">=</span><span class="s2">"bottom"</span><span class="p">,</span>
+        <span class="n">ha</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span>
         <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
-        <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">&quot;icrs&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s2">"icrs"</span><span class="p">),</span>
     <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
