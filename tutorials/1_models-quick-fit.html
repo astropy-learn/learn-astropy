@@ -568,7 +568,7 @@
 <p>To get it, we are going to import it from <a class="reference external" href="http://vizier.u-strasbg.fr/viz-bin/VizieR">Vizier</a> using <a class="reference external" href="http://astroquery.readthedocs.io/en/latest/vizier/vizier.html">astroquery</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">Vizier</span><span class="o">.</span><span class="n">get_catalogs</span><span class="p">(</span><span class="s2">&quot;J/A+A/605/A100&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catalog</span> <span class="o">=</span> <span class="n">Vizier</span><span class="o">.</span><span class="n">get_catalogs</span><span class="p">(</span><span class="s2">"J/A+A/605/A100"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -576,10 +576,10 @@
 <p>This catalog has a lot of information, but for this tutorial we are going to work only with periods and magnitudes. Let’s grab them using the keywords <code class="docutils literal notranslate"><span class="pre">'Period'</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;Ksmag&gt;</span></code>.  Note that <code class="docutils literal notranslate"><span class="pre">'e_&lt;Ksmag&gt;'</span></code> refers to the error bars in the magnitude measurements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Period&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"Period"</span><span class="p">])</span>
 <span class="n">log_period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
-<span class="n">k_mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;&lt;Ksmag&gt;&quot;</span><span class="p">])</span>
-<span class="n">k_mag_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;e_&lt;Ksmag&gt;&quot;</span><span class="p">])</span>
+<span class="n">k_mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"&lt;Ksmag&gt;"</span><span class="p">])</span>
+<span class="n">k_mag_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">catalog</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"e_&lt;Ksmag&gt;"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -587,14 +587,14 @@
 <p>Let’s take a look at the magnitude measurements as a function of period:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">log_period</span><span class="p">,</span> <span class="n">k_mag</span><span class="p">,</span> <span class="n">k_mag_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;k.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log_</span><span class="si">{10}</span><span class="s2">$(Period [days])&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ks&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">log_period</span><span class="p">,</span> <span class="n">k_mag</span><span class="p">,</span> <span class="n">k_mag_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\log_</span><span class="si">{10}</span><span class="s2">$(Period [days])"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Ks"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Ks&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'Ks')
 </pre></div>
 </div>
 <img alt="_images/4666a89b9f0ec21644f0eb3ebf75bb750a9503f88edbbac10dca3adeb6f9702d.png" src="_images/4666a89b9f0ec21644f0eb3ebf75bb750a9503f88edbbac10dca3adeb6f9702d.png" />
@@ -658,8 +658,8 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: Linear1D
-Inputs: (&#39;x&#39;,)
-Outputs: (&#39;y&#39;,)
+Inputs: ('x',)
+Outputs: ('y',)
 Model set size: 1
 Parameters:
           slope            intercept     
@@ -673,15 +673,15 @@ Parameters:
 <p>We can evaluate the fit at our particular x axis by doing <code class="docutils literal notranslate"><span class="pre">best_fit(x)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">log_period</span><span class="p">,</span> <span class="n">k_mag</span><span class="p">,</span> <span class="n">k_mag_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;k.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log_period</span><span class="p">,</span> <span class="n">best_fit</span><span class="p">(</span><span class="n">log_period</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log_</span><span class="si">{10}</span><span class="s2">$(Period [days])&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ks&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">log_period</span><span class="p">,</span> <span class="n">k_mag</span><span class="p">,</span> <span class="n">k_mag_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">log_period</span><span class="p">,</span> <span class="n">best_fit</span><span class="p">(</span><span class="n">log_period</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"g"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\log_</span><span class="si">{10}</span><span class="s2">$(Period [days])"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Ks"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Ks&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'Ks')
 </pre></div>
 </div>
 <img alt="_images/6e7faebc77342340b8b81d9ba60e5368978c2a6d8ae8e7996ad7b13d164482c2.png" src="_images/6e7faebc77342340b8b81d9ba60e5368978c2a6d8ae8e7996ad7b13d164482c2.png" />
@@ -719,17 +719,17 @@ Parameters:
 <p>Let’s plot it to see how it looks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y1_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;k.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y_1$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y1_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_1$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"$y_1$"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_1$&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, '$y_1$')
 </pre></div>
 </div>
-<img alt="_images/e55b61d27ee48921780a58d86887821b70674c4b34f37f1bd1da02266589ac63.png" src="_images/e55b61d27ee48921780a58d86887821b70674c4b34f37f1bd1da02266589ac63.png" />
+<img alt="_images/f457dc229259fb27471a64341a3204fbec6368d33a52687a215012149fd9a5ce.png" src="_images/f457dc229259fb27471a64341a3204fbec6368d33a52687a215012149fd9a5ce.png" />
 </div>
 </div>
 <p>To fit this data let’s remember the three steps: model, fitter and perform fit.</p>
@@ -750,14 +750,14 @@ Parameters:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: Polynomial1D
-Inputs: (&#39;x&#39;,)
-Outputs: (&#39;y&#39;,)
+Inputs: ('x',)
+Outputs: ('y',)
 Model set size: 1
 Degree: 3
 Parameters:
-            c0                 c1                 c2                 c3        
-    ------------------ ------------------ ------------------ ------------------
-    -9.906461383003363 14.808177202257717 -7.418032620754493 1.1916724066405464
+            c0                c1               c2                c3       
+    ------------------ --------------- ----------------- -----------------
+    -8.712565616559877 10.374971675096 -4.92265764952706 0.821651566858141
 </pre></div>
 </div>
 </div>
@@ -785,14 +785,14 @@ WARNING: The fit may be unsuccessful; Maximum number of iterations reached. [ast
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: Polynomial1D
-Inputs: (&#39;x&#39;,)
-Outputs: (&#39;y&#39;,)
+Inputs: ('x',)
+Outputs: ('y',)
 Model set size: 1
 Degree: 3
 Parameters:
-             c0                 c1                 c2                  c3         
-    ------------------- ------------------ ------------------ --------------------
-    -3.3086603545511877 0.5342919553864548 1.5549899590853824 -0.34995675417431066
+             c0                  c1                  c2                c3        
+    ------------------- -------------------- ----------------- ------------------
+    0.17820027449947995 -0.23681588500756723 -1.00868230941125 0.3683551832571318
 </pre></div>
 </div>
 </div>
@@ -808,12 +808,12 @@ Parameters:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calc_reduced_chi_square</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">n_free</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    fit (array) values for the fit</span>
 <span class="sd">    x,y,yerr (arrays) data</span>
 <span class="sd">    N total number of points</span>
 <span class="sd">    n_free number of parameters we are fitting</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">n_free</span><span class="p">)</span> <span class="o">*</span> <span class="nb">sum</span><span class="p">(((</span><span class="n">fit</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">yerr</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -822,12 +822,12 @@ Parameters:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reduced_chi_squared</span> <span class="o">=</span> <span class="n">calc_reduced_chi_square</span><span class="p">(</span><span class="n">best_fit_poly</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y1_err</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reduced Chi Squared with LinearLSQFitter: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Reduced Chi Squared with LinearLSQFitter: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.7061905353979006
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with LinearLSQFitter: 1.7982452055578038
 </pre></div>
 </div>
 </div>
@@ -835,12 +835,12 @@ Parameters:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reduced_chi_squared</span> <span class="o">=</span> <span class="n">calc_reduced_chi_square</span><span class="p">(</span><span class="n">best_fit_poly_2</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y1_err</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reduced Chi Squared with SimplexLSQFitter: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Reduced Chi Squared with SimplexLSQFitter: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 4.4398859240342885
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared with SimplexLSQFitter: 5.157709225503396
 </pre></div>
 </div>
 </div>
@@ -849,20 +849,20 @@ Parameters:
 <p>We can also compare the two fits visually:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y1_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;k.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">best_fit_poly</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;LinearLSQFitter()&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">best_fit_poly_2</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;SimplexLSQFitter()&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\log_</span><span class="si">{10}</span><span class="s2">$(Period [days])&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ks&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y1_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">best_fit_poly</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"r"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"LinearLSQFitter()"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">best_fit_poly_2</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"g"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"SimplexLSQFitter()"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">"$\log_</span><span class="si">{10}</span><span class="s2">$(Period [days])"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Ks"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc713489b80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fdad95f4950&gt;
 </pre></div>
 </div>
-<img alt="_images/f1ce2e484d5a369456587a877618139987afa47c7923ff5a36ddf08234a55852.png" src="_images/f1ce2e484d5a369456587a877618139987afa47c7923ff5a36ddf08234a55852.png" />
+<img alt="_images/9c2e1393dd09ca8ac54a413ab4af0b36d83d074c52eb9a0ed89f2c8d9d6f8a0b.png" src="_images/9c2e1393dd09ca8ac54a413ab4af0b36d83d074c52eb9a0ed89f2c8d9d6f8a0b.png" />
 </div>
 </div>
 <p>Results are as espected, the fit performed with the linear fitter is better than the second, non linear one.</p>
@@ -889,17 +889,17 @@ Parameters:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y2_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;k.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y_2$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y2_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_2$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"$y_2$"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_2$&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, '$y_2$')
 </pre></div>
 </div>
-<img alt="_images/4044939f5fcb917e8abc08aec36720f3a5058ac5c9f3160ed9daf84b77f8b864.png" src="_images/4044939f5fcb917e8abc08aec36720f3a5058ac5c9f3160ed9daf84b77f8b864.png" />
+<img alt="_images/15174cec944c87059c205d7f85a9879723a3e33c9bfe72f0b15c3b90ce0c8248.png" src="_images/15174cec944c87059c205d7f85a9879723a3e33c9bfe72f0b15c3b90ce0c8248.png" />
 </div>
 </div>
 <p>Let’s do our three steps to make the fit we want. For this fit we’re going to use a non-linear fitter, <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter</span></code>, because the model we need (<code class="docutils literal notranslate"><span class="pre">Gaussian1D</span></code>) is non-linear in the parameters.</p>
@@ -920,13 +920,13 @@ Parameters:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: Gaussian1D
-Inputs: (&#39;x&#39;,)
-Outputs: (&#39;y&#39;,)
+Inputs: ('x',)
+Outputs: ('y',)
 Model set size: 1
 Parameters:
-       amplitude             mean              stddev     
-    ---------------- ------------------- -----------------
-    9.94724072161421 0.06443283851158595 9.742169818295393
+        amplitude             mean              stddev     
+    ----------------- ------------------- -----------------
+    9.784742560672377 -0.2678336803626737 10.06066819374622
 </pre></div>
 </div>
 </div>
@@ -939,20 +939,20 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;amplitude&#39;, &#39;mean&#39;, &#39;stddev&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>('amplitude', 'mean', 'stddev')
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">fitter_gauss</span><span class="o">.</span><span class="n">fit_info</span><span class="p">[</span><span class="s2">&quot;param_cov&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov_diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">fitter_gauss</span><span class="o">.</span><span class="n">fit_info</span><span class="p">[</span><span class="s2">"param_cov"</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">cov_diag</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05267992 0.06734653 0.06748259]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05103113 0.07189519 0.07213777]
 </pre></div>
 </div>
 </div>
@@ -961,11 +961,11 @@ Parameters:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Amplitude: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_fit_gauss</span><span class="o">.</span><span class="n">amplitude</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cov_diag</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="s2">"Amplitude: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_fit_gauss</span><span class="o">.</span><span class="n">amplitude</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cov_diag</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_fit_gauss</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cov_diag</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">best_fit_gauss</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cov_diag</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
 <span class="nb">print</span><span class="p">(</span>
-    <span class="s2">&quot;Standard Deviation: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="s2">"Standard Deviation: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">best_fit_gauss</span><span class="o">.</span><span class="n">stddev</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">cov_diag</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -973,23 +973,23 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.94724072161421 +\- 0.2295210726734723
-Mean: 0.06443283851158595 +\- 0.2595120963779959
-Standard Deviation: 9.742169818295393 +\- 0.2597741183624864
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.784742560672377 +\- 0.22590070428374806
+Mean: -0.2678336803626737 +\- 0.2681327920780851
+Standard Deviation: 10.06066819374622 +\- 0.26858475228008466
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_2663/1659586526.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-  &quot;Amplitude: {} +\- {}&quot;.format(best_fit_gauss.amplitude.value, np.sqrt(cov_diag[0]))
-/tmp/ipykernel_2663/1659586526.py:4: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-  print(&quot;Mean: {} +\- {}&quot;.format(best_fit_gauss.mean.value, np.sqrt(cov_diag[1])))
-/tmp/ipykernel_2663/1659586526.py:6: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-  &quot;Standard Deviation: {} +\- {}&quot;.format(
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:4: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:6: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:4: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:6: SyntaxWarning: invalid escape sequence '\-'
+/tmp/ipykernel_2741/1659586526.py:2: SyntaxWarning: invalid escape sequence '\-'
+  "Amplitude: {} +\- {}".format(best_fit_gauss.amplitude.value, np.sqrt(cov_diag[0]))
+/tmp/ipykernel_2741/1659586526.py:4: SyntaxWarning: invalid escape sequence '\-'
+  print("Mean: {} +\- {}".format(best_fit_gauss.mean.value, np.sqrt(cov_diag[1])))
+/tmp/ipykernel_2741/1659586526.py:6: SyntaxWarning: invalid escape sequence '\-'
+  "Standard Deviation: {} +\- {}".format(
 </pre></div>
 </div>
 </div>
@@ -1019,37 +1019,37 @@ Standard Deviation: 9.742169818295393 +\- 0.2597741183624864
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9.94723955 0.06443433 9.74217211]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 9.78473557 -0.26783811 10.06068258]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Amplitude: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_opt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_cov</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_opt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_cov</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard Deviation: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_opt</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_cov</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Amplitude: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_opt</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_cov</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Mean: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_opt</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_cov</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Standard Deviation: </span><span class="si">{}</span><span class="s2"> +\- </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_opt</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_cov</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.94723954944955 +\- 0.21655550562435322
-Mean: 0.06443433036260733 +\- 0.2448512181968473
-Standard Deviation: 9.742172112162438 +\- 0.24509838289725133
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Amplitude: 9.784735573391707 +\- 0.19816849107063553
+Mean: -0.2678381147494483 +\- 0.23520682305270849
+Standard Deviation: 10.060682575752931 +\- 0.23560316928150501
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-&lt;&gt;:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-/tmp/ipykernel_2663/2222327920.py:1: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-  print(&quot;Amplitude: {} +\- {}&quot;.format(p_opt[0], np.sqrt(p_cov[0, 0])))
-/tmp/ipykernel_2663/2222327920.py:2: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-  print(&quot;Mean: {} +\- {}&quot;.format(p_opt[1], np.sqrt(p_cov[1, 1])))
-/tmp/ipykernel_2663/2222327920.py:3: SyntaxWarning: invalid escape sequence &#39;\-&#39;
-  print(&quot;Standard Deviation: {} +\- {}&quot;.format(p_opt[2], np.sqrt(p_cov[2, 2])))
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:1: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:1: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:2: SyntaxWarning: invalid escape sequence '\-'
+&lt;&gt;:3: SyntaxWarning: invalid escape sequence '\-'
+/tmp/ipykernel_2741/2222327920.py:1: SyntaxWarning: invalid escape sequence '\-'
+  print("Amplitude: {} +\- {}".format(p_opt[0], np.sqrt(p_cov[0, 0])))
+/tmp/ipykernel_2741/2222327920.py:2: SyntaxWarning: invalid escape sequence '\-'
+  print("Mean: {} +\- {}".format(p_opt[1], np.sqrt(p_cov[1, 1])))
+/tmp/ipykernel_2741/2222327920.py:3: SyntaxWarning: invalid escape sequence '\-'
+  print("Standard Deviation: {} +\- {}".format(p_opt[2], np.sqrt(p_cov[2, 2])))
 </pre></div>
 </div>
 </div>
@@ -1059,12 +1059,12 @@ Standard Deviation: 9.742172112162438 +\- 0.24509838289725133
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reduced_chi_squared</span> <span class="o">=</span> <span class="n">calc_reduced_chi_square</span><span class="p">(</span><span class="n">best_fit_gauss</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y2_err</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reduced Chi Squared using astropy.modeling: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Reduced Chi Squared using astropy.modeling: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.8902089509010489
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using astropy.modeling: 0.7695253083033885
 </pre></div>
 </div>
 </div>
@@ -1072,12 +1072,12 @@ Standard Deviation: 9.742172112162438 +\- 0.24509838289725133
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reduced_chi_squared</span> <span class="o">=</span> <span class="n">calc_reduced_chi_square</span><span class="p">(</span><span class="n">best_fit_gauss_2</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">y2_err</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reduced Chi Squared using scipy: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Reduced Chi Squared using scipy: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reduced_chi_squared</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.8902089509072436
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reduced Chi Squared using scipy: 0.7695253082772827
 </pre></div>
 </div>
 </div>
@@ -1085,20 +1085,20 @@ Standard Deviation: 9.742172112162438 +\- 0.24509838289725133
 <p>As we can see there is a very small difference in the <em>Reduced Chi Squared</em>. This actually needed to happen, because the fitter in <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> uses scipy to fit. The advantage of using <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> is you only need to change the name of the fitter and the model to perform a completely different fit, while scipy require us to remember the expression of the function we wanted to use.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y2_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;k.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">best_fit_gauss</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span> <span class="s2">&quot;g-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;astropy.modeling&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">best_fit_gauss_2</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;scipy&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y_2$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y2_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">best_fit_gauss</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span> <span class="s2">"g-"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"astropy.modeling"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">best_fit_gauss_2</span><span class="p">,</span> <span class="s2">"r-"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"scipy"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_2$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"$y_2$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc7130e8a40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fdad9911d90&gt;
 </pre></div>
 </div>
-<img alt="_images/0f4af5c5bbfea2fba3ff57b478dc115c5cde696eb1379a2fe80d4a6cf6fb3693.png" src="_images/0f4af5c5bbfea2fba3ff57b478dc115c5cde696eb1379a2fe80d4a6cf6fb3693.png" />
+<img alt="_images/b4467e0401b966b82ffa48bbeb51b15920c26b4c6ee78b65c6d7280c4e30d2ec.png" src="_images/b4467e0401b966b82ffa48bbeb51b15920c26b4c6ee78b65c6d7280c4e30d2ec.png" />
 </div>
 </div>
 <p><strong>Conclusion:</strong> Choose the method most convenient for every case you need to fit. We recomend <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> because is easier to write the name of the function you want to fit than to remember the expression every time we want to use it. Also, <code class="docutils literal notranslate"><span class="pre">astropy.modeling</span></code> becomes useful with more complicated models like <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#compound-models">two gaussians</a> plus a <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#blackbody-radiation">black body</a>, but that is another tutorial.</p>
@@ -1140,17 +1140,17 @@ Standard Deviation: 9.742172112162438 +\- 0.24509838289725133
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y3_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;k.&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_3$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y_3$&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">y3_err</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">"k."</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_3$"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"$y_3$"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$y_3$&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, '$y_3$')
 </pre></div>
 </div>
-<img alt="_images/f6e590866fcaf11631990e7d3cf6d9e27d68071920c9c8f06b5e855f5b44ff54.png" src="_images/f6e590866fcaf11631990e7d3cf6d9e27d68071920c9c8f06b5e855f5b44ff54.png" />
+<img alt="_images/57fb3237fe2d2ad60427a170b87a321898c81c275020595446336dded7e8e566.png" src="_images/57fb3237fe2d2ad60427a170b87a321898c81c275020595446336dded7e8e566.png" />
 </div>
 </div>
 </section>

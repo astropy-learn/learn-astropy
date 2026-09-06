@@ -562,8 +562,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ra</span><span class="o">=</span><span class="mf">15.9932</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">dec</span><span class="o">=-</span><span class="mf">10.52351344</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">hourangle</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;hmsdms&quot;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="s2">"hmsdms"</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -582,7 +582,7 @@
 <p>In the previous tutorial, we only worked with coordinate data in spherical representations (longitude/latitude), but <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> also supports other coordinate representations like Cartesian, cylindrical, etc. (<a class="reference external" href="https://docs.astropy.org/en/stable/coordinates/skycoord.html#astropy-skycoord-representations">docs</a>). To retrieve the coordinate data in a different representation, we can use the <code class="docutils literal notranslate"><span class="pre">SkyCoord.represent_as()</span></code> method. This method either takes a string name of the desired representation, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">&quot;cartesian&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">"cartesian"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -611,13 +611,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Representation&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Base&quot;</span><span class="p">)]</span>
+    <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">coord</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"Representation"</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Base"</span><span class="p">)]</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;CartesianRepresentation&#39;, &#39;CylindricalRepresentation&#39;, &#39;GRS80GeodeticRepresentation&#39;, &#39;PhysicsSphericalRepresentation&#39;, &#39;RadialRepresentation&#39;, &#39;SphericalRepresentation&#39;, &#39;UnitSphericalRepresentation&#39;, &#39;WGS72GeodeticRepresentation&#39;, &#39;WGS84GeodeticRepresentation&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['CartesianRepresentation', 'CylindricalRepresentation', 'GRS80GeodeticRepresentation', 'PhysicsSphericalRepresentation', 'RadialRepresentation', 'SphericalRepresentation', 'UnitSphericalRepresentation', 'WGS72GeodeticRepresentation', 'WGS84GeodeticRepresentation']
 </pre></div>
 </div>
 </div>
@@ -632,7 +632,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">&quot;cartesian&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">"cartesian"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -646,7 +646,7 @@
 <p>Or, we could represent this data with cylindrical components:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">&quot;cylindrical&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">represent_as</span><span class="p">(</span><span class="s2">"cylindrical"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -667,7 +667,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;astropy.coordinates.representation.spherical.SphericalRepresentation&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class 'astropy.coordinates.representation.spherical.SphericalRepresentation'&gt;
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (ICRS): (ra, dec, distance) in (deg, deg, pc)
@@ -718,7 +718,7 @@
 <p>Some other common coordinate systems are defined as a rotation away from the ICRS that is defined to make science applications easier to interpret. One example here is the Galactic coordinate system, which is rotated with respect to the ICRS to approximately align the Galactic plane with latitude=0. As an example of the <code class="docutils literal notranslate"><span class="pre">astropy.coordinates</span></code> frame transformation machinery, we will load in a subset of a catalog of positions and distances to a set of open clusters in the Milky Way from Cantat-Gaudin et al. 2018 (<a class="reference external" href="http://vizier.u-strasbg.fr/viz-bin/VizieR-3?-source=J/A%2bA/618/A93/table1">Table 1 in this catalog</a>). We have pre-selected the 474 clusters within 2 kpc of the sun and provide the catalog as a data file next to this notebook. This catalog provides sky position (columns <code class="docutils literal notranslate"><span class="pre">RAJ2000</span></code> and <code class="docutils literal notranslate"><span class="pre">DEJ2000</span></code> in the original catalog) and distance estimates (column <code class="docutils literal notranslate"><span class="pre">dmode</span></code> in the original catalog), which we have renamed in the table we provide to column names <code class="docutils literal notranslate"><span class="pre">'ra'</span></code>, <code class="docutils literal notranslate"><span class="pre">'dec'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'distance'</span></code>. We will start by loading the catalog as a <code class="docutils literal notranslate"><span class="pre">QTable</span></code>  using <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code> (<a class="reference external" href="https://docs.astropy.org/en/stable/table/">docs</a>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;Cantat-Gaudin-open-clusters.ecsv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tbl</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"Cantat-Gaudin-open-clusters.ecsv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -727,7 +727,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">open_cluster_c</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">],</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span>
+    <span class="n">ra</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">"ra"</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">"dec"</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">tbl</span><span class="p">[</span><span class="s2">"distance"</span><span class="p">],</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"icrs"</span>
 <span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">open_cluster_c</span><span class="p">)</span>
 </pre></div>
@@ -758,7 +758,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">coordinates_aitoff_plot</span><span class="p">(</span><span class="n">coords</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;aitoff&quot;</span><span class="p">))</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s2">"aitoff"</span><span class="p">))</span>
 
     <span class="n">sph</span> <span class="o">=</span> <span class="n">coords</span><span class="o">.</span><span class="n">spherical</span>
     <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
@@ -767,7 +767,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="nf">fmt_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
         <span class="n">val</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">Angle</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">radian</span><span class="p">)</span><span class="o">.</span><span class="n">wrap_at</span><span class="p">(</span><span class="mi">360</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span><span class="o">.</span><span class="n">degree</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;$</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;^{\circ}$&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"$</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">"</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">"^{\circ}$"</span>
 
     <span class="n">ticker</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">fmt_func</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">ticker</span><span class="p">)</span>
@@ -775,7 +775,7 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 
     <span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
-    <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;distance [pc]&quot;</span><span class="p">)</span>
+    <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">"distance [pc]"</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
 </pre></div>
@@ -786,13 +786,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">coordinates_aitoff_plot</span><span class="p">(</span><span class="n">open_cluster_c</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;RA [deg]&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Dec [deg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"RA [deg]"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Dec [deg]"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Dec [deg]&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'Dec [deg]')
 </pre></div>
 </div>
 <img alt="_images/fc83892e7de473f902a584f601dc4fd851aaf597e0c0ad4690bfa8e83ffe49a9.png" src="_images/fc83892e7de473f902a584f601dc4fd851aaf597e0c0ad4690bfa8e83ffe49a9.png" />
@@ -864,13 +864,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">coordinates_aitoff_plot</span><span class="p">(</span><span class="n">open_cluster_gal</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Galactic longitude, $l$ [deg]&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Galactic latitude, $b$ [deg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Galactic longitude, $l$ [deg]"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Galactic latitude, $b$ [deg]"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Galactic latitude, $b$ [deg]&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, 'Galactic latitude, $b$ [deg]')
 </pre></div>
 </div>
 <img alt="_images/fd7f650606b5ba4e14e1e8909355aa5b4b8bfb3cc5d647306194cf7821a358d7.png" src="_images/fd7f650606b5ba4e14e1e8909355aa5b4b8bfb3cc5d647306194cf7821a358d7.png" />
@@ -893,7 +893,7 @@
 <p>The <code class="docutils literal notranslate"><span class="pre">EarthLocation</span></code> class also provides handy short-hands for retrieving an instance for a given street address (by querying the <a class="reference external" href="https://www.openstreetmap.org/">OpenStreetMap</a> web API):</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_loc</span> <span class="o">=</span> <span class="n">EarthLocation</span><span class="o">.</span><span class="n">of_address</span><span class="p">(</span><span class="s2">&quot;162 Fifth Ave, New York, NY 10010&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demo_loc</span> <span class="o">=</span> <span class="n">EarthLocation</span><span class="o">.</span><span class="n">of_address</span><span class="p">(</span><span class="s2">"162 Fifth Ave, New York, NY 10010"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -901,7 +901,7 @@
 <p>Or for an astronomical observatory (use <code class="docutils literal notranslate"><span class="pre">EarthLocation.get_site_names()</span></code> to see a list of all available sites). For example, to retrieve an <code class="docutils literal notranslate"><span class="pre">EarthLocation</span></code> instance for the position of Kitt Peak National Observatory (in AZ, USA):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">observing_location</span> <span class="o">=</span> <span class="n">EarthLocation</span><span class="o">.</span><span class="n">of_site</span><span class="p">(</span><span class="s2">&quot;Kitt Peak&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">observing_location</span> <span class="o">=</span> <span class="n">EarthLocation</span><span class="o">.</span><span class="n">of_site</span><span class="p">(</span><span class="s2">"Kitt Peak"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -911,7 +911,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1AM UTC = 6PM local time (AZ mountain time), roughly the start of a night</span>
-<span class="n">observing_date</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s2">&quot;2020-12-18 1:00&quot;</span><span class="p">)</span>
+<span class="n">observing_date</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="s2">"2020-12-18 1:00"</span><span class="p">)</span>
 
 <span class="c1"># Compute the alt/az over a 14 hour period, starting at 6PM local time,</span>
 <span class="c1"># with 256 equally spaced time points:</span>
@@ -938,134 +938,134 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (AltAz: obstime=[&#39;2020-12-18 01:00:00.000&#39; &#39;2020-12-18 01:03:17.647&#39;
- &#39;2020-12-18 01:06:35.294&#39; &#39;2020-12-18 01:09:52.941&#39;
- &#39;2020-12-18 01:13:10.588&#39; &#39;2020-12-18 01:16:28.235&#39;
- &#39;2020-12-18 01:19:45.882&#39; &#39;2020-12-18 01:23:03.529&#39;
- &#39;2020-12-18 01:26:21.176&#39; &#39;2020-12-18 01:29:38.824&#39;
- &#39;2020-12-18 01:32:56.471&#39; &#39;2020-12-18 01:36:14.118&#39;
- &#39;2020-12-18 01:39:31.765&#39; &#39;2020-12-18 01:42:49.412&#39;
- &#39;2020-12-18 01:46:07.059&#39; &#39;2020-12-18 01:49:24.706&#39;
- &#39;2020-12-18 01:52:42.353&#39; &#39;2020-12-18 01:56:00.000&#39;
- &#39;2020-12-18 01:59:17.647&#39; &#39;2020-12-18 02:02:35.294&#39;
- &#39;2020-12-18 02:05:52.941&#39; &#39;2020-12-18 02:09:10.588&#39;
- &#39;2020-12-18 02:12:28.235&#39; &#39;2020-12-18 02:15:45.882&#39;
- &#39;2020-12-18 02:19:03.529&#39; &#39;2020-12-18 02:22:21.176&#39;
- &#39;2020-12-18 02:25:38.824&#39; &#39;2020-12-18 02:28:56.471&#39;
- &#39;2020-12-18 02:32:14.118&#39; &#39;2020-12-18 02:35:31.765&#39;
- &#39;2020-12-18 02:38:49.412&#39; &#39;2020-12-18 02:42:07.059&#39;
- &#39;2020-12-18 02:45:24.706&#39; &#39;2020-12-18 02:48:42.353&#39;
- &#39;2020-12-18 02:52:00.000&#39; &#39;2020-12-18 02:55:17.647&#39;
- &#39;2020-12-18 02:58:35.294&#39; &#39;2020-12-18 03:01:52.941&#39;
- &#39;2020-12-18 03:05:10.588&#39; &#39;2020-12-18 03:08:28.235&#39;
- &#39;2020-12-18 03:11:45.882&#39; &#39;2020-12-18 03:15:03.529&#39;
- &#39;2020-12-18 03:18:21.176&#39; &#39;2020-12-18 03:21:38.824&#39;
- &#39;2020-12-18 03:24:56.471&#39; &#39;2020-12-18 03:28:14.118&#39;
- &#39;2020-12-18 03:31:31.765&#39; &#39;2020-12-18 03:34:49.412&#39;
- &#39;2020-12-18 03:38:07.059&#39; &#39;2020-12-18 03:41:24.706&#39;
- &#39;2020-12-18 03:44:42.353&#39; &#39;2020-12-18 03:48:00.000&#39;
- &#39;2020-12-18 03:51:17.647&#39; &#39;2020-12-18 03:54:35.294&#39;
- &#39;2020-12-18 03:57:52.941&#39; &#39;2020-12-18 04:01:10.588&#39;
- &#39;2020-12-18 04:04:28.235&#39; &#39;2020-12-18 04:07:45.882&#39;
- &#39;2020-12-18 04:11:03.529&#39; &#39;2020-12-18 04:14:21.176&#39;
- &#39;2020-12-18 04:17:38.824&#39; &#39;2020-12-18 04:20:56.471&#39;
- &#39;2020-12-18 04:24:14.118&#39; &#39;2020-12-18 04:27:31.765&#39;
- &#39;2020-12-18 04:30:49.412&#39; &#39;2020-12-18 04:34:07.059&#39;
- &#39;2020-12-18 04:37:24.706&#39; &#39;2020-12-18 04:40:42.353&#39;
- &#39;2020-12-18 04:44:00.000&#39; &#39;2020-12-18 04:47:17.647&#39;
- &#39;2020-12-18 04:50:35.294&#39; &#39;2020-12-18 04:53:52.941&#39;
- &#39;2020-12-18 04:57:10.588&#39; &#39;2020-12-18 05:00:28.235&#39;
- &#39;2020-12-18 05:03:45.882&#39; &#39;2020-12-18 05:07:03.529&#39;
- &#39;2020-12-18 05:10:21.176&#39; &#39;2020-12-18 05:13:38.824&#39;
- &#39;2020-12-18 05:16:56.471&#39; &#39;2020-12-18 05:20:14.118&#39;
- &#39;2020-12-18 05:23:31.765&#39; &#39;2020-12-18 05:26:49.412&#39;
- &#39;2020-12-18 05:30:07.059&#39; &#39;2020-12-18 05:33:24.706&#39;
- &#39;2020-12-18 05:36:42.353&#39; &#39;2020-12-18 05:40:00.000&#39;
- &#39;2020-12-18 05:43:17.647&#39; &#39;2020-12-18 05:46:35.294&#39;
- &#39;2020-12-18 05:49:52.941&#39; &#39;2020-12-18 05:53:10.588&#39;
- &#39;2020-12-18 05:56:28.235&#39; &#39;2020-12-18 05:59:45.882&#39;
- &#39;2020-12-18 06:03:03.529&#39; &#39;2020-12-18 06:06:21.176&#39;
- &#39;2020-12-18 06:09:38.824&#39; &#39;2020-12-18 06:12:56.471&#39;
- &#39;2020-12-18 06:16:14.118&#39; &#39;2020-12-18 06:19:31.765&#39;
- &#39;2020-12-18 06:22:49.412&#39; &#39;2020-12-18 06:26:07.059&#39;
- &#39;2020-12-18 06:29:24.706&#39; &#39;2020-12-18 06:32:42.353&#39;
- &#39;2020-12-18 06:36:00.000&#39; &#39;2020-12-18 06:39:17.647&#39;
- &#39;2020-12-18 06:42:35.294&#39; &#39;2020-12-18 06:45:52.941&#39;
- &#39;2020-12-18 06:49:10.588&#39; &#39;2020-12-18 06:52:28.235&#39;
- &#39;2020-12-18 06:55:45.882&#39; &#39;2020-12-18 06:59:03.529&#39;
- &#39;2020-12-18 07:02:21.176&#39; &#39;2020-12-18 07:05:38.824&#39;
- &#39;2020-12-18 07:08:56.471&#39; &#39;2020-12-18 07:12:14.118&#39;
- &#39;2020-12-18 07:15:31.765&#39; &#39;2020-12-18 07:18:49.412&#39;
- &#39;2020-12-18 07:22:07.059&#39; &#39;2020-12-18 07:25:24.706&#39;
- &#39;2020-12-18 07:28:42.353&#39; &#39;2020-12-18 07:32:00.000&#39;
- &#39;2020-12-18 07:35:17.647&#39; &#39;2020-12-18 07:38:35.294&#39;
- &#39;2020-12-18 07:41:52.941&#39; &#39;2020-12-18 07:45:10.588&#39;
- &#39;2020-12-18 07:48:28.235&#39; &#39;2020-12-18 07:51:45.882&#39;
- &#39;2020-12-18 07:55:03.529&#39; &#39;2020-12-18 07:58:21.176&#39;
- &#39;2020-12-18 08:01:38.824&#39; &#39;2020-12-18 08:04:56.471&#39;
- &#39;2020-12-18 08:08:14.118&#39; &#39;2020-12-18 08:11:31.765&#39;
- &#39;2020-12-18 08:14:49.412&#39; &#39;2020-12-18 08:18:07.059&#39;
- &#39;2020-12-18 08:21:24.706&#39; &#39;2020-12-18 08:24:42.353&#39;
- &#39;2020-12-18 08:28:00.000&#39; &#39;2020-12-18 08:31:17.647&#39;
- &#39;2020-12-18 08:34:35.294&#39; &#39;2020-12-18 08:37:52.941&#39;
- &#39;2020-12-18 08:41:10.588&#39; &#39;2020-12-18 08:44:28.235&#39;
- &#39;2020-12-18 08:47:45.882&#39; &#39;2020-12-18 08:51:03.529&#39;
- &#39;2020-12-18 08:54:21.176&#39; &#39;2020-12-18 08:57:38.824&#39;
- &#39;2020-12-18 09:00:56.471&#39; &#39;2020-12-18 09:04:14.118&#39;
- &#39;2020-12-18 09:07:31.765&#39; &#39;2020-12-18 09:10:49.412&#39;
- &#39;2020-12-18 09:14:07.059&#39; &#39;2020-12-18 09:17:24.706&#39;
- &#39;2020-12-18 09:20:42.353&#39; &#39;2020-12-18 09:24:00.000&#39;
- &#39;2020-12-18 09:27:17.647&#39; &#39;2020-12-18 09:30:35.294&#39;
- &#39;2020-12-18 09:33:52.941&#39; &#39;2020-12-18 09:37:10.588&#39;
- &#39;2020-12-18 09:40:28.235&#39; &#39;2020-12-18 09:43:45.882&#39;
- &#39;2020-12-18 09:47:03.529&#39; &#39;2020-12-18 09:50:21.176&#39;
- &#39;2020-12-18 09:53:38.824&#39; &#39;2020-12-18 09:56:56.471&#39;
- &#39;2020-12-18 10:00:14.118&#39; &#39;2020-12-18 10:03:31.765&#39;
- &#39;2020-12-18 10:06:49.412&#39; &#39;2020-12-18 10:10:07.059&#39;
- &#39;2020-12-18 10:13:24.706&#39; &#39;2020-12-18 10:16:42.353&#39;
- &#39;2020-12-18 10:20:00.000&#39; &#39;2020-12-18 10:23:17.647&#39;
- &#39;2020-12-18 10:26:35.294&#39; &#39;2020-12-18 10:29:52.941&#39;
- &#39;2020-12-18 10:33:10.588&#39; &#39;2020-12-18 10:36:28.235&#39;
- &#39;2020-12-18 10:39:45.882&#39; &#39;2020-12-18 10:43:03.529&#39;
- &#39;2020-12-18 10:46:21.176&#39; &#39;2020-12-18 10:49:38.824&#39;
- &#39;2020-12-18 10:52:56.471&#39; &#39;2020-12-18 10:56:14.118&#39;
- &#39;2020-12-18 10:59:31.765&#39; &#39;2020-12-18 11:02:49.412&#39;
- &#39;2020-12-18 11:06:07.059&#39; &#39;2020-12-18 11:09:24.706&#39;
- &#39;2020-12-18 11:12:42.353&#39; &#39;2020-12-18 11:16:00.000&#39;
- &#39;2020-12-18 11:19:17.647&#39; &#39;2020-12-18 11:22:35.294&#39;
- &#39;2020-12-18 11:25:52.941&#39; &#39;2020-12-18 11:29:10.588&#39;
- &#39;2020-12-18 11:32:28.235&#39; &#39;2020-12-18 11:35:45.882&#39;
- &#39;2020-12-18 11:39:03.529&#39; &#39;2020-12-18 11:42:21.176&#39;
- &#39;2020-12-18 11:45:38.824&#39; &#39;2020-12-18 11:48:56.471&#39;
- &#39;2020-12-18 11:52:14.118&#39; &#39;2020-12-18 11:55:31.765&#39;
- &#39;2020-12-18 11:58:49.412&#39; &#39;2020-12-18 12:02:07.059&#39;
- &#39;2020-12-18 12:05:24.706&#39; &#39;2020-12-18 12:08:42.353&#39;
- &#39;2020-12-18 12:12:00.000&#39; &#39;2020-12-18 12:15:17.647&#39;
- &#39;2020-12-18 12:18:35.294&#39; &#39;2020-12-18 12:21:52.941&#39;
- &#39;2020-12-18 12:25:10.588&#39; &#39;2020-12-18 12:28:28.235&#39;
- &#39;2020-12-18 12:31:45.882&#39; &#39;2020-12-18 12:35:03.529&#39;
- &#39;2020-12-18 12:38:21.176&#39; &#39;2020-12-18 12:41:38.824&#39;
- &#39;2020-12-18 12:44:56.471&#39; &#39;2020-12-18 12:48:14.118&#39;
- &#39;2020-12-18 12:51:31.765&#39; &#39;2020-12-18 12:54:49.412&#39;
- &#39;2020-12-18 12:58:07.059&#39; &#39;2020-12-18 13:01:24.706&#39;
- &#39;2020-12-18 13:04:42.353&#39; &#39;2020-12-18 13:08:00.000&#39;
- &#39;2020-12-18 13:11:17.647&#39; &#39;2020-12-18 13:14:35.294&#39;
- &#39;2020-12-18 13:17:52.941&#39; &#39;2020-12-18 13:21:10.588&#39;
- &#39;2020-12-18 13:24:28.235&#39; &#39;2020-12-18 13:27:45.882&#39;
- &#39;2020-12-18 13:31:03.529&#39; &#39;2020-12-18 13:34:21.176&#39;
- &#39;2020-12-18 13:37:38.824&#39; &#39;2020-12-18 13:40:56.471&#39;
- &#39;2020-12-18 13:44:14.118&#39; &#39;2020-12-18 13:47:31.765&#39;
- &#39;2020-12-18 13:50:49.412&#39; &#39;2020-12-18 13:54:07.059&#39;
- &#39;2020-12-18 13:57:24.706&#39; &#39;2020-12-18 14:00:42.353&#39;
- &#39;2020-12-18 14:04:00.000&#39; &#39;2020-12-18 14:07:17.647&#39;
- &#39;2020-12-18 14:10:35.294&#39; &#39;2020-12-18 14:13:52.941&#39;
- &#39;2020-12-18 14:17:10.588&#39; &#39;2020-12-18 14:20:28.235&#39;
- &#39;2020-12-18 14:23:45.882&#39; &#39;2020-12-18 14:27:03.529&#39;
- &#39;2020-12-18 14:30:21.176&#39; &#39;2020-12-18 14:33:38.824&#39;
- &#39;2020-12-18 14:36:56.471&#39; &#39;2020-12-18 14:40:14.118&#39;
- &#39;2020-12-18 14:43:31.765&#39; &#39;2020-12-18 14:46:49.412&#39;
- &#39;2020-12-18 14:50:07.059&#39; &#39;2020-12-18 14:53:24.706&#39;
- &#39;2020-12-18 14:56:42.353&#39; &#39;2020-12-18 15:00:00.000&#39;], location=(-1994502.604306139, -5037538.54232911, 3358104.9969029757) m, pressure=0.0 hPa, temperature=0.0 deg_C, relative_humidity=0.0, obswl=1.0 micron): (az, alt, distance) in (deg, deg, pc)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;SkyCoord (AltAz: obstime=['2020-12-18 01:00:00.000' '2020-12-18 01:03:17.647'
+ '2020-12-18 01:06:35.294' '2020-12-18 01:09:52.941'
+ '2020-12-18 01:13:10.588' '2020-12-18 01:16:28.235'
+ '2020-12-18 01:19:45.882' '2020-12-18 01:23:03.529'
+ '2020-12-18 01:26:21.176' '2020-12-18 01:29:38.824'
+ '2020-12-18 01:32:56.471' '2020-12-18 01:36:14.118'
+ '2020-12-18 01:39:31.765' '2020-12-18 01:42:49.412'
+ '2020-12-18 01:46:07.059' '2020-12-18 01:49:24.706'
+ '2020-12-18 01:52:42.353' '2020-12-18 01:56:00.000'
+ '2020-12-18 01:59:17.647' '2020-12-18 02:02:35.294'
+ '2020-12-18 02:05:52.941' '2020-12-18 02:09:10.588'
+ '2020-12-18 02:12:28.235' '2020-12-18 02:15:45.882'
+ '2020-12-18 02:19:03.529' '2020-12-18 02:22:21.176'
+ '2020-12-18 02:25:38.824' '2020-12-18 02:28:56.471'
+ '2020-12-18 02:32:14.118' '2020-12-18 02:35:31.765'
+ '2020-12-18 02:38:49.412' '2020-12-18 02:42:07.059'
+ '2020-12-18 02:45:24.706' '2020-12-18 02:48:42.353'
+ '2020-12-18 02:52:00.000' '2020-12-18 02:55:17.647'
+ '2020-12-18 02:58:35.294' '2020-12-18 03:01:52.941'
+ '2020-12-18 03:05:10.588' '2020-12-18 03:08:28.235'
+ '2020-12-18 03:11:45.882' '2020-12-18 03:15:03.529'
+ '2020-12-18 03:18:21.176' '2020-12-18 03:21:38.824'
+ '2020-12-18 03:24:56.471' '2020-12-18 03:28:14.118'
+ '2020-12-18 03:31:31.765' '2020-12-18 03:34:49.412'
+ '2020-12-18 03:38:07.059' '2020-12-18 03:41:24.706'
+ '2020-12-18 03:44:42.353' '2020-12-18 03:48:00.000'
+ '2020-12-18 03:51:17.647' '2020-12-18 03:54:35.294'
+ '2020-12-18 03:57:52.941' '2020-12-18 04:01:10.588'
+ '2020-12-18 04:04:28.235' '2020-12-18 04:07:45.882'
+ '2020-12-18 04:11:03.529' '2020-12-18 04:14:21.176'
+ '2020-12-18 04:17:38.824' '2020-12-18 04:20:56.471'
+ '2020-12-18 04:24:14.118' '2020-12-18 04:27:31.765'
+ '2020-12-18 04:30:49.412' '2020-12-18 04:34:07.059'
+ '2020-12-18 04:37:24.706' '2020-12-18 04:40:42.353'
+ '2020-12-18 04:44:00.000' '2020-12-18 04:47:17.647'
+ '2020-12-18 04:50:35.294' '2020-12-18 04:53:52.941'
+ '2020-12-18 04:57:10.588' '2020-12-18 05:00:28.235'
+ '2020-12-18 05:03:45.882' '2020-12-18 05:07:03.529'
+ '2020-12-18 05:10:21.176' '2020-12-18 05:13:38.824'
+ '2020-12-18 05:16:56.471' '2020-12-18 05:20:14.118'
+ '2020-12-18 05:23:31.765' '2020-12-18 05:26:49.412'
+ '2020-12-18 05:30:07.059' '2020-12-18 05:33:24.706'
+ '2020-12-18 05:36:42.353' '2020-12-18 05:40:00.000'
+ '2020-12-18 05:43:17.647' '2020-12-18 05:46:35.294'
+ '2020-12-18 05:49:52.941' '2020-12-18 05:53:10.588'
+ '2020-12-18 05:56:28.235' '2020-12-18 05:59:45.882'
+ '2020-12-18 06:03:03.529' '2020-12-18 06:06:21.176'
+ '2020-12-18 06:09:38.824' '2020-12-18 06:12:56.471'
+ '2020-12-18 06:16:14.118' '2020-12-18 06:19:31.765'
+ '2020-12-18 06:22:49.412' '2020-12-18 06:26:07.059'
+ '2020-12-18 06:29:24.706' '2020-12-18 06:32:42.353'
+ '2020-12-18 06:36:00.000' '2020-12-18 06:39:17.647'
+ '2020-12-18 06:42:35.294' '2020-12-18 06:45:52.941'
+ '2020-12-18 06:49:10.588' '2020-12-18 06:52:28.235'
+ '2020-12-18 06:55:45.882' '2020-12-18 06:59:03.529'
+ '2020-12-18 07:02:21.176' '2020-12-18 07:05:38.824'
+ '2020-12-18 07:08:56.471' '2020-12-18 07:12:14.118'
+ '2020-12-18 07:15:31.765' '2020-12-18 07:18:49.412'
+ '2020-12-18 07:22:07.059' '2020-12-18 07:25:24.706'
+ '2020-12-18 07:28:42.353' '2020-12-18 07:32:00.000'
+ '2020-12-18 07:35:17.647' '2020-12-18 07:38:35.294'
+ '2020-12-18 07:41:52.941' '2020-12-18 07:45:10.588'
+ '2020-12-18 07:48:28.235' '2020-12-18 07:51:45.882'
+ '2020-12-18 07:55:03.529' '2020-12-18 07:58:21.176'
+ '2020-12-18 08:01:38.824' '2020-12-18 08:04:56.471'
+ '2020-12-18 08:08:14.118' '2020-12-18 08:11:31.765'
+ '2020-12-18 08:14:49.412' '2020-12-18 08:18:07.059'
+ '2020-12-18 08:21:24.706' '2020-12-18 08:24:42.353'
+ '2020-12-18 08:28:00.000' '2020-12-18 08:31:17.647'
+ '2020-12-18 08:34:35.294' '2020-12-18 08:37:52.941'
+ '2020-12-18 08:41:10.588' '2020-12-18 08:44:28.235'
+ '2020-12-18 08:47:45.882' '2020-12-18 08:51:03.529'
+ '2020-12-18 08:54:21.176' '2020-12-18 08:57:38.824'
+ '2020-12-18 09:00:56.471' '2020-12-18 09:04:14.118'
+ '2020-12-18 09:07:31.765' '2020-12-18 09:10:49.412'
+ '2020-12-18 09:14:07.059' '2020-12-18 09:17:24.706'
+ '2020-12-18 09:20:42.353' '2020-12-18 09:24:00.000'
+ '2020-12-18 09:27:17.647' '2020-12-18 09:30:35.294'
+ '2020-12-18 09:33:52.941' '2020-12-18 09:37:10.588'
+ '2020-12-18 09:40:28.235' '2020-12-18 09:43:45.882'
+ '2020-12-18 09:47:03.529' '2020-12-18 09:50:21.176'
+ '2020-12-18 09:53:38.824' '2020-12-18 09:56:56.471'
+ '2020-12-18 10:00:14.118' '2020-12-18 10:03:31.765'
+ '2020-12-18 10:06:49.412' '2020-12-18 10:10:07.059'
+ '2020-12-18 10:13:24.706' '2020-12-18 10:16:42.353'
+ '2020-12-18 10:20:00.000' '2020-12-18 10:23:17.647'
+ '2020-12-18 10:26:35.294' '2020-12-18 10:29:52.941'
+ '2020-12-18 10:33:10.588' '2020-12-18 10:36:28.235'
+ '2020-12-18 10:39:45.882' '2020-12-18 10:43:03.529'
+ '2020-12-18 10:46:21.176' '2020-12-18 10:49:38.824'
+ '2020-12-18 10:52:56.471' '2020-12-18 10:56:14.118'
+ '2020-12-18 10:59:31.765' '2020-12-18 11:02:49.412'
+ '2020-12-18 11:06:07.059' '2020-12-18 11:09:24.706'
+ '2020-12-18 11:12:42.353' '2020-12-18 11:16:00.000'
+ '2020-12-18 11:19:17.647' '2020-12-18 11:22:35.294'
+ '2020-12-18 11:25:52.941' '2020-12-18 11:29:10.588'
+ '2020-12-18 11:32:28.235' '2020-12-18 11:35:45.882'
+ '2020-12-18 11:39:03.529' '2020-12-18 11:42:21.176'
+ '2020-12-18 11:45:38.824' '2020-12-18 11:48:56.471'
+ '2020-12-18 11:52:14.118' '2020-12-18 11:55:31.765'
+ '2020-12-18 11:58:49.412' '2020-12-18 12:02:07.059'
+ '2020-12-18 12:05:24.706' '2020-12-18 12:08:42.353'
+ '2020-12-18 12:12:00.000' '2020-12-18 12:15:17.647'
+ '2020-12-18 12:18:35.294' '2020-12-18 12:21:52.941'
+ '2020-12-18 12:25:10.588' '2020-12-18 12:28:28.235'
+ '2020-12-18 12:31:45.882' '2020-12-18 12:35:03.529'
+ '2020-12-18 12:38:21.176' '2020-12-18 12:41:38.824'
+ '2020-12-18 12:44:56.471' '2020-12-18 12:48:14.118'
+ '2020-12-18 12:51:31.765' '2020-12-18 12:54:49.412'
+ '2020-12-18 12:58:07.059' '2020-12-18 13:01:24.706'
+ '2020-12-18 13:04:42.353' '2020-12-18 13:08:00.000'
+ '2020-12-18 13:11:17.647' '2020-12-18 13:14:35.294'
+ '2020-12-18 13:17:52.941' '2020-12-18 13:21:10.588'
+ '2020-12-18 13:24:28.235' '2020-12-18 13:27:45.882'
+ '2020-12-18 13:31:03.529' '2020-12-18 13:34:21.176'
+ '2020-12-18 13:37:38.824' '2020-12-18 13:40:56.471'
+ '2020-12-18 13:44:14.118' '2020-12-18 13:47:31.765'
+ '2020-12-18 13:50:49.412' '2020-12-18 13:54:07.059'
+ '2020-12-18 13:57:24.706' '2020-12-18 14:00:42.353'
+ '2020-12-18 14:04:00.000' '2020-12-18 14:07:17.647'
+ '2020-12-18 14:10:35.294' '2020-12-18 14:13:52.941'
+ '2020-12-18 14:17:10.588' '2020-12-18 14:20:28.235'
+ '2020-12-18 14:23:45.882' '2020-12-18 14:27:03.529'
+ '2020-12-18 14:30:21.176' '2020-12-18 14:33:38.824'
+ '2020-12-18 14:36:56.471' '2020-12-18 14:40:14.118'
+ '2020-12-18 14:43:31.765' '2020-12-18 14:46:49.412'
+ '2020-12-18 14:50:07.059' '2020-12-18 14:53:24.706'
+ '2020-12-18 14:56:42.353' '2020-12-18 15:00:00.000'], location=(-1994502.604306139, -5037538.54232911, 3358104.9969029757) m, pressure=0.0 hPa, temperature=0.0 deg_C, relative_humidity=0.0, obswl=1.0 micron): (az, alt, distance) in (deg, deg, pc)
     [( 68.6453125 ,  3.92957964e+01, 629.59997152),
      ( 68.87232312,  3.99487849e+01, 629.59997152),
      ( 69.09658831,  4.06027679e+01, 629.59997152),
@@ -1330,10 +1330,10 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_grid</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">oc_altaz</span><span class="o">.</span><span class="n">alt</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:red&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date/Time [UTC]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Altitude [deg]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_grid</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">oc_altaz</span><span class="o">.</span><span class="n">alt</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"tab:red"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Date/Time [UTC]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Altitude [deg]"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
@@ -1368,10 +1368,10 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_grid</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">open_cluster_altaz</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">alt</span><span class="o">.</span><span class="n">degree</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:red&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date/Time [UTC]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Altitude [deg]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_grid</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">open_cluster_altaz</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">alt</span><span class="o">.</span><span class="n">degree</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"tab:red"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Date/Time [UTC]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Altitude [deg]"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">get_majorticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
@@ -1417,7 +1417,7 @@
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">icrs_c</span><span class="o">.</span><span class="n">transform_to</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">Galactocentric</span><span class="p">())</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:550,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/coordinates/sky_coordinate.py:550,</span> in <span class="ni">SkyCoord.transform_to</span><span class="nt">(self, frame, merge_attributes)</span>
 <span class="g g-Whitespace">    </span><span class="mi">546</span> <span class="n">generic_frame</span> <span class="o">=</span> <span class="n">GenericFrame</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">548</span> <span class="c1"># Do the transformation, returning a coordinate frame of the desired</span>
 <span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="c1"># final type (not generic).</span>
@@ -1426,7 +1426,7 @@
 <span class="g g-Whitespace">    </span><span class="mi">553</span> <span class="c1"># remaining frame_kwargs that are not frame_attributes in `new_coord`.</span>
 <span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">new_coord</span><span class="o">.</span><span class="n">frame_attributes</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">frame_kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/composite.py:113,</span> in <span class="ni">CompositeTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="n">frattrs</span><span class="p">[</span><span class="n">inter_frame_attr_nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span>
 <span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">curr_toframe</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">tosys</span><span class="p">(</span><span class="o">**</span><span class="n">frattrs</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">113</span>     <span class="n">curr_coord</span> <span class="o">=</span> <span class="n">t</span><span class="p">(</span><span class="n">curr_coord</span><span class="p">,</span> <span class="n">curr_toframe</span><span class="p">)</span>
@@ -1434,37 +1434,37 @@
 <span class="g g-Whitespace">    </span><span class="mi">116</span> <span class="c1"># coordinate objects are immutable, so copying is not needed</span>
 <span class="g g-Whitespace">    </span><span class="mi">117</span> <span class="k">return</span> <span class="n">curr_coord</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:204,</span> in <span class="ni">BaseAffineTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:204,</span> in <span class="ni">BaseAffineTransform.__call__</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">204</span>     <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_affine_params</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">205</span>     <span class="n">newrep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apply_transform</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="k">return</span> <span class="n">toframe</span><span class="o">.</span><span class="n">realize_frame</span><span class="p">(</span><span class="n">newrep</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:258,</span> in <span class="ni">AffineTransform._affine_params</span><span class="nt">(self, fromcoord, toframe)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/coordinates/transformations/affine.py:258,</span> in <span class="ni">AffineTransform._affine_params</span><span class="nt">(self, fromcoord, toframe)</span>
 <span class="g g-Whitespace">    </span><span class="mi">257</span> <span class="k">def</span><span class="w"> </span><span class="nf">_affine_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">258</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_func</span><span class="p">(</span><span class="n">fromcoord</span><span class="p">,</span> <span class="n">toframe</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:588,</span> in <span class="ni">icrs_to_galactocentric</span><span class="nt">(icrs_coord, galactocentric_frame)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:588,</span> in <span class="ni">icrs_to_galactocentric</span><span class="nt">(icrs_coord, galactocentric_frame)</span>
 <span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="nd">@frame_transform_graph</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">AffineTransform</span><span class="p">,</span> <span class="n">ICRS</span><span class="p">,</span> <span class="n">Galactocentric</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="k">def</span><span class="w"> </span><span class="nf">icrs_to_galactocentric</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">,</span> <span class="n">galactocentric_frame</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">588</span>     <span class="n">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">icrs_coord</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">589</span>     <span class="k">return</span> <span class="n">get_matrix_vectors</span><span class="p">(</span><span class="n">galactocentric_frame</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:567,</span> in <span class="ni">_check_coord_repr_diff_types</span><span class="nt">(c)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.14/x64/lib/python3.12/site-packages/astropy/coordinates/builtin_frames/galactocentric.py:567,</span> in <span class="ni">_check_coord_repr_diff_types</span><span class="nt">(c)</span>
 <span class="g g-Whitespace">    </span><span class="mi">565</span> <span class="k">def</span><span class="w"> </span><span class="nf">_check_coord_repr_diff_types</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">566</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">UnitSphericalRepresentation</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">567</span>         <span class="k">raise</span> <span class="n">ConvertError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">568</span>             <span class="s2">&quot;Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span>             <span class="s2">&quot; (angle, angle, distance) or (x, y, z).&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>             <span class="s2">"Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g."</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span>             <span class="s2">" (angle, angle, distance) or (x, y, z)."</span>
 <span class="g g-Whitespace">    </span><span class="mi">570</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">572</span>     <span class="k">if</span> <span class="s2">&quot;s&quot;</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">differentials</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">573</span>         <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">differentials</span><span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span>     <span class="k">if</span> <span class="s2">"s"</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">differentials</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>         <span class="n">c</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">differentials</span><span class="p">[</span><span class="s2">"s"</span><span class="p">],</span>
 <span class="g g-Whitespace">    </span><span class="mi">574</span>         <span class="p">(</span>
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">578</span>         <span class="p">),</span>
 <span class="g g-Whitespace">    </span><span class="mi">579</span>     <span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">580</span>         <span class="k">raise</span> <span class="n">ConvertError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">581</span>             <span class="s2">&quot;Transforming to/from a Galactocentric frame requires a 3D velocity, e.g.,&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">582</span>             <span class="s2">&quot; proper motion components and radial velocity.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span>             <span class="s2">"Transforming to/from a Galactocentric frame requires a 3D velocity, e.g.,"</span>
+<span class="g g-Whitespace">    </span><span class="mi">582</span>             <span class="s2">" proper motion components and radial velocity."</span>
 <span class="g g-Whitespace">    </span><span class="mi">583</span>         <span class="p">)</span>
 
 <span class="ne">ConvertError</span>: Transforming to/from a Galactocentric frame requires a 3D coordinate, e.g. (angle, angle, distance) or (x, y, z).

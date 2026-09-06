@@ -549,8 +549,8 @@
 <p>Let’s recap what we did in that tutorial: We defined a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent the center of an open cluster (NGC 188), we queried the <em>Gaia</em> DR2 catalog to select stars that are close (on the sky) to the center of the cluster, and we used the parallax values from <em>Gaia</em> to select stars that are near NGC 188 in 3D position. Here, we will briefly reproduce those selections so that we can start here with a catalog of sources that are likely members of NGC 188 (see <a class="reference internal" href="#1-Coordinates-Intro"><span class="xref myst">Tutorial 1</span></a> for more information):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;gaia_results.fits&quot;</span><span class="p">)</span>
-<span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;parallax&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"gaia_results.fits"</span><span class="p">)</span>
+<span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"parallax"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span><span class="p">]</span>
 
 <span class="n">ngc188_center_3d</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
     <span class="mf">12.11</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span>
@@ -561,32 +561,32 @@
 <span class="p">)</span>
 
 <span class="c1"># Deal with masked quantity data in a backwards-compatible way:</span>
-<span class="n">parallax</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;parallax&quot;</span><span class="p">]</span>
-<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">parallax</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">):</span>
+<span class="n">parallax</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"parallax"</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">parallax</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">):</span>
     <span class="n">parallax</span> <span class="o">=</span> <span class="n">parallax</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
 <span class="n">velocity_data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;pm_ra_cosdec&quot;</span><span class="p">:</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;pmra&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;pm_dec&quot;</span><span class="p">:</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;pmdec&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;radial_velocity&quot;</span><span class="p">:</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;radial_velocity&quot;</span><span class="p">],</span>
+    <span class="s2">"pm_ra_cosdec"</span><span class="p">:</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"pmra"</span><span class="p">],</span>
+    <span class="s2">"pm_dec"</span><span class="p">:</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"pmdec"</span><span class="p">],</span>
+    <span class="s2">"radial_velocity"</span><span class="p">:</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"radial_velocity"</span><span class="p">],</span>
 <span class="p">}</span>
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">velocity_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">&quot;mask&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s2">"mask"</span><span class="p">):</span>
         <span class="n">velocity_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
     <span class="n">velocity_data</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">velocity_data</span><span class="p">[</span><span class="n">k</span><span class="p">])]</span> <span class="o">=</span> <span class="mf">0.0</span>
 
 <span class="n">ngc188_coords_3d</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span>
-    <span class="n">dec</span><span class="o">=</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span>
+    <span class="n">ra</span><span class="o">=</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"ra"</span><span class="p">],</span>
+    <span class="n">dec</span><span class="o">=</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"dec"</span><span class="p">],</span>
     <span class="n">distance</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="n">parallax</span><span class="p">),</span>
-    <span class="n">obstime</span><span class="o">=</span><span class="n">Time</span><span class="p">(</span><span class="s2">&quot;J2015.5&quot;</span><span class="p">),</span>
+    <span class="n">obstime</span><span class="o">=</span><span class="n">Time</span><span class="p">(</span><span class="s2">"J2015.5"</span><span class="p">),</span>
     <span class="o">**</span><span class="n">velocity_data</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">sep3d</span> <span class="o">=</span> <span class="n">ngc188_coords_3d</span><span class="o">.</span><span class="n">separation_3d</span><span class="p">(</span><span class="n">ngc188_center_3d</span><span class="p">)</span>
 <span class="n">pm_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
-    <span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;pmra&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ngc188_center_3d</span><span class="o">.</span><span class="n">pm_ra_cosdec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="o">+</span> <span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;pmdec&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ngc188_center_3d</span><span class="o">.</span><span class="n">pm_dec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"pmra"</span><span class="p">]</span> <span class="o">-</span> <span class="n">ngc188_center_3d</span><span class="o">.</span><span class="n">pm_ra_cosdec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="o">+</span> <span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"pmdec"</span><span class="p">]</span> <span class="o">-</span> <span class="n">ngc188_center_3d</span><span class="o">.</span><span class="n">pm_dec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="p">)</span>
 
 <span class="n">ngc188_members_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">sep3d</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">pc</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pm_diff</span> <span class="o">&lt;</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mas</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">yr</span><span class="p">)</span>
@@ -611,7 +611,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NOTE: skip this cell if you do not have an internet connection</span>
 
 <span class="c1"># II/246 is the catalog name for the main 2MASS photometric catalog</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">Vizier</span><span class="p">(</span><span class="n">catalog</span><span class="o">=</span><span class="s2">&quot;II/246&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vizier</span><span class="p">(</span><span class="n">catalog</span><span class="o">=</span><span class="s2">"II/246"</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"*"</span><span class="p">,</span> <span class="s2">"Date"</span><span class="p">])</span>
 <span class="n">v</span><span class="o">.</span><span class="n">ROW_LIMIT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">query_region</span><span class="p">(</span><span class="n">ngc188_center_3d</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">)</span>
@@ -625,9 +625,9 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the .read() below produces some warnings that we can safely ignore</span>
 <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
-    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">"ignore"</span><span class="p">,</span> <span class="ne">UserWarning</span><span class="p">)</span>
 
-    <span class="n">tmass_table</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;2MASS_results.ecsv&quot;</span><span class="p">)</span>
+    <span class="n">tmass_table</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"2MASS_results.ecsv"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -641,7 +641,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>QTable length=3</i>
-<table id="table139808954094400" class="table-striped table-bordered table-condensed">
+<table id="table140413578858224" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Date</th><th>RAJ2000</th><th>DEJ2000</th><th>_2MASS</th><th>Jmag</th><th>e_Jmag</th><th>Hmag</th><th>e_Hmag</th><th>Kmag</th><th>e_Kmag</th><th>Qflg</th><th>Rflg</th><th>Bflg</th><th>Cflg</th><th>Xflg</th><th>Aflg</th></tr></thead>
 <thead><tr><th></th><th>deg</th><th>deg</th><th></th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
 <thead><tr><th>str10</th><th>float64</th><th>float64</th><th>str16</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>str3</th><th>str3</th><th>str3</th><th>str3</th><th>uint8</th><th>uint8</th></tr></thead>
@@ -653,7 +653,7 @@
 <p>From looking at the column names, the two relevant sky coordinate columns are <code class="docutils literal notranslate"><span class="pre">RAJ2000</span></code> for <code class="docutils literal notranslate"><span class="pre">ra</span></code> and <code class="docutils literal notranslate"><span class="pre">DEJ2000</span></code> for <code class="docutils literal notranslate"><span class="pre">dec</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmass_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">tmass_table</span><span class="p">[</span><span class="s2">&quot;RAJ2000&quot;</span><span class="p">],</span> <span class="n">tmass_table</span><span class="p">[</span><span class="s2">&quot;DEJ2000&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmass_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">tmass_table</span><span class="p">[</span><span class="s2">"RAJ2000"</span><span class="p">],</span> <span class="n">tmass_table</span><span class="p">[</span><span class="s2">"DEJ2000"</span><span class="p">])</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">tmass_coords</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -667,12 +667,12 @@
 <p>Note also that the table contains a “Date” column that specifies the epoch of the coordinates. Are all of these epochs the same?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tmass_table</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tmass_table</span><span class="p">[</span><span class="s2">"Date"</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;1999-10-19&#39;], dtype=&#39;&lt;U10&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(['1999-10-19'], dtype='&lt;U10')
 </pre></div>
 </div>
 </div>
@@ -680,7 +680,7 @@
 <p>It looks like all of the sources in our 2MASS table have the same epoch, so let’s create an <code class="docutils literal notranslate"><span class="pre">astropy.time.Time</span></code> object to represent this date:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmass_epoch</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tmass_table</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmass_epoch</span> <span class="o">=</span> <span class="n">Time</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tmass_table</span><span class="p">[</span><span class="s2">"Date"</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
@@ -707,10 +707,10 @@
 <p>Let’s now look at the distribution of separations (in arcseconds) for all of the cross-matched sources:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sep2d_gaia</span><span class="o">.</span><span class="n">arcsec</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;separation [arcsec]&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sep2d_gaia</span><span class="o">.</span><span class="n">arcsec</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">"step"</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">64</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"separation [arcsec]"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -735,9 +735,9 @@
 <p>With our cross-match done, we can now make <code class="docutils literal notranslate"><span class="pre">Gaia</span></code>+2MASS color–magnitude diagrams of our candidate NGC 188 members using the information returned by the cross-match:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Jmag</span> <span class="o">=</span> <span class="n">tmass_table</span><span class="p">[</span><span class="s2">&quot;Jmag&quot;</span><span class="p">][</span><span class="n">idx_gaia</span><span class="p">]</span>  <span class="c1"># note that we use the index array returned above</span>
-<span class="n">Gmag</span> <span class="o">=</span> <span class="n">ngc188_members</span><span class="p">[</span><span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">]</span>
-<span class="n">Bmag</span> <span class="o">=</span> <span class="n">ngc188_members</span><span class="p">[</span><span class="s2">&quot;phot_bp_mean_mag&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Jmag</span> <span class="o">=</span> <span class="n">tmass_table</span><span class="p">[</span><span class="s2">"Jmag"</span><span class="p">][</span><span class="n">idx_gaia</span><span class="p">]</span>  <span class="c1"># note that we use the index array returned above</span>
+<span class="n">Gmag</span> <span class="o">=</span> <span class="n">ngc188_members</span><span class="p">[</span><span class="s2">"phot_g_mean_mag"</span><span class="p">]</span>
+<span class="n">Bmag</span> <span class="o">=</span> <span class="n">ngc188_members</span><span class="p">[</span><span class="s2">"phot_bp_mean_mag"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -747,16 +747,16 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Gmag</span> <span class="o">-</span> <span class="n">Jmag</span><span class="p">,</span> <span class="n">Gmag</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$G - J$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$G$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Gmag</span> <span class="o">-</span> <span class="n">Jmag</span><span class="p">,</span> <span class="n">Gmag</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"$G - J$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"$G$"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># backwards because magnitudes!</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Bmag</span> <span class="o">-</span> <span class="n">Gmag</span><span class="p">,</span> <span class="n">Jmag</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$G_</span><span class="si">{BP}</span><span class="s2"> - G$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$J$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Bmag</span> <span class="o">-</span> <span class="n">Gmag</span><span class="p">,</span> <span class="n">Jmag</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"$G_</span><span class="si">{BP}</span><span class="s2"> - G$"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"$J$"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># backwards because magnitudes!</span>
 

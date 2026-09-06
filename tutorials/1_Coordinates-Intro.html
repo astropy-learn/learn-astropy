@@ -577,7 +577,7 @@
 <p>Even though the default frame is ICRS, it is generally recommended to explicitly specify the frame your coordinates are in. In this case, this would be an equivalent way of creating our <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object for NGC 188:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="mf">12.11</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="mf">85.26</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="mf">12.11</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="mf">85.26</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"icrs"</span><span class="p">)</span>
 <span class="n">ngc188_center</span>
 </pre></div>
 </div>
@@ -593,7 +593,7 @@
 <p>In the above initializations, we passed in <code class="docutils literal notranslate"><span class="pre">astropy.units.Quantity</span></code> objects with angular units to specify the angular components of our sky coordinates. The <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> initializer will also accept string-formatted coordinates either as separate strings for Right Ascension (RA) and Declination (Dec) or a single string. For example, if we have sexagesimal sky coordinate data: In this case, the representation of the data includes specifications of the units (the “hms” for “hour minute second”, and the “dms” for “degrees minute second”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span><span class="s2">&quot;00h48m26.4s&quot;</span><span class="p">,</span> <span class="s2">&quot;85d15m36s&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span><span class="s2">"00h48m26.4s"</span><span class="p">,</span> <span class="s2">"85d15m36s"</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"icrs"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -607,7 +607,7 @@
 <p>Some string representations do not explicitly define units, so it is sometimes necessary to specify the units of the string coordinate data explicitly if they are not implicitly included:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span><span class="s2">&quot;00:48:26.4 85:15:36&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">),</span> <span class="n">frame</span><span class="o">=</span><span class="s2">&quot;icrs&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SkyCoord</span><span class="p">(</span><span class="s2">"00:48:26.4 85:15:36"</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">deg</span><span class="p">),</span> <span class="n">frame</span><span class="o">=</span><span class="s2">"icrs"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -623,7 +623,7 @@
 <p><sub> <sup>1</sup>If you do not know what a class method is, think of it like an alternative constructor for a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object — calling <code class="docutils literal notranslate"><span class="pre">SkyCoord.from_name()</span></code> with a name gives you a new <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object. For more detailed background on what class methods are and when they’re useful, see <a class="reference external" href="https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods">this page</a>.</sub></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;NGC 188&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">"NGC 188"</span><span class="p">)</span>
 <span class="n">ngc188_center</span>
 </pre></div>
 </div>
@@ -721,12 +721,12 @@
 <p>We can also format the values into strings with specified units (<a class="reference external" href="http://docs.astropy.org/en/latest/coordinates/formatting.html">docs</a>), for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">hourangle</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">ra</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">unit</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">hourangle</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.str_(&#39;00:47:11.5000008&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.str_('00:47:11.5000008')
 </pre></div>
 </div>
 </div>
@@ -742,7 +742,7 @@
 <span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">get_results</span><span class="p">()</span>
 
 <span class="c1"># only keep stars brighter than G=19 magnitude</span>
-<span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">19</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">]</span>
+<span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"phot_g_mean_mag"</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">19</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mag</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -755,19 +755,19 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;source_id&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;ra&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dec&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;parallax&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;parallax_error&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;pmra&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;pmdec&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;radial_velocity&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phot_g_mean_mag&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phot_bp_mean_mag&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;phot_rp_mean_mag&quot;</span><span class="p">,</span>
+    <span class="s2">"source_id"</span><span class="p">,</span>
+    <span class="s2">"ra"</span><span class="p">,</span>
+    <span class="s2">"dec"</span><span class="p">,</span>
+    <span class="s2">"parallax"</span><span class="p">,</span>
+    <span class="s2">"parallax_error"</span><span class="p">,</span>
+    <span class="s2">"pmra"</span><span class="p">,</span>
+    <span class="s2">"pmdec"</span><span class="p">,</span>
+    <span class="s2">"radial_velocity"</span><span class="p">,</span>
+    <span class="s2">"phot_g_mean_mag"</span><span class="p">,</span>
+    <span class="s2">"phot_bp_mean_mag"</span><span class="p">,</span>
+    <span class="s2">"phot_rp_mean_mag"</span><span class="p">,</span>
 <span class="p">]</span>
-<span class="n">ngc188_table</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;gaia_results.fits&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ngc188_table</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"gaia_results.fits"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -775,7 +775,7 @@
 <p>The above cell may not work if you do not have an internet connection, so we have included the results table along with the notebook:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;gaia_results.fits&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span> <span class="o">=</span> <span class="n">QTable</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">"gaia_results.fits"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -795,7 +795,7 @@
 <p>The returned <code class="docutils literal notranslate"><span class="pre">astropy.table</span></code> <code class="docutils literal notranslate"><span class="pre">Table</span></code> object now contains about 5000 stars from <em>Gaia</em> DR2 around the coordinate position of the center of NGC 188. Let’s now construct a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object with the results table. In the <em>Gaia</em> data archive, the ICRS coordinates of a source are given as column names <code class="docutils literal notranslate"><span class="pre">&quot;ra&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;dec&quot;</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"ra"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -806,7 +806,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"dec"</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -818,7 +818,7 @@
 <p>Note that, because the <em>Gaia</em> archive provides data tables with associated units, and we read this table using the <code class="docutils literal notranslate"><span class="pre">QTable</span></code> object (<a class="reference external" href="http://docs.astropy.org/en/latest/table/mixin_columns.html#quantity-and-qtable">docs</a>), the above table columns are represented as <code class="docutils literal notranslate"><span class="pre">Quantity</span></code> objects with units of degrees. Note also that these columns contain many (&gt;5000!) coordinate values. We can pass these directly in to <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> to get a single <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> object to represent all of these coordinates:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_gaia_coords</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span><span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"ra"</span><span class="p">],</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"dec"</span><span class="p">])</span>
 <span class="n">ngc188_gaia_coords</span>
 </pre></div>
 </div>
@@ -837,7 +837,7 @@
 <p>Create a <code class="docutils literal notranslate"><span class="pre">SkyCoord</span></code> for the center of the open cluster the Pleiades (either by looking up the coordinates and passing them in, or by using the convenience method we learned about above):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">&quot;NGC 188&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="o">.</span><span class="n">from_name</span><span class="p">(</span><span class="s2">"NGC 188"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -846,12 +846,12 @@
 <p><sub>(Hint: <code class="docutils literal notranslate"><span class="pre">SkyCoord.to_string()</span></code> might be useful)</sub></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;hmsdms&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_center</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">"hmsdms"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;00:47:11.5 +85:14:38.0&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'00:47:11.5 +85:14:38.0'
 </pre></div>
 </div>
 </div>
@@ -889,7 +889,7 @@
 <p>With the table of <em>Gaia</em> data we retrieved above for stars around NGC 188, <code class="docutils literal notranslate"><span class="pre">ngc188_table</span></code>, we also have parallax measurements for each star. For a precisely-measured parallax <span class="math notranslate nohighlight">\(\varpi\)</span>, the distance <span class="math notranslate nohighlight">\(d\)</span> to a star can be obtained approximately as <span class="math notranslate nohighlight">\(d \approx 1/\varpi\)</span>. This only really works if the parallax error is small relative to the parallax (<a class="reference external" href="https://arxiv.org/abs/1507.02105">see discussion in this paper</a>), so if we want to use these parallaxes to get distances we first have to filter out stars that have low signal-to-noise parallaxes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parallax_snr</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;parallax&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">&quot;parallax_error&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parallax_snr</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"parallax"</span><span class="p">]</span> <span class="o">/</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="s2">"parallax_error"</span><span class="p">]</span>
 <span class="n">ngc188_table_3d</span> <span class="o">=</span> <span class="n">ngc188_table</span><span class="p">[</span><span class="n">parallax_snr</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">ngc188_table_3d</span><span class="p">)</span>
 </pre></div>
@@ -917,7 +917,7 @@
 <p>The catalog of stars we queried from <em>Gaia</em> contains parallax information in milliarcsecond units, so we can create a <code class="docutils literal notranslate"><span class="pre">Distance</span></code> object directly from these values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaia_dist</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;parallax&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gaia_dist</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">(</span><span class="n">parallax</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">"parallax"</span><span class="p">]</span><span class="o">.</span><span class="n">filled</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -926,7 +926,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ngc188_coords_3d</span> <span class="o">=</span> <span class="n">SkyCoord</span><span class="p">(</span>
-    <span class="n">ra</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;ra&quot;</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">&quot;dec&quot;</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">gaia_dist</span>
+    <span class="n">ra</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">"ra"</span><span class="p">],</span> <span class="n">dec</span><span class="o">=</span><span class="n">ngc188_table_3d</span><span class="p">[</span><span class="s2">"dec"</span><span class="p">],</span> <span class="n">distance</span><span class="o">=</span><span class="n">gaia_dist</span>
 <span class="p">)</span>
 <span class="n">ngc188_coords_3d</span>
 </pre></div>
@@ -955,20 +955,20 @@
     <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">vmin</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
     <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;twilight&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">"twilight"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
-<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;distance [</span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">kpc</span><span class="si">:</span><span class="s2">latex_inline</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">f</span><span class="s2">"distance [</span><span class="si">{</span><span class="n">u</span><span class="o">.</span><span class="n">kpc</span><span class="si">:</span><span class="s2">latex_inline</span><span class="si">}</span><span class="s2">]"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;RA [deg]&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Dec [deg]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"RA [deg]"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Dec [deg]"</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Gaia DR2 sources near NGC 188&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Gaia DR2 sources near NGC 188"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Gaia DR2 sources near NGC 188&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, 'Gaia DR2 sources near NGC 188')
 </pre></div>
 </div>
 <img alt="_images/f960daa0ca8cd2d88b525634008666bd37642e6448ceddc665189fa308925aac.png" src="_images/f960daa0ca8cd2d88b525634008666bd37642e6448ceddc665189fa308925aac.png" />
