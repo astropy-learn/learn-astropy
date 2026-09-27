@@ -478,6 +478,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#companion-content">Companion Content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
@@ -495,7 +496,7 @@
 <h1>Edit a FITS header<a class="headerlink" href="#edit-a-fits-header" title="Link to this heading">#</a></h1>
 <section id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Link to this heading">#</a></h2>
-<p>Adrian Price-Whelan, Adam Ginsburg, Stephanie T. Douglas, Kelle Cruz</p>
+<p>Adrian Price-Whelan, Adam Ginsburg, Stephanie T. Douglas, Kelle Cruz, Saima Siddiqui, Zihao Chen, Lúthien  Liu</p>
 </section>
 <section id="learning-goals">
 <h2>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
@@ -510,11 +511,15 @@
 <h2>Keywords<a class="headerlink" href="#keywords" title="Link to this heading">#</a></h2>
 <p>FITS, file input/output</p>
 </section>
+<section id="companion-content">
+<h2>Companion Content<a class="headerlink" href="#companion-content" title="Link to this heading">#</a></h2>
+<p>To learn more about the FITS file format check out: <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/index.html">astropy.fits.io</a></p>
+<p>For interacting with simple image FITS files see the <a class="reference external" href="https://ccdproc.readthedocs.io/en/latest/ccddata.html">CCDATA.read()</a> function.</p>
+</section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>This tutorial describes how to read in and edit a FITS header, and then write
-it back out to disk. For this example we’re going to change the <code class="docutils literal notranslate"><span class="pre">OBJECT</span></code>
-keyword.</p>
+<p>FITS is a useful way of storing and archiving information through multidimensional arrays. Within a FITS file format, the header contains “cards” of information including a keyword, a value, and a comment as a way to introduce the data block that follows. Together, the header and data are contained together as a header data unit, or HDU.</p>
+<p>In this tutorial we will begin with exploring the different ways we can read information from a FITS file, how to read and edit the header, and then write it out back to disk. For this example we’re going to change the <code class="docutils literal notranslate"><span class="pre">OBJECT</span></code> keyword.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
@@ -522,20 +527,7 @@ keyword.</p>
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code> provides a lot of flexibility for reading FITS
-files and headers, but most of the time the convenience functions are
-the easiest way to access the data. <code class="docutils literal notranslate"><span class="pre">fits.getdata()</span></code> reads only the
-data from a FITS file, but with the <code class="docutils literal notranslate"><span class="pre">header=True</span></code> keyword argument will
-also read the header.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>There is also a dedicated function for reading only the
-header:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code> package provides a lot of flexibility for reading FITS files and headers. <code class="docutils literal notranslate"><span class="pre">fits.getheader()</span></code> is a dedicated function for reading the header. In this example, we are reading the primary HDU (which has the HDU number 0). The output will show you all the cards that the primary HDU has.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_number</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># HDU means header data unit</span>
@@ -556,13 +548,38 @@ MYHDRKW = 'My Header Keyword'
 </div>
 </div>
 </div>
-<p>But <code class="docutils literal notranslate"><span class="pre">getdata()</span></code> can get both the data and the header, so it’s a useful
-command to remember. Since the primary HDU of a FITS file must contain image data,
-the data is now stored in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array. The header is stored in an
-object that acts like a standard Python dictionary.</p>
+<p><strong>Thought Question:</strong> <em>How many cards does the primary HDU have?</em></p>
+<p>When all you need is to read in part of the FITS file, convenience functions are available to facilitare this. <code class="docutils literal notranslate"><span class="pre">fits.getdata()</span></code> reads only the data from a FITS file, but with the <code class="docutils literal notranslate"><span class="pre">header=True</span></code> argument, it will also read the header.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># But hdu_number = 0 is the PRIMARY HDU.How many HDUs are in this file?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we know <code class="docutils literal notranslate"><span class="pre">getdata()</span></code> can get both the data and the header, so it’s a useful
+command to remember. The primary HDU of a FITS file can contain image data,
+so the data is now stored in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array. The header is stored in an
+object that acts like a standard Python dictionary, except that the keys are case-insensitive.</p>
+<p>If the FITS file you’re examining and editing might have multiple HDU’s (extensions),  you can specify the extension like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="p">,</span> <span class="n">header1</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This will get you the data and header associated with the <code class="docutils literal notranslate"><span class="pre">index=1</span></code> extension
+in the FITS file. Without specifying a number, <code class="docutils literal notranslate"><span class="pre">getdata()</span></code> will get the
+0th extension (equivalent to saying <code class="docutils literal notranslate"><span class="pre">ext=0</span></code>).</p>
+<p>There are a lot of other useful commands to remember for reading FITS files:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fits.open</span></code> allows us to look more generally at our data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fits.getheader</span></code> will give you the same output as <code class="docutils literal notranslate"><span class="pre">fits_inf[0].header</span></code>. By changing the HDU number to <code class="docutils literal notranslate"><span class="pre">fits_inf[1]header</span></code>, what will the output be?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># hdu_number = 0 is the PRIMARY HDU. How many HDUs are in this file?</span>
 <span class="n">fits_inf</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">)</span>
 <span class="n">fits_inf</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 <span class="n">fits_inf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
@@ -588,8 +605,9 @@ MYHDRKW = 'My Header Keyword'
 </div>
 </div>
 </div>
-<p>Using <code class="docutils literal notranslate"><span class="pre">fits.open</span></code> allows us to look more generally at our data.  <code class="docutils literal notranslate"><span class="pre">fits_inf[0].header</span></code> gives us the same output as <code class="docutils literal notranslate"><span class="pre">fits.getheader</span></code>.  What will you learn if you type <code class="docutils literal notranslate"><span class="pre">fits_inf[1].header</span></code>?  Based on <code class="docutils literal notranslate"><span class="pre">fits_inf.info()</span></code> can you guess what will happen if you type <code class="docutils literal notranslate"><span class="pre">fits_inf[2].header</span></code>?</p>
-<p>Now let’s change the header to give it the correct object:</p>
+<p><strong>Thought Question:</strong> <em>How many HDUS are in this file? Were you right about the number of cards in the primary HDU?</em></p>
+<p><strong>Thought Question:</strong> <em>What will happen if you type</em> <code class="docutils literal notranslate"><span class="pre">fits_inf[2].header</span></code><em>?</em></p>
+<p>Now that we know how to read a FITS file, let’s change the header. The header is always changed via its keyword. The keywords are the upper case words to the left when you print the extracted header info. Let’s change the header to give the correct OBJECT:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span><span class="p">[</span><span class="s2">"OBJECT"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"M31"</span>
@@ -597,8 +615,17 @@ MYHDRKW = 'My Header Keyword'
 </div>
 </div>
 </div>
-<p>Finally, we have to write out the FITS file. Again, the convenience
-function for this is the most useful command to remember:</p>
+<p>The keyword OBJECT was in the primary HDU. We can also change a header in another HDU like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdul</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">)</span>
+<span class="n">hdr</span> <span class="o">=</span> <span class="n">hdul</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+<span class="n">hdr</span><span class="p">[</span><span class="s2">"newcard"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"a value"</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the keyword “newcard” didn’t exist in HDU 1, it is created by attempting to change its value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s2">"output_file.fits"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -607,32 +634,8 @@ function for this is the most useful command to remember:</p>
 </div>
 </div>
 <p>That’s it; you’re done!</p>
-<p>Two common and more complicated cases are worth mentioning (but if your needs
-are much more complex, you should consult the full documentation <a class="reference external" href="http://docs.astropy.org/en/stable/io/fits/">http://docs.astropy.org/en/stable/io/fits/</a>).</p>
-<p>The first complication is that the FITS file you’re examining and
-editing might have multiple HDU’s (extensions), in which case you can
-specify the extension like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="p">,</span> <span class="n">header1</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>This will get you the data and header associated with the <code class="docutils literal notranslate"><span class="pre">index=1</span></code> extension
-in the FITS file. Without specifying a number, <code class="docutils literal notranslate"><span class="pre">getdata()</span></code> will get the
-0th extension (equivalent to saying <code class="docutils literal notranslate"><span class="pre">ext=0</span></code>).</p>
-<p>Another useful tip is if you want to overwrite an existing FITS
-file. By default, <code class="docutils literal notranslate"><span class="pre">writeto()</span></code> won’t let you do this, so you need to
-explicitly give it permission using the <code class="docutils literal notranslate"><span class="pre">clobber</span></code> keyword argument:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s2">"output_file.fits"</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>A final example is if you want to make a small change to a FITS file, like updating a header keyword, but you don’t want to read in and write out the whole file, which can take a while.  Instead you can use the <code class="docutils literal notranslate"><span class="pre">mode='update'</span></code> read mode to do this:</p>
+<p>For more complicated cases, you should consult the <a class="reference external" href="http://docs.astropy.org/en/stable/io/fits/">full documentation</a>.</p>
+<p>A helpful tip if you want to make a small change to a FITS file, like updating a header keyword, but you don’t want to read in and write out the whole file, which can take a while, is to use <code class="docutils literal notranslate"><span class="pre">mode='update'</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"input_file.fits"</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"update"</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
@@ -705,6 +708,7 @@ explicitly give it permission using the <code class="docutils literal notranslat
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keywords">Keywords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#companion-content">Companion Content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
