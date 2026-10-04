@@ -533,10 +533,8 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy</span><span class="w"> </span><span class="kn">import</span> <span class="n">wcs</span>
-
+<span class="kn">from</span><span class="w"> </span><span class="nn">pvextractor</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span><span class="p">,</span> <span class="n">extract_pv_slice</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">spectral_cube</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpectralCube</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">pvextractor</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_pv_slice</span><span class="p">,</span> <span class="n">Path</span>
 
 <span class="c1"># set so that these display properly on black backgrounds</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">"figure.facecolor"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"w"</span>
@@ -576,7 +574,7 @@ We use pixel units to start; we’ll show celestial coordinates later</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f7adc347c20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fb2d9b4a8a0&gt;
 </pre></div>
 </div>
 <img alt="_images/97d103d84b42f4267f1c0061ae59849a93cd8beb5bbeb81788c26c8adc1bc11f.png" src="_images/97d103d84b42f4267f1c0061ae59849a93cd8beb5bbeb81788c26c8adc1bc11f.png" />
@@ -623,7 +621,7 @@ It is drawn below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.io.fits.hdu.image.PrimaryHDU at 0x7f7ac884e600&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.io.fits.hdu.image.PrimaryHDU at 0x7fb2d9475910&gt;
 </pre></div>
 </div>
 </div>
@@ -680,7 +678,7 @@ It is drawn below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: PossiblySlowWarning: This function (&lt;function BaseSpectralCube.max at 0x7f7ac7c63920&gt;) requires loading the entire cube into memory and may therefore be slow. [spectral_cube.utils]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: PossiblySlowWarning: This function (&lt;function BaseSpectralCube.max at 0x7fb2d9616840&gt;) requires loading the entire cube into memory and may therefore be slow. [spectral_cube.utils]
 </pre></div>
 </div>
 </div>
@@ -756,7 +754,7 @@ It is drawn below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.io.fits.hdu.image.PrimaryHDU at 0x7f7ac3ed9250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;astropy.io.fits.hdu.image.PrimaryHDU at 0x7fb2d8fc3cb0&gt;
 </pre></div>
 </div>
 </div>

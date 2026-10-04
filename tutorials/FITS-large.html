@@ -575,16 +575,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">MADV_SEQUENTIAL</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">astropy.units</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">u</span>
-
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">astropy.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">mmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">MADV_SEQUENTIAL</span>
 </pre></div>
 </div>
 </div>
@@ -850,35 +847,35 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 1 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 2 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 4 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9: 3 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9: 6 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 6 sec
-Total fill time: 0.5 min
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 12 sec
+Total fill time: 1.1 min
 </pre></div>
 </div>
 </div>
@@ -910,12 +907,10 @@ Total fill time: 0.5 min
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: Data match is True: 3 sec
+1: Data match is True: 0 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: Data match is True: 3 sec
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: Data match is True: 1 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: Data match is True: 0 sec
 3: Data match is True: 0 sec
 </pre></div>
 </div>
@@ -1146,26 +1141,24 @@ No.    Name      Ver    Type      Cards   Dimensions   Format
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: 4 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: 5 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Population: 5 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Population: 11 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prince: 2 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prince: 1 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Years since fall: 9 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Years since fall: 20 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imports: 8 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imports: 6 sec
+Exports: 29 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exports: 22 sec
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 216 sec
-Total fill time: 4.4 min
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 311 sec
+Total fill time: 6.4 min
 </pre></div>
 </div>
 </div>
@@ -1203,23 +1196,23 @@ Total fill time: 4.4 min
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 83 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: 79 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 57 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1: 61 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: 53 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2: 60 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 37 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3: 43 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 41 sec
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4: 37 sec
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 222 sec
-Total fill time: 8.2 min
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closing: 225 sec
+Total fill time: 8.4 min
 </pre></div>
 </div>
 </div>

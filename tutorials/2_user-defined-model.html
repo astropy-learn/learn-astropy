@@ -580,6 +580,11 @@ which provides an introduction to <code class="docutils literal notranslate"><sp
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Field info are not available for this data release [astroquery.sdss.field_names]
+</pre></div>
+</div>
+</div>
 </div>
 <section id="now-that-we-have-the-spectrum">
 <h4>Now that we have the spectrum…<a class="headerlink" href="#now-that-we-have-the-spectrum" title="Link to this heading">#</a></h4>
@@ -993,7 +998,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/beccf13d3986e7e43066c8d5a4fcef5a3d4c5a4bf55d92ab884aa758a1d3e370.png" src="_images/beccf13d3986e7e43066c8d5a4fcef5a3d4c5a4bf55d92ab884aa758a1d3e370.png" />
+<img alt="_images/2f1c8ab4da2b120779d4ccf16384cc8449661cd576749a8e3a9395b2fdd5499b.png" src="_images/2f1c8ab4da2b120779d4ccf16384cc8449661cd576749a8e3a9395b2fdd5499b.png" />
 </div>
 </div>
 <p>We can define a simple custom model by specifying which parameters we want to fit.</p>
@@ -1028,7 +1033,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d23b905107d67970be9418aca8557b9ead1cdb9d4116c3515bed0f02d1d3d98c.png" src="_images/d23b905107d67970be9418aca8557b9ead1cdb9d4116c3515bed0f02d1d3d98c.png" />
+<img alt="_images/16ce23dd2a3b65de793a7589656b40e4ecb7493cabe0b27501f232e61fe88de4.png" src="_images/16ce23dd2a3b65de793a7589656b40e4ecb7493cabe0b27501f232e61fe88de4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1043,9 +1048,9 @@ Inputs: ('x',)
 Outputs: ('y',)
 Model set size: 1
 Parameters:
-            a                 b                 c         
-    ----------------- ----------------- ------------------
-    2.016432953535914 -2.20299259189999 0.4717100805256392
+            a                   b                   c         
+    ------------------ ------------------- -------------------
+    2.2590340917634975 -2.0242563133397327 0.27547439123282635
 </pre></div>
 </div>
 </div>
@@ -1072,7 +1077,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.242636968597737)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.8595018795263952)
 </pre></div>
 </div>
 </div>
@@ -1109,7 +1114,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9082eb8f8b8e1fb54426dc82a8722d376771b191690b4c6414e06746db62e9e5.png" src="_images/9082eb8f8b8e1fb54426dc82a8722d376771b191690b4c6414e06746db62e9e5.png" />
+<img alt="_images/3dace540e78cda259585b676e992a91bb57fc391dfc5e345bf11efea33b178cb.png" src="_images/3dace540e78cda259585b676e992a91bb57fc391dfc5e345bf11efea33b178cb.png" />
 </div>
 </div>
 <p>For the full custom model we can easily set the <strong>derivative of the function</strong>, which is used by different <a class="reference external" href="http://docs.astropy.org/en/stable/modeling/#id21">fitters</a>, for example the <code class="docutils literal notranslate"><span class="pre">LevMarLSQFitter()</span></code>.</p>
@@ -1156,7 +1161,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11f2d6835bb04be84054876a5a7db3238dbf71f6af6a83acdf1339b9177dc74f.png" src="_images/11f2d6835bb04be84054876a5a7db3238dbf71f6af6a83acdf1339b9177dc74f.png" />
+<img alt="_images/3886e980ad725bc9aa2b9fb6eb4a019032d9d9a99bc85811df62192f811318dc.png" src="_images/3886e980ad725bc9aa2b9fb6eb4a019032d9d9a99bc85811df62192f811318dc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1171,9 +1176,9 @@ Inputs: ('x',)
 Outputs: ('y',)
 Model set size: 1
 Parameters:
-            a                  b                 c                  d         
-    ------------------ ----------------- ------------------ ------------------
-    3.1606853267496224 2.005326701980579 3.9437885925966265 0.9833265431327646
+            a                  b                  c                  d         
+    ------------------ ------------------ ------------------ ------------------
+    3.0557869535904585 1.9945558390378884 4.0167687244355745 0.9184149646818279
 </pre></div>
 </div>
 </div>
@@ -1185,7 +1190,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(3.1581367682920316)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.5058284926412866)
 </pre></div>
 </div>
 </div>
@@ -1218,7 +1223,7 @@ Parameters:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4a4f9b9f5684c001d18c4d8b749662e2ce3a760b82ba6226cbe8febee1dee832.png" src="_images/4a4f9b9f5684c001d18c4d8b749662e2ce3a760b82ba6226cbe8febee1dee832.png" />
+<img alt="_images/1926c24d36daa14534c72dd9deda1e19665a867da480d94dd1062a725dcb7764.png" src="_images/1926c24d36daa14534c72dd9deda1e19665a867da480d94dd1062a725dcb7764.png" />
 </div>
 </div>
 </section>
