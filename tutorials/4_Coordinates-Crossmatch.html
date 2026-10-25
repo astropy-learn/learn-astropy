@@ -641,7 +641,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><div><i>QTable length=3</i>
-<table id="table140413578858224" class="table-striped table-bordered table-condensed">
+<table id="table139872825921552" class="table-striped table-bordered table-condensed">
 <thead><tr><th>Date</th><th>RAJ2000</th><th>DEJ2000</th><th>_2MASS</th><th>Jmag</th><th>e_Jmag</th><th>Hmag</th><th>e_Hmag</th><th>Kmag</th><th>e_Kmag</th><th>Qflg</th><th>Rflg</th><th>Bflg</th><th>Cflg</th><th>Xflg</th><th>Aflg</th></tr></thead>
 <thead><tr><th></th><th>deg</th><th>deg</th><th></th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th>mag</th><th></th><th></th><th></th><th></th><th></th><th></th></tr></thead>
 <thead><tr><th>str10</th><th>float64</th><th>float64</th><th>str16</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>float32</th><th>str3</th><th>str3</th><th>str3</th><th>str3</th><th>uint8</th><th>uint8</th></tr></thead>
@@ -685,7 +685,7 @@
 </div>
 </div>
 </div>
-<p>We now want to cross-match our <em>Gaia</em>-selected candidate members of NGC 188, <code class="docutils literal notranslate"><span class="pre">ngc_members_coords</span></code>, with this table of photometry from 2MASS. However, as noted previously, the <em>Gaia</em> coordinates are given at a different epoch J2015.5, which is nearly ~16 years after the 2MASS epoch of the data we downloaded (1999-10-19 or roughly J1999.88). We will therefore first use the <code class="docutils literal notranslate"><span class="pre">SkyCoord.apply_space_motion()</span></code> method (<a class="reference external" href="http://docs.astropy.org/en/latest/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord.apply_space_motion">docs</a>) to transform the <em>Gaia</em> positions back to the 2MASS epoch before we do the cross-match:</p>
+<p>We now want to cross-match our <em>Gaia</em>-selected candidate members of NGC 188, <code class="docutils literal notranslate"><span class="pre">ngc188_members_coord</span></code>, with this table of photometry from 2MASS. However, as noted previously, the <em>Gaia</em> coordinates are given at a different epoch J2015.5, which is nearly ~16 years after the 2MASS epoch of the data we downloaded (1999-10-19 or roughly J1999.8). We will therefore first use the <code class="docutils literal notranslate"><span class="pre">SkyCoord.apply_space_motion()</span></code> method (<a class="reference external" href="http://docs.astropy.org/en/latest/api/astropy.coordinates.SkyCoord.html#astropy.coordinates.SkyCoord.apply_space_motion">docs</a>) to transform the <em>Gaia</em> positions back to the 2MASS epoch before we do the cross-match:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># you can ignore the warning raised here</span>
@@ -716,7 +716,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d37dab37fd5a45d0989a6bdf087b0ae10438e73ac2bdf0be219283dbb0f89c87.png" src="_images/d37dab37fd5a45d0989a6bdf087b0ae10438e73ac2bdf0be219283dbb0f89c87.png" />
+<img alt="_images/3fe31ebe71711b09195f80f6edae793521ca4489f1574c70af0c2d0087e65947.png" src="_images/3fe31ebe71711b09195f80f6edae793521ca4489f1574c70af0c2d0087e65947.png" />
 </div>
 </div>
 <p>From this, it looks like all of sources in our <em>Gaia</em> NGC 188 member list cross-match to another sources within a few arcseconds, so these all seem like they are correctly matches to a 2MASS source!</p>
@@ -765,7 +765,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11a4687e126b34f1112d7f94ce61a5e4ab2f9a24df776a204cef7f7178e919aa.png" src="_images/11a4687e126b34f1112d7f94ce61a5e4ab2f9a24df776a204cef7f7178e919aa.png" />
+<img alt="_images/cdad53761c9897c18a8133f3a66a7e1c116830f25300302e8593827a5f35d4c1.png" src="_images/cdad53761c9897c18a8133f3a66a7e1c116830f25300302e8593827a5f35d4c1.png" />
 </div>
 </div>
 <p>Those both look like color-magnitude diagrams of a main sequence + red giant branch of an intermediate-age stellar cluster, so it looks like our selection and cross-matching has worked!</p>
