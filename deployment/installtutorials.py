@@ -5,12 +5,13 @@ built Gatsby site.
 from __future__ import annotations
 
 import argparse
-import os
-from pathlib import Path
-import tempfile
-from subprocess import CalledProcessError, check_call
 import glob
+import os
 import shutil
+import tempfile
+from pathlib import Path
+from subprocess import CalledProcessError, check_call
+
 import requests
 
 
